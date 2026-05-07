@@ -568,8 +568,12 @@ def run_agent():
         results = fetch_news(topic, max_results=4)
         all_news.extend(results)
 
+    # Sirf wahi news jisme image ho — no image = skip
+    all_news = [n for n in all_news if n.get("image")]
+    print(f"      Image wali news: {len(all_news)}")
+
     if not all_news:
-        print("Koi news nahi mili. Agent band ho raha hai.")
+        print("Koi image wali news nahi mili. Agent band ho raha hai.")
         return
 
     # 2. AI se smart plan banwao
@@ -607,21 +611,11 @@ def run_agent():
                 success = post_video_to_instagram(video_url, content["caption"], content["hashtags"])
 
         if not success:
-            # Priority: news article image → FLUX AI generated
-            # Pexels disabled
-            image_path = (
-                news.get("image")                                                    # 1. News article image
-                or generate_ai_image(news.get("title", ""), content["image_keyword"])  # 2. FLUX AI
-                # or fetch_image_pexels(content["image_keyword"])                    # Pexels — disabled
-            )
+            image_path = news.get("image")
             if not image_path:
-                image_path = create_news_card(
-                    news.get("title", "Breaking News"),
-                    news.get("source", "News"),
-                    content.get("emoji_title", "Breaking")
-                )
-            if image_path:
-                success = post_to_instagram(image_path, content["caption"], content["hashtags"])
+                print("      Image nahi mili — skip")
+                continue
+            success = post_to_instagram(image_path, content["caption"], content["hashtags"])
 
         if success:
             posted += 1
