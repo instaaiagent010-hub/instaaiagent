@@ -599,33 +599,21 @@ def run_agent():
 
         success = False
         if fmt == "video":
-            # Pehle Pexels try karo, phir AI video
             video_url = (
-                fetch_video(content["image_keyword"])
-                or generate_ai_video(content["image_keyword"], news.get("title", ""))
+                generate_ai_video(content["image_keyword"], news.get("title", ""))
+                # or fetch_video(content["image_keyword"])  # Pexels video — disabled
             )
             if video_url:
                 success = post_video_to_instagram(video_url, content["caption"], content["hashtags"])
 
         if not success:
-            if src == "ai":
-                image_path = (
-                    generate_ai_image(news.get("title", ""), content["image_keyword"])
-                    or fetch_image_pexels(content["image_keyword"])
-                    or news.get("image")
-                )
-            elif src == "news":
-                image_path = (
-                    news.get("image")
-                    or fetch_image_pexels(content["image_keyword"])
-                    or generate_ai_image(news.get("title", ""), content["image_keyword"])
-                )
-            else:  # pexels
-                image_path = (
-                    fetch_image_pexels(content["image_keyword"])
-                    or generate_ai_image(news.get("title", ""), content["image_keyword"])
-                    or news.get("image")
-                )
+            # Priority: news article image → FLUX AI generated
+            # Pexels disabled
+            image_path = (
+                news.get("image")                                                    # 1. News article image
+                or generate_ai_image(news.get("title", ""), content["image_keyword"])  # 2. FLUX AI
+                # or fetch_image_pexels(content["image_keyword"])                    # Pexels — disabled
+            )
             if not image_path:
                 image_path = create_news_card(
                     news.get("title", "Breaking News"),
