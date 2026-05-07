@@ -1,0 +1,651 @@
+"""
+Instagram News Agent
+====================
+Roz automatically:
+1. DuckDuckGo se top Indian news fetch karta hai
+2. Claude AI se engaging caption + hashtags banata hai
+3. Pexels se relevant free image dhundta hai
+4. Instagram pe post karta hai
+
+Setup:
+    pip install duckduckgo-search requests anthropic Pillow python-dotenv
+
+Run:
+    python agent.py
+"""
+
+import os
+import json
+import time
+import tempfile
+import requests
+
+from datetime import datetime
+from dotenv import load_dotenv
+from ddgs import DDGS
+from PIL import Image, ImageDraw
+from groq import Groq
+
+load_dotenv()
+
+# --- Config -------------------------------------------------------------------
+GROQ_API_KEY        = os.getenv("GROQ_API_KEY")
+PEXELS_API_KEY      = os.getenv("PEXELS_API_KEY")        # free: pexels.com/api
+INSTAGRAM_TOKEN     = os.getenv("INSTAGRAM_ACCESS_TOKEN") # Meta Graph API token
+INSTAGRAM_ACCOUNT_ID = os.getenv("INSTAGRAM_ACCOUNT_ID") # Business account ID
+IMGBB_API_KEY       = os.getenv("IMGBB_API_KEY")
+HF_API_KEY          = os.getenv("HF_API_KEY")
+APP_ID              = os.getenv("APP_ID")
+APP_SECRET          = os.getenv("APP_SECRET")
+
+MAX_NEWS     = 1                               # har run mein 1 post (din mein 4 baar chalega)
+POST_DELAY   = 60                              # seconds between posts
+
+# Multiple topics — agent khud decide karega kya fetch kare
+NEWS_TOPICS = [
+    "India politics news today",
+    "India entertainment bollywood news",
+    "India business economy news",
+    "India sports cricket news",
+    "India viral trending news today",
+]
+
+
+# --- Step 1: News Fetch -------------------------------------------------------
+def fetch_news(topic: str, max_results: int = 5) -> list[dict]:
+    """DuckDuckGo se latest news fetch karo — bilkul free, no API key"""
+    print(f"\n[1/4] News fetch kar raha hoon: '{topic}'")
+    for attempt in range(3):
+        try:
+            with DDGS() as ddgs:
+                results = list(ddgs.news(topic, max_results=max_results))
+            print(f"      {len(results)} news mili")
+            return results
+        except Exception as e:
+            print(f"      Attempt {attempt+1} failed: {e}")
+            if attempt < 2:
+                time.sleep(5)
+    return []
+
+
+# --- Token Auto-Refresh -------------------------------------------------------
+def refresh_token() -> str | None:
+    """Short-lived token ko 60-day long-lived token mein convert karo"""
+    if not APP_ID or not APP_SECRET or not INSTAGRAM_TOKEN:
+        return None
+    try:
+        resp = requests.get(
+            "https://graph.facebook.com/v25.0/oauth/access_token",
+            params={
+                "grant_type": "fb_exchange_token",
+                "client_id": APP_ID,
+                "client_secret": APP_SECRET,
+                "fb_exchange_token": INSTAGRAM_TOKEN,
+            }, timeout=10
+        )
+        new_token = resp.json().get("access_token")
+        if new_token:
+            # .env file update karo
+            env_path = os.path.join(os.path.dirname(__file__), ".env")
+            if os.path.exists(env_path):
+                with open(env_path, "r") as f:
+                    content = f.read()
+                import re
+                content = re.sub(
+                    r"INSTAGRAM_ACCESS_TOKEN=.*",
+                    f"INSTAGRAM_ACCESS_TOKEN={new_token}",
+                    content
+                )
+                with open(env_path, "w") as f:
+                    f.write(content)
+            print(f"      Token refreshed!")
+            return new_token
+    except Exception as e:
+        print(f"      Token refresh error: {e}")
+    return None
+
+
+# --- AI Planning Layer --------------------------------------------------------
+def smart_plan(all_news: list[dict]) -> list[dict]:
+    """Groq se decide karwao — konsi news post karein, kis format mein, kis order mein"""
+    print(f"\n[AI] {len(all_news)} news analyze kar raha hoon...")
+
+    hour = datetime.now().hour
+    if 6 <= hour < 12:
+        time_context = "subah (morning) — motivational aur breaking news best karti hai"
+    elif 12 <= hour < 17:
+        time_context = "dopahar (afternoon) — entertainment aur business news best karti hai"
+    else:
+        time_context = "shaam/raat (evening/night) — viral, funny ya emotional content best karta hai"
+
+    news_list_str = "\n".join([
+        f"{i+1}. [{n.get('source','')}] {n.get('title','')[:100]}"
+        for i, n in enumerate(all_news)
+    ])
+
+    prompt = f"""Tu ek smart Indian Instagram news page ka AI manager hai.
+
+Abhi time hai: {time_context}
+
+Neeche {len(all_news)} news headlines hain:
+{news_list_str}
+
+Tujhe karna hai:
+1. Inme se TOP {MAX_NEWS} select karo jo Indian audience ke liye MOST ENGAGING hongi
+2. Har selected news ke liye decide karo:
+   - "format": "video" ya "image"
+     * Video: sports, entertainment, viral, celebrity
+     * Image: politics, crime, economy, breaking news
+   - "image_source": "ai" ya "pexels" ya "news"
+     * ai: creative/viral/entertainment topics — FLUX se unique image
+     * pexels: sports, nature, business — professional stock photo
+     * news: breaking news — actual article ki image
+3. Posting ORDER decide karo (sabse viral pehle)
+
+Sirf JSON respond karo:
+{{
+  "plan": [
+    {{"index": 0, "format": "video", "image_source": "ai", "reason": "why"}},
+    {{"index": 2, "format": "image", "image_source": "pexels", "reason": "why"}},
+    {{"index": 4, "format": "image", "image_source": "news", "reason": "why"}}
+  ],
+  "strategy": "aaj ki overall posting strategy ek line mein"
+}}"""
+
+    try:
+        client = Groq(api_key=GROQ_API_KEY)
+        resp = client.chat.completions.create(
+            model="llama-3.3-70b-versatile",
+            max_tokens=500,
+            messages=[{"role": "user", "content": prompt}],
+            response_format={"type": "json_object"}
+        )
+        result = json.loads(resp.choices[0].message.content)
+        print(f"      Strategy: {result.get('strategy', '')}")
+        planned = []
+        for item in result.get("plan", []):
+            idx = item.get("index", 0)
+            if 0 <= idx < len(all_news):
+                news = all_news[idx].copy()
+                news["_format"] = item.get("format", "image")
+                news["_image_source"] = item.get("image_source", "pexels")
+                news["_reason"] = item.get("reason", "")
+                planned.append(news)
+        return planned[:MAX_NEWS]
+    except Exception as e:
+        print(f"      Planning error: {e} — default order use kar raha hoon")
+        return all_news[:MAX_NEWS]
+
+
+# --- Content Quality Check ----------------------------------------------------
+def is_worth_posting(caption: str, news_title: str) -> bool:
+    """Groq se check karwao — kya yeh content post karne layak hai?"""
+    try:
+        client = Groq(api_key=GROQ_API_KEY)
+        resp = client.chat.completions.create(
+            model="llama-3.3-70b-versatile",
+            max_tokens=100,
+            messages=[{"role": "user", "content": f"""
+Tu ek Instagram content quality checker hai.
+
+News: {news_title[:150]}
+Caption: {caption[:300]}
+
+Kya yeh post karne layak hai? Check karo:
+- Caption engaging aur meaningful hai?
+- News Indian audience ke liye relevant hai?
+- Content boring/repetitive/spam jaisa nahi hai?
+
+Sirf JSON: {{"post": true/false, "reason": "ek line"}}
+"""}],
+            response_format={"type": "json_object"}
+        )
+        result = json.loads(resp.choices[0].message.content)
+        verdict = result.get("post", True)
+        print(f"      Quality check: {'PASS' if verdict else 'SKIP'} — {result.get('reason', '')[:60]}")
+        return verdict
+    except:
+        return True  # error pe default post kar do
+
+
+# --- Step 2: Caption + Image Keyword ------------------------------------------
+def generate_caption(news_item: dict) -> dict:
+    """Claude se Instagram caption, hashtags aur image search keyword banao"""
+    print(f"\n[2/4] Caption generate kar raha hoon...")
+
+    client = Groq(api_key=GROQ_API_KEY)
+
+    prompt = f"""
+Tu ek Instagram news page ka content writer hai jo Indian audience ke liye likhta hai.
+
+Neeche ek news headline aur summary hai. Tujhe yeh karna hai:
+1. Ek engaging Instagram caption likho (Hinglish mein — Hindi + English mix)
+   - 6-8 lines
+   - Pehle hook line likho jo attention grab kare
+   - News ka context explain karo 2-3 lines mein
+   - Emotional aur conversational tone
+   - Key facts ya numbers zaroor include karo
+   - End mein ek strong question ya call-to-action
+2. 15-20 relevant Hindi/English hashtags do
+3. Ek short English keyword do (2-3 words) jo image search ke liye use hoga
+
+News Title: {news_item.get('title', '')}
+News Body: {news_item.get('body', '')[:500]}
+Source: {news_item.get('source', '')}
+
+Sirf JSON format mein respond karo, koi extra text nahi:
+{{
+  "caption": "...",
+  "hashtags": "#tag1 #tag2 ...",
+  "image_keyword": "...",
+  "emoji_title": "..."
+}}
+"""
+
+    try:
+        message = client.chat.completions.create(
+            model="llama-3.3-70b-versatile",
+            max_tokens=900,
+            messages=[{"role": "user", "content": prompt}],
+            response_format={"type": "json_object"}
+        )
+        raw = message.choices[0].message.content.strip()
+        result = json.loads(raw)
+        preview = result['caption'][:60].encode('ascii', errors='ignore').decode()
+        print(f"      Caption ready: {preview}...")
+        return result
+    except Exception as e:
+        print(f"      Error: {e}")
+        return {
+            "caption": news_item.get('title', 'Breaking News!'),
+            "hashtags": "#India #News #BreakingNews #IndianNews",
+            "image_keyword": "India news",
+            "emoji_title": "Breaking News"
+        }
+
+
+# --- Step 3: Image Search -----------------------------------------------------
+def generate_ai_image(news_title: str, keyword: str) -> str | None:
+    """Hugging Face FLUX se free AI image banao — high quality, copyright-free"""
+    if not HF_API_KEY:
+        return None
+    print(f"\n[3/4] FLUX AI image generate kar raha hoon: '{keyword}'")
+    try:
+        prompt = (
+            f"dramatic professional news thumbnail, topic: {keyword}, "
+            f"{news_title[:80]}, bold vibrant colors, cinematic lighting, "
+            f"photorealistic, high quality, no text, no watermark"
+        )
+        resp = requests.post(
+            "https://router.huggingface.co/hf-inference/models/black-forest-labs/FLUX.1-schnell",
+            headers={"Authorization": f"Bearer {HF_API_KEY}"},
+            json={"inputs": prompt},
+            timeout=60
+        )
+        if resp.status_code == 200 and "image" in resp.headers.get("content-type", ""):
+            path = os.path.join(tempfile.gettempdir(), f"ai_image_{int(time.time())}.png")
+            with open(path, "wb") as f:
+                f.write(resp.content)
+            print(f"      FLUX image bani! Upload kar raha hoon...")
+            return upload_image(path)
+        else:
+            print(f"      HF error: {resp.status_code} {resp.text[:100]}")
+    except Exception as e:
+        print(f"      AI image error: {e}")
+    return None
+
+
+def fetch_image_pexels(keyword: str) -> str | None:
+    """Pexels se free image dhundo aur download karo"""
+    print(f"\n[3/4] Image dhund raha hoon: '{keyword}'")
+
+    if not PEXELS_API_KEY:
+        print("      Pexels key nahi hai, news card bana raha hoon...")
+        return None
+
+    try:
+        headers = {"Authorization": PEXELS_API_KEY}
+        url = f"https://api.pexels.com/v1/search?query={keyword}&per_page=5&orientation=square"
+        resp = requests.get(url, headers=headers, timeout=10)
+        data = resp.json()
+
+        if data.get("photos"):
+            photo = data["photos"][0]
+            img_url = photo["src"]["large"]
+            print(f"      Pexels image URL mili: {img_url[:60]}...")
+            return img_url
+    except Exception as e:
+        print(f"      Pexels error: {e}")
+
+    # Fallback: DuckDuckGo image search
+    return fetch_image_duckduckgo(keyword)
+
+
+def fetch_image_duckduckgo(keyword: str) -> str | None:
+    """DuckDuckGo se image search — completely free fallback"""
+    try:
+        with DDGS() as ddgs:
+            results = list(ddgs.images(keyword, max_results=5,
+                                        license_image="Share"))
+        if results:
+            img_url = results[0]["image"]
+            print(f"      DDG image URL mili: {img_url[:60]}...")
+            return img_url
+    except Exception as e:
+        print(f"      DDG image error: {e}")
+    return None
+
+
+def generate_ai_video(keyword: str, news_title: str) -> str | None:
+    """HuggingFace se AI video generate karo — free tier"""
+    if not HF_API_KEY:
+        return None
+    print(f"\n[3/4] AI video generate kar raha hoon: '{keyword}'")
+    try:
+        prompt = f"cinematic news video, {keyword}, {news_title[:60]}, professional broadcast style"
+        # LTX-Video model — fastest free video generation on HF
+        resp = requests.post(
+            "https://router.huggingface.co/hf-inference/models/Lightricks/LTX-Video",
+            headers={"Authorization": f"Bearer {HF_API_KEY}"},
+            json={"inputs": prompt},
+            timeout=120
+        )
+        if resp.status_code == 200 and "video" in resp.headers.get("content-type", ""):
+            path = os.path.join(tempfile.gettempdir(), f"ai_video_{int(time.time())}.mp4")
+            with open(path, "wb") as f:
+                f.write(resp.content)
+            public_url = upload_image(path)  # ImgBB video bhi host karta hai
+            if public_url:
+                print(f"      AI video ready: {public_url[:60]}")
+                return public_url
+        else:
+            print(f"      AI video error: {resp.status_code} {resp.text[:80]}")
+    except Exception as e:
+        print(f"      AI video error: {e}")
+    return None
+
+
+def fetch_video(keyword: str) -> str | None:
+    """Pexels se free stock video dhundo — same API key, direct MP4 URL"""
+    if not PEXELS_API_KEY:
+        return None
+    print(f"\n[3/4] Video dhund raha hoon: '{keyword}'")
+    try:
+        headers = {"Authorization": PEXELS_API_KEY}
+        resp = requests.get(
+            f"https://api.pexels.com/videos/search?query={keyword}&per_page=5&orientation=portrait",
+            headers=headers, timeout=10
+        )
+        videos = resp.json().get("videos", [])
+        for video in videos:
+            # HD ya SD MP4 file dhundo
+            for vf in video.get("video_files", []):
+                if vf.get("file_type") == "video/mp4" and vf.get("height", 0) >= 720:
+                    url = vf["link"]
+                    print(f"      Pexels video mili: {url[:60]}...")
+                    return url
+    except Exception as e:
+        print(f"      Pexels video error: {e}")
+    return None
+
+
+def post_video_to_instagram(video_url: str, caption: str, hashtags: str) -> bool:
+    """Instagram pe video (Reel) post karo"""
+    print(f"\n[4/4] Instagram pe video post kar raha hoon...")
+    if not INSTAGRAM_TOKEN or not INSTAGRAM_ACCOUNT_ID:
+        print("      Dry run — credentials nahi hain")
+        return False
+
+    full_caption = f"{caption}\n\n{hashtags}"
+    try:
+        upload_url = f"https://graph.facebook.com/v25.0/{INSTAGRAM_ACCOUNT_ID}/media"
+        resp = requests.post(upload_url, data={
+            "video_url": video_url,
+            "caption": full_caption,
+            "media_type": "REELS",
+            "access_token": INSTAGRAM_TOKEN
+        })
+        container_id = resp.json().get("id")
+        if not container_id:
+            print(f"      Video upload error: {resp.json()}")
+            return False
+
+        # Processing wait karo
+        for _ in range(10):
+            time.sleep(8)
+            status = requests.get(
+                f"https://graph.facebook.com/v25.0/{container_id}",
+                params={"fields": "status_code", "access_token": INSTAGRAM_TOKEN}
+            ).json()
+            if status.get("status_code") == "FINISHED":
+                break
+            print(f"      Processing... {status.get('status_code')}")
+
+        pub_resp = requests.post(
+            f"https://graph.facebook.com/v25.0/{INSTAGRAM_ACCOUNT_ID}/media_publish",
+            data={"creation_id": container_id, "access_token": INSTAGRAM_TOKEN}
+        )
+        if pub_resp.json().get("id"):
+            print(f"      Video post successful! ID: {pub_resp.json()['id']}")
+            return True
+        else:
+            print(f"      Publish error: {pub_resp.json()}")
+            return False
+    except Exception as e:
+        print(f"      Video post error: {e}")
+        return False
+
+
+def upload_image(image_path: str) -> str | None:
+    """Local image ko ImgBB pe upload karo — free"""
+    try:
+        import base64
+        with open(image_path, "rb") as f:
+            img_b64 = base64.b64encode(f.read()).decode("utf-8")
+        resp = requests.post("https://api.imgbb.com/1/upload", data={
+            "key": IMGBB_API_KEY,
+            "image": img_b64,
+        }, timeout=30)
+        url = resp.json()["data"]["url"]
+        print(f"      ImgBB upload: {url}")
+        return url
+    except Exception as e:
+        print(f"      Upload error: {e}")
+    return None
+
+
+# --- Step 3b: News Card Banana (agar image na mile) ---------------------------
+def create_news_card(title: str, source: str, emoji_title: str = "Breaking News") -> str:
+    """Pillow se ek clean news card image banao — 100% free, no copyright"""
+    print("      News card bana raha hoon (Pillow)...")
+
+    width, height = 1080, 1080
+    img = Image.new("RGB", (width, height), color=(15, 15, 30))
+    draw = ImageDraw.Draw(img)
+
+    # Background gradient effect (simple rectangles)
+    for i in range(20):
+        draw.rectangle([0, height - (i * 55), width, height], fill=(26, 26, 60))
+
+    # Top accent bar
+    draw.rectangle([0, 0, width, 8], fill=(255, 80, 80))
+
+    # Source + date
+    date_str = datetime.now().strftime("%d %b %Y")
+    draw.text((54, 40), f"{source.upper()}  •  {date_str}",
+              fill=(180, 180, 180))
+
+    # Emoji title
+    draw.text((54, 110), emoji_title, fill=(255, 80, 80))
+
+    # Main headline — word wrap manually
+    words = title.split()
+    lines, line = [], ""
+    for w in words:
+        test = f"{line} {w}".strip()
+        if len(test) > 28:
+            lines.append(line)
+            line = w
+        else:
+            line = test
+    if line:
+        lines.append(line)
+
+    y = 220
+    for l in lines[:6]:
+        draw.text((54, y), l, fill=(255, 255, 255))
+        y += 80
+
+    # Bottom bar
+    draw.rectangle([0, height - 70, width, height], fill=(255, 80, 80))
+    draw.text((54, height - 48), "Follow for daily news updates", fill=(255, 255, 255))
+
+    path = os.path.join(tempfile.gettempdir(), f"news_card_{int(time.time())}.jpg")
+    img.save(path, "JPEG", quality=95)
+    print(f"      Card saved: {path}")
+    return upload_image(path)
+
+
+# --- Step 4: Instagram Post ---------------------------------------------------
+def post_to_instagram(image_path: str, caption: str, hashtags: str) -> bool:
+    """Meta Graph API se Instagram pe post karo"""
+    print(f"\n[4/4] Instagram pe post kar raha hoon...")
+
+    if not INSTAGRAM_TOKEN or not INSTAGRAM_ACCOUNT_ID:
+        print("      Instagram credentials nahi hain — dry run mode")
+        print(f"      Caption hoga: {caption[:100]}...")
+        return True  # dry run
+
+    full_caption = f"{caption}\n\n{hashtags}"
+
+    try:
+        # Step 1: Image upload karke container banao
+        upload_url = f"https://graph.facebook.com/v19.0/{INSTAGRAM_ACCOUNT_ID}/media"
+        upload_resp = requests.post(upload_url, data={
+            "image_url": image_path,  # image publicly accessible URL chahiye
+            "caption": full_caption,
+            "access_token": INSTAGRAM_TOKEN
+        })
+        container_id = upload_resp.json().get("id")
+
+        if not container_id:
+            print(f"      Upload error: {upload_resp.json()}")
+            return False
+
+        # Step 2: Container publish karo
+        time.sleep(5)  # wait for processing
+        publish_url = f"https://graph.facebook.com/v19.0/{INSTAGRAM_ACCOUNT_ID}/media_publish"
+        pub_resp = requests.post(publish_url, data={
+            "creation_id": container_id,
+            "access_token": INSTAGRAM_TOKEN
+        })
+
+        if pub_resp.json().get("id"):
+            print(f"      Post successful! ID: {pub_resp.json()['id']}")
+            return True
+        else:
+            print(f"      Publish error: {pub_resp.json()}")
+            return False
+
+    except Exception as e:
+        print(f"      Instagram error: {e}")
+        return False
+
+
+# --- Main Agent Loop ----------------------------------------------------------
+def run_agent():
+    print("=" * 55)
+    print("  Instagram News Agent Starting...")
+    print(f"  Time: {datetime.now().strftime('%Y-%m-%d %H:%M')}")
+    print("=" * 55)
+
+    # Token refresh karo (60-day long-lived token)
+    refresh_token()
+
+    # 1. Multiple topics se news fetch karo
+    all_news = []
+    for topic in NEWS_TOPICS:
+        results = fetch_news(topic, max_results=4)
+        all_news.extend(results)
+
+    if not all_news:
+        print("Koi news nahi mili. Agent band ho raha hai.")
+        return
+
+    # 2. AI se smart plan banwao
+    news_list = smart_plan(all_news)
+
+    posted = 0
+    for news in news_list:
+        if posted >= MAX_NEWS:
+            break
+
+        print(f"\n{'-'*50}")
+        print(f"News: {news.get('title', '')[:70]}...")
+        fmt = news.get("_format", "image")
+        print(f"Format: {fmt} | Reason: {news.get('_reason', '')[:50]}")
+
+        # 3. Caption generate karo
+        content = generate_caption(news)
+
+        # 4. Quality check — post karne layak hai?
+        if not is_worth_posting(content["caption"], news.get("title", "")):
+            print(f"      Skipping — quality check fail")
+            continue
+
+        # 5. AI ke source + format decision ke hisaab se content lo
+        src = news.get("_image_source", "pexels")
+        print(f"Image source: {src}")
+
+        success = False
+        if fmt == "video":
+            # Pehle Pexels try karo, phir AI video
+            video_url = (
+                fetch_video(content["image_keyword"])
+                or generate_ai_video(content["image_keyword"], news.get("title", ""))
+            )
+            if video_url:
+                success = post_video_to_instagram(video_url, content["caption"], content["hashtags"])
+
+        if not success:
+            if src == "ai":
+                image_path = (
+                    generate_ai_image(news.get("title", ""), content["image_keyword"])
+                    or fetch_image_pexels(content["image_keyword"])
+                    or news.get("image")
+                )
+            elif src == "news":
+                image_path = (
+                    news.get("image")
+                    or fetch_image_pexels(content["image_keyword"])
+                    or generate_ai_image(news.get("title", ""), content["image_keyword"])
+                )
+            else:  # pexels
+                image_path = (
+                    fetch_image_pexels(content["image_keyword"])
+                    or generate_ai_image(news.get("title", ""), content["image_keyword"])
+                    or news.get("image")
+                )
+            if not image_path:
+                image_path = create_news_card(
+                    news.get("title", "Breaking News"),
+                    news.get("source", "News"),
+                    content.get("emoji_title", "Breaking")
+                )
+            if image_path:
+                success = post_to_instagram(image_path, content["caption"], content["hashtags"])
+
+        if success:
+            posted += 1
+            print(f"      [{posted}/{MAX_NEWS}] Post ho gaya!")
+            if posted < MAX_NEWS:
+                print(f"      {POST_DELAY}s wait kar raha hoon...")
+                time.sleep(POST_DELAY)
+
+    print(f"\n{'='*55}")
+    print(f"  Agent complete! {posted} posts kiye gaye.")
+    print("=" * 55)
+
+
+if __name__ == "__main__":
+    run_agent()
