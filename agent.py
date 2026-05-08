@@ -56,14 +56,32 @@ NEWS_TOPICS = [
 
 # --- Step 1: News Fetch -------------------------------------------------------
 def fetch_news(topic: str, max_results: int = 5) -> list[dict]:
-    """DuckDuckGo se latest news fetch karo — bilkul free, no API key"""
+    """DuckDuckGo se sirf last 24 hours ki news fetch karo"""
     print(f"\n[1/4] News fetch kar raha hoon: '{topic}'")
+    cutoff = datetime.now().timestamp() - 86400  # 24 hours ago
+
     for attempt in range(3):
         try:
             with DDGS() as ddgs:
-                results = list(ddgs.news(topic, max_results=max_results))
-            print(f"      {len(results)} news mili")
-            return results
+                results = list(ddgs.news(topic, max_results=max_results * 2, timelimit="d"))
+
+            # Double-check: date field se bhi filter karo
+            fresh = []
+            for n in results:
+                pub = n.get("date", "")
+                try:
+                    from datetime import timezone
+                    # DuckDuckGo date format: "2025-05-08T10:30:00+00:00" or similar
+                    from datetime import datetime as dt
+                    pub_ts = dt.fromisoformat(pub.replace("Z", "+00:00")).timestamp()
+                    if pub_ts >= cutoff:
+                        fresh.append(n)
+                except Exception:
+                    fresh.append(n)  # date parse na ho to include kar lo
+
+            fresh = fresh[:max_results]
+            print(f"      {len(fresh)} fresh news mili (last 24h)")
+            return fresh
         except Exception as e:
             print(f"      Attempt {attempt+1} failed: {e}")
             if attempt < 2:
@@ -301,6 +319,7 @@ Image URL: {image_url}
 News Title: {news_item.get('title', '')}
 News Body: {news_item.get('body', '')[:500]}
 Source: {news_item.get('source', '')}
+Published: {news_item.get('date', 'aaj')[:10]}
 
 Caption likhte waqt STRICT RULES:
 - YE EK PHOTO POST HAI — "video", "clip", "watch", "dekho video", "reel" jaisi koi bhi word BILKUL MAT LIKHO
