@@ -41,16 +41,13 @@ APP_SECRET          = os.getenv("APP_SECRET")
 MAX_NEWS     = 1                               # har run mein 1 post (din mein 4 baar chalega)
 POST_DELAY   = 60                              # seconds between posts
 
-# High-impact queries — national significance wali news surface karne ke liye
+# High-impact queries — 5 topics, fast fetch
 NEWS_TOPICS = [
-    "India breaking news today major incident",
-    "India government policy decision Parliament",
-    "India economy budget RBI GDP inflation today",
-    "India cricket match result today",
-    "India Supreme Court verdict election commission",
-    "India military defense border China Pakistan",
-    "India scam corruption arrest CBI ED today",
-    "India disaster flood earthquake accident major",
+    "India breaking news today",
+    "India government Parliament Supreme Court today",
+    "India economy RBI cricket sports today",
+    "India scam arrest CBI ED crime today",
+    "India disaster accident viral news today",
 ]
 
 
@@ -60,32 +57,29 @@ def fetch_news(topic: str, max_results: int = 5) -> list[dict]:
     print(f"\n[1/4] News fetch kar raha hoon: '{topic}'")
     cutoff = datetime.now().timestamp() - 86400  # 24 hours ago
 
-    for attempt in range(3):
+    for attempt in range(2):
         try:
             with DDGS() as ddgs:
                 results = list(ddgs.news(topic, max_results=max_results * 2, timelimit="d"))
 
-            # Double-check: date field se bhi filter karo
             fresh = []
             for n in results:
                 pub = n.get("date", "")
                 try:
-                    from datetime import timezone
-                    # DuckDuckGo date format: "2025-05-08T10:30:00+00:00" or similar
                     from datetime import datetime as dt
                     pub_ts = dt.fromisoformat(pub.replace("Z", "+00:00")).timestamp()
                     if pub_ts >= cutoff:
                         fresh.append(n)
                 except Exception:
-                    fresh.append(n)  # date parse na ho to include kar lo
+                    fresh.append(n)
 
             fresh = fresh[:max_results]
             print(f"      {len(fresh)} fresh news mili (last 24h)")
             return fresh
         except Exception as e:
             print(f"      Attempt {attempt+1} failed: {e}")
-            if attempt < 2:
-                time.sleep(5)
+            if attempt < 1:
+                time.sleep(2)
     return []
 
 
@@ -230,11 +224,14 @@ Neeche {len(all_news)} news hain:
 
 Sirf TOP {MAX_NEWS} news choose karo jinka importance score 7+ ho.
 Agar koi bhi 7+ nahi hai to sabse zyada important ek choose karo.
+Saath mein yeh bhi check karo — "worth_posting": true/false:
+- false: clickbait, rumor, gossip, sirf ek sheher tak limited, stale
+- true: verified, national impact, credible source
 
 Sirf JSON respond karo:
 {{
   "plan": [
-    {{"index": 0, "format": "image", "image_source": "news", "importance": 9, "reason": "why important"}}
+    {{"index": 0, "format": "image", "image_source": "news", "importance": 9, "worth_posting": true, "reason": "why important"}}
   ],
   "strategy": "aaj ki overall posting strategy ek line mein"
 }}"""
@@ -252,11 +249,12 @@ Sirf JSON respond karo:
         planned = []
         for item in result.get("plan", []):
             idx = item.get("index", 0)
-            if 0 <= idx < len(all_news):
+            if 0 <= idx < len(all_news) and item.get("worth_posting", True):
                 news = all_news[idx].copy()
                 news["_format"] = item.get("format", "image")
-                news["_image_source"] = item.get("image_source", "pexels")
+                news["_image_source"] = item.get("image_source", "news")
                 news["_reason"] = item.get("reason", "")
+                news["_importance"] = item.get("importance", 7)
                 planned.append(news)
         return planned[:MAX_NEWS]
     except Exception as e:
@@ -630,7 +628,7 @@ def post_to_instagram(image_path: str, caption: str, hashtags: str) -> bool:
 
     try:
         # Step 1: Image upload karke container banao
-        upload_url = f"https://graph.facebook.com/v19.0/{INSTAGRAM_ACCOUNT_ID}/media"
+        upload_url = f"https://graph.facebook.com/v25.0/{INSTAGRAM_ACCOUNT_ID}/media"
         upload_resp = requests.post(upload_url, data={
             "image_url": image_path,  # image publicly accessible URL chahiye
             "caption": full_caption,
@@ -643,8 +641,8 @@ def post_to_instagram(image_path: str, caption: str, hashtags: str) -> bool:
             return False
 
         # Step 2: Container publish karo
-        time.sleep(5)  # wait for processing
-        publish_url = f"https://graph.facebook.com/v19.0/{INSTAGRAM_ACCOUNT_ID}/media_publish"
+        time.sleep(3)  # wait for processing
+        publish_url = f"https://graph.facebook.com/v25.0/{INSTAGRAM_ACCOUNT_ID}/media_publish"
         pub_resp = requests.post(publish_url, data={
             "creation_id": container_id,
             "access_token": INSTAGRAM_TOKEN
@@ -675,7 +673,7 @@ def run_agent():
     # 1. Multiple topics se news fetch karo
     all_news = []
     for topic in NEWS_TOPICS:
-        results = fetch_news(topic, max_results=4)
+        results = fetch_news(topic, max_results=3)
         all_news.extend(results)
 
     # Sirf wahi news jisme image ho — no image = skip
@@ -699,13 +697,10 @@ def run_agent():
         fmt = news.get("_format", "image")
         print(f"Format: {fmt} | Reason: {news.get('_reason', '')[:50]}")
 
+        print(f"Importance: {news.get('_importance', '?')}/10")
+
         # 3. Caption generate karo
         content = generate_caption(news)
-
-        # 4. Quality check — post karne layak hai?
-        if not is_worth_posting(content["caption"], news.get("title", "")):
-            print(f"      Skipping — quality check fail")
-            continue
 
         # 5. AI ke source + format decision ke hisaab se content lo
         src = news.get("_image_source", "pexels")
