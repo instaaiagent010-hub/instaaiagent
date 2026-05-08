@@ -602,13 +602,9 @@ def run_agent():
         print(f"Image source: {src}")
 
         success = False
-        if fmt == "video":
-            video_url = (
-                generate_ai_video(content["image_keyword"], news.get("title", ""))
-                # or fetch_video(content["image_keyword"])  # Pexels video — disabled
-            )
-            if video_url:
-                success = post_video_to_instagram(video_url, content["caption"], content["hashtags"])
+        # Video generation disabled — sirf image posts
+        # HuggingFace AI video — disabled
+        # Pexels video — disabled
 
         if not success:
             image_path = news.get("image")
