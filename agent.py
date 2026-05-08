@@ -290,7 +290,9 @@ News Title: {news_item.get('title', '')}
 News Body: {news_item.get('body', '')[:500]}
 Source: {news_item.get('source', '')}
 
-Caption likhte waqt dhyan rakho:
+Caption likhte waqt STRICT RULES:
+- YE EK PHOTO POST HAI — "video", "clip", "watch", "dekho video", "reel" jaisi koi bhi word BILKUL MAT LIKHO
+- "tasveer", "photo", "image", "ye shot", "is frame mein" — yahi words use karo
 - Caption IMAGE ke saath cohesive lagne chahiye — pehli ya doosri line mein photo ko acknowledge karo
   (e.g., "Ye tasveer kaafi kuch kehti hai...", "Is photo mein dekho...", "Ye moment capture hua jab...")
 - Hinglish mein likho (Hindi + English mix)
@@ -319,6 +321,15 @@ Sirf JSON format mein respond karo:
         )
         raw = message.choices[0].message.content.strip()
         result = json.loads(raw)
+
+        # Hard filter — replace any video-related words that slipped through
+        import re
+        caption = result.get("caption", "")
+        caption = re.sub(r'\b(video|reel|clip)\b', 'photo', caption, flags=re.IGNORECASE)
+        caption = re.sub(r'dekho video', 'dekho ye tasveer', caption, flags=re.IGNORECASE)
+        caption = re.sub(r'ye video', 'ye tasveer', caption, flags=re.IGNORECASE)
+        result["caption"] = caption
+
         preview = result['caption'][:60].encode('ascii', errors='ignore').decode()
         print(f"      Caption ready: {preview}...")
         return result
