@@ -41,13 +41,16 @@ APP_SECRET          = os.getenv("APP_SECRET")
 MAX_NEWS     = 1                               # har run mein 1 post (din mein 4 baar chalega)
 POST_DELAY   = 60                              # seconds between posts
 
-# Multiple topics — agent khud decide karega kya fetch kare
+# High-impact queries — national significance wali news surface karne ke liye
 NEWS_TOPICS = [
-    "India politics news today",
-    "India entertainment bollywood news",
-    "India business economy news",
-    "India sports cricket news",
-    "India viral trending news today",
+    "India breaking news today major incident",
+    "India government policy decision Parliament",
+    "India economy budget RBI GDP inflation today",
+    "India cricket match result today",
+    "India Supreme Court verdict election commission",
+    "India military defense border China Pakistan",
+    "India scam corruption arrest CBI ED today",
+    "India disaster flood earthquake accident major",
 ]
 
 
@@ -184,35 +187,36 @@ def smart_plan(all_news: list[dict]) -> list[dict]:
         time_context = "shaam/raat (evening/night) — viral, funny ya emotional content best karta hai"
 
     news_list_str = "\n".join([
-        f"{i+1}. [{n.get('source','')}] {n.get('title','')[:100]} | img: {n.get('image','')[:60]}"
+        f"{i+1}. [{n.get('source','')}] {n.get('title','')[:100]}"
         for i, n in enumerate(all_news)
     ])
 
-    prompt = f"""Tu ek smart Indian Instagram news page ka AI manager hai.
+    prompt = f"""Tu ek senior Indian news editor hai jo Instagram ke liye sabse important news choose karta hai.
 
 Abhi time hai: {time_context}
 
-IMPORTANT: Hum sirf IMAGE posts karte hain. Har news ke saath uski OWN article thumbnail image post hogi.
-Isliye aisa news choose karo jisme:
-- Event ya scene clearly photograph mein capture hota ho (political rally, match, accident, celebrity, protest, etc.)
-- Image dekhkar samajh aaye ki kya ho raha hai — caption aur image saath mein sense banaein
-- Generic ya blur thumbnail wali news avoid karo
+SELECTION CRITERIA — sirf wahi news choose karo jo:
+1. NATIONALLY SIGNIFICANT ho — ek bade tabaqqe ke Indians ko directly affect kare
+2. HIGH CREDIBILITY — government, Supreme Court, RBI, election commission, major incident, sports result
+3. STRONG VISUAL — news ki actual image clearly event dikhati ho (rally, verdict, match, accident, arrest)
+4. NO CLICKBAIT — "shocking", "unbelievable", gossip, rumor, low-value celebrity drama avoid karo
 
-Neeche {len(all_news)} news headlines hain (image URL bhi diya hai):
+Har news ko importance score do (1-10):
+- 9-10: National crisis, budget, election result, war/border tension, major verdict
+- 7-8: Government policy, economic data, major sports result, significant arrest/scam
+- 5-6: State-level news, mid-level celebrity, industry news
+- 1-4: Gossip, clickbait, low-impact local news — REJECT KARO
+
+Neeche {len(all_news)} news hain:
 {news_list_str}
 
-Tujhe karna hai:
-1. TOP {MAX_NEWS} news select karo jo:
-   - Indian audience ke liye MOST ENGAGING ho
-   - Uski image visually strong aur news se directly related lage
-   - Caption + image mein natural connection ho
-2. Posting ORDER decide karo (sabse impactful pehle)
+Sirf TOP {MAX_NEWS} news choose karo jinka importance score 7+ ho.
+Agar koi bhi 7+ nahi hai to sabse zyada important ek choose karo.
 
 Sirf JSON respond karo:
 {{
   "plan": [
-    {{"index": 0, "format": "image", "image_source": "news", "reason": "image clearly dikhati hai kya hua"}},
-    {{"index": 2, "format": "image", "image_source": "news", "reason": "why"}}
+    {{"index": 0, "format": "image", "image_source": "news", "importance": 9, "reason": "why important"}}
   ],
   "strategy": "aaj ki overall posting strategy ek line mein"
 }}"""
@@ -244,33 +248,41 @@ Sirf JSON respond karo:
 
 # --- Content Quality Check ----------------------------------------------------
 def is_worth_posting(caption: str, news_title: str) -> bool:
-    """Groq se check karwao — kya yeh content post karne layak hai?"""
+    """Strict quality gate — low-value ya clickbait news reject karo"""
     try:
         client = Groq(api_key=GROQ_API_KEY)
         resp = client.chat.completions.create(
             model="llama-3.3-70b-versatile",
-            max_tokens=100,
+            max_tokens=150,
             messages=[{"role": "user", "content": f"""
-Tu ek Instagram content quality checker hai.
+Tu ek strict Indian news quality editor hai.
 
-News: {news_title[:150]}
-Caption: {caption[:300]}
+News headline: {news_title[:200]}
+Caption: {caption[:400]}
 
-Kya yeh post karne layak hai? Check karo:
-- Caption engaging aur meaningful hai?
-- News Indian audience ke liye relevant hai?
-- Content boring/repetitive/spam jaisa nahi hai?
+REJECT karo agar:
+- Clickbait hai ("shocking", "you won't believe", sensational without substance)
+- Low national importance — sirf ek city ya state tak limited
+- Pure celebrity gossip ya entertainment without real news value
+- Rumor, unverified claim, opinion masquerading as news
+- Repetitive/stale news (koi naya angle nahi)
 
-Sirf JSON: {{"post": true/false, "reason": "ek line"}}
+APPROVE karo agar:
+- National ya international significance hai
+- Government, judiciary, economy, major sports, defense se related hai
+- Confirmed facts hain, credible source hai
+- Indian public ke liye genuinely useful ya important hai
+
+Sirf JSON: {{"post": true/false, "reason": "ek line mein clear reason"}}
 """}],
             response_format={"type": "json_object"}
         )
         result = json.loads(resp.choices[0].message.content)
         verdict = result.get("post", True)
-        print(f"      Quality check: {'PASS' if verdict else 'SKIP'} — {result.get('reason', '')[:60]}")
+        print(f"      Quality check: {'PASS' if verdict else 'REJECT'} — {result.get('reason', '')[:80]}")
         return verdict
     except:
-        return True  # error pe default post kar do
+        return True
 
 
 # --- Step 2: Caption + Image Keyword ------------------------------------------
