@@ -22,7 +22,7 @@ jobs:
           python-version: '3.11'
 
       - name: Dependencies install
-        run: pip install ddgs groq requests Pillow python-dotenv
+        run: pip install ddgs groq requests Pillow python-dotenv PyNaCl
 
       - name: Post karo
         env:
@@ -34,4 +34,6 @@ jobs:
           HF_API_KEY: ${{ secrets.HF_API_KEY }}
           APP_ID: ${{ secrets.APP_ID }}
           APP_SECRET: ${{ secrets.APP_SECRET }}
+          GH_PAT: ${{ secrets.GH_PAT }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
         run: python agent.py

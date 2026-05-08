@@ -69,8 +69,63 @@ def fetch_news(topic: str, max_results: int = 5) -> list[dict]:
 
 
 # --- Token Auto-Refresh -------------------------------------------------------
+def update_github_secret(secret_name: str, secret_value: str) -> bool:
+    """GitHub Actions secret ko update karo — token auto-renew ke liye"""
+    github_token = os.getenv("GH_PAT")
+    github_repo = os.getenv("GITHUB_REPOSITORY")  # auto-set in Actions: "owner/repo"
+    if not github_token or not github_repo:
+        print(f"      GH_PAT ya GITHUB_REPOSITORY nahi — secret update skip")
+        return False
+    try:
+        from nacl import encoding, public
+        import base64
+
+        # Repo ka public key lo
+        key_resp = requests.get(
+            f"https://api.github.com/repos/{github_repo}/actions/public-key",
+            headers={
+                "Authorization": f"Bearer {github_token}",
+                "Accept": "application/vnd.github+json",
+                "X-GitHub-Api-Version": "2022-11-28",
+            }, timeout=10
+        )
+        key_data = key_resp.json()
+        public_key = key_data["key"]
+        key_id = key_data["key_id"]
+
+        # Secret encrypt karo (libsodium SealedBox)
+        pk = public.PublicKey(public_key.encode("utf-8"), encoding.Base64Encoder())
+        box = public.SealedBox(pk)
+        encrypted = box.encrypt(secret_value.encode("utf-8"))
+        encrypted_b64 = base64.b64encode(encrypted).decode("utf-8")
+
+        # Secret update karo
+        resp = requests.put(
+            f"https://api.github.com/repos/{github_repo}/actions/secrets/{secret_name}",
+            headers={
+                "Authorization": f"Bearer {github_token}",
+                "Accept": "application/vnd.github+json",
+                "X-GitHub-Api-Version": "2022-11-28",
+            },
+            json={"encrypted_value": encrypted_b64, "key_id": key_id},
+            timeout=10
+        )
+        if resp.status_code in [201, 204]:
+            print(f"      GitHub secret '{secret_name}' updated!")
+            return True
+        else:
+            print(f"      GitHub secret update fail: {resp.status_code} {resp.text[:80]}")
+            return False
+    except ImportError:
+        print("      PyNaCl nahi hai — pip install PyNaCl karo")
+        return False
+    except Exception as e:
+        print(f"      GitHub secret update error: {e}")
+        return False
+
+
 def refresh_token() -> str | None:
-    """Short-lived token ko 60-day long-lived token mein convert karo"""
+    """Short-lived token ko 60-day long-lived token mein convert karo + GitHub Secret update"""
     if not APP_ID or not APP_SECRET or not INSTAGRAM_TOKEN:
         return None
     try:
@@ -83,9 +138,12 @@ def refresh_token() -> str | None:
                 "fb_exchange_token": INSTAGRAM_TOKEN,
             }, timeout=10
         )
-        new_token = resp.json().get("access_token")
-        if new_token:
-            # .env file update karo
+        data = resp.json()
+        new_token = data.get("access_token")
+        if new_token and new_token != INSTAGRAM_TOKEN:
+            print(f"      Token refreshed! Expires in: {data.get('expires_in', '?')}s")
+
+            # .env file update karo (local run ke liye)
             env_path = os.path.join(os.path.dirname(__file__), ".env")
             if os.path.exists(env_path):
                 with open(env_path, "r") as f:
@@ -98,8 +156,15 @@ def refresh_token() -> str | None:
                 )
                 with open(env_path, "w") as f:
                     f.write(content)
-            print(f"      Token refreshed!")
+
+            # GitHub Secret bhi update karo (Actions run ke liye)
+            update_github_secret("INSTAGRAM_ACCESS_TOKEN", new_token)
             return new_token
+        elif new_token:
+            print(f"      Token already fresh — no update needed")
+            return new_token
+        else:
+            print(f"      Token refresh failed: {data}")
     except Exception as e:
         print(f"      Token refresh error: {e}")
     return None
