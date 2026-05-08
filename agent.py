@@ -184,7 +184,7 @@ def smart_plan(all_news: list[dict]) -> list[dict]:
         time_context = "shaam/raat (evening/night) — viral, funny ya emotional content best karta hai"
 
     news_list_str = "\n".join([
-        f"{i+1}. [{n.get('source','')}] {n.get('title','')[:100]}"
+        f"{i+1}. [{n.get('source','')}] {n.get('title','')[:100]} | img: {n.get('image','')[:60]}"
         for i, n in enumerate(all_news)
     ])
 
@@ -192,27 +192,27 @@ def smart_plan(all_news: list[dict]) -> list[dict]:
 
 Abhi time hai: {time_context}
 
-Neeche {len(all_news)} news headlines hain:
+IMPORTANT: Hum sirf IMAGE posts karte hain. Har news ke saath uski OWN article thumbnail image post hogi.
+Isliye aisa news choose karo jisme:
+- Event ya scene clearly photograph mein capture hota ho (political rally, match, accident, celebrity, protest, etc.)
+- Image dekhkar samajh aaye ki kya ho raha hai — caption aur image saath mein sense banaein
+- Generic ya blur thumbnail wali news avoid karo
+
+Neeche {len(all_news)} news headlines hain (image URL bhi diya hai):
 {news_list_str}
 
 Tujhe karna hai:
-1. Inme se TOP {MAX_NEWS} select karo jo Indian audience ke liye MOST ENGAGING hongi
-2. Har selected news ke liye decide karo:
-   - "format": "video" ya "image"
-     * Video: sports, entertainment, viral, celebrity
-     * Image: politics, crime, economy, breaking news
-   - "image_source": "ai" ya "pexels" ya "news"
-     * ai: creative/viral/entertainment topics — FLUX se unique image
-     * pexels: sports, nature, business — professional stock photo
-     * news: breaking news — actual article ki image
-3. Posting ORDER decide karo (sabse viral pehle)
+1. TOP {MAX_NEWS} news select karo jo:
+   - Indian audience ke liye MOST ENGAGING ho
+   - Uski image visually strong aur news se directly related lage
+   - Caption + image mein natural connection ho
+2. Posting ORDER decide karo (sabse impactful pehle)
 
 Sirf JSON respond karo:
 {{
   "plan": [
-    {{"index": 0, "format": "video", "image_source": "ai", "reason": "why"}},
-    {{"index": 2, "format": "image", "image_source": "pexels", "reason": "why"}},
-    {{"index": 4, "format": "image", "image_source": "news", "reason": "why"}}
+    {{"index": 0, "format": "image", "image_source": "news", "reason": "image clearly dikhati hai kya hua"}},
+    {{"index": 2, "format": "image", "image_source": "news", "reason": "why"}}
   ],
   "strategy": "aaj ki overall posting strategy ek line mein"
 }}"""
@@ -275,35 +275,38 @@ Sirf JSON: {{"post": true/false, "reason": "ek line"}}
 
 # --- Step 2: Caption + Image Keyword ------------------------------------------
 def generate_caption(news_item: dict) -> dict:
-    """Claude se Instagram caption, hashtags aur image search keyword banao"""
+    """Groq se Instagram caption banao — image ke saath match kare"""
     print(f"\n[2/4] Caption generate kar raha hoon...")
 
     client = Groq(api_key=GROQ_API_KEY)
+    image_url = news_item.get("image", "")
 
     prompt = f"""
 Tu ek Instagram news page ka content writer hai jo Indian audience ke liye likhta hai.
 
-Neeche ek news headline aur summary hai. Tujhe yeh karna hai:
-1. Ek engaging Instagram caption likho (Hinglish mein — Hindi + English mix)
-   - 6-8 lines
-   - Pehle hook line likho jo attention grab kare
-   - News ka context explain karo 2-3 lines mein
-   - Emotional aur conversational tone
-   - Key facts ya numbers zaroor include karo
-   - End mein ek strong question ya call-to-action
-2. 15-20 relevant Hindi/English hashtags do
-3. Ek short English keyword do (2-3 words) jo image search ke liye use hoga
-
+Hum yeh news article ki THUMBNAIL IMAGE Instagram pe post kar rahe hain:
+Image URL: {image_url}
 News Title: {news_item.get('title', '')}
 News Body: {news_item.get('body', '')[:500]}
 Source: {news_item.get('source', '')}
 
-Sirf JSON format mein respond karo, koi extra text nahi:
+Caption likhte waqt dhyan rakho:
+- Caption IMAGE ke saath cohesive lagne chahiye — pehli ya doosri line mein photo ko acknowledge karo
+  (e.g., "Ye tasveer kaafi kuch kehti hai...", "Is photo mein dekho...", "Ye moment capture hua jab...")
+- Hinglish mein likho (Hindi + English mix)
+- 6-8 lines total
+- Hook line se shuru karo jo scroll rokde
+- News ka context 2-3 lines mein explain karo with key facts/numbers
+- Emotional aur conversational tone
+- End mein strong question ya call-to-action
+- 15-20 relevant hashtags (Hindi + English mix)
+
+Sirf JSON format mein respond karo:
 {{
   "caption": "...",
   "hashtags": "#tag1 #tag2 ...",
-  "image_keyword": "...",
-  "emoji_title": "..."
+  "image_keyword": "2-3 word English description of what image likely shows",
+  "emoji_title": "emoji + short title"
 }}
 """
 
