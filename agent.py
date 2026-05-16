@@ -639,14 +639,14 @@ def add_logo_watermark(image_url: str) -> str | None:
         if os.path.exists(LOGO_PATH):
             logo = Image.open(LOGO_PATH).convert("RGBA")
 
-            # Logo size: image width ka 18%
-            logo_w = int(1080 * 0.18)
+            # Logo size: image width ka 10%
+            logo_w = int(1080 * 0.10)
             ratio  = logo_w / logo.width
             logo_h = int(logo.height * ratio)
             logo   = logo.resize((logo_w, logo_h), Image.LANCZOS)
 
             # Semi-transparent logo (70% opacity)
-            r, g, b, a = logo.split()
+            *_, a = logo.split()
             a = a.point(lambda x: int(x * 0.70))
             logo.putalpha(a)
 
