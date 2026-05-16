@@ -614,6 +614,110 @@ def create_news_card(title: str, source: str, emoji_title: str = "Breaking News"
     return upload_image(path)
 
 
+# --- Story Card + Story Post --------------------------------------------------
+def create_story_card(title: str, source: str, emoji_title: str = "Breaking News") -> str | None:
+    """1080x1920 vertical story card banao"""
+    print("      Story card bana raha hoon...")
+    try:
+        from PIL import ImageFont
+        width, height = 1080, 1920
+        img = Image.new("RGB", (width, height), color=(8, 8, 20))
+        draw = ImageDraw.Draw(img)
+
+        # Gradient background
+        for i in range(height):
+            shade = int(8 + (i / height) * 30)
+            draw.line([(0, i), (width, i)], fill=(shade, shade, shade + 20))
+
+        # Top red accent
+        draw.rectangle([0, 0, width, 12], fill=(220, 40, 40))
+
+        try:
+            font_big   = ImageFont.load_default(size=72)
+            font_mid   = ImageFont.load_default(size=44)
+            font_small = ImageFont.load_default(size=34)
+        except Exception:
+            font_big = font_mid = font_small = ImageFont.load_default()
+
+        # BREAKING label
+        draw.rectangle([60, 180, 520, 260], fill=(220, 40, 40))
+        draw.text((80, 188), "  BREAKING NEWS  ", font=font_small, fill=(255, 255, 255))
+
+        # Emoji title
+        draw.text((60, 300), emoji_title, font=font_mid, fill=(255, 80, 80))
+
+        # Source + date
+        draw.text((60, 380), f"{source.upper()}  |  {datetime.now().strftime('%d %b %Y  •  %I:%M %p')}",
+                  font=font_small, fill=(160, 160, 160))
+
+        # Headline word-wrap
+        words = title.split()
+        lines, line = [], ""
+        for w in words:
+            test = f"{line} {w}".strip()
+            if len(test) > 20:
+                lines.append(line)
+                line = w
+            else:
+                line = test
+        if line:
+            lines.append(line)
+
+        y = 520
+        for l in lines[:8]:
+            draw.text((60, y), l, font=font_big, fill=(255, 255, 255))
+            y += 100
+
+        # Bottom bar
+        draw.rectangle([0, height - 120, width, height], fill=(220, 40, 40))
+        draw.text((60, height - 85), "@atlantis_news_ai  •  Daily News Updates",
+                  font=font_mid, fill=(255, 255, 255))
+
+        path = os.path.join(tempfile.gettempdir(), f"story_{int(time.time())}.jpg")
+        img.save(path, "JPEG", quality=95)
+        url = upload_image(path)
+        if url:
+            print(f"      Story card ready!")
+        return url
+    except Exception as e:
+        print(f"      Story card error: {e}")
+        return None
+
+
+def post_story(image_url: str) -> bool:
+    """Instagram Story post karo"""
+    if not INSTAGRAM_TOKEN or not INSTAGRAM_ACCOUNT_ID:
+        return False
+    print(f"      Story post kar raha hoon...")
+    try:
+        resp = requests.post(
+            f"https://graph.facebook.com/v25.0/{INSTAGRAM_ACCOUNT_ID}/media",
+            data={"image_url": image_url, "media_type": "STORIES",
+                  "access_token": INSTAGRAM_TOKEN},
+            timeout=15
+        )
+        container_id = resp.json().get("id")
+        if not container_id:
+            print(f"      Story container error: {resp.json()}")
+            return False
+
+        time.sleep(3)
+        pub = requests.post(
+            f"https://graph.facebook.com/v25.0/{INSTAGRAM_ACCOUNT_ID}/media_publish",
+            data={"creation_id": container_id, "access_token": INSTAGRAM_TOKEN},
+            timeout=15
+        )
+        if pub.json().get("id"):
+            print(f"      Story posted! ID: {pub.json()['id']}")
+            return True
+        else:
+            print(f"      Story publish error: {pub.json()}")
+            return False
+    except Exception as e:
+        print(f"      Story error: {e}")
+        return False
+
+
 # --- Step 4: Instagram Post ---------------------------------------------------
 def post_to_instagram(image_path: str, caption: str) -> str | None:
     """Meta Graph API se Instagram pe post karo — returns media_id"""
@@ -815,6 +919,18 @@ def run_agent():
             auto_first_comment(media_id, content["hashtags"])
             posted += 1
             print(f"      [{posted}/{MAX_NEWS}] Post ho gaya!")
+
+            # Story sirf 8am aur 6pm run pe (2 stories daily)
+            hour = datetime.now().hour
+            if hour in (8, 18):
+                story_url = create_story_card(
+                    news.get("title", ""),
+                    news.get("source", ""),
+                    content.get("emoji_title", "Breaking News")
+                )
+                if story_url:
+                    post_story(story_url)
+
             if posted < MAX_NEWS:
                 print(f"      {POST_DELAY}s wait kar raha hoon...")
                 time.sleep(POST_DELAY)
