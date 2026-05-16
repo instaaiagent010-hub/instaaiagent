@@ -615,49 +615,145 @@ def create_news_card(title: str, source: str, emoji_title: str = "Breaking News"
 
 
 # --- Step 4: Instagram Post ---------------------------------------------------
-def post_to_instagram(image_path: str, caption: str, hashtags: str) -> bool:
-    """Meta Graph API se Instagram pe post karo"""
+def post_to_instagram(image_path: str, caption: str) -> str | None:
+    """Meta Graph API se Instagram pe post karo — returns media_id"""
     print(f"\n[4/4] Instagram pe post kar raha hoon...")
 
     if not INSTAGRAM_TOKEN or not INSTAGRAM_ACCOUNT_ID:
-        print("      Instagram credentials nahi hain — dry run mode")
-        print(f"      Caption hoga: {caption[:100]}...")
-        return True  # dry run
-
-    full_caption = f"{caption}\n\n{hashtags}"
+        print("      Dry run — credentials nahi hain")
+        return "dry_run"
 
     try:
-        # Step 1: Image upload karke container banao
-        upload_url = f"https://graph.facebook.com/v25.0/{INSTAGRAM_ACCOUNT_ID}/media"
-        upload_resp = requests.post(upload_url, data={
-            "image_url": image_path,  # image publicly accessible URL chahiye
-            "caption": full_caption,
-            "access_token": INSTAGRAM_TOKEN
-        })
+        upload_resp = requests.post(
+            f"https://graph.facebook.com/v25.0/{INSTAGRAM_ACCOUNT_ID}/media",
+            data={"image_url": image_path, "caption": caption, "access_token": INSTAGRAM_TOKEN},
+            timeout=15
+        )
         container_id = upload_resp.json().get("id")
-
         if not container_id:
             print(f"      Upload error: {upload_resp.json()}")
-            return False
+            return None
 
-        # Step 2: Container publish karo
-        time.sleep(3)  # wait for processing
-        publish_url = f"https://graph.facebook.com/v25.0/{INSTAGRAM_ACCOUNT_ID}/media_publish"
-        pub_resp = requests.post(publish_url, data={
-            "creation_id": container_id,
-            "access_token": INSTAGRAM_TOKEN
-        })
-
-        if pub_resp.json().get("id"):
-            print(f"      Post successful! ID: {pub_resp.json()['id']}")
-            return True
+        time.sleep(3)
+        pub_resp = requests.post(
+            f"https://graph.facebook.com/v25.0/{INSTAGRAM_ACCOUNT_ID}/media_publish",
+            data={"creation_id": container_id, "access_token": INSTAGRAM_TOKEN},
+            timeout=15
+        )
+        media_id = pub_resp.json().get("id")
+        if media_id:
+            print(f"      Post successful! ID: {media_id}")
+            return media_id
         else:
             print(f"      Publish error: {pub_resp.json()}")
-            return False
+            return None
 
     except Exception as e:
         print(f"      Instagram error: {e}")
-        return False
+        return None
+
+
+def auto_first_comment(media_id: str, hashtags: str) -> None:
+    """Post ke baad hashtags first comment mein daalo — caption clean dikhti hai"""
+    if not INSTAGRAM_TOKEN or media_id == "dry_run":
+        return
+    try:
+        resp = requests.post(
+            f"https://graph.facebook.com/v25.0/{media_id}/comments",
+            data={"message": hashtags, "access_token": INSTAGRAM_TOKEN},
+            timeout=10
+        )
+        if resp.json().get("id"):
+            print(f"      First comment (hashtags) posted!")
+        else:
+            print(f"      First comment error: {resp.json()}")
+    except Exception as e:
+        print(f"      First comment error: {e}")
+
+
+def generate_reply(comment_text: str, post_caption: str) -> str:
+    """Groq se comment ka friendly Hinglish reply banao"""
+    try:
+        client = Groq(api_key=GROQ_API_KEY)
+        resp = client.chat.completions.create(
+            model="llama-3.3-70b-versatile",
+            max_tokens=80,
+            messages=[{"role": "user", "content": f"""
+Tu ek Indian Instagram news page ka community manager hai.
+
+Post context: {post_caption[:150]}
+Comment: {comment_text[:200]}
+
+1-2 line ka short, genuine Hinglish reply likho:
+- Warm aur friendly tone
+- Agar question hai to brief answer do
+- Agar opinion/praise hai to acknowledge karo
+- 1-2 emojis use kar sakte ho
+- "Thanks for watching" jaisa generic bilkul mat likho
+
+Sirf reply text do.
+"""}]
+        )
+        return resp.choices[0].message.content.strip()
+    except Exception:
+        return "Shukriya! Aisi news ke liye follow karte rahiye. 🙏"
+
+
+def reply_to_recent_comments() -> None:
+    """Last 5 posts ke unanswered comments pe AI se auto-reply karo"""
+    if not INSTAGRAM_TOKEN or not INSTAGRAM_ACCOUNT_ID:
+        return
+    print(f"\n[Comments] Naye comments check kar raha hoon...")
+
+    try:
+        media_resp = requests.get(
+            f"https://graph.facebook.com/v25.0/{INSTAGRAM_ACCOUNT_ID}/media",
+            params={"fields": "id,caption,timestamp", "limit": 5,
+                    "access_token": INSTAGRAM_TOKEN},
+            timeout=10
+        )
+        posts = media_resp.json().get("data", [])
+        replied = 0
+
+        for post in posts:
+            comments_resp = requests.get(
+                f"https://graph.facebook.com/v25.0/{post['id']}/comments",
+                params={"fields": "id,text,username,timestamp,replies{id}",
+                        "access_token": INSTAGRAM_TOKEN},
+                timeout=10
+            )
+            for comment in comments_resp.json().get("data", []):
+                # Skip if already replied to
+                if comment.get("replies", {}).get("data"):
+                    continue
+                # Skip comments older than 48 hours
+                try:
+                    from datetime import datetime as dt
+                    age = (dt.now().timestamp() -
+                           dt.fromisoformat(comment["timestamp"].replace("Z", "+00:00")).timestamp())
+                    if age > 172800:
+                        continue
+                except Exception:
+                    pass
+
+                text = comment.get("text", "")
+                username = comment.get("username", "")
+                print(f"      @{username}: {text[:60]}")
+
+                reply = generate_reply(text, post.get("caption", ""))
+                reply_resp = requests.post(
+                    f"https://graph.facebook.com/v25.0/{comment['id']}/replies",
+                    data={"message": reply, "access_token": INSTAGRAM_TOKEN},
+                    timeout=10
+                )
+                if reply_resp.json().get("id"):
+                    print(f"      Replied: {reply[:60]}")
+                    replied += 1
+                    time.sleep(3)
+
+        print(f"      {replied} comments pe reply kiya")
+    except Exception as e:
+        print(f"      Comments error: {e}")
 
 
 # --- Main Agent Loop ----------------------------------------------------------
@@ -706,24 +802,25 @@ def run_agent():
         src = news.get("_image_source", "pexels")
         print(f"Image source: {src}")
 
-        success = False
-        # Video generation disabled — sirf image posts
-        # HuggingFace AI video — disabled
-        # Pexels video — disabled
+        image_path = news.get("image")
+        if not image_path:
+            print("      Image nahi mili — skip")
+            continue
 
-        if not success:
-            image_path = news.get("image")
-            if not image_path:
-                print("      Image nahi mili — skip")
-                continue
-            success = post_to_instagram(image_path, content["caption"], content["hashtags"])
+        # Hashtags caption mein nahi — first comment mein jaayenge
+        media_id = post_to_instagram(image_path, content["caption"])
 
-        if success:
+        if media_id:
+            time.sleep(2)
+            auto_first_comment(media_id, content["hashtags"])
             posted += 1
             print(f"      [{posted}/{MAX_NEWS}] Post ho gaya!")
             if posted < MAX_NEWS:
                 print(f"      {POST_DELAY}s wait kar raha hoon...")
                 time.sleep(POST_DELAY)
+
+    # Recent comments pe auto-reply karo
+    reply_to_recent_comments()
 
     print(f"\n{'='*55}")
     print(f"  Agent complete! {posted} posts kiye gaye.")
