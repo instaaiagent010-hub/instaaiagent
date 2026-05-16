@@ -614,6 +614,60 @@ def create_news_card(title: str, source: str, emoji_title: str = "Breaking News"
     return upload_image(path)
 
 
+# --- Logo Watermark -----------------------------------------------------------
+LOGO_PATH = os.path.join(os.path.dirname(__file__), "atlantis_news_ai.png")
+
+def add_logo_watermark(image_url: str) -> str | None:
+    """News image download karo, corner mein logo lagao, ImgBB pe upload karo"""
+    try:
+        # News image download karo
+        resp = requests.get(image_url, timeout=15)
+        if resp.status_code != 200:
+            return image_url  # fallback: original URL
+
+        news_img = Image.open(__import__("io").BytesIO(resp.content)).convert("RGBA")
+
+        # 1080x1080 square crop (Instagram feed)
+        w, h = news_img.size
+        side = min(w, h)
+        left = (w - side) // 2
+        top  = (h - side) // 2
+        news_img = news_img.crop((left, top, left + side, top + side))
+        news_img = news_img.resize((1080, 1080), Image.LANCZOS)
+
+        # Logo overlay
+        if os.path.exists(LOGO_PATH):
+            logo = Image.open(LOGO_PATH).convert("RGBA")
+
+            # Logo size: image width ka 18%
+            logo_w = int(1080 * 0.18)
+            ratio  = logo_w / logo.width
+            logo_h = int(logo.height * ratio)
+            logo   = logo.resize((logo_w, logo_h), Image.LANCZOS)
+
+            # Semi-transparent logo (70% opacity)
+            r, g, b, a = logo.split()
+            a = a.point(lambda x: int(x * 0.70))
+            logo.putalpha(a)
+
+            # Bottom-right corner, 20px padding
+            pad = 20
+            x = 1080 - logo_w - pad
+            y = 1080 - logo_h - pad
+            news_img.paste(logo, (x, y), logo)
+
+        # Save aur upload
+        final = news_img.convert("RGB")
+        path  = os.path.join(tempfile.gettempdir(), f"watermarked_{int(time.time())}.jpg")
+        final.save(path, "JPEG", quality=92)
+        new_url = upload_image(path)
+        return new_url if new_url else image_url
+
+    except Exception as e:
+        print(f"      Watermark error: {e} — original image use kar raha hoon")
+        return image_url
+
+
 # --- Story Card + Story Post --------------------------------------------------
 def create_story_card(title: str, source: str, emoji_title: str = "Breaking News") -> str | None:
     """1080x1920 vertical story card banao"""
@@ -910,6 +964,10 @@ def run_agent():
         if not image_path:
             print("      Image nahi mili — skip")
             continue
+
+        # Logo watermark lagao
+        print(f"      Logo watermark laga raha hoon...")
+        image_path = add_logo_watermark(image_path)
 
         # Hashtags caption mein nahi — first comment mein jaayenge
         media_id = post_to_instagram(image_path, content["caption"])

@@ -2,6 +2,7 @@
 __pycache__/
 *.pyc
 *.png
+!atlantis_news_ai.png
 *.jpg
 *.mp4
 logs.txt
