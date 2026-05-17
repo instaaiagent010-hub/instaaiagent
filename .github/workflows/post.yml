@@ -1,7 +1,12 @@
 name: Instagram News Agent — Daily 4 Posts
 
 on:
-  workflow_dispatch:   # cron-job.org se trigger hoga exact IST time pe
+  schedule:
+    - cron: '30 2 * * *'   # IST 08:00
+    - cron: '30 7 * * *'   # IST 13:00
+    - cron: '30 12 * * *'  # IST 18:00
+    - cron: '30 15 * * *'  # IST 21:00
+  workflow_dispatch:
 
 jobs:
   post:
