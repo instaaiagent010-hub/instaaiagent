@@ -648,54 +648,91 @@ def create_news_card(title: str, source: str, emoji_title: str = "Breaking News"
 # --- Logo Watermark -----------------------------------------------------------
 LOGO_PATH = os.path.join(os.path.dirname(__file__), "atlantis_news_ai.png")
 
-def add_logo_watermark(image_url: str) -> str | None:
-    """News image download karo, corner mein logo lagao, ImgBB pe upload karo"""
+def add_logo_watermark(image_url: str, title: str = "", source: str = "") -> str | None:
+    """News image pe text overlay + logo — Indian news page style"""
     try:
-        # News image download karo
+        import io
+        from PIL import ImageFont, ImageFilter
+
         resp = requests.get(image_url, timeout=15)
         if resp.status_code != 200:
-            return image_url  # fallback: original URL
+            return image_url
 
-        news_img = Image.open(__import__("io").BytesIO(resp.content)).convert("RGBA")
+        news_img = Image.open(io.BytesIO(resp.content)).convert("RGBA")
 
-        # 1080x1080 square crop (Instagram feed)
+        # 1080x1080 square crop
         w, h = news_img.size
         side = min(w, h)
-        left = (w - side) // 2
-        top  = (h - side) // 2
-        news_img = news_img.crop((left, top, left + side, top + side))
+        news_img = news_img.crop(((w-side)//2, (h-side)//2,
+                                   (w+side)//2, (h+side)//2))
         news_img = news_img.resize((1080, 1080), Image.LANCZOS)
 
-        # Logo overlay
+        draw = ImageDraw.Draw(news_img)
+
+        # --- Dark gradient bar — bottom 38% ---
+        bar_top = int(1080 * 0.62)
+        overlay = Image.new("RGBA", (1080, 1080), (0, 0, 0, 0))
+        ov_draw = ImageDraw.Draw(overlay)
+        for i in range(1080 - bar_top):
+            alpha = int(210 * (i / (1080 - bar_top)))
+            ov_draw.line([(0, bar_top + i), (1080, bar_top + i)],
+                         fill=(0, 0, 0, alpha))
+        news_img = Image.alpha_composite(news_img, overlay)
+        draw = ImageDraw.Draw(news_img)
+
+        # --- Red top accent bar ---
+        draw.rectangle([0, 0, 1080, 10], fill=(220, 40, 40, 255))
+
+        # --- Source + date (small) ---
+        try:
+            font_title  = ImageFont.load_default(size=52)
+            font_source = ImageFont.load_default(size=32)
+        except Exception:
+            font_title = font_source = ImageFont.load_default()
+
+        date_str = datetime.now().strftime("%d %b %Y")
+        src_text = f"{source.upper()}  •  {date_str}  •  @atlantis_news_ai"
+        draw.text((30, bar_top + 18), src_text, font=font_source,
+                  fill=(200, 200, 200, 255))
+
+        # --- Headline word-wrap ---
+        if title:
+            words = title.split()
+            lines, line = [], ""
+            for w_word in words:
+                test = f"{line} {w_word}".strip()
+                if len(test) > 32:
+                    lines.append(line)
+                    line = w_word
+                else:
+                    line = test
+            if line:
+                lines.append(line)
+
+            y = bar_top + 65
+            for l in lines[:3]:
+                draw.text((30, y), l, font=font_title, fill=(255, 255, 255, 255))
+                y += 62
+
+        # --- Logo (bottom-right, inside bar) ---
         if os.path.exists(LOGO_PATH):
             logo = Image.open(LOGO_PATH).convert("RGBA")
-
-            # Logo size: image width ka 10%
             logo_w = int(1080 * 0.10)
-            ratio  = logo_w / logo.width
-            logo_h = int(logo.height * ratio)
-            logo   = logo.resize((logo_w, logo_h), Image.LANCZOS)
-
-            # Semi-transparent logo (70% opacity)
+            logo_h = int(logo.height * (logo_w / logo.width))
+            logo = logo.resize((logo_w, logo_h), Image.LANCZOS)
             *_, a = logo.split()
-            a = a.point(lambda x: int(x * 0.70))
+            a = a.point(lambda x: int(x * 0.85))
             logo.putalpha(a)
+            news_img.paste(logo, (1080 - logo_w - 20, 1080 - logo_h - 20), logo)
 
-            # Bottom-right corner, 20px padding
-            pad = 20
-            x = 1080 - logo_w - pad
-            y = 1080 - logo_h - pad
-            news_img.paste(logo, (x, y), logo)
-
-        # Save aur upload
         final = news_img.convert("RGB")
-        path  = os.path.join(tempfile.gettempdir(), f"watermarked_{int(time.time())}.jpg")
+        path = os.path.join(tempfile.gettempdir(), f"styled_{int(time.time())}.jpg")
         final.save(path, "JPEG", quality=92)
         new_url = upload_image(path)
         return new_url if new_url else image_url
 
     except Exception as e:
-        print(f"      Watermark error: {e} — original image use kar raha hoon")
+        print(f"      Overlay error: {e} — original image use kar raha hoon")
         return image_url
 
 
@@ -1139,7 +1176,11 @@ def run_agent():
         print(f"News: {news.get('title', '')[:70]}...")
         print(f"Importance: {news.get('_importance', '?')}/10")
 
-        img_url = add_logo_watermark(news.get("image"))
+        img_url = add_logo_watermark(
+            news.get("image"),
+            title=news.get("title", ""),
+            source=news.get("source", "")
+        )
         if not img_url:
             continue
 
@@ -1258,7 +1299,11 @@ JSON: {{"index": 0, "importance": 9, "reason": "why"}}
 
         # Post karo
         content = generate_caption(news)
-        img_url = add_logo_watermark(news.get("image"))
+        img_url = add_logo_watermark(
+            news.get("image"),
+            title=news.get("title", ""),
+            source=news.get("source", "")
+        )
         if not img_url:
             return
 
