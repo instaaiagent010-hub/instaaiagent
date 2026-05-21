@@ -720,8 +720,80 @@ Sirf question do, koi explanation nahi.
         return "Aapka kya kehna hai? Comment karo!"
 
 
-def create_story_card(title: str, source: str, emoji_title: str = "Breaking News",
-                      question: str = "") -> str | None:
+def create_question_story(question: str, news_title: str) -> str | None:
+    """Sirf question wali alag story — bright design, comment encourage karo"""
+    print("      Question story bana raha hoon...")
+    try:
+        from PIL import ImageFont
+        width, height = 1080, 1920
+        img = Image.new("RGB", (width, height), color=(220, 40, 40))
+        draw = ImageDraw.Draw(img)
+
+        # Diagonal stripe pattern background
+        for i in range(0, width + height, 60):
+            draw.line([(i, 0), (0, i)], fill=(200, 30, 30), width=30)
+
+        # White center card
+        card_y1, card_y2 = 400, 1400
+        draw.rectangle([60, card_y1, width - 60, card_y2],
+                       fill=(255, 255, 255), outline=(220, 40, 40), width=6)
+
+        try:
+            font_big   = ImageFont.load_default(size=80)
+            font_mid   = ImageFont.load_default(size=50)
+            font_small = ImageFont.load_default(size=38)
+        except Exception:
+            font_big = font_mid = font_small = ImageFont.load_default()
+
+        # "Aapka Opinion?" header
+        draw.text((80, card_y1 + 40), "Aapka Opinion?", font=font_mid, fill=(220, 40, 40))
+        draw.line([(80, card_y1 + 110), (width - 80, card_y1 + 110)], fill=(220, 40, 40), width=3)
+
+        # News context (small)
+        ctx = news_title[:60] + "..." if len(news_title) > 60 else news_title
+        draw.text((80, card_y1 + 130), ctx, font=font_small, fill=(120, 120, 120))
+
+        # Big question text
+        words = question.split()
+        lines, line = [], ""
+        for w in words:
+            test = f"{line} {w}".strip()
+            if len(test) > 16:
+                lines.append(line)
+                line = w
+            else:
+                line = test
+        if line:
+            lines.append(line)
+
+        y = card_y1 + 280
+        for l in lines[:5]:
+            draw.text((80, y), l, font=font_big, fill=(20, 20, 20))
+            y += 110
+
+        # Comment CTA
+        draw.rectangle([80, card_y2 - 160, width - 80, card_y2 - 60],
+                       fill=(220, 40, 40))
+        draw.text((100, card_y2 - 135), "Comment mein batao!  👇",
+                  font=font_mid, fill=(255, 255, 255))
+
+        # Bottom branding
+        draw.text((80, card_y2 + 30), "@atlantis_news_ai",
+                  font=font_small, fill=(255, 255, 255))
+
+        path = os.path.join(tempfile.gettempdir(), f"qstory_{int(time.time())}.jpg")
+        img.save(path, "JPEG", quality=95)
+        url = upload_image(path)
+        if url:
+            print(f"      Question story ready!")
+        return url
+    except Exception as e:
+        print(f"      Question story error: {e}")
+        return None
+
+
+def create_story_card(title: str, source: str,
+                      emoji_title: str = "Breaking News") -> str | None:
     """1080x1920 vertical story card banao"""
     print("      Story card bana raha hoon...")
     try:
@@ -773,28 +845,6 @@ def create_story_card(title: str, source: str, emoji_title: str = "Breaking News
         for l in lines[:8]:
             draw.text((60, y), l, font=font_big, fill=(255, 255, 255))
             y += 100
-
-        # Poll-style question box (agar hai to)
-        if question:
-            q_y = height - 320
-            draw.rectangle([40, q_y, width - 40, q_y + 140], fill=(30, 30, 60), outline=(220, 40, 40), width=3)
-            draw.text((60, q_y + 12), "💬 Aapka Opinion:", font=font_small, fill=(220, 40, 40))
-            # Question word-wrap
-            q_words = question.split()
-            q_lines, q_line = [], ""
-            for w in q_words:
-                test = f"{q_line} {w}".strip()
-                if len(test) > 28:
-                    q_lines.append(q_line)
-                    q_line = w
-                else:
-                    q_line = test
-            if q_line:
-                q_lines.append(q_line)
-            qy = q_y + 55
-            for ql in q_lines[:2]:
-                draw.text((60, qy), ql, font=font_small, fill=(255, 255, 255))
-                qy += 40
 
         # Bottom bar
         draw.rectangle([0, height - 120, width, height], fill=(220, 40, 40))
@@ -1120,15 +1170,22 @@ def run_agent():
         hour = datetime.now().hour
         if hour in (8, 18):
             top_news = slides[0]["news"]
-            question = generate_story_question(top_news.get("title", ""))
+
+            # Story 1 — news card
             story_url = create_story_card(
                 top_news.get("title", ""),
                 top_news.get("source", ""),
-                main_content.get("emoji_title", "Breaking News"),
-                question=question
+                main_content.get("emoji_title", "Breaking News")
             )
             if story_url:
                 post_story(story_url)
+                time.sleep(3)
+
+            # Story 2 — alag question story
+            question = generate_story_question(top_news.get("title", ""))
+            q_story_url = create_question_story(question, top_news.get("title", ""))
+            if q_story_url:
+                post_story(q_story_url)
 
     # Recent comments pe auto-reply karo
     reply_to_recent_comments()
