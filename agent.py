@@ -700,7 +700,28 @@ def add_logo_watermark(image_url: str) -> str | None:
 
 
 # --- Story Card + Story Post --------------------------------------------------
-def create_story_card(title: str, source: str, emoji_title: str = "Breaking News") -> str | None:
+def generate_story_question(news_title: str) -> str:
+    """News ke baare mein ek engaging poll-style question banao"""
+    try:
+        client = Groq(api_key=GROQ_API_KEY)
+        resp = client.chat.completions.create(
+            model="llama-3.3-70b-versatile",
+            max_tokens=60,
+            messages=[{"role": "user", "content": f"""
+News: {news_title[:150]}
+
+Ek short Hinglish question banao (max 8 words) jo readers ko comment karne pe encourage kare.
+Format: "Aapka kya kehna hai?" style — yes/no ya opinion type.
+Sirf question do, koi explanation nahi.
+"""}]
+        )
+        return resp.choices[0].message.content.strip()
+    except Exception:
+        return "Aapka kya kehna hai? Comment karo!"
+
+
+def create_story_card(title: str, source: str, emoji_title: str = "Breaking News",
+                      question: str = "") -> str | None:
     """1080x1920 vertical story card banao"""
     print("      Story card bana raha hoon...")
     try:
@@ -752,6 +773,28 @@ def create_story_card(title: str, source: str, emoji_title: str = "Breaking News
         for l in lines[:8]:
             draw.text((60, y), l, font=font_big, fill=(255, 255, 255))
             y += 100
+
+        # Poll-style question box (agar hai to)
+        if question:
+            q_y = height - 320
+            draw.rectangle([40, q_y, width - 40, q_y + 140], fill=(30, 30, 60), outline=(220, 40, 40), width=3)
+            draw.text((60, q_y + 12), "💬 Aapka Opinion:", font=font_small, fill=(220, 40, 40))
+            # Question word-wrap
+            q_words = question.split()
+            q_lines, q_line = [], ""
+            for w in q_words:
+                test = f"{q_line} {w}".strip()
+                if len(test) > 28:
+                    q_lines.append(q_line)
+                    q_line = w
+                else:
+                    q_line = test
+            if q_line:
+                q_lines.append(q_line)
+            qy = q_y + 55
+            for ql in q_lines[:2]:
+                draw.text((60, qy), ql, font=font_small, fill=(255, 255, 255))
+                qy += 40
 
         # Bottom bar
         draw.rectangle([0, height - 120, width, height], fill=(220, 40, 40))
@@ -1077,10 +1120,12 @@ def run_agent():
         hour = datetime.now().hour
         if hour in (8, 18):
             top_news = slides[0]["news"]
+            question = generate_story_question(top_news.get("title", ""))
             story_url = create_story_card(
                 top_news.get("title", ""),
                 top_news.get("source", ""),
-                main_content.get("emoji_title", "Breaking News")
+                main_content.get("emoji_title", "Breaking News"),
+                question=question
             )
             if story_url:
                 post_story(story_url)
@@ -1093,5 +1138,86 @@ def run_agent():
     print("=" * 55)
 
 
+# --- Breaking News Checker ----------------------------------------------------
+def check_breaking_news() -> None:
+    """Har 30 min run hota hai — sirf importance 9-10 news turant post karo"""
+    print("=" * 55)
+    print("  Breaking News Check...")
+    print(f"  Time: {datetime.now().strftime('%Y-%m-%d %H:%M')}")
+    print("=" * 55)
+
+    # Last 2 ghante mein koi post hua? Recent check
+    recent_titles = get_recently_posted_titles()
+
+    # Fresh news fetch — last 1 hour
+    breaking_news = []
+    for topic in ["India breaking news urgent today", "India major incident just now"]:
+        try:
+            with DDGS() as ddgs:
+                results = list(ddgs.news(topic, max_results=5, timelimit="d"))
+            breaking_news.extend(results)
+        except Exception:
+            pass
+
+    breaking_news = [n for n in breaking_news if n.get("image")]
+    breaking_news = [n for n in breaking_news
+                     if not is_duplicate(n.get("title", ""), recent_titles)]
+
+    if not breaking_news:
+        print("  Koi breaking news nahi — skip.")
+        return
+
+    # Quick importance check via Groq
+    news_str = "\n".join([
+        f"{i+1}. {n.get('title', '')[:100]}"
+        for i, n in enumerate(breaking_news[:8])
+    ])
+    try:
+        client = Groq(api_key=GROQ_API_KEY)
+        resp = client.chat.completions.create(
+            model="llama-3.3-70b-versatile",
+            max_tokens=200,
+            messages=[{"role": "user", "content": f"""
+Ye Indian news headlines hain. Kaunsa sabse breaking/critical hai?
+Sirf wahi select karo jiska importance 9 ya 10 ho (national crisis level).
+Agar koi 9+ nahi hai, index -1 do.
+
+{news_str}
+
+JSON: {{"index": 0, "importance": 9, "reason": "why"}}
+"""}],
+            response_format={"type": "json_object"}
+        )
+        result = json.loads(resp.choices[0].message.content)
+        idx = result.get("index", -1)
+        importance = result.get("importance", 0)
+
+        if idx < 0 or importance < 9 or idx >= len(breaking_news):
+            print(f"  Koi 9+ importance news nahi mili — skip.")
+            return
+
+        news = breaking_news[idx]
+        print(f"  BREAKING ({importance}/10): {news.get('title', '')[:70]}")
+
+        # Post karo
+        content = generate_caption(news)
+        img_url = add_logo_watermark(news.get("image"))
+        if not img_url:
+            return
+
+        media_id = post_to_instagram(img_url, content["caption"])
+        if media_id:
+            time.sleep(2)
+            auto_first_comment(media_id, content["hashtags"])
+            print("  Breaking news post ho gaya!")
+
+    except Exception as e:
+        print(f"  Breaking check error: {e}")
+
+
 if __name__ == "__main__":
-    run_agent()
+    import sys
+    if "--breaking" in sys.argv:
+        check_breaking_news()
+    else:
+        run_agent()
