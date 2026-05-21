@@ -368,7 +368,8 @@ Sirf JSON format mein respond karo:
   "caption": "...",
   "hashtags": "#tag1 #tag2 ...",
   "image_keyword": "2-3 word English description of what image likely shows",
-  "emoji_title": "emoji + short title"
+  "emoji_title": "emoji + short title",
+  "headline": "5-8 word Hinglish headline jo image pe bade text mein dikhega — punchy, bold, news ka essence"
 }}
 """
 
@@ -1185,7 +1186,7 @@ def run_agent():
 
         img_url = add_logo_watermark(
             news.get("image"),
-            title=news.get("title", ""),
+            title=content.get("headline") or news.get("title", ""),
             source=news.get("source", "")
         )
         if not img_url:
@@ -1308,7 +1309,7 @@ JSON: {{"index": 0, "importance": 9, "reason": "why"}}
         content = generate_caption(news)
         img_url = add_logo_watermark(
             news.get("image"),
-            title=news.get("title", ""),
+            title=content.get("headline") or news.get("title", ""),
             source=news.get("source", "")
         )
         if not img_url:
