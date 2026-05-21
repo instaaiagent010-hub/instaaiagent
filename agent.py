@@ -38,8 +38,8 @@ HF_API_KEY          = os.getenv("HF_API_KEY")
 APP_ID              = os.getenv("APP_ID")
 APP_SECRET          = os.getenv("APP_SECRET")
 
-MAX_NEWS     = 1                               # har run mein 1 post (din mein 4 baar chalega)
-POST_DELAY   = 60                              # seconds between posts
+POST_DELAY     = 60   # seconds between posts
+CAROUSEL_SLIDES = 4   # carousel mein kitni images
 
 # High-impact queries — 5 topics, fast fetch
 NEWS_TOPICS = [
@@ -186,7 +186,38 @@ def refresh_token() -> str | None:
 
 
 # --- AI Planning Layer --------------------------------------------------------
-def smart_plan(all_news: list[dict]) -> list[dict]:
+def get_recently_posted_titles() -> set:
+    """Last 12 Instagram posts ke titles fetch karo — duplicate check ke liye"""
+    if not INSTAGRAM_TOKEN or not INSTAGRAM_ACCOUNT_ID:
+        return set()
+    try:
+        resp = requests.get(
+            f"https://graph.facebook.com/v25.0/{INSTAGRAM_ACCOUNT_ID}/media",
+            params={"fields": "caption", "limit": 12, "access_token": INSTAGRAM_TOKEN},
+            timeout=10
+        )
+        titles = set()
+        for post in resp.json().get("data", []):
+            cap = post.get("caption", "")
+            if cap:
+                titles.add(cap[:120].lower())
+        return titles
+    except Exception:
+        return set()
+
+
+def is_duplicate(news_title: str, recent_titles: set) -> bool:
+    """50%+ word overlap = duplicate"""
+    words = set(news_title.lower().split())
+    for cap in recent_titles:
+        cap_words = set(cap.split())
+        overlap = len(words & cap_words) / max(len(words), 1)
+        if overlap >= 0.5:
+            return True
+    return False
+
+
+def smart_plan(all_news: list[dict], count: int = CAROUSEL_SLIDES) -> list[dict]:
     """Groq se decide karwao — konsi news post karein, kis format mein, kis order mein"""
     print(f"\n[AI] {len(all_news)} news analyze kar raha hoon...")
 
@@ -222,7 +253,7 @@ Har news ko importance score do (1-10):
 Neeche {len(all_news)} news hain:
 {news_list_str}
 
-Sirf TOP {MAX_NEWS} news choose karo jinka importance score 7+ ho.
+Sirf TOP {count} news choose karo jinka importance score 7+ ho.
 Agar koi bhi 7+ nahi hai to sabse zyada important ek choose karo.
 Saath mein yeh bhi check karo — "worth_posting": true/false:
 - false: clickbait, rumor, gossip, sirf ek sheher tak limited, stale
@@ -256,10 +287,10 @@ Sirf JSON respond karo:
                 news["_reason"] = item.get("reason", "")
                 news["_importance"] = item.get("importance", 7)
                 planned.append(news)
-        return planned[:MAX_NEWS]
+        return planned[:count]
     except Exception as e:
         print(f"      Planning error: {e} — default order use kar raha hoon")
-        return all_news[:MAX_NEWS]
+        return all_news[:count]
 
 
 # --- Content Quality Check ----------------------------------------------------
@@ -811,6 +842,61 @@ def post_to_instagram(image_path: str, caption: str) -> str | None:
         return None
 
 
+def post_carousel_to_instagram(image_urls: list, caption: str) -> str | None:
+    """Multiple images ka carousel post karo — max 10 slides"""
+    print(f"\n[4/4] Carousel post kar raha hoon ({len(image_urls)} slides)...")
+    if not INSTAGRAM_TOKEN or not INSTAGRAM_ACCOUNT_ID:
+        return "dry_run"
+    try:
+        # Step 1: har image ka carousel item container banao
+        child_ids = []
+        for url in image_urls[:10]:
+            resp = requests.post(
+                f"https://graph.facebook.com/v25.0/{INSTAGRAM_ACCOUNT_ID}/media",
+                data={"image_url": url, "is_carousel_item": "true",
+                      "access_token": INSTAGRAM_TOKEN},
+                timeout=15
+            )
+            cid = resp.json().get("id")
+            if cid:
+                child_ids.append(cid)
+                time.sleep(1)
+
+        if len(child_ids) < 2:
+            print(f"      Carousel ke liye kam images — single post karunga")
+            return None
+
+        # Step 2: carousel container banao
+        carousel_resp = requests.post(
+            f"https://graph.facebook.com/v25.0/{INSTAGRAM_ACCOUNT_ID}/media",
+            data={"media_type": "CAROUSEL", "children": ",".join(child_ids),
+                  "caption": caption, "access_token": INSTAGRAM_TOKEN},
+            timeout=15
+        )
+        container_id = carousel_resp.json().get("id")
+        if not container_id:
+            print(f"      Carousel container error: {carousel_resp.json()}")
+            return None
+
+        time.sleep(3)
+
+        # Step 3: publish
+        pub = requests.post(
+            f"https://graph.facebook.com/v25.0/{INSTAGRAM_ACCOUNT_ID}/media_publish",
+            data={"creation_id": container_id, "access_token": INSTAGRAM_TOKEN},
+            timeout=15
+        )
+        media_id = pub.json().get("id")
+        if media_id:
+            print(f"      Carousel posted! ID: {media_id}")
+            return media_id
+        print(f"      Carousel publish error: {pub.json()}")
+        return None
+    except Exception as e:
+        print(f"      Carousel error: {e}")
+        return None
+
+
 def auto_first_comment(media_id: str, hashtags: str) -> None:
     """Post ke baad hashtags first comment mein daalo — caption clean dikhti hai"""
     if not INSTAGRAM_TOKEN or media_id == "dry_run":
@@ -930,7 +1016,7 @@ def run_agent():
         results = fetch_news(topic, max_results=3)
         all_news.extend(results)
 
-    # Sirf wahi news jisme image ho — no image = skip
+    # Sirf wahi news jisme image ho
     all_news = [n for n in all_news if n.get("image")]
     print(f"      Image wali news: {len(all_news)}")
 
@@ -938,66 +1024,72 @@ def run_agent():
         print("Koi image wali news nahi mili. Agent band ho raha hai.")
         return
 
-    # 2. AI se smart plan banwao
-    news_list = smart_plan(all_news)
+    # 2. Duplicate check — recently posted titles fetch karo
+    print(f"\n[Duplicate Check] Recent posts check kar raha hoon...")
+    recent_titles = get_recently_posted_titles()
+    all_news = [n for n in all_news
+                if not is_duplicate(n.get("title", ""), recent_titles)]
+    print(f"      Duplicate hataane ke baad: {len(all_news)} news")
 
-    posted = 0
+    if not all_news:
+        print("Sab news already post ho chuki hai. Skip.")
+        return
+
+    # 3. AI se top CAROUSEL_SLIDES news select karo
+    news_list = smart_plan(all_news, count=CAROUSEL_SLIDES)
+
+    # 4. Har news ka caption + watermarked image taiyaar karo
+    slides = []
+    main_content = None
     for news in news_list:
-        if posted >= MAX_NEWS:
-            break
-
         print(f"\n{'-'*50}")
         print(f"News: {news.get('title', '')[:70]}...")
-        fmt = news.get("_format", "image")
-        print(f"Format: {fmt} | Reason: {news.get('_reason', '')[:50]}")
-
         print(f"Importance: {news.get('_importance', '?')}/10")
 
-        # 3. Caption generate karo
-        content = generate_caption(news)
-
-        # 5. AI ke source + format decision ke hisaab se content lo
-        src = news.get("_image_source", "pexels")
-        print(f"Image source: {src}")
-
-        image_path = news.get("image")
-        if not image_path:
-            print("      Image nahi mili — skip")
+        img_url = add_logo_watermark(news.get("image"))
+        if not img_url:
             continue
 
-        # Logo watermark lagao
-        print(f"      Logo watermark laga raha hoon...")
-        image_path = add_logo_watermark(image_path)
+        content = generate_caption(news)
+        slides.append({"img": img_url, "news": news, "content": content})
+        if main_content is None:
+            main_content = content  # pehli slide ka caption main caption
 
-        # Hashtags caption mein nahi — first comment mein jaayenge
-        media_id = post_to_instagram(image_path, content["caption"])
+    if not slides or not main_content:
+        print("Slides taiyaar nahi ho sake.")
+        return
 
-        if media_id:
-            time.sleep(2)
-            auto_first_comment(media_id, content["hashtags"])
-            posted += 1
-            print(f"      [{posted}/{MAX_NEWS}] Post ho gaya!")
+    # 5. Post — carousel (2+ slides) ya single image
+    if len(slides) >= 2:
+        image_urls = [s["img"] for s in slides]
+        media_id = post_carousel_to_instagram(image_urls, main_content["caption"])
+    else:
+        media_id = post_to_instagram(slides[0]["img"], main_content["caption"])
 
-            # Story sirf 8am aur 6pm run pe (2 stories daily)
-            hour = datetime.now().hour
-            if hour in (8, 18):
-                story_url = create_story_card(
-                    news.get("title", ""),
-                    news.get("source", ""),
-                    content.get("emoji_title", "Breaking News")
-                )
-                if story_url:
-                    post_story(story_url)
+    posted = 1 if media_id else 0
 
-            if posted < MAX_NEWS:
-                print(f"      {POST_DELAY}s wait kar raha hoon...")
-                time.sleep(POST_DELAY)
+    if media_id:
+        time.sleep(2)
+        auto_first_comment(media_id, main_content["hashtags"])
+        print(f"      Post ho gaya! ({len(slides)} slides)")
+
+        # Story sirf 8am aur 6pm run pe (2 stories daily)
+        hour = datetime.now().hour
+        if hour in (8, 18):
+            top_news = slides[0]["news"]
+            story_url = create_story_card(
+                top_news.get("title", ""),
+                top_news.get("source", ""),
+                main_content.get("emoji_title", "Breaking News")
+            )
+            if story_url:
+                post_story(story_url)
 
     # Recent comments pe auto-reply karo
     reply_to_recent_comments()
 
     print(f"\n{'='*55}")
-    print(f"  Agent complete! {posted} posts kiye gaye.")
+    print(f"  Agent complete! {posted} post kiya gaya.")
     print("=" * 55)
 
 
