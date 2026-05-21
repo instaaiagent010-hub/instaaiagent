@@ -717,12 +717,19 @@ def add_logo_watermark(image_url: str, title: str = "", source: str = "") -> str
         # --- Logo (bottom-right, inside bar) ---
         if os.path.exists(LOGO_PATH):
             logo = Image.open(LOGO_PATH).convert("RGBA")
+
+            # White/light background transparent karo
+            r, g, b, a = logo.split()
+            pixels = list(logo.getdata())
+            new_pixels = [
+                (pr, pg, pb, 0) if pr > 220 and pg > 220 and pb > 220 else (pr, pg, pb, pa)
+                for pr, pg, pb, pa in pixels
+            ]
+            logo.putdata(new_pixels)
+
             logo_w = int(1080 * 0.10)
             logo_h = int(logo.height * (logo_w / logo.width))
             logo = logo.resize((logo_w, logo_h), Image.LANCZOS)
-            *_, a = logo.split()
-            a = a.point(lambda x: int(x * 0.85))
-            logo.putalpha(a)
             news_img.paste(logo, (1080 - logo_w - 20, 1080 - logo_h - 20), logo)
 
         final = news_img.convert("RGB")
