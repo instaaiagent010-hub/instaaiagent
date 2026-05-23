@@ -18,6 +18,7 @@ import os
 import json
 import time
 import tempfile
+import colorsys
 import requests
 
 from datetime import datetime
@@ -671,6 +672,22 @@ def create_news_card(title: str, source: str, emoji_title: str = "Breaking News"
     return upload_image(path)
 
 
+def image_palette(img: Image.Image):
+    """Image ke dominant hue se accent aur bar colors nikalo"""
+    sample = img.resize((80, 80), Image.LANCZOS).convert("RGB")
+    pixels = list(sample.getdata())
+    n = len(pixels)
+    avg_r = sum(p[0] for p in pixels) // n
+    avg_g = sum(p[1] for p in pixels) // n
+    avg_b = sum(p[2] for p in pixels) // n
+    h, s, v = colorsys.rgb_to_hsv(avg_r / 255, avg_g / 255, avg_b / 255)
+    # Accent: same hue, vivid & bright
+    accent = tuple(int(c * 255) for c in colorsys.hsv_to_rgb(h, min(s + 0.35, 1.0), 0.90))
+    # Bar base: same hue, very dark (gradient stays readable)
+    bar    = tuple(int(c * 255) for c in colorsys.hsv_to_rgb(h, min(s + 0.2, 0.85), 0.18))
+    return accent, bar
+
+
 # --- Logo Watermark -----------------------------------------------------------
 LOGO_PATH = os.path.join(os.path.dirname(__file__), "atlantis_news_ai.png")
 
@@ -694,19 +711,22 @@ def add_logo_watermark(image_url: str, title: str = "", source: str = "") -> str
 
         draw = ImageDraw.Draw(news_img)
 
-        # --- Dark gradient bar — bottom 38% ---
+        # Image ka dominant palette
+        accent_color, bar_base = image_palette(news_img)
+
+        # --- Gradient bar — bottom 38%, image-matched color ---
         bar_top = int(1080 * 0.62)
         overlay = Image.new("RGBA", (1080, 1080), (0, 0, 0, 0))
         ov_draw = ImageDraw.Draw(overlay)
         for i in range(1080 - bar_top):
-            alpha = int(210 * (i / (1080 - bar_top)))
+            alpha = int(220 * (i / (1080 - bar_top)))
             ov_draw.line([(0, bar_top + i), (1080, bar_top + i)],
-                         fill=(0, 0, 0, alpha))
+                         fill=(*bar_base, alpha))
         news_img = Image.alpha_composite(news_img, overlay)
         draw = ImageDraw.Draw(news_img)
 
-        # --- Red top accent bar ---
-        draw.rectangle([0, 0, 1080, 10], fill=(220, 40, 40, 255))
+        # --- Accent top bar (image-matched color) ---
+        draw.rectangle([0, 0, 1080, 10], fill=(*accent_color, 255))
 
         # --- Source + date (small) ---
         font_title  = get_font(52)
@@ -714,8 +734,10 @@ def add_logo_watermark(image_url: str, title: str = "", source: str = "") -> str
 
         date_str = datetime.now().strftime("%d %b %Y")
         src_text = f"{source.upper()}  •  {date_str}  •  @atlantis_news_ai"
+        # Source text: accent color ka light version
+        src_color = tuple(min(255, int(c * 1.4 + 60)) for c in accent_color)
         draw.text((30, bar_top + 18), src_text, font=font_source,
-                  fill=(200, 200, 200, 255))
+                  fill=(*src_color, 255))
 
         # --- Headline word-wrap ---
         if title:
@@ -752,7 +774,7 @@ def add_logo_watermark(image_url: str, title: str = "", source: str = "") -> str
             logo_w = int(1080 * 0.10)
             logo_h = int(logo.height * (logo_w / logo.width))
             logo = logo.resize((logo_w, logo_h), Image.LANCZOS)
-            pad = 8
+            pad = 4
             lx = 1080 - logo_w - 20
             ly = 1080 - logo_h - 20
             draw.rectangle([lx - pad, ly - pad, lx + logo_w + pad, ly + logo_h + pad],
