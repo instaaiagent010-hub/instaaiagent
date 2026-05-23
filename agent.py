@@ -26,6 +26,31 @@ from ddgs import DDGS
 from PIL import Image, ImageDraw
 from groq import Groq
 
+
+def get_font(size: int):
+    """Hindi + emoji support wala font load karo, fallback default"""
+    from PIL import ImageFont
+    candidates = [
+        # GitHub Actions / Ubuntu (fonts-noto installed)
+        "/usr/share/fonts/truetype/noto/NotoSans-Regular.ttf",
+        "/usr/share/fonts/noto/NotoSans-Regular.ttf",
+        "/usr/share/fonts/truetype/noto/NotoSansDevanagari-Regular.ttf",
+        "/usr/share/fonts/noto/NotoSansDevanagari-Regular.ttf",
+        # Windows
+        "C:/Windows/Fonts/arial.ttf",
+        "C:/Windows/Fonts/Nirmala.ttf",  # Hindi support
+    ]
+    for path in candidates:
+        if os.path.exists(path):
+            try:
+                return ImageFont.truetype(path, size)
+            except Exception:
+                continue
+    try:
+        return ImageFont.load_default(size=size)
+    except Exception:
+        return ImageFont.load_default()
+
 load_dotenv()
 
 # --- Config -------------------------------------------------------------------
@@ -653,7 +678,6 @@ def add_logo_watermark(image_url: str, title: str = "", source: str = "") -> str
     """News image pe text overlay + logo — Indian news page style"""
     try:
         import io
-        from PIL import ImageFont, ImageFilter
 
         resp = requests.get(image_url, timeout=15)
         if resp.status_code != 200:
@@ -685,11 +709,8 @@ def add_logo_watermark(image_url: str, title: str = "", source: str = "") -> str
         draw.rectangle([0, 0, 1080, 10], fill=(220, 40, 40, 255))
 
         # --- Source + date (small) ---
-        try:
-            font_title  = ImageFont.load_default(size=52)
-            font_source = ImageFont.load_default(size=32)
-        except Exception:
-            font_title = font_source = ImageFont.load_default()
+        font_title  = get_font(52)
+        font_source = get_font(32)
 
         date_str = datetime.now().strftime("%d %b %Y")
         src_text = f"{source.upper()}  •  {date_str}  •  @atlantis_news_ai"
@@ -769,7 +790,6 @@ def create_question_story(question: str, news_title: str) -> str | None:
     """Sirf question wali alag story — bright design, comment encourage karo"""
     print("      Question story bana raha hoon...")
     try:
-        from PIL import ImageFont
         width, height = 1080, 1920
         img = Image.new("RGB", (width, height), color=(220, 40, 40))
         draw = ImageDraw.Draw(img)
@@ -783,12 +803,9 @@ def create_question_story(question: str, news_title: str) -> str | None:
         draw.rectangle([60, card_y1, width - 60, card_y2],
                        fill=(255, 255, 255), outline=(220, 40, 40), width=6)
 
-        try:
-            font_big   = ImageFont.load_default(size=80)
-            font_mid   = ImageFont.load_default(size=50)
-            font_small = ImageFont.load_default(size=38)
-        except Exception:
-            font_big = font_mid = font_small = ImageFont.load_default()
+        font_big   = get_font(80)
+        font_mid   = get_font(50)
+        font_small = get_font(38)
 
         # "Aapka Opinion?" header
         draw.text((80, card_y1 + 40), "Aapka Opinion?", font=font_mid, fill=(220, 40, 40))
@@ -842,7 +859,6 @@ def create_story_card(title: str, source: str,
     """1080x1920 vertical story card banao"""
     print("      Story card bana raha hoon...")
     try:
-        from PIL import ImageFont
         width, height = 1080, 1920
         img = Image.new("RGB", (width, height), color=(8, 8, 20))
         draw = ImageDraw.Draw(img)
@@ -855,12 +871,9 @@ def create_story_card(title: str, source: str,
         # Top red accent
         draw.rectangle([0, 0, width, 12], fill=(220, 40, 40))
 
-        try:
-            font_big   = ImageFont.load_default(size=72)
-            font_mid   = ImageFont.load_default(size=44)
-            font_small = ImageFont.load_default(size=34)
-        except Exception:
-            font_big = font_mid = font_small = ImageFont.load_default()
+        font_big   = get_font(72)
+        font_mid   = get_font(44)
+        font_small = get_font(34)
 
         # BREAKING label
         draw.rectangle([60, 180, 520, 260], fill=(220, 40, 40))
