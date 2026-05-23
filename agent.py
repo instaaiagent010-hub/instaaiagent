@@ -1184,6 +1184,8 @@ def run_agent():
         print(f"News: {news.get('title', '')[:70]}...")
         print(f"Importance: {news.get('_importance', '?')}/10")
 
+        content = generate_caption(news)
+
         img_url = add_logo_watermark(
             news.get("image"),
             title=content.get("headline") or news.get("title", ""),
@@ -1191,8 +1193,6 @@ def run_agent():
         )
         if not img_url:
             continue
-
-        content = generate_caption(news)
         slides.append({"img": img_url, "news": news, "content": content})
         if main_content is None:
             main_content = content  # pehli slide ka caption main caption
