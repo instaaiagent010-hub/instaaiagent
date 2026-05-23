@@ -754,8 +754,9 @@ def add_logo_watermark(image_url: str, title: str = "", source: str = "") -> str
         font_title  = get_font(52)
         font_source = get_font(32)
 
+        date_str = datetime.now().strftime("%d %b %Y")
         src_color = tuple(min(255, int(c * 1.4 + 60)) for c in accent_color)
-        draw.text((30, bar_top + 18), "@atlantis_news_ai", font=font_source,
+        draw.text((30, bar_top + 18), f"{date_str}  •  @atlantis_news_ai", font=font_source,
                   fill=(*src_color, 255))
 
         # --- Headline word-wrap ---
