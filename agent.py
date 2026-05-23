@@ -67,6 +67,14 @@ APP_SECRET          = os.getenv("APP_SECRET")
 POST_DELAY     = 60   # seconds between posts
 CAROUSEL_SLIDES = 4   # carousel mein kitni images
 
+# Ye sources se news mat lo
+BLOCKED_SOURCES = {
+    "nytimes", "new york times", "the new york times",
+    "washington post", "the guardian", "bbc", "reuters",
+    "bloomberg", "wall street journal", "wsj", "ap news",
+    "associated press",
+}
+
 # High-impact queries — 5 topics, fast fetch
 NEWS_TOPICS = [
     "India breaking news today",
@@ -98,6 +106,12 @@ def fetch_news(topic: str, max_results: int = 5) -> list[dict]:
 
             if not results:
                 raise Exception("No results found.")
+
+            # Blocked sources filter
+            results = [
+                n for n in results
+                if n.get("source", "").lower() not in BLOCKED_SOURCES
+            ]
 
             fresh = []
             for n in results:
@@ -652,9 +666,8 @@ def create_news_card(title: str, source: str, emoji_title: str = "Breaking News"
     # Top accent bar
     draw.rectangle([0, 0, width, 8], fill=(255, 80, 80))
 
-    # Source + date
-    date_str = datetime.now().strftime("%d %b %Y")
-    draw.text((54, 40), f"{source.upper()}  •  {date_str}",
+    # Source
+    draw.text((54, 40), f"{source.upper()}  •  @atlantis_news_ai",
               fill=(180, 180, 180))
 
     # Emoji title
@@ -748,8 +761,7 @@ def add_logo_watermark(image_url: str, title: str = "", source: str = "") -> str
         font_title  = get_font(52)
         font_source = get_font(32)
 
-        date_str = datetime.now().strftime("%d %b %Y")
-        src_text = f"{source.upper()}  •  {date_str}  •  @atlantis_news_ai"
+        src_text = f"{source.upper()}  •  @atlantis_news_ai"
         # Source text: accent color ka light version
         src_color = tuple(min(255, int(c * 1.4 + 60)) for c in accent_color)
         draw.text((30, bar_top + 18), src_text, font=font_source,
@@ -925,8 +937,8 @@ def create_story_card(title: str, source: str,
         # Emoji title
         draw.text((60, 300), emoji_title, font=font_mid, fill=(255, 80, 80))
 
-        # Source + date
-        draw.text((60, 380), f"{source.upper()}  |  {datetime.now().strftime('%d %b %Y  •  %I:%M %p')}",
+        # Source
+        draw.text((60, 380), f"{source.upper()}  |  @atlantis_news_ai",
                   font=font_small, fill=(160, 160, 160))
 
         # Headline word-wrap
