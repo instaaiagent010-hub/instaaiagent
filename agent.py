@@ -1228,9 +1228,11 @@ def run_agent():
     # 3. AI se top CAROUSEL_SLIDES news select karo
     news_list = smart_plan(all_news, count=CAROUSEL_SLIDES)
 
-    # 4. Har news ka caption + watermarked image taiyaar karo
-    slides = []
-    main_content = None
+    # 4. Har news ko alag post karo
+    posted = 0
+    first_news = None
+    first_content = None
+
     for news in news_list:
         print(f"\n{'-'*50}")
         print(f"News: {news.get('title', '')[:70]}...")
@@ -1245,48 +1247,39 @@ def run_agent():
         )
         if not img_url:
             continue
-        slides.append({"img": img_url, "news": news, "content": content})
-        if main_content is None:
-            main_content = content  # pehli slide ka caption main caption
 
-    if not slides or not main_content:
-        print("Slides taiyaar nahi ho sake.")
+        # 5. Single photo post per news
+        media_id = post_to_instagram(img_url, content["caption"])
+        if media_id:
+            time.sleep(2)
+            auto_first_comment(media_id, content["hashtags"])
+            print(f"      Post ho gaya!")
+            posted += 1
+            if first_news is None:
+                first_news = news
+                first_content = content
+            time.sleep(POST_DELAY)
+
+    if not posted:
+        print("Koi post nahi ho saka.")
         return
 
-    # 5. Post — carousel (2+ slides) ya single image
-    if len(slides) >= 2:
-        image_urls = [s["img"] for s in slides]
-        media_id = post_carousel_to_instagram(image_urls, main_content["caption"])
-    else:
-        media_id = post_to_instagram(slides[0]["img"], main_content["caption"])
+    # Story sirf 8am aur 6pm run pe (2 stories daily)
+    hour = datetime.now().hour
+    if hour in (8, 18) and first_news and first_content:
+        story_url = create_story_card(
+            first_news.get("title", ""),
+            first_news.get("source", ""),
+            first_content.get("emoji_title", "Breaking News")
+        )
+        if story_url:
+            post_story(story_url)
+            time.sleep(3)
 
-    posted = 1 if media_id else 0
-
-    if media_id:
-        time.sleep(2)
-        auto_first_comment(media_id, main_content["hashtags"])
-        print(f"      Post ho gaya! ({len(slides)} slides)")
-
-        # Story sirf 8am aur 6pm run pe (2 stories daily)
-        hour = datetime.now().hour
-        if hour in (8, 18):
-            top_news = slides[0]["news"]
-
-            # Story 1 — news card
-            story_url = create_story_card(
-                top_news.get("title", ""),
-                top_news.get("source", ""),
-                main_content.get("emoji_title", "Breaking News")
-            )
-            if story_url:
-                post_story(story_url)
-                time.sleep(3)
-
-            # Story 2 — alag question story
-            question = generate_story_question(top_news.get("title", ""))
-            q_story_url = create_question_story(question, top_news.get("title", ""))
-            if q_story_url:
-                post_story(q_story_url)
+        question = generate_story_question(first_news.get("title", ""))
+        q_story_url = create_question_story(question, first_news.get("title", ""))
+        if q_story_url:
+            post_story(q_story_url)
 
     # Recent comments pe auto-reply karo
     reply_to_recent_comments()
