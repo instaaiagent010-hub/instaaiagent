@@ -305,14 +305,14 @@ Sirf JSON respond karo:
         planned = []
         for item in result.get("plan", []):
             idx = item.get("index", 0)
-            if 0 <= idx < len(all_news) and item.get("worth_posting", True):
+            if 0 <= idx < len(all_news):
                 news = all_news[idx].copy()
                 news["_format"] = item.get("format", "image")
                 news["_image_source"] = item.get("image_source", "news")
                 news["_reason"] = item.get("reason", "")
                 news["_importance"] = item.get("importance", 7)
                 planned.append(news)
-        return planned[:count]
+        return planned[:count] if planned else all_news[:count]
     except Exception as e:
         print(f"      Planning error: {e} — default order use kar raha hoon")
         return all_news[:count]
@@ -752,7 +752,12 @@ def add_logo_watermark(image_url: str, title: str = "", source: str = "") -> str
             logo_w = int(1080 * 0.10)
             logo_h = int(logo.height * (logo_w / logo.width))
             logo = logo.resize((logo_w, logo_h), Image.LANCZOS)
-            news_img.paste(logo, (1080 - logo_w - 20, 1080 - logo_h - 20), logo)
+            pad = 8
+            lx = 1080 - logo_w - 20
+            ly = 1080 - logo_h - 20
+            draw.rectangle([lx - pad, ly - pad, lx + logo_w + pad, ly + logo_h + pad],
+                           fill=(255, 255, 255, 230))
+            news_img.paste(logo, (lx, ly), logo)
 
         final = news_img.convert("RGB")
         path = os.path.join(tempfile.gettempdir(), f"styled_{int(time.time())}.jpg")
