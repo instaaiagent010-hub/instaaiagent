@@ -653,7 +653,7 @@ def create_news_card(title: str, source: str, emoji_title: str = "Breaking News"
     draw.rectangle([0, 0, width, 8], fill=(255, 80, 80))
 
     # Source
-    draw.text((54, 40), f"{source.upper()}  •  @atlantis_news_ai",
+    draw.text((54, 40), "@atlantis_news_ai",
               fill=(180, 180, 180))
 
     # Emoji title
@@ -922,7 +922,7 @@ def create_story_card(title: str, source: str,
         draw.text((60, 300), emoji_title, font=font_mid, fill=(255, 80, 80))
 
         # Source
-        draw.text((60, 380), f"{source.upper()}  |  @atlantis_news_ai",
+        draw.text((60, 380), "@atlantis_news_ai",
                   font=font_small, fill=(160, 160, 160))
 
         # Headline word-wrap
