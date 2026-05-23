@@ -79,14 +79,25 @@ NEWS_TOPICS = [
 
 # --- Step 1: News Fetch -------------------------------------------------------
 def fetch_news(topic: str, max_results: int = 5) -> list[dict]:
-    """DuckDuckGo se sirf last 24 hours ki news fetch karo"""
+    """DuckDuckGo se news fetch karo — multiple fallback strategies"""
     print(f"\n[1/4] News fetch kar raha hoon: '{topic}'")
-    cutoff = datetime.now().timestamp() - 86400  # 24 hours ago
+    cutoff = datetime.now().timestamp() - 86400
 
-    for attempt in range(2):
+    # Attempt strategies: strict → relaxed timelimit → no timelimit
+    strategies = [
+        {"timelimit": "d"},
+        {"timelimit": "w"},
+        {},
+    ]
+
+    for attempt, params in enumerate(strategies):
         try:
+            time.sleep(attempt * 4)  # progressive delay: 0s, 4s, 8s
             with DDGS() as ddgs:
-                results = list(ddgs.news(topic, max_results=max_results * 2, timelimit="d"))
+                results = list(ddgs.news(topic, max_results=max_results * 3, **params))
+
+            if not results:
+                raise Exception("No results found.")
 
             fresh = []
             for n in results:
@@ -94,18 +105,20 @@ def fetch_news(topic: str, max_results: int = 5) -> list[dict]:
                 try:
                     from datetime import datetime as dt
                     pub_ts = dt.fromisoformat(pub.replace("Z", "+00:00")).timestamp()
-                    if pub_ts >= cutoff:
+                    if pub_ts >= cutoff - 86400 * attempt:  # window expands with retries
                         fresh.append(n)
                 except Exception:
                     fresh.append(n)
 
             fresh = fresh[:max_results]
-            print(f"      {len(fresh)} fresh news mili (last 24h)")
-            return fresh
+            if fresh:
+                print(f"      {len(fresh)} fresh news mili")
+                return fresh
+            raise Exception("No fresh results after filtering.")
+
         except Exception as e:
             print(f"      Attempt {attempt+1} failed: {e}")
-            if attempt < 1:
-                time.sleep(2)
+
     return []
 
 
@@ -131,6 +144,9 @@ def update_github_secret(secret_name: str, secret_value: str) -> bool:
             }, timeout=10
         )
         key_data = key_resp.json()
+        if "key" not in key_data or "key_id" not in key_data:
+            print(f"      GitHub public key fetch fail: {key_data}")
+            return False
         public_key = key_data["key"]
         key_id = key_data["key_id"]
 
