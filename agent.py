@@ -67,14 +67,6 @@ APP_SECRET          = os.getenv("APP_SECRET")
 POST_DELAY     = 60   # seconds between posts
 CAROUSEL_SLIDES = 4   # carousel mein kitni images
 
-# Ye sources se news mat lo
-BLOCKED_SOURCES = {
-    "nytimes", "new york times", "the new york times",
-    "washington post", "the guardian", "bbc", "reuters",
-    "bloomberg", "wall street journal", "wsj", "ap news",
-    "associated press",
-}
-
 # High-impact queries — 5 topics, fast fetch
 NEWS_TOPICS = [
     "India breaking news today",
@@ -106,12 +98,6 @@ def fetch_news(topic: str, max_results: int = 5) -> list[dict]:
 
             if not results:
                 raise Exception("No results found.")
-
-            # Blocked sources filter
-            results = [
-                n for n in results
-                if n.get("source", "").lower() not in BLOCKED_SOURCES
-            ]
 
             fresh = []
             for n in results:
@@ -720,7 +706,7 @@ def image_palette(img: Image.Image):
 # --- Logo Watermark -----------------------------------------------------------
 LOGO_PATH = os.path.join(os.path.dirname(__file__), "atlantis_news_ai.png")
 
-def add_logo_watermark(image_url: str, title: str = "", source: str = "") -> str | None:
+def add_logo_watermark(image_url: str, title: str = "", source: str = "") -> str | None:  # source kept for API compat
     """News image pe text overlay + logo — Indian news page style"""
     try:
         import io
@@ -761,10 +747,8 @@ def add_logo_watermark(image_url: str, title: str = "", source: str = "") -> str
         font_title  = get_font(52)
         font_source = get_font(32)
 
-        src_text = f"{source.upper()}  •  @atlantis_news_ai"
-        # Source text: accent color ka light version
         src_color = tuple(min(255, int(c * 1.4 + 60)) for c in accent_color)
-        draw.text((30, bar_top + 18), src_text, font=font_source,
+        draw.text((30, bar_top + 18), "@atlantis_news_ai", font=font_source,
                   fill=(*src_color, 255))
 
         # --- Headline word-wrap ---
