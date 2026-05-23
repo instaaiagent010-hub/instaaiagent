@@ -78,6 +78,12 @@ NEWS_TOPICS = [
 
 
 # --- Step 1: News Fetch -------------------------------------------------------
+def clean_title(title: str) -> str:
+    """Title ke end mein aane wala source naam hata do — e.g. '... - NDTV'"""
+    import re
+    return re.sub(r'\s*[-–|]\s*[A-Z][A-Za-z0-9 &.]{2,40}$', '', title).strip()
+
+
 def fetch_news(topic: str, max_results: int = 5) -> list[dict]:
     """DuckDuckGo se news fetch karo — multiple fallback strategies"""
     print(f"\n[1/4] News fetch kar raha hoon: '{topic}'")
@@ -101,6 +107,7 @@ def fetch_news(topic: str, max_results: int = 5) -> list[dict]:
 
             fresh = []
             for n in results:
+                n["title"] = clean_title(n.get("title", ""))
                 pub = n.get("date", "")
                 try:
                     from datetime import datetime as dt
