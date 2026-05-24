@@ -1099,16 +1099,20 @@ def auto_first_comment(media_id: str, hashtags: str) -> None:
     """Post ke baad hashtags first comment mein daalo — caption clean dikhti hai"""
     if not INSTAGRAM_TOKEN or media_id == "dry_run":
         return
+    if not hashtags:
+        print(f"      First comment skip — hashtags empty")
+        return
     try:
         resp = requests.post(
             f"https://graph.facebook.com/v25.0/{media_id}/comments",
             data={"message": hashtags, "access_token": INSTAGRAM_TOKEN},
             timeout=10
         )
-        if resp.json().get("id"):
+        data = resp.json()
+        if data.get("id"):
             print(f"      First comment (hashtags) posted!")
         else:
-            print(f"      First comment error: {resp.json()}")
+            print(f"      First comment error: {data}")
     except Exception as e:
         print(f"      First comment error: {e}")
 
@@ -1257,10 +1261,11 @@ def run_agent():
             continue
 
         # 5. Single photo post per news
-        media_id = post_to_instagram(img_url, content["caption"])
+        media_id = post_to_instagram(img_url, content.get("caption", ""))
         if media_id:
             time.sleep(2)
-            auto_first_comment(media_id, content["hashtags"])
+            hashtags = content.get("hashtags", "#India #News #BreakingNews")
+            auto_first_comment(media_id, hashtags)
             print(f"      Post ho gaya!")
             posted += 1
             if first_news is None:
