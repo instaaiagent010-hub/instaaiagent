@@ -753,8 +753,8 @@ def add_logo_watermark(image_url: str, title: str = "", source: str = "") -> str
         draw.rectangle([0, 0, 1080, 10], fill=(*accent_color, 255))
 
         # --- Source + date (small) ---
-        font_title  = get_font(52)
-        font_source = get_font(32)
+        font_title  = get_font(64)
+        font_source = get_font(34)
 
         date_str = datetime.now().strftime("%d %b %Y")
         src_color = tuple(min(255, int(c * 1.4 + 60)) for c in accent_color)
@@ -767,7 +767,7 @@ def add_logo_watermark(image_url: str, title: str = "", source: str = "") -> str
             lines, line = [], ""
             for w_word in words:
                 test = f"{line} {w_word}".strip()
-                if len(test) > 32:
+                if len(test) > 28:
                     lines.append(line)
                     line = w_word
                 else:
@@ -775,10 +775,10 @@ def add_logo_watermark(image_url: str, title: str = "", source: str = "") -> str
             if line:
                 lines.append(line)
 
-            y = bar_top + 65
+            y = bar_top + 68
             for l in lines[:3]:
                 draw.text((30, y), l, font=font_title, fill=(255, 255, 255, 255))
-                y += 62
+                y += 76
 
         # --- Logo (bottom-right, inside bar) ---
         if os.path.exists(LOGO_PATH):
