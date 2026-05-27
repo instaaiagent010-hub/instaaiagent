@@ -418,7 +418,8 @@ Sirf JSON format mein respond karo:
   "hashtags": "#tag1 #tag2 #tag3 ... (15-20 Hindi+English hashtags)",
   "image_keyword": "2-3 word English description of what image likely shows",
   "emoji_title": "emoji + short title",
-  "headline": "5-8 word Hinglish headline jo image pe bade text mein dikhega — punchy, bold, news ka essence"
+  "headline": "5-8 word Hinglish headline jo image pe bade text mein dikhega — punchy, bold, news ka essence",
+  "image_summary": "1-2 simple Hinglish sentences (max 20 words total) jo news ka core fact bataye — ye image ke upar chhote font mein dikhega, simple aur clear rakho"
 }}
 """
 
@@ -715,7 +716,7 @@ def image_palette(img: Image.Image):
 # --- Logo Watermark -----------------------------------------------------------
 LOGO_PATH = os.path.join(os.path.dirname(__file__), "atlantis_news_ai.png")
 
-def add_logo_watermark(image_url: str, title: str = "", source: str = "") -> str | None:  # source kept for API compat
+def add_logo_watermark(image_url: str, title: str = "", source: str = "", summary: str = "") -> str | None:  # source kept for API compat
     """News image pe text overlay + logo — Indian news page style"""
     try:
         import io
@@ -753,15 +754,17 @@ def add_logo_watermark(image_url: str, title: str = "", source: str = "") -> str
         draw.rectangle([0, 0, 1080, 10], fill=(*accent_color, 255))
 
         # --- Source + date (small) ---
-        font_title  = get_font(64)
-        font_source = get_font(34)
+        font_title   = get_font(64)
+        font_summary = get_font(38)
+        font_source  = get_font(34)
 
         date_str = datetime.now().strftime("%d %b %Y")
         src_color = tuple(min(255, int(c * 1.4 + 60)) for c in accent_color)
         draw.text((30, bar_top + 18), f"{date_str}  •  @atlantis_news_ai", font=font_source,
                   fill=(*src_color, 255))
 
-        # --- Headline word-wrap ---
+        # --- Headline word-wrap (max 2 lines) ---
+        y = bar_top + 68
         if title:
             words = title.split()
             lines, line = [], ""
@@ -774,11 +777,27 @@ def add_logo_watermark(image_url: str, title: str = "", source: str = "") -> str
                     line = test
             if line:
                 lines.append(line)
-
-            y = bar_top + 68
-            for l in lines[:3]:
+            for l in lines[:2]:
                 draw.text((30, y), l, font=font_title, fill=(255, 255, 255, 255))
-                y += 76
+                y += 74
+
+        # --- Summary (1-2 lines below headline) ---
+        if summary:
+            y += 8
+            words = summary.split()
+            lines, line = [], ""
+            for w_word in words:
+                test = f"{line} {w_word}".strip()
+                if len(test) > 38:
+                    lines.append(line)
+                    line = w_word
+                else:
+                    line = test
+            if line:
+                lines.append(line)
+            for l in lines[:2]:
+                draw.text((30, y), l, font=font_summary, fill=(230, 230, 230, 245))
+                y += 48
 
         # --- Logo (bottom-right, inside bar) ---
         if os.path.exists(LOGO_PATH):
@@ -1277,7 +1296,8 @@ def run_agent():
         img_url = add_logo_watermark(
             news.get("image"),
             title=content.get("headline") or news.get("title", ""),
-            source=news.get("source", "")
+            source=news.get("source", ""),
+            summary=content.get("image_summary", "")
         )
         if not img_url:
             continue
@@ -1390,7 +1410,8 @@ JSON: {{"index": 0, "importance": 9, "reason": "why"}}
         img_url = add_logo_watermark(
             news.get("image"),
             title=content.get("headline") or news.get("title", ""),
-            source=news.get("source", "")
+            source=news.get("source", ""),
+            summary=content.get("image_summary", "")
         )
         if not img_url:
             return
