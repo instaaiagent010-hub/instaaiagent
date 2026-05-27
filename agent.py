@@ -410,12 +410,12 @@ Caption likhte waqt STRICT RULES:
 - News ka context 2-3 lines mein explain karo with key facts/numbers
 - Emotional aur conversational tone
 - End mein strong question ya call-to-action
-- 15-20 relevant hashtags (Hindi + English mix)
+- CAPTION MEIN KOI HASHTAG NAHI — hashtags sirf alag "hashtags" field mein daalo, caption field mein # symbol bilkul mat aaye
 
 Sirf JSON format mein respond karo:
 {{
-  "caption": "...",
-  "hashtags": "#tag1 #tag2 ...",
+  "caption": "caption text ONLY — no hashtags here",
+  "hashtags": "#tag1 #tag2 #tag3 ... (15-20 Hindi+English hashtags)",
   "image_keyword": "2-3 word English description of what image likely shows",
   "emoji_title": "emoji + short title",
   "headline": "5-8 word Hinglish headline jo image pe bade text mein dikhega — punchy, bold, news ka essence"
@@ -432,9 +432,11 @@ Sirf JSON format mein respond karo:
         raw = message.choices[0].message.content.strip()
         result = json.loads(raw)
 
-        # Hard filter — replace any video-related words that slipped through
         import re
         caption = result.get("caption", "")
+        # Strip hashtags from caption if Groq slips them in
+        caption = re.sub(r'\s*#\w+', '', caption).strip()
+        # Replace video-related words
         caption = re.sub(r'\b(video|reel|clip)\b', 'photo', caption, flags=re.IGNORECASE)
         caption = re.sub(r'dekho video', 'dekho ye tasveer', caption, flags=re.IGNORECASE)
         caption = re.sub(r'ye video', 'ye tasveer', caption, flags=re.IGNORECASE)
