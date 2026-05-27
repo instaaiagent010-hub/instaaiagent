@@ -1175,6 +1175,7 @@ Sirf reply text do.
 def reply_to_recent_comments() -> None:
     """Last 5 posts ke unanswered comments pe AI se auto-reply karo"""
     if not INSTAGRAM_TOKEN or not INSTAGRAM_ACCOUNT_ID:
+        print("      [Comments] Token ya Account ID missing — skip")
         return
     print(f"\n[Comments] Naye comments check kar raha hoon...")
 
@@ -1188,41 +1189,50 @@ def reply_to_recent_comments() -> None:
         )
         media_data = media_resp.json()
         if "error" in media_data:
-            print(f"      Media fetch error: {media_data['error']}")
+            print(f"      [Comments] Media fetch failed: {media_data['error']}")
             return
+
         posts = media_data.get("data", [])
+        print(f"      [Comments] {len(posts)} recent posts mili")
         replied = 0
 
         for post in posts:
+            post_id = post["id"]
             comments_resp = requests.get(
-                f"https://graph.facebook.com/v25.0/{post['id']}/comments",
+                f"https://graph.facebook.com/v25.0/{post_id}/comments",
                 params={"fields": "id,text,username,timestamp,replies{id}",
                         "access_token": INSTAGRAM_TOKEN},
                 timeout=10
             )
             comments_data = comments_resp.json()
             if "error" in comments_data:
-                print(f"      Comments fetch error for post {post['id']}: {comments_data['error']}")
+                print(f"      [Comments] Post {post_id} comments fetch failed: {comments_data['error']}")
                 continue
 
-            for comment in comments_data.get("data", []):
+            all_comments = comments_data.get("data", [])
+            print(f"      [Comments] Post {post_id}: {len(all_comments)} comments")
+
+            for comment in all_comments:
                 # Skip if already replied to
                 if comment.get("replies", {}).get("data"):
+                    print(f"        Skip (already replied): {comment.get('text','')[:40]}")
                     continue
-                # Skip comments older than 48 hours (use UTC-aware comparison)
+                # Skip comments older than 48 hours
                 try:
                     now_ts = datetime.now(timezone.utc).timestamp()
                     comment_ts = datetime.fromisoformat(
                         comment["timestamp"].replace("Z", "+00:00")
                     ).timestamp()
-                    if (now_ts - comment_ts) > 172800:
+                    age_hrs = (now_ts - comment_ts) / 3600
+                    if age_hrs > 48:
+                        print(f"        Skip (too old {age_hrs:.0f}h): {comment.get('text','')[:40]}")
                         continue
-                except Exception:
-                    pass
+                except Exception as te:
+                    print(f"        Timestamp parse error: {te}")
 
                 text = comment.get("text", "")
                 username = comment.get("username", "")
-                print(f"      @{username}: {text[:60]}")
+                print(f"      Replying to @{username}: {text[:60]}")
 
                 reply = generate_reply(text, post.get("caption", ""))
                 reply_resp = requests.post(
@@ -1232,15 +1242,17 @@ def reply_to_recent_comments() -> None:
                 )
                 reply_data = reply_resp.json()
                 if reply_data.get("id"):
-                    print(f"      Replied: {reply[:60]}")
+                    print(f"        Replied: {reply[:60]}")
                     replied += 1
                     time.sleep(3)
                 else:
-                    print(f"      Reply error: {reply_data}")
+                    print(f"        Reply failed: {reply_data}")
 
-        print(f"      {replied} comments pe reply kiya")
+        print(f"      [Comments] Total replied: {replied}")
     except Exception as e:
-        print(f"      Comments error: {e}")
+        import traceback
+        print(f"      [Comments] Exception: {e}")
+        print(traceback.format_exc())
 
 
 # --- Main Agent Loop ----------------------------------------------------------
@@ -1424,6 +1436,9 @@ JSON: {{"index": 0, "importance": 9, "reason": "why"}}
 
     except Exception as e:
         print(f"  Breaking check error: {e}")
+
+    # Har 30 min breaking check ke saath comments bhi check karo
+    reply_to_recent_comments()
 
 
 if __name__ == "__main__":
