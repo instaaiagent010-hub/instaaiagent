@@ -1102,19 +1102,25 @@ def auto_first_comment(media_id: str, hashtags: str) -> None:
     if not hashtags:
         print(f"      First comment skip — hashtags empty")
         return
-    try:
-        resp = requests.post(
-            f"https://graph.facebook.com/v25.0/{media_id}/comments",
-            data={"message": hashtags, "access_token": INSTAGRAM_TOKEN},
-            timeout=10
-        )
-        data = resp.json()
-        if data.get("id"):
-            print(f"      First comment (hashtags) posted!")
-        else:
-            print(f"      First comment error: {data}")
-    except Exception as e:
-        print(f"      First comment error: {e}")
+    for attempt in range(3):
+        try:
+            resp = requests.post(
+                f"https://graph.facebook.com/v25.0/{media_id}/comments",
+                data={"message": hashtags, "access_token": INSTAGRAM_TOKEN},
+                timeout=15
+            )
+            data = resp.json()
+            if data.get("id"):
+                print(f"      First comment (hashtags) posted!")
+                return
+            else:
+                print(f"      First comment attempt {attempt+1} error: {data}")
+                if attempt < 2:
+                    time.sleep(6)
+        except Exception as e:
+            print(f"      First comment attempt {attempt+1} exception: {e}")
+            if attempt < 2:
+                time.sleep(6)
 
 
 def generate_reply(comment_text: str, post_caption: str) -> str:
@@ -1152,13 +1158,18 @@ def reply_to_recent_comments() -> None:
     print(f"\n[Comments] Naye comments check kar raha hoon...")
 
     try:
+        from datetime import timezone
         media_resp = requests.get(
             f"https://graph.facebook.com/v25.0/{INSTAGRAM_ACCOUNT_ID}/media",
             params={"fields": "id,caption,timestamp", "limit": 5,
                     "access_token": INSTAGRAM_TOKEN},
             timeout=10
         )
-        posts = media_resp.json().get("data", [])
+        media_data = media_resp.json()
+        if "error" in media_data:
+            print(f"      Media fetch error: {media_data['error']}")
+            return
+        posts = media_data.get("data", [])
         replied = 0
 
         for post in posts:
@@ -1168,16 +1179,22 @@ def reply_to_recent_comments() -> None:
                         "access_token": INSTAGRAM_TOKEN},
                 timeout=10
             )
-            for comment in comments_resp.json().get("data", []):
+            comments_data = comments_resp.json()
+            if "error" in comments_data:
+                print(f"      Comments fetch error for post {post['id']}: {comments_data['error']}")
+                continue
+
+            for comment in comments_data.get("data", []):
                 # Skip if already replied to
                 if comment.get("replies", {}).get("data"):
                     continue
-                # Skip comments older than 48 hours
+                # Skip comments older than 48 hours (use UTC-aware comparison)
                 try:
-                    from datetime import datetime as dt
-                    age = (dt.now().timestamp() -
-                           dt.fromisoformat(comment["timestamp"].replace("Z", "+00:00")).timestamp())
-                    if age > 172800:
+                    now_ts = datetime.now(timezone.utc).timestamp()
+                    comment_ts = datetime.fromisoformat(
+                        comment["timestamp"].replace("Z", "+00:00")
+                    ).timestamp()
+                    if (now_ts - comment_ts) > 172800:
                         continue
                 except Exception:
                     pass
@@ -1192,10 +1209,13 @@ def reply_to_recent_comments() -> None:
                     data={"message": reply, "access_token": INSTAGRAM_TOKEN},
                     timeout=10
                 )
-                if reply_resp.json().get("id"):
+                reply_data = reply_resp.json()
+                if reply_data.get("id"):
                     print(f"      Replied: {reply[:60]}")
                     replied += 1
                     time.sleep(3)
+                else:
+                    print(f"      Reply error: {reply_data}")
 
         print(f"      {replied} comments pe reply kiya")
     except Exception as e:
@@ -1263,7 +1283,7 @@ def run_agent():
         # 5. Single photo post per news
         media_id = post_to_instagram(img_url, content.get("caption", ""))
         if media_id:
-            time.sleep(2)
+            time.sleep(8)
             hashtags = content.get("hashtags", "#India #News #BreakingNews")
             auto_first_comment(media_id, hashtags)
             print(f"      Post ho gaya!")
@@ -1373,10 +1393,10 @@ JSON: {{"index": 0, "importance": 9, "reason": "why"}}
         if not img_url:
             return
 
-        media_id = post_to_instagram(img_url, content["caption"])
+        media_id = post_to_instagram(img_url, content.get("caption", ""))
         if media_id:
-            time.sleep(2)
-            auto_first_comment(media_id, content["hashtags"])
+            time.sleep(8)
+            auto_first_comment(media_id, content.get("hashtags", "#India #BreakingNews #IndianNews"))
             print("  Breaking news post ho gaya!")
 
     except Exception as e:
