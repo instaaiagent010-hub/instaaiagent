@@ -1327,6 +1327,9 @@ def run_agent():
                 first_content = content
             time.sleep(POST_DELAY)
 
+    # Comments check — posting ho ya na ho, purane posts pe reply karo
+    reply_to_recent_comments()
+
     if not posted:
         print("Koi post nahi ho saka.")
         return
@@ -1347,9 +1350,6 @@ def run_agent():
         q_story_url = create_question_story(question, first_news.get("title", ""))
         if q_story_url:
             post_story(q_story_url)
-
-    # Recent comments pe auto-reply karo
-    reply_to_recent_comments()
 
     print(f"\n{'='*55}")
     print(f"  Agent complete! {posted} post kiya gaya.")
