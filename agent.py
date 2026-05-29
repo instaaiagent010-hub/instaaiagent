@@ -461,8 +461,8 @@ Sirf JSON format mein respond karo:
   "hashtags": "#tag1 #tag2 #tag3 ... (15-20 Hindi+English hashtags)",
   "image_keyword": "2-3 word English description of what image likely shows",
   "emoji_title": "emoji + short title",
-  "headline": "5-8 word Hinglish headline — SIRF news title ke facts use karo, kuch add mat karo",
-  "image_summary": "2-3 Hinglish sentences (max 35 words) — SIRF news body ke confirmed facts likho, koi assumption ya extra detail nahi"
+  "headline": "5-8 word Hinglish headline — SIRF news title ke facts use karo, kuch add mat karo. Spelling 100% correct ho — double check karo likhne se pehle",
+  "image_summary": "2-3 Hinglish sentences (max 35 words) — SIRF news body ke confirmed facts likho. Spelling 100% correct ho, koi typo nahi"
 }}
 """
 
@@ -485,6 +485,30 @@ Sirf JSON format mein respond karo:
         caption = re.sub(r'dekho video', 'dekho ye tasveer', caption, flags=re.IGNORECASE)
         caption = re.sub(r'ye video', 'ye tasveer', caption, flags=re.IGNORECASE)
         result["caption"] = caption
+
+        # Spell-check headline and summary (image pe dikhne wala text)
+        headline = result.get("headline", "")
+        summary  = result.get("image_summary", "")
+        if headline or summary:
+            try:
+                fix_resp = client.chat.completions.create(
+                    model="llama-3.3-70b-versatile",
+                    max_tokens=200,
+                    messages=[{"role": "user", "content": f"""Fix spelling mistakes only. Do NOT change meaning, words, or language. Return corrected versions only.
+
+Headline: {headline}
+Summary: {summary}
+
+JSON: {{"headline": "corrected headline", "summary": "corrected summary"}}"""}],
+                    response_format={"type": "json_object"}
+                )
+                fixed = json.loads(fix_resp.choices[0].message.content)
+                if fixed.get("headline"):
+                    result["headline"] = fixed["headline"]
+                if fixed.get("summary"):
+                    result["image_summary"] = fixed["summary"]
+            except Exception:
+                pass
 
         preview = result['caption'][:60].encode('ascii', errors='ignore').decode()
         print(f"      Caption ready: {preview}...")
