@@ -235,33 +235,76 @@ def refresh_token() -> str | None:
 
 
 # --- AI Planning Layer --------------------------------------------------------
+HISTORY_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "posted_history.json")
+
+
+def load_posted_history() -> set:
+    """posted_history.json se previously posted titles load karo"""
+    try:
+        if os.path.exists(HISTORY_FILE):
+            with open(HISTORY_FILE, "r", encoding="utf-8") as f:
+                data = json.load(f)
+                return set(data.get("titles", []))
+    except Exception:
+        pass
+    return set()
+
+
+def save_posted_title(title: str) -> None:
+    """Title history mein save karo aur GitHub pe push karo"""
+    try:
+        titles = list(load_posted_history())
+        normalized = title.lower().strip()[:120]
+        if normalized not in titles:
+            titles.append(normalized)
+        titles = titles[-100:]  # Last 100 titles rakhon
+        with open(HISTORY_FILE, "w", encoding="utf-8") as f:
+            json.dump({"titles": titles, "updated": datetime.now().isoformat()}, f,
+                      ensure_ascii=False, indent=2)
+        # GitHub Actions mein git push karo
+        import subprocess
+        repo_dir = os.path.dirname(os.path.abspath(__file__))
+        subprocess.run(["git", "config", "user.email", "bot@atlantisnews.ai"], cwd=repo_dir)
+        subprocess.run(["git", "config", "user.name", "Atlantis News Bot"], cwd=repo_dir)
+        subprocess.run(["git", "add", "posted_history.json"], cwd=repo_dir)
+        result = subprocess.run(["git", "commit", "-m", "chore: update posted history [skip ci]"],
+                                cwd=repo_dir, capture_output=True)
+        if result.returncode == 0:
+            subprocess.run(["git", "push"], cwd=repo_dir)
+            print(f"      History saved: {title[:60]}")
+        else:
+            print(f"      History commit skip (no change)")
+    except Exception as e:
+        print(f"      History save error: {e}")
+
+
 def get_recently_posted_titles() -> set:
-    """Last 12 Instagram posts ke titles fetch karo — duplicate check ke liye"""
+    """Local history + Instagram API dono se titles lao"""
+    titles = load_posted_history()
     if not INSTAGRAM_TOKEN or not INSTAGRAM_ACCOUNT_ID:
-        return set()
+        return titles
     try:
         resp = requests.get(
             f"https://graph.facebook.com/v25.0/{INSTAGRAM_ACCOUNT_ID}/media",
             params={"fields": "caption", "limit": 12, "access_token": INSTAGRAM_TOKEN},
             timeout=10
         )
-        titles = set()
         for post in resp.json().get("data", []):
             cap = post.get("caption", "")
             if cap:
                 titles.add(cap[:120].lower())
-        return titles
     except Exception:
-        return set()
+        pass
+    return titles
 
 
 def is_duplicate(news_title: str, recent_titles: set) -> bool:
-    """50%+ word overlap = duplicate"""
+    """40%+ word overlap = duplicate (stricter than before)"""
     words = set(news_title.lower().split())
-    for cap in recent_titles:
-        cap_words = set(cap.split())
-        overlap = len(words & cap_words) / max(len(words), 1)
-        if overlap >= 0.5:
+    for stored in recent_titles:
+        stored_words = set(stored.split())
+        overlap = len(words & stored_words) / max(len(words), 1)
+        if overlap >= 0.4:
             return True
     return False
 
@@ -1318,6 +1361,7 @@ def run_agent():
         # 5. Single photo post per news
         media_id = post_to_instagram(img_url, content.get("caption", ""))
         if media_id:
+            save_posted_title(news.get("title", ""))
             time.sleep(8)
             hashtags = content.get("hashtags", "#India #News #BreakingNews")
             auto_first_comment(media_id, hashtags)
@@ -1431,6 +1475,7 @@ JSON: {{"index": 0, "importance": 9, "reason": "why"}}
 
         media_id = post_to_instagram(img_url, content.get("caption", ""))
         if media_id:
+            save_posted_title(news.get("title", ""))
             time.sleep(8)
             auto_first_comment(media_id, content.get("hashtags", "#India #BreakingNews #IndianNews"))
             print("  Breaking news post ho gaya!")
