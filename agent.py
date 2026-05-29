@@ -419,7 +419,7 @@ Sirf JSON format mein respond karo:
   "image_keyword": "2-3 word English description of what image likely shows",
   "emoji_title": "emoji + short title",
   "headline": "5-8 word Hinglish headline jo image pe bade text mein dikhega — punchy, bold, news ka essence",
-  "image_summary": "1-2 simple Hinglish sentences (max 20 words total) jo news ka core fact bataye — ye image ke upar chhote font mein dikhega, simple aur clear rakho"
+  "image_summary": "2-3 Hinglish sentences (max 35 words total) jo news ka core fact clearly bataye — kya hua, kahan, kya impact — image pe chhote font mein dikhega, simple aur informative rakho"
 }}
 """
 
@@ -796,7 +796,7 @@ def add_logo_watermark(image_url: str, title: str = "", source: str = "", summar
                     line = test
             if line:
                 lines.append(line)
-            for l in lines[:2]:
+            for l in lines[:3]:
                 draw.text((30, y), l, font=font_summary, fill=(230, 230, 230, 245))
                 y += 40
 
