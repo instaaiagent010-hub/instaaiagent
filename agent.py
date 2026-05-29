@@ -436,24 +436,24 @@ def generate_caption(news_item: dict) -> dict:
 Tu ek Instagram news page ka content writer hai jo Indian audience ke liye likhta hai.
 
 Hum yeh news article ki THUMBNAIL IMAGE Instagram pe post kar rahe hain:
-Image URL: {image_url}
 News Title: {news_item.get('title', '')}
 News Body: {news_item.get('body', '')[:500]}
 Source: {news_item.get('source', '')}
 Published: {news_item.get('date', 'aaj')[:10]}
 
-Caption likhte waqt STRICT RULES:
-- YE EK PHOTO POST HAI — "video", "clip", "watch", "dekho video", "reel" jaisi koi bhi word BILKUL MAT LIKHO
-- "tasveer", "photo", "image", "ye shot", "is frame mein" — yahi words use karo
-- Caption IMAGE ke saath cohesive lagne chahiye — pehli ya doosri line mein photo ko acknowledge karo
-  (e.g., "Ye tasveer kaafi kuch kehti hai...", "Is photo mein dekho...", "Ye moment capture hua jab...")
+SABSE IMPORTANT RULE — FACT ACCURACY:
+- headline aur image_summary mein SIRF wahi facts likho jo upar "News Title" ya "News Body" mein clearly likhe hain
+- Apni taraf se koi bhi fact, number, naam, ya detail ADD MAT KARO — ye galat information spread karega
+- Agar koi fact clear nahi hai to us cheez ko mat likho
+
+Caption ke baaki rules:
+- YE EK PHOTO POST HAI — "video", "clip", "watch", "reel" bilkul mat likho
+- "tasveer", "photo", "image" — yahi words use karo
+- Pehli line mein photo acknowledge karo (e.g., "Ye tasveer kaafi kuch kehti hai...")
 - Hinglish mein likho (Hindi + English mix)
-- 6-8 lines total
-- Hook line se shuru karo jo scroll rokde
-- News ka context 2-3 lines mein explain karo with key facts/numbers
-- Emotional aur conversational tone
+- 6-8 lines, emotional aur conversational tone
 - End mein strong question ya call-to-action
-- CAPTION MEIN KOI HASHTAG NAHI — hashtags sirf alag "hashtags" field mein daalo, caption field mein # symbol bilkul mat aaye
+- CAPTION MEIN KOI HASHTAG NAHI — sirf "hashtags" field mein daalo
 
 Sirf JSON format mein respond karo:
 {{
@@ -461,8 +461,8 @@ Sirf JSON format mein respond karo:
   "hashtags": "#tag1 #tag2 #tag3 ... (15-20 Hindi+English hashtags)",
   "image_keyword": "2-3 word English description of what image likely shows",
   "emoji_title": "emoji + short title",
-  "headline": "5-8 word Hinglish headline jo image pe bade text mein dikhega — punchy, bold, news ka essence",
-  "image_summary": "2-3 Hinglish sentences (max 35 words total) jo news ka core fact clearly bataye — kya hua, kahan, kya impact — image pe chhote font mein dikhega, simple aur informative rakho"
+  "headline": "5-8 word Hinglish headline — SIRF news title ke facts use karo, kuch add mat karo",
+  "image_summary": "2-3 Hinglish sentences (max 35 words) — SIRF news body ke confirmed facts likho, koi assumption ya extra detail nahi"
 }}
 """
 
