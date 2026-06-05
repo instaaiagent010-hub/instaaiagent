@@ -649,6 +649,93 @@ def fetch_video(keyword: str) -> str | None:
     return None
 
 
+def fetch_rss_video(keyword: str) -> str | None:
+    """Sansad TV + DD News YouTube RSS feed se latest govt video download karo"""
+    import subprocess, xml.etree.ElementTree as ET
+
+    # Government YouTube channels ke RSS feeds — no auth needed
+    GOVT_CHANNELS = {
+        "Sansad TV":  "UCvklMUMFSKs13PISayPRS9w",
+        "PIB India":  "UCzyBNHGjUGSaOF9Pnt1VQKA",
+        "DD News":    "UCF57DHfv5OTBPHGRrMCntaA",
+        "MyGov India":"UCFg0FfIRDWz_v-vekHl4IVg",
+    }
+
+    yt_cookies = os.getenv("YT_COOKIES", "")
+    cookies_path = None
+    if yt_cookies:
+        cookies_path = os.path.join(tempfile.gettempdir(), "yt_cookies.txt")
+        with open(cookies_path, "w") as f:
+            f.write(yt_cookies)
+
+    kw_lower = keyword.lower()
+    out_dir = tempfile.gettempdir()
+
+    for ch_name, ch_id in GOVT_CHANNELS.items():
+        try:
+            rss_url = f"https://www.youtube.com/feeds/videos.xml?channel_id={ch_id}"
+            resp = requests.get(rss_url, timeout=10,
+                                headers={"User-Agent": "Mozilla/5.0"})
+            if resp.status_code != 200:
+                print(f"      RSS {ch_name}: HTTP {resp.status_code}")
+                continue
+
+            root = ET.fromstring(resp.content)
+            ns = {"atom": "http://www.w3.org/2005/Atom",
+                  "yt":   "http://www.youtube.com/xml/schemas/2015"}
+
+            entries = root.findall("atom:entry", ns)
+            if not entries:
+                continue
+
+            # Keyword match wala entry prefer karo, warna latest lo
+            selected = entries[0]
+            for entry in entries[:10]:
+                title_el = entry.find("atom:title", ns)
+                title_text = title_el.text.lower() if title_el is not None else ""
+                if any(w in title_text for w in kw_lower.split()[:3]):
+                    selected = entry
+                    break
+
+            vid_el = selected.find("yt:videoId", ns)
+            title_el = selected.find("atom:title", ns)
+            if vid_el is None:
+                continue
+
+            video_id = vid_el.text
+            video_title = title_el.text if title_el is not None else ""
+            print(f"      [{ch_name}] RSS: {video_title[:55]}")
+
+            out_template = os.path.join(out_dir, f"rss_{video_id}.%(ext)s")
+            cmd = [
+                "yt-dlp",
+                f"https://www.youtube.com/watch?v={video_id}",
+                "-f", "mp4[height<=720]/best[height<=720]/best",
+                "-o", out_template,
+                "--no-playlist", "--no-warnings",
+                "--add-header", "User-Agent:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+            ]
+            if cookies_path:
+                cmd += ["--cookies", cookies_path]
+
+            dl = subprocess.run(cmd, capture_output=True, timeout=180)
+
+            for fname in os.listdir(out_dir):
+                if fname.startswith(f"rss_{video_id}") and fname.endswith(".mp4"):
+                    path = os.path.join(out_dir, fname)
+                    size_mb = os.path.getsize(path) // 1024 // 1024
+                    print(f"      [{ch_name}] Downloaded: {size_mb}MB ✓")
+                    return path
+
+            err = dl.stderr[-100:].decode(errors="ignore")
+            print(f"      [{ch_name}] Download fail: {err}")
+
+        except Exception as e:
+            print(f"      [{ch_name}] Error: {e}")
+
+    return None
+
+
 def fetch_pib_video(keyword: str) -> str | None:
     """PIB India YouTube channel se latest video download karo — public domain"""
     import subprocess
@@ -866,20 +953,25 @@ def fetch_archive_video(keyword: str) -> str | None:
 
 
 def fetch_news_video_free(keyword: str) -> str | None:
-    """Multi-source free video fetch: Wikimedia → Archive.org → Pexels"""
+    """Multi-source free video: RSS(Sansad/DD) → Wikimedia → Archive.org → Pexels"""
     print(f"\n[Video] '{keyword}' ke liye video dhund raha hoon...")
 
-    # Source 1: Wikimedia Commons (public domain, direct MP4/WebM)
+    # Source 1: Sansad TV / DD News / PIB — YouTube RSS (real-time, govt content)
+    path = fetch_rss_video(keyword)
+    if path:
+        return path
+
+    # Source 2: Wikimedia Commons (public domain, direct MP4)
     path = fetch_wikimedia_video(keyword)
     if path:
         return path
 
-    # Source 2: Internet Archive (DD News, Doordarshan collections)
+    # Source 3: Internet Archive (DD News, Doordarshan collections)
     path = fetch_archive_video(keyword)
     if path:
         return path
 
-    # Source 3: Pexels stock video (always works, copyright-free)
+    # Source 4: Pexels stock video (always works, copyright-free)
     print("      Pexels stock video try kar raha hoon...")
     return fetch_video_pexels_mp4(keyword)
 
