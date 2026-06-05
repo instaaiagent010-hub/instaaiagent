@@ -1036,55 +1036,75 @@ def process_video_for_reel(video_path: str, headline: str, summary: str) -> str 
     return None
 
 
+def upload_video_to_github(video_path: str) -> str | None:
+    """Video GitHub Release pe upload karo — GH Actions se hamesha accessible"""
+    gh_token = os.getenv("GH_PAT") or os.getenv("GITHUB_TOKEN")
+    repo = os.getenv("GITHUB_REPOSITORY")
+    if not gh_token or not repo:
+        print("      GitHub token ya repo missing")
+        return None
+
+    headers = {
+        "Authorization": f"token {gh_token}",
+        "Accept": "application/vnd.github.v3+json"
+    }
+    filename = f"reel_{int(time.time())}.mp4"
+
+    try:
+        # "media" tag wala release dhundo ya banao
+        releases = requests.get(
+            f"https://api.github.com/repos/{repo}/releases",
+            headers=headers, timeout=10
+        ).json()
+
+        upload_url = None
+        for rel in (releases if isinstance(releases, list) else []):
+            if rel.get("tag_name") == "media-assets":
+                upload_url = rel["upload_url"].split("{")[0]
+                break
+
+        if not upload_url:
+            create = requests.post(
+                f"https://api.github.com/repos/{repo}/releases",
+                headers=headers,
+                json={"tag_name": "media-assets", "name": "Media Assets",
+                      "body": "Auto-generated media for Instagram reels", "draft": False},
+                timeout=10
+            ).json()
+            upload_url = create.get("upload_url", "").split("{")[0]
+
+        if not upload_url:
+            print("      Release URL nahi mili")
+            return None
+
+        size_mb = os.path.getsize(video_path) // 1024 // 1024
+        print(f"      GitHub release upload ({size_mb}MB)...")
+
+        with open(video_path, "rb") as f:
+            up = requests.post(
+                f"{upload_url}?name={filename}",
+                headers={**headers, "Content-Type": "video/mp4"},
+                data=f,
+                timeout=300
+            ).json()
+
+        url = up.get("browser_download_url", "")
+        if url:
+            print(f"      GitHub URL: {url[:80]}")
+            return url
+        print(f"      Upload response: {up}")
+
+    except Exception as e:
+        print(f"      GitHub upload error: {e}")
+    return None
+
+
 def upload_video_free(video_path: str) -> str | None:
-    """Video free hosting pe upload karo — multiple services fallback"""
-    size_mb = os.path.getsize(video_path) // 1024 // 1024
-    print(f"      Video upload ({size_mb}MB)...")
-
-    # Service 1: catbox.moe (most reliable from GH Actions)
-    try:
-        with open(video_path, "rb") as f:
-            resp = requests.post(
-                "https://catbox.moe/user/api.php",
-                data={"reqtype": "fileupload"},
-                files={"fileToUpload": f},
-                timeout=180
-            )
-        if resp.status_code == 200 and resp.text.startswith("https://"):
-            print(f"      catbox.moe: {resp.text.strip()[:70]}")
-            return resp.text.strip()
-        print(f"      catbox.moe error: {resp.status_code} {resp.text[:50]}")
-    except Exception as e:
-        print(f"      catbox.moe fail: {e}")
-
-    # Service 2: 0x0.st
-    try:
-        with open(video_path, "rb") as f:
-            resp = requests.post("https://0x0.st", files={"file": f}, timeout=180)
-        if resp.status_code == 200 and resp.text.strip().startswith("https://"):
-            print(f"      0x0.st: {resp.text.strip()[:70]}")
-            return resp.text.strip()
-        print(f"      0x0.st error: {resp.status_code}")
-    except Exception as e:
-        print(f"      0x0.st fail: {e}")
-
-    # Service 3: file.io
-    try:
-        with open(video_path, "rb") as f:
-            resp = requests.post(
-                "https://file.io/?expires=1d",
-                files={"file": f},
-                timeout=180
-            )
-        data = resp.json()
-        if data.get("link"):
-            print(f"      file.io: {data['link'][:70]}")
-            return data["link"]
-        print(f"      file.io error: {data}")
-    except Exception as e:
-        print(f"      file.io fail: {e}")
-
-    print("      Sabhi upload services fail hui")
+    """GitHub Release pe upload — most reliable from GH Actions"""
+    url = upload_video_to_github(video_path)
+    if url:
+        return url
+    print("      GitHub upload fail — koi URL nahi mili")
     return None
 
 
