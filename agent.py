@@ -657,34 +657,41 @@ def fetch_pib_video(keyword: str) -> str | None:
     # PIB India ke official YouTube channels
     PIB_CHANNELS = [
         "https://www.youtube.com/@pibindia/videos",
-        "https://www.youtube.com/@DDNewslive/videos",  # Doordarshan fallback
+        "https://www.youtube.com/user/pibindia/videos",
     ]
 
     out_dir = tempfile.gettempdir()
+
+    # YouTube cookies (GitHub Secret YT_COOKIES se)
+    yt_cookies = os.getenv("YT_COOKIES", "")
+    cookies_path = None
+    if yt_cookies:
+        cookies_path = os.path.join(out_dir, "yt_cookies.txt")
+        with open(cookies_path, "w") as f:
+            f.write(yt_cookies)
+        print("      YouTube cookies loaded")
 
     for channel_url in PIB_CHANNELS:
         try:
             out_template = os.path.join(out_dir, "pib_%(id)s.%(ext)s")
 
-            # Step 1: Channel se latest 5 video IDs list karo
-            list_result = subprocess.run([
-                "yt-dlp", channel_url,
-                "--flat-playlist",
-                "--playlist-start", "1", "--playlist-end", "5",
-                "--print", "%(id)s\t%(title)s",
-                "--no-warnings",
-            ], capture_output=True, text=True, timeout=60)
+            base_cmd = ["yt-dlp", "--no-warnings"]
+            if cookies_path:
+                base_cmd += ["--cookies", cookies_path]
 
-            if list_result.returncode != 0 or not list_result.stdout.strip():
-                print(f"      Channel list fail: {list_result.stderr[-150:]}")
-                continue
+            # Step 1: Channel se latest 5 video IDs list karo
+            list_result = subprocess.run(
+                base_cmd + [channel_url, "--flat-playlist",
+                            "--playlist-start", "1", "--playlist-end", "5",
+                            "--print", "%(id)s\t%(title)s"],
+                capture_output=True, text=True, timeout=60
+            )
 
             lines = [l for l in list_result.stdout.strip().split('\n') if '\t' in l]
             if not lines:
-                print("      Koi video listed nahi hua")
+                print(f"      List fail ({channel_url[-20:]}): {list_result.stderr[-80:]}")
                 continue
 
-            # Keyword se match karne wala video prefer karo, warna pehla lo
             kw_lower = keyword.lower()
             selected = lines[0]
             for line in lines:
@@ -695,16 +702,21 @@ def fetch_pib_video(keyword: str) -> str | None:
             video_id, video_title = selected.split('\t', 1)
             print(f"      Video selected: {video_title[:60]}")
 
-            # Step 2: Video download karo
-            dl = subprocess.run([
-                "yt-dlp", f"https://www.youtube.com/watch?v={video_id}",
-                "-f", "mp4[height<=720]/best[height<=720]/best",
-                "-o", out_template,
-                "--no-playlist", "--no-warnings",
-            ], capture_output=True, timeout=180)
+            dl = subprocess.run(
+                base_cmd + [
+                    f"https://www.youtube.com/watch?v={video_id}",
+                    "-f", "mp4[height<=720]/best[height<=720]/best",
+                    "-o", out_template, "--no-playlist"
+                ],
+                capture_output=True, timeout=180
+            )
 
             if dl.returncode != 0:
-                print(f"      Download fail: {dl.stderr[-150:].decode(errors='ignore')}")
+                err = dl.stderr[-200:].decode(errors='ignore')
+                print(f"      Download fail: {err}")
+                if "cookies" in err.lower() or "sign in" in err.lower():
+                    print("      YouTube cookies ki zaroorat hai — YT_COOKIES secret set karo")
+                    break
                 continue
 
             for fname in os.listdir(out_dir):
@@ -715,11 +727,42 @@ def fetch_pib_video(keyword: str) -> str | None:
                     return path
 
         except subprocess.TimeoutExpired:
-            print(f"      Timeout on {channel_url}")
+            print(f"      Timeout")
         except Exception as e:
             print(f"      Error: {e}")
 
-    print("      PIB: Koi video nahi mila")
+    # Fallback: Pexels se topic-related stock video
+    print("      PIB unavailable — Pexels video try kar raha hoon...")
+    return fetch_video_pexels_mp4(keyword)
+
+
+def fetch_video_pexels_mp4(keyword: str) -> str | None:
+    """Pexels se stock video download karo — MP4 local file return"""
+    if not PEXELS_API_KEY:
+        return None
+    try:
+        headers = {"Authorization": PEXELS_API_KEY}
+        resp = requests.get(
+            f"https://api.pexels.com/videos/search?query={keyword}&per_page=5&orientation=portrait",
+            headers=headers, timeout=10
+        )
+        videos = resp.json().get("videos", [])
+        for video in videos:
+            for vf in video.get("video_files", []):
+                if vf.get("file_type") == "video/mp4" and vf.get("height", 0) >= 720:
+                    url = vf["link"]
+                    print(f"      Pexels video: {url[:60]}")
+                    # Download to temp file
+                    r = requests.get(url, timeout=60, stream=True)
+                    path = os.path.join(tempfile.gettempdir(), f"pexels_{int(time.time())}.mp4")
+                    with open(path, "wb") as f:
+                        for chunk in r.iter_content(chunk_size=8192):
+                            f.write(chunk)
+                    size_mb = os.path.getsize(path) // 1024 // 1024
+                    print(f"      Pexels downloaded: {size_mb}MB")
+                    return path
+    except Exception as e:
+        print(f"      Pexels video error: {e}")
     return None
 
 
