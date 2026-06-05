@@ -1655,9 +1655,105 @@ JSON: {{"index": 0, "importance": 9, "reason": "why"}}
     reply_to_recent_comments()
 
 
+def post_pib_reel() -> None:
+    """PIB YouTube se news video download karke Instagram Reel post karo"""
+    print("=" * 55)
+    print("  PIB Reel Agent Starting...")
+    print(f"  Time: {datetime.now().strftime('%Y-%m-%d %H:%M')}")
+    print("=" * 55)
+
+    # Aaj ke top government news topics
+    topics = [
+        "India government scheme today",
+        "PM Modi announcement today",
+        "India Parliament news today",
+        "India economy RBI today",
+        "India defense ministry today",
+    ]
+
+    recent_titles = get_recently_posted_titles()
+
+    for topic in topics:
+        print(f"\n[PIB] Topic: {topic}")
+        pib_path = fetch_pib_video(topic)
+        if not pib_path:
+            continue
+
+        # Caption ke liye Groq se title generate karo
+        try:
+            client = Groq(api_key=GROQ_API_KEY)
+            resp = client.chat.completions.create(
+                model="llama-3.3-70b-versatile",
+                max_tokens=300,
+                messages=[{"role": "user", "content": f"""
+Ye ek PIB India (Press Information Bureau) ka official government video hai.
+Topic: {topic}
+
+Instagram Reel ke liye JSON banao:
+{{
+  "headline": "5-7 word Hinglish headline — punchy, bold",
+  "summary": "1-2 sentence Hinglish summary (max 20 words) — kya hai ye video",
+  "caption": "4-6 line Hinglish caption — informative, engaging, no hashtags",
+  "hashtags": "#India #Government #PIB #IndiaNews #BreakingNews #ModiGovernment (15 hashtags)"
+}}
+"""}],
+                response_format={"type": "json_object"}
+            )
+            content = json.loads(resp.choices[0].message.content)
+        except Exception:
+            content = {
+                "headline": "India Government Update",
+                "summary": "PIB India ki taraf se official government news.",
+                "caption": "India mein aaj ka government update. PIB India se latest khabar.",
+                "hashtags": "#India #Government #PIBIndia #IndiaNews #BreakingNews"
+            }
+
+        if is_duplicate(content.get("headline", topic), recent_titles):
+            print(f"      Duplicate — skip")
+            try:
+                os.remove(pib_path)
+            except Exception:
+                pass
+            continue
+
+        reel_path = process_video_for_reel(
+            pib_path,
+            content.get("headline", "India Government News"),
+            content.get("summary", "")
+        )
+        try:
+            os.remove(pib_path)
+        except Exception:
+            pass
+
+        if not reel_path:
+            continue
+
+        video_url = upload_video_free(reel_path)
+        try:
+            os.remove(reel_path)
+        except Exception:
+            pass
+
+        if not video_url:
+            continue
+
+        media_id = post_reel_to_instagram(video_url, content.get("caption", ""))
+        if media_id:
+            save_posted_title(content.get("headline", topic))
+            time.sleep(8)
+            auto_first_comment(media_id, content.get("hashtags", "#India #PIBIndia #Government"))
+            print(f"  Reel post ho gaya!")
+            break  # Ek reel kaafi hai per run
+
+    print("\n  PIB Reel Agent done.")
+
+
 if __name__ == "__main__":
     import sys
     if "--breaking" in sys.argv:
         check_breaking_news()
+    elif "--reel" in sys.argv:
+        post_pib_reel()
     else:
         run_agent()
