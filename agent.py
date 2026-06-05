@@ -976,59 +976,88 @@ def fetch_news_video_free(keyword: str) -> str | None:
     return fetch_video_pexels_mp4(keyword)
 
 
+def generate_tts_audio(text: str, out_path: str) -> bool:
+    """gTTS se Hindi narration generate karo"""
+    try:
+        from gtts import gTTS
+        tts = gTTS(text=text, lang="hi", slow=False)
+        tts.save(out_path)
+        return os.path.exists(out_path) and os.path.getsize(out_path) > 0
+    except Exception as e:
+        print(f"      TTS error: {e}")
+        return False
+
+
 def process_video_for_reel(video_path: str, headline: str, summary: str) -> str | None:
-    """Video ko 9:16 Reel format mein trim karo + Pillow text overlay (no freetype needed)"""
+    """Video ko 9:16 Reel format mein trim karo + text overlay + Hindi TTS audio"""
     import subprocess
     try:
-        tmp_dir = tempfile.gettempdir()
-        base_path  = os.path.join(tmp_dir, f"reel_base_{int(time.time())}.mp4")
-        overlay_png = os.path.join(tmp_dir, f"overlay_{int(time.time())}.png")
-        out_path   = os.path.join(tmp_dir, f"reel_{int(time.time())}.mp4")
+        tmp_dir     = tempfile.gettempdir()
+        ts          = int(time.time())
+        base_path   = os.path.join(tmp_dir, f"reel_base_{ts}.mp4")
+        overlay_png = os.path.join(tmp_dir, f"overlay_{ts}.png")
+        audio_path  = os.path.join(tmp_dir, f"narration_{ts}.mp3")
+        out_path    = os.path.join(tmp_dir, f"reel_{ts}.mp4")
 
-        # Step 1: Video crop + resize (no text, no freetype)
+        # Step 1: Video crop + resize
         crop = subprocess.run([
             "ffmpeg", "-y", "-i", video_path,
             "-t", "59",
             "-vf", "crop=ih*9/16:ih:(iw-ih*9/16)/2:0,scale=720:1280",
-            "-c:v", "libx264", "-c:a", "aac", "-preset", "fast", "-crf", "28",
+            "-c:v", "libx264", "-an", "-preset", "fast", "-crf", "28",
             base_path
         ], capture_output=True, timeout=180)
 
         if crop.returncode != 0 or not os.path.exists(base_path):
-            print(f"      Crop fail: {crop.stderr[-150:].decode(errors='ignore')}")
+            print(f"      Crop fail: {crop.stderr[-100:].decode(errors='ignore')}")
             return None
 
-        # Step 2: Pillow se text overlay PNG banao (720x310)
+        # Step 2: Pillow text overlay PNG
         overlay = Image.new("RGBA", (720, 310), (0, 0, 0, 0))
         ov_draw = ImageDraw.Draw(overlay)
         ov_draw.rectangle([0, 0, 720, 310], fill=(0, 0, 0, 190))
-        fn_big   = get_font(48)
-        fn_mid   = get_font(30)
-        fn_small = get_font(24)
-        ov_draw.text((20, 18),  headline[:52],  font=fn_big,   fill=(255, 255, 255, 255))
-        ov_draw.text((20, 82),  summary[:80],   font=fn_mid,   fill=(220, 220, 220, 245))
+        ov_draw.text((20, 18),  headline[:52],  font=get_font(48), fill=(255, 255, 255, 255))
+        ov_draw.text((20, 82),  summary[:80],   font=get_font(30), fill=(220, 220, 220, 245))
         date_str = datetime.now().strftime("%d %b %Y")
         ov_draw.text((20, 265), f"@atlantis_news_ai  •  {date_str}",
-                     font=fn_small, fill=(170, 170, 170, 230))
+                     font=get_font(24), fill=(170, 170, 170, 230))
         overlay.save(overlay_png, "PNG")
 
-        # Step 3: ffmpeg overlay filter (no freetype needed)
-        result = subprocess.run([
-            "ffmpeg", "-y",
-            "-i", base_path, "-i", overlay_png,
-            "-filter_complex", "[0:v][1:v]overlay=0:H-310[out]",
-            "-map", "[out]", "-map", "0:a?",
-            "-c:v", "libx264", "-c:a", "aac", "-preset", "fast", "-crf", "28",
-            out_path
-        ], capture_output=True, timeout=180)
+        # Step 3: Hindi TTS narration generate karo
+        tts_text = f"{headline}. {summary}"
+        has_audio = generate_tts_audio(tts_text, audio_path)
+        if has_audio:
+            print("      TTS narration ready")
 
-        for p in [base_path, overlay_png]:
+        # Step 4: ffmpeg — video + overlay + audio combine
+        if has_audio:
+            result = subprocess.run([
+                "ffmpeg", "-y",
+                "-i", base_path, "-i", overlay_png, "-i", audio_path,
+                "-filter_complex",
+                "[0:v][1:v]overlay=0:H-310[vout];"
+                "[2:a]volume=1.5,atrim=0:59[aout]",
+                "-map", "[vout]", "-map", "[aout]",
+                "-c:v", "libx264", "-c:a", "aac",
+                "-shortest", "-preset", "fast", "-crf", "28",
+                out_path
+            ], capture_output=True, timeout=180)
+        else:
+            result = subprocess.run([
+                "ffmpeg", "-y",
+                "-i", base_path, "-i", overlay_png,
+                "-filter_complex", "[0:v][1:v]overlay=0:H-310[out]",
+                "-map", "[out]", "-c:v", "libx264",
+                "-preset", "fast", "-crf", "28", out_path
+            ], capture_output=True, timeout=180)
+
+        for p in [base_path, overlay_png, audio_path]:
             try: os.remove(p)
             except: pass
 
         if result.returncode == 0 and os.path.exists(out_path):
             size_mb = os.path.getsize(out_path) // 1024 // 1024
-            print(f"      Reel ready: {size_mb}MB")
+            print(f"      Reel ready: {size_mb}MB {'(with audio)' if has_audio else '(silent)'}")
             return out_path
         print(f"      ffmpeg error: {result.stderr[-200:].decode(errors='ignore')}")
     except Exception as e:
