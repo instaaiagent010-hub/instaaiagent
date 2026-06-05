@@ -653,12 +653,12 @@ def fetch_rss_video(keyword: str) -> str | None:
     """Sansad TV + DD News YouTube RSS feed se latest govt video download karo"""
     import subprocess, xml.etree.ElementTree as ET
 
-    # Government YouTube channels ke RSS feeds — no auth needed
+    # Government YouTube channels — (type, value): user= ya channel_id=
     GOVT_CHANNELS = {
-        "Sansad TV":  "UCvklMUMFSKs13PISayPRS9w",
-        "PIB India":  "UCzyBNHGjUGSaOF9Pnt1VQKA",
-        "DD News":    "UCF57DHfv5OTBPHGRrMCntaA",
-        "MyGov India":"UCFg0FfIRDWz_v-vekHl4IVg",
+        "Sansad TV":  ("user", "sansadtv"),
+        "PIB India":  ("user", "pibindia"),
+        "DD News":    ("user", "DDNewslive"),
+        "DD India":   ("user", "ddindia"),
     }
 
     yt_cookies = os.getenv("YT_COOKIES", "")
@@ -671,9 +671,9 @@ def fetch_rss_video(keyword: str) -> str | None:
     kw_lower = keyword.lower()
     out_dir = tempfile.gettempdir()
 
-    for ch_name, ch_id in GOVT_CHANNELS.items():
+    for ch_name, (param, value) in GOVT_CHANNELS.items():
         try:
-            rss_url = f"https://www.youtube.com/feeds/videos.xml?channel_id={ch_id}"
+            rss_url = f"https://www.youtube.com/feeds/videos.xml?{param}={value}"
             resp = requests.get(rss_url, timeout=10,
                                 headers={"User-Agent": "Mozilla/5.0"})
             if resp.status_code != 200:
@@ -977,45 +977,60 @@ def fetch_news_video_free(keyword: str) -> str | None:
 
 
 def process_video_for_reel(video_path: str, headline: str, summary: str) -> str | None:
-    """Video ko 9:16 Reel format mein trim karo + text overlay add karo"""
+    """Video ko 9:16 Reel format mein trim karo + Pillow text overlay (no freetype needed)"""
     import subprocess
     try:
-        out_path = os.path.join(tempfile.gettempdir(), f"reel_{int(time.time())}.mp4")
-        font = "/usr/share/fonts/truetype/noto/NotoSans-Regular.ttf"
-        if not os.path.exists(font):
-            font = "/usr/share/fonts/noto/NotoSans-Regular.ttf"
+        tmp_dir = tempfile.gettempdir()
+        base_path  = os.path.join(tmp_dir, f"reel_base_{int(time.time())}.mp4")
+        overlay_png = os.path.join(tmp_dir, f"overlay_{int(time.time())}.png")
+        out_path   = os.path.join(tmp_dir, f"reel_{int(time.time())}.mp4")
 
-        def esc(t):
-            return t.replace("'", "").replace(":", " ").replace("\\", "")[:55]
-
-        date_str = datetime.now().strftime("%d %b %Y")
-        h = esc(headline)
-        s = esc(summary)
-
-        vf = (
-            "crop=ih*9/16:ih:(iw-ih*9/16)/2:0,scale=720:1280,"
-            "drawbox=x=0:y=H-300:w=W:h=300:color=black@0.75:t=fill,"
-            f"drawtext=fontfile={font}:text='{h}':fontsize=50:fontcolor=white:"
-            "x=20:y=H-280:shadowcolor=black:shadowx=2:shadowy=2,"
-            f"drawtext=fontfile={font}:text='{s}':fontsize=30:fontcolor=#dddddd:"
-            "x=20:y=H-190:shadowcolor=black:shadowx=1:shadowy=1,"
-            f"drawtext=fontfile={font}:text='@atlantis_news_ai  •  {date_str}':"
-            "fontsize=26:fontcolor=#aaaaaa:x=20:y=H-80"
-        )
-
-        result = subprocess.run([
+        # Step 1: Video crop + resize (no text, no freetype)
+        crop = subprocess.run([
             "ffmpeg", "-y", "-i", video_path,
-            "-t", "59", "-vf", vf,
-            "-c:v", "libx264", "-c:a", "aac",
-            "-preset", "fast", "-crf", "28",
+            "-t", "59",
+            "-vf", "crop=ih*9/16:ih:(iw-ih*9/16)/2:0,scale=720:1280",
+            "-c:v", "libx264", "-c:a", "aac", "-preset", "fast", "-crf", "28",
+            base_path
+        ], capture_output=True, timeout=180)
+
+        if crop.returncode != 0 or not os.path.exists(base_path):
+            print(f"      Crop fail: {crop.stderr[-150:].decode(errors='ignore')}")
+            return None
+
+        # Step 2: Pillow se text overlay PNG banao (720x310)
+        overlay = Image.new("RGBA", (720, 310), (0, 0, 0, 0))
+        ov_draw = ImageDraw.Draw(overlay)
+        ov_draw.rectangle([0, 0, 720, 310], fill=(0, 0, 0, 190))
+        fn_big   = get_font(48)
+        fn_mid   = get_font(30)
+        fn_small = get_font(24)
+        ov_draw.text((20, 18),  headline[:52],  font=fn_big,   fill=(255, 255, 255, 255))
+        ov_draw.text((20, 82),  summary[:80],   font=fn_mid,   fill=(220, 220, 220, 245))
+        date_str = datetime.now().strftime("%d %b %Y")
+        ov_draw.text((20, 265), f"@atlantis_news_ai  •  {date_str}",
+                     font=fn_small, fill=(170, 170, 170, 230))
+        overlay.save(overlay_png, "PNG")
+
+        # Step 3: ffmpeg overlay filter (no freetype needed)
+        result = subprocess.run([
+            "ffmpeg", "-y",
+            "-i", base_path, "-i", overlay_png,
+            "-filter_complex", "[0:v][1:v]overlay=0:H-310[out]",
+            "-map", "[out]", "-map", "0:a?",
+            "-c:v", "libx264", "-c:a", "aac", "-preset", "fast", "-crf", "28",
             out_path
         ], capture_output=True, timeout=180)
+
+        for p in [base_path, overlay_png]:
+            try: os.remove(p)
+            except: pass
 
         if result.returncode == 0 and os.path.exists(out_path):
             size_mb = os.path.getsize(out_path) // 1024 // 1024
             print(f"      Reel ready: {size_mb}MB")
             return out_path
-        print(f"      ffmpeg error: {result.stderr[-300:].decode(errors='ignore')}")
+        print(f"      ffmpeg error: {result.stderr[-200:].decode(errors='ignore')}")
     except Exception as e:
         print(f"      Reel process error: {e}")
     return None
