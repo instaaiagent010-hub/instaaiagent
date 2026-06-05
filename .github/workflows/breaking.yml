@@ -23,7 +23,9 @@ jobs:
           python-version: '3.11'
 
       - name: Fonts install
-        run: sudo apt-get install -y fonts-noto fonts-noto-extra
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --fix-missing fonts-noto fonts-noto-extra
 
       - name: Dependencies install
         run: pip install ddgs groq requests Pillow python-dotenv PyNaCl yt-dlp

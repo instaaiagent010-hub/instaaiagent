@@ -25,7 +25,13 @@ jobs:
           python-version: '3.11'
 
       - name: System dependencies
-        run: sudo apt-get install -y --fix-missing fonts-noto fonts-noto-extra ffmpeg
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --fix-missing fonts-noto fonts-noto-extra
+          wget -q https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz
+          tar xf ffmpeg-release-amd64-static.tar.xz
+          sudo mv ffmpeg-*-static/ffmpeg /usr/local/bin/ffmpeg
+          ffmpeg -version | head -1
 
       - name: Dependencies install
         run: pip install ddgs groq requests Pillow python-dotenv PyNaCl yt-dlp feedparser
