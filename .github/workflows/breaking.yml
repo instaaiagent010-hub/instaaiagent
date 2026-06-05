@@ -26,7 +26,7 @@ jobs:
         run: sudo apt-get install -y fonts-noto fonts-noto-extra
 
       - name: Dependencies install
-        run: pip install ddgs groq requests Pillow python-dotenv PyNaCl
+        run: pip install ddgs groq requests Pillow python-dotenv PyNaCl yt-dlp
 
       - name: Breaking news check
         env:

@@ -649,51 +649,167 @@ def fetch_video(keyword: str) -> str | None:
     return None
 
 
-def post_video_to_instagram(video_url: str, caption: str, hashtags: str) -> bool:
-    """Instagram pe video (Reel) post karo"""
-    print(f"\n[4/4] Instagram pe video post kar raha hoon...")
-    if not INSTAGRAM_TOKEN or not INSTAGRAM_ACCOUNT_ID:
-        print("      Dry run — credentials nahi hain")
-        return False
-
-    full_caption = f"{caption}\n\n{hashtags}"
+def fetch_pib_video(keyword: str) -> str | None:
+    """PIB India YouTube se relevant video download karo — public domain"""
+    import subprocess
+    print(f"\n[PIB] Video dhund raha hoon: '{keyword}'")
     try:
-        upload_url = f"https://graph.facebook.com/v25.0/{INSTAGRAM_ACCOUNT_ID}/media"
-        resp = requests.post(upload_url, data={
-            "video_url": video_url,
-            "caption": full_caption,
-            "media_type": "REELS",
-            "access_token": INSTAGRAM_TOKEN
-        })
+        out_dir = tempfile.gettempdir()
+        out_template = os.path.join(out_dir, "pib_%(id)s.%(ext)s")
+        search_query = f"ytsearch5:PIB India {keyword}"
+
+        # Video IDs aur duration fetch karo (download nahi)
+        info = subprocess.run([
+            "yt-dlp", "--no-playlist", "--quiet",
+            "--print", "%(id)s|%(duration)s|%(title)s",
+            "--match-filter", "duration < 180",
+            search_query
+        ], capture_output=True, text=True, timeout=60)
+
+        lines = [l for l in info.stdout.strip().split('\n') if '|' in l]
+        if not lines:
+            print("      PIB: Koi video nahi mila")
+            return None
+
+        video_id = lines[0].split('|')[0]
+        title = lines[0].split('|', 2)[2] if len(lines[0].split('|')) > 2 else ""
+        print(f"      PIB video: {title[:60]}")
+
+        subprocess.run([
+            "yt-dlp", "--no-playlist", "--quiet",
+            "-f", "mp4[height<=720]/best[height<=720]/best",
+            "-o", out_template,
+            f"https://www.youtube.com/watch?v={video_id}"
+        ], timeout=120)
+
+        for fname in os.listdir(out_dir):
+            if fname.startswith(f"pib_{video_id}") and fname.endswith(".mp4"):
+                return os.path.join(out_dir, fname)
+    except subprocess.TimeoutExpired:
+        print("      PIB: Timeout")
+    except Exception as e:
+        print(f"      PIB error: {e}")
+    return None
+
+
+def process_video_for_reel(video_path: str, headline: str, summary: str) -> str | None:
+    """Video ko 9:16 Reel format mein trim karo + text overlay add karo"""
+    import subprocess
+    try:
+        out_path = os.path.join(tempfile.gettempdir(), f"reel_{int(time.time())}.mp4")
+        font = "/usr/share/fonts/truetype/noto/NotoSans-Regular.ttf"
+        if not os.path.exists(font):
+            font = "/usr/share/fonts/noto/NotoSans-Regular.ttf"
+
+        def esc(t):
+            return t.replace("'", "").replace(":", " ").replace("\\", "")[:55]
+
+        date_str = datetime.now().strftime("%d %b %Y")
+        h = esc(headline)
+        s = esc(summary)
+
+        vf = (
+            "crop=ih*9/16:ih:(iw-ih*9/16)/2:0,scale=720:1280,"
+            "drawbox=x=0:y=H-300:w=W:h=300:color=black@0.75:t=fill,"
+            f"drawtext=fontfile={font}:text='{h}':fontsize=50:fontcolor=white:"
+            "x=20:y=H-280:shadowcolor=black:shadowx=2:shadowy=2,"
+            f"drawtext=fontfile={font}:text='{s}':fontsize=30:fontcolor=#dddddd:"
+            "x=20:y=H-190:shadowcolor=black:shadowx=1:shadowy=1,"
+            f"drawtext=fontfile={font}:text='@atlantis_news_ai  •  {date_str}':"
+            "fontsize=26:fontcolor=#aaaaaa:x=20:y=H-80"
+        )
+
+        result = subprocess.run([
+            "ffmpeg", "-y", "-i", video_path,
+            "-t", "59", "-vf", vf,
+            "-c:v", "libx264", "-c:a", "aac",
+            "-preset", "fast", "-crf", "28",
+            out_path
+        ], capture_output=True, timeout=180)
+
+        if result.returncode == 0 and os.path.exists(out_path):
+            size_mb = os.path.getsize(out_path) // 1024 // 1024
+            print(f"      Reel ready: {size_mb}MB")
+            return out_path
+        print(f"      ffmpeg error: {result.stderr[-300:].decode(errors='ignore')}")
+    except Exception as e:
+        print(f"      Reel process error: {e}")
+    return None
+
+
+def upload_video_free(video_path: str) -> str | None:
+    """Video transfer.sh pe upload karo — free public URL milegi"""
+    try:
+        size_mb = os.path.getsize(video_path) // 1024 // 1024
+        print(f"      Video upload ({size_mb}MB)...")
+        fname = os.path.basename(video_path)
+        with open(video_path, "rb") as f:
+            resp = requests.put(
+                f"https://transfer.sh/{fname}",
+                data=f,
+                headers={"Max-Days": "1"},
+                timeout=180
+            )
+        if resp.status_code == 200:
+            url = resp.text.strip()
+            print(f"      Video URL: {url[:70]}")
+            return url
+        print(f"      transfer.sh error: {resp.status_code}")
+    except Exception as e:
+        print(f"      Video upload error: {e}")
+    return None
+
+
+def post_reel_to_instagram(video_url: str, caption: str) -> str | None:
+    """Instagram pe Reel post karo — media_id return karo"""
+    print(f"\n[4/4] Reel post kar raha hoon...")
+    if not INSTAGRAM_TOKEN or not INSTAGRAM_ACCOUNT_ID:
+        return "dry_run"
+    try:
+        resp = requests.post(
+            f"https://graph.facebook.com/v25.0/{INSTAGRAM_ACCOUNT_ID}/media",
+            data={"video_url": video_url, "caption": caption,
+                  "media_type": "REELS", "access_token": INSTAGRAM_TOKEN},
+            timeout=20
+        )
         container_id = resp.json().get("id")
         if not container_id:
-            print(f"      Video upload error: {resp.json()}")
-            return False
+            print(f"      Reel container error: {resp.json()}")
+            return None
 
-        # Processing wait karo
-        for _ in range(10):
+        for _ in range(12):
             time.sleep(8)
             status = requests.get(
                 f"https://graph.facebook.com/v25.0/{container_id}",
-                params={"fields": "status_code", "access_token": INSTAGRAM_TOKEN}
+                params={"fields": "status_code", "access_token": INSTAGRAM_TOKEN},
+                timeout=10
             ).json()
-            if status.get("status_code") == "FINISHED":
+            code = status.get("status_code", "")
+            print(f"      Status: {code}")
+            if code == "FINISHED":
                 break
-            print(f"      Processing... {status.get('status_code')}")
+            if code == "ERROR":
+                print(f"      Reel processing error")
+                return None
 
-        pub_resp = requests.post(
+        pub = requests.post(
             f"https://graph.facebook.com/v25.0/{INSTAGRAM_ACCOUNT_ID}/media_publish",
-            data={"creation_id": container_id, "access_token": INSTAGRAM_TOKEN}
+            data={"creation_id": container_id, "access_token": INSTAGRAM_TOKEN},
+            timeout=15
         )
-        if pub_resp.json().get("id"):
-            print(f"      Video post successful! ID: {pub_resp.json()['id']}")
-            return True
-        else:
-            print(f"      Publish error: {pub_resp.json()}")
-            return False
+        media_id = pub.json().get("id")
+        if media_id:
+            print(f"      Reel posted! ID: {media_id}")
+            return media_id
+        print(f"      Reel publish error: {pub.json()}")
     except Exception as e:
-        print(f"      Video post error: {e}")
-        return False
+        print(f"      Reel error: {e}")
+    return None
+
+
+def post_video_to_instagram(video_url: str, caption: str, hashtags: str) -> bool:
+    """Legacy wrapper — naya post_reel_to_instagram use karo"""
+    return post_reel_to_instagram(video_url, f"{caption}\n\n{hashtags}") is not None
 
 
 def upload_image(image_path: str) -> str | None:
@@ -1383,8 +1499,35 @@ def run_agent():
         if not img_url:
             continue
 
-        # 5. Single photo post per news
-        media_id = post_to_instagram(img_url, content.get("caption", ""))
+        # 5. Government news → PIB Reel try karo, else photo post
+        GOVT_KEYWORDS = ["government", "ministry", "modi", "parliament", "cabinet",
+                         "scheme", "policy", "budget", "rbi", "supreme court",
+                         "defence", "defense", "army", "election", "commission"]
+        is_govt = any(k in news.get("title", "").lower() for k in GOVT_KEYWORDS)
+
+        media_id = None
+        if is_govt:
+            print(f"      Government news — PIB Reel try kar raha hoon...")
+            pib_path = fetch_pib_video(content.get("image_keyword", news.get("title", "")[:30]))
+            if pib_path:
+                reel_path = process_video_for_reel(
+                    pib_path,
+                    content.get("headline") or news.get("title", ""),
+                    content.get("image_summary", "")
+                )
+                if reel_path:
+                    video_url = upload_video_free(reel_path)
+                    if video_url:
+                        media_id = post_reel_to_instagram(video_url, content.get("caption", ""))
+                    try:
+                        os.remove(pib_path)
+                        os.remove(reel_path)
+                    except Exception:
+                        pass
+
+        if not media_id:
+            media_id = post_to_instagram(img_url, content.get("caption", ""))
+
         if media_id:
             save_posted_title(news.get("title", ""))
             time.sleep(8)
