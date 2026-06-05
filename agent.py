@@ -710,10 +710,13 @@ def fetch_rss_video(keyword: str) -> str | None:
             cmd = [
                 "yt-dlp",
                 f"https://www.youtube.com/watch?v={video_id}",
-                "-f", "mp4[height<=720]/best[height<=720]/best",
+                "-f", "mp4[height<=480]/best[height<=480]/best",
                 "-o", out_template,
                 "--no-playlist", "--no-warnings",
-                "--add-header", "User-Agent:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+                "--extractor-args", "youtube:player_client=web",
+                "--add-header", "User-Agent:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+                "--add-header", "Accept-Language:en-US,en;q=0.9",
+                "--sleep-interval", "2"
             ]
             if cookies_path:
                 cmd += ["--cookies", cookies_path]
