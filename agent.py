@@ -766,6 +766,124 @@ def fetch_video_pexels_mp4(keyword: str) -> str | None:
     return None
 
 
+def fetch_wikimedia_video(keyword: str) -> str | None:
+    """Wikimedia Commons MediaWiki API se free India news video dhundo"""
+    print(f"      [Wikimedia] Searching: {keyword}")
+    try:
+        search = requests.get(
+            "https://commons.wikimedia.org/w/api.php",
+            params={
+                "action": "query", "list": "search", "format": "json",
+                "srsearch": f"{keyword} India",
+                "srnamespace": "6", "srlimit": 8,
+                "srqiprofile": "classic_noboostlinks"
+            },
+            timeout=10
+        )
+        results = search.json().get("query", {}).get("search", [])
+        video_titles = [r["title"] for r in results
+                        if any(r["title"].lower().endswith(ext)
+                               for ext in [".webm", ".ogv", ".mp4"])]
+        if not video_titles:
+            print("      [Wikimedia] Koi video nahi mili")
+            return None
+
+        # Pehli valid video ka URL lo
+        info = requests.get(
+            "https://commons.wikimedia.org/w/api.php",
+            params={
+                "action": "query", "titles": "|".join(video_titles[:3]),
+                "prop": "imageinfo", "iiprop": "url|size|mediatype",
+                "format": "json"
+            },
+            timeout=10
+        )
+        pages = info.json().get("query", {}).get("pages", {})
+        for page in pages.values():
+            ii = page.get("imageinfo", [{}])[0]
+            url = ii.get("url", "")
+            size = ii.get("size", 0)
+            if url and size < 80 * 1024 * 1024:  # 80MB limit
+                ext = ".webm" if ".webm" in url else ".mp4"
+                path = os.path.join(tempfile.gettempdir(), f"wiki_{int(time.time())}{ext}")
+                print(f"      [Wikimedia] Downloading: {page.get('title','')[:50]}")
+                r = requests.get(url, timeout=120, stream=True)
+                with open(path, "wb") as f:
+                    for chunk in r.iter_content(8192):
+                        f.write(chunk)
+                size_mb = os.path.getsize(path) // 1024 // 1024
+                if size_mb > 0:
+                    print(f"      [Wikimedia] Downloaded: {size_mb}MB")
+                    return path
+    except Exception as e:
+        print(f"      [Wikimedia] Error: {e}")
+    return None
+
+
+def fetch_archive_video(keyword: str) -> str | None:
+    """Internet Archive se India/DD News video dhundo — no blocking"""
+    print(f"      [Archive.org] Searching: {keyword}")
+    try:
+        search = requests.get(
+            "https://archive.org/advancedsearch.php",
+            params={
+                "q": f'({keyword}) AND (subject:"India" OR subject:"DD News" OR subject:"Doordarshan") AND mediatype:movies',
+                "fl": "identifier,title",
+                "rows": 5, "output": "json", "sort": "date desc"
+            },
+            timeout=15
+        )
+        docs = search.json().get("response", {}).get("docs", [])
+        if not docs:
+            print("      [Archive.org] Koi result nahi")
+            return None
+
+        for doc in docs:
+            identifier = doc["identifier"]
+            files_resp = requests.get(
+                f"https://archive.org/metadata/{identifier}/files",
+                timeout=10
+            )
+            files = files_resp.json().get("result", [])
+            for finfo in files:
+                fname = finfo.get("name", "")
+                fsize = int(finfo.get("size", 0))
+                if fname.endswith(".mp4") and 0 < fsize < 80 * 1024 * 1024:
+                    url = f"https://archive.org/download/{identifier}/{fname}"
+                    print(f"      [Archive.org] {doc.get('title','')[:50]}")
+                    path = os.path.join(tempfile.gettempdir(), f"archive_{int(time.time())}.mp4")
+                    r = requests.get(url, timeout=120, stream=True)
+                    with open(path, "wb") as f:
+                        for chunk in r.iter_content(8192):
+                            f.write(chunk)
+                    size_mb = os.path.getsize(path) // 1024 // 1024
+                    if size_mb > 0:
+                        print(f"      [Archive.org] Downloaded: {size_mb}MB")
+                        return path
+    except Exception as e:
+        print(f"      [Archive.org] Error: {e}")
+    return None
+
+
+def fetch_news_video_free(keyword: str) -> str | None:
+    """Multi-source free video fetch: Wikimedia → Archive.org → Pexels"""
+    print(f"\n[Video] '{keyword}' ke liye video dhund raha hoon...")
+
+    # Source 1: Wikimedia Commons (public domain, direct MP4/WebM)
+    path = fetch_wikimedia_video(keyword)
+    if path:
+        return path
+
+    # Source 2: Internet Archive (DD News, Doordarshan collections)
+    path = fetch_archive_video(keyword)
+    if path:
+        return path
+
+    # Source 3: Pexels stock video (always works, copyright-free)
+    print("      Pexels stock video try kar raha hoon...")
+    return fetch_video_pexels_mp4(keyword)
+
+
 def process_video_for_reel(video_path: str, headline: str, summary: str) -> str | None:
     """Video ko 9:16 Reel format mein trim karo + text overlay add karo"""
     import subprocess
@@ -1582,7 +1700,7 @@ def run_agent():
         media_id = None
         if is_govt:
             print(f"      Government news — PIB Reel try kar raha hoon...")
-            pib_path = fetch_pib_video(content.get("image_keyword", news.get("title", "")[:30]))
+            pib_path = fetch_news_video_free(content.get("image_keyword", news.get("title", "")[:30]))
             if pib_path:
                 reel_path = process_video_for_reel(
                     pib_path,
@@ -1749,7 +1867,7 @@ def post_pib_reel() -> None:
 
     for topic in topics:
         print(f"\n[PIB] Topic: {topic}")
-        pib_path = fetch_pib_video(topic)
+        pib_path = fetch_news_video_free(topic)
         if not pib_path:
             continue
 
