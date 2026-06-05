@@ -270,7 +270,8 @@ def save_posted_title(title: str) -> None:
         result = subprocess.run(["git", "commit", "-m", "chore: update posted history [skip ci]"],
                                 cwd=repo_dir, capture_output=True)
         if result.returncode == 0:
-            subprocess.run(["git", "push"], cwd=repo_dir)
+            subprocess.run(["git", "pull", "--rebase", "origin", "main"], cwd=repo_dir)
+            subprocess.run(["git", "push", "origin", "main"], cwd=repo_dir)
             print(f"      History saved: {title[:60]}")
         else:
             print(f"      History commit skip (no change)")
