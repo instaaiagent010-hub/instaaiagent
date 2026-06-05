@@ -1037,25 +1037,54 @@ def process_video_for_reel(video_path: str, headline: str, summary: str) -> str 
 
 
 def upload_video_free(video_path: str) -> str | None:
-    """Video transfer.sh pe upload karo — free public URL milegi"""
+    """Video free hosting pe upload karo — multiple services fallback"""
+    size_mb = os.path.getsize(video_path) // 1024 // 1024
+    print(f"      Video upload ({size_mb}MB)...")
+
+    # Service 1: catbox.moe (most reliable from GH Actions)
     try:
-        size_mb = os.path.getsize(video_path) // 1024 // 1024
-        print(f"      Video upload ({size_mb}MB)...")
-        fname = os.path.basename(video_path)
         with open(video_path, "rb") as f:
-            resp = requests.put(
-                f"https://transfer.sh/{fname}",
-                data=f,
-                headers={"Max-Days": "1"},
+            resp = requests.post(
+                "https://catbox.moe/user/api.php",
+                data={"reqtype": "fileupload"},
+                files={"fileToUpload": f},
                 timeout=180
             )
-        if resp.status_code == 200:
-            url = resp.text.strip()
-            print(f"      Video URL: {url[:70]}")
-            return url
-        print(f"      transfer.sh error: {resp.status_code}")
+        if resp.status_code == 200 and resp.text.startswith("https://"):
+            print(f"      catbox.moe: {resp.text.strip()[:70]}")
+            return resp.text.strip()
+        print(f"      catbox.moe error: {resp.status_code} {resp.text[:50]}")
     except Exception as e:
-        print(f"      Video upload error: {e}")
+        print(f"      catbox.moe fail: {e}")
+
+    # Service 2: 0x0.st
+    try:
+        with open(video_path, "rb") as f:
+            resp = requests.post("https://0x0.st", files={"file": f}, timeout=180)
+        if resp.status_code == 200 and resp.text.strip().startswith("https://"):
+            print(f"      0x0.st: {resp.text.strip()[:70]}")
+            return resp.text.strip()
+        print(f"      0x0.st error: {resp.status_code}")
+    except Exception as e:
+        print(f"      0x0.st fail: {e}")
+
+    # Service 3: file.io
+    try:
+        with open(video_path, "rb") as f:
+            resp = requests.post(
+                "https://file.io/?expires=1d",
+                files={"file": f},
+                timeout=180
+            )
+        data = resp.json()
+        if data.get("link"):
+            print(f"      file.io: {data['link'][:70]}")
+            return data["link"]
+        print(f"      file.io error: {data}")
+    except Exception as e:
+        print(f"      file.io fail: {e}")
+
+    print("      Sabhi upload services fail hui")
     return None
 
 
