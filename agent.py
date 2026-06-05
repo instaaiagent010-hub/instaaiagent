@@ -650,45 +650,76 @@ def fetch_video(keyword: str) -> str | None:
 
 
 def fetch_pib_video(keyword: str) -> str | None:
-    """PIB India YouTube se relevant video download karo — public domain"""
+    """PIB India YouTube channel se latest video download karo — public domain"""
     import subprocess
     print(f"\n[PIB] Video dhund raha hoon: '{keyword}'")
-    try:
-        out_dir = tempfile.gettempdir()
-        out_template = os.path.join(out_dir, "pib_%(id)s.%(ext)s")
-        search_query = f"ytsearch5:PIB India {keyword}"
 
-        # Video IDs aur duration fetch karo (download nahi)
-        info = subprocess.run([
-            "yt-dlp", "--no-playlist", "--quiet",
-            "--print", "%(id)s|%(duration)s|%(title)s",
-            "--match-filter", "duration < 180",
-            search_query
-        ], capture_output=True, text=True, timeout=60)
+    # PIB India ke official YouTube channels
+    PIB_CHANNELS = [
+        "https://www.youtube.com/@pibindia/videos",
+        "https://www.youtube.com/@DDNewslive/videos",  # Doordarshan fallback
+    ]
 
-        lines = [l for l in info.stdout.strip().split('\n') if '|' in l]
-        if not lines:
-            print("      PIB: Koi video nahi mila")
-            return None
+    out_dir = tempfile.gettempdir()
 
-        video_id = lines[0].split('|')[0]
-        title = lines[0].split('|', 2)[2] if len(lines[0].split('|')) > 2 else ""
-        print(f"      PIB video: {title[:60]}")
+    for channel_url in PIB_CHANNELS:
+        try:
+            out_template = os.path.join(out_dir, "pib_%(id)s.%(ext)s")
 
-        subprocess.run([
-            "yt-dlp", "--no-playlist", "--quiet",
-            "-f", "mp4[height<=720]/best[height<=720]/best",
-            "-o", out_template,
-            f"https://www.youtube.com/watch?v={video_id}"
-        ], timeout=120)
+            # Step 1: Channel se latest 5 video IDs list karo
+            list_result = subprocess.run([
+                "yt-dlp", channel_url,
+                "--flat-playlist",
+                "--playlist-start", "1", "--playlist-end", "5",
+                "--print", "%(id)s\t%(title)s",
+                "--no-warnings",
+            ], capture_output=True, text=True, timeout=60)
 
-        for fname in os.listdir(out_dir):
-            if fname.startswith(f"pib_{video_id}") and fname.endswith(".mp4"):
-                return os.path.join(out_dir, fname)
-    except subprocess.TimeoutExpired:
-        print("      PIB: Timeout")
-    except Exception as e:
-        print(f"      PIB error: {e}")
+            if list_result.returncode != 0 or not list_result.stdout.strip():
+                print(f"      Channel list fail: {list_result.stderr[-150:]}")
+                continue
+
+            lines = [l for l in list_result.stdout.strip().split('\n') if '\t' in l]
+            if not lines:
+                print("      Koi video listed nahi hua")
+                continue
+
+            # Keyword se match karne wala video prefer karo, warna pehla lo
+            kw_lower = keyword.lower()
+            selected = lines[0]
+            for line in lines:
+                if any(w in line.lower() for w in kw_lower.split()[:3]):
+                    selected = line
+                    break
+
+            video_id, video_title = selected.split('\t', 1)
+            print(f"      Video selected: {video_title[:60]}")
+
+            # Step 2: Video download karo
+            dl = subprocess.run([
+                "yt-dlp", f"https://www.youtube.com/watch?v={video_id}",
+                "-f", "mp4[height<=720]/best[height<=720]/best",
+                "-o", out_template,
+                "--no-playlist", "--no-warnings",
+            ], capture_output=True, timeout=180)
+
+            if dl.returncode != 0:
+                print(f"      Download fail: {dl.stderr[-150:].decode(errors='ignore')}")
+                continue
+
+            for fname in os.listdir(out_dir):
+                if fname.startswith(f"pib_{video_id}") and fname.endswith(".mp4"):
+                    path = os.path.join(out_dir, fname)
+                    size_mb = os.path.getsize(path) // 1024 // 1024
+                    print(f"      Downloaded: {fname} ({size_mb}MB)")
+                    return path
+
+        except subprocess.TimeoutExpired:
+            print(f"      Timeout on {channel_url}")
+        except Exception as e:
+            print(f"      Error: {e}")
+
+    print("      PIB: Koi video nahi mila")
     return None
 
 
