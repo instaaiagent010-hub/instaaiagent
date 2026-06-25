@@ -1,0 +1,10 @@
+.env
+__pycache__/
+*.py[cod]
+*.mp4
+*.mp3
+*.jpg
+*.png
+!atlantis_wildlife.png
+*.tmp
+.DS_Store

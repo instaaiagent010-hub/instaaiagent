@@ -1,0 +1,55 @@
+name: Atlantis Wildlife — Instagram Reels (3×/day)
+
+# Budget: 3 posts/day × 2 images = ~6 ImgBB + 3 Pexels calls
+# Schedule: Morning, Afternoon, Evening IST
+
+on:
+  schedule:
+    - cron: '30 3 * * *'    # IST 09:00
+    - cron: '30 8 * * *'    # IST 14:00
+    - cron: '30 14 * * *'   # IST 20:00
+  workflow_dispatch:
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT }}
+
+      - name: Python setup
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: System packages
+        run: sudo apt-get install -y fonts-noto fonts-noto-extra ffmpeg
+
+      - name: Install dependencies
+        run: pip install ddgs groq requests Pillow python-dotenv PyNaCl gtts edge-tts
+
+      - name: Configure git
+        run: |
+          git config --global user.email "bot@atlantiswildlife.ai"
+          git config --global user.name "Atlantis Wildlife Bot"
+          git remote set-url origin https://x-access-token:${{ secrets.GH_PAT }}@github.com/${{ github.repository }}.git
+
+      - name: Post Wildlife Reels
+        env:
+          GROQ_API_KEY:                        ${{ secrets.GROQ_API_KEY }}
+          PEXELS_API_KEY:                      ${{ secrets.PEXELS_API_KEY }}
+          IMGBB_API_KEY:                       ${{ secrets.IMGBB_API_KEY }}
+          GH_PAT:                              ${{ secrets.GH_PAT }}
+          GITHUB_REPOSITORY:                   ${{ github.repository }}
+          WILDLIFE_INSTAGRAM_ACCESS_TOKEN:     ${{ secrets.WILDLIFE_INSTAGRAM_ACCESS_TOKEN }}
+          WILDLIFE_INSTAGRAM_ACCOUNT_ID:       ${{ secrets.WILDLIFE_INSTAGRAM_ACCOUNT_ID }}
+          YOUTUBE_CLIENT_ID:                   ${{ secrets.YOUTUBE_WILDLIFE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET:               ${{ secrets.YOUTUBE_WILDLIFE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN:               ${{ secrets.YOUTUBE_WILDLIFE_REFRESH_TOKEN }}
+        run: python atlantis_wildlife/agent.py
