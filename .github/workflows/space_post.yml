@@ -1,0 +1,41 @@
+name: Atlantis Space — Daily 4 Posts
+
+on:
+  schedule:
+    - cron: '0 3 * * *'    # IST 08:30
+    - cron: '0 8 * * *'    # IST 13:30
+    - cron: '0 13 * * *'   # IST 18:30
+    - cron: '0 16 * * *'   # IST 21:30
+  workflow_dispatch:
+
+jobs:
+  space_post:
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Python setup
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Fonts install
+        run: sudo apt-get install -y fonts-noto fonts-noto-extra
+
+      - name: Dependencies install
+        run: pip install ddgs groq requests Pillow python-dotenv PyNaCl
+
+      - name: Post space news
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          SPACE_INSTAGRAM_ACCESS_TOKEN: ${{ secrets.SPACE_INSTAGRAM_ACCESS_TOKEN }}
+          SPACE_INSTAGRAM_ACCOUNT_ID: ${{ secrets.SPACE_INSTAGRAM_ACCOUNT_ID }}
+          IMGBB_API_KEY: ${{ secrets.IMGBB_API_KEY }}
+          SPACE_APP_ID: ${{ secrets.SPACE_APP_ID }}
+          SPACE_APP_SECRET: ${{ secrets.SPACE_APP_SECRET }}
+          GH_PAT: ${{ secrets.GH_PAT }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: python atlantis_space/agent.py
