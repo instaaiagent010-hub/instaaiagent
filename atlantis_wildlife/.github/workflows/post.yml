@@ -31,8 +31,15 @@ jobs:
       - name: System packages
         run: sudo apt-get install -y fonts-noto fonts-noto-extra ffmpeg
 
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: wildlife-pip-${{ hashFiles('**/requirements*.txt') }}-v1
+          restore-keys: wildlife-pip-
+
       - name: Install dependencies
-        run: pip install ddgs groq requests Pillow python-dotenv PyNaCl gtts edge-tts
+        run: pip install ddgs groq requests Pillow python-dotenv PyNaCl gtts edge-tts yt-dlp internetarchive
 
       - name: Configure git
         run: |
@@ -49,7 +56,11 @@ jobs:
           GITHUB_REPOSITORY:                   ${{ github.repository }}
           WILDLIFE_INSTAGRAM_ACCESS_TOKEN:     ${{ secrets.WILDLIFE_INSTAGRAM_ACCESS_TOKEN }}
           WILDLIFE_INSTAGRAM_ACCOUNT_ID:       ${{ secrets.WILDLIFE_INSTAGRAM_ACCOUNT_ID }}
+          NPS_API_KEY:                         ${{ secrets.NPS_API_KEY }}
+          PIXABAY_API_KEY:                     ${{ secrets.PIXABAY_API_KEY }}
+          GOOGLE_TTS_API_KEY:                  ${{ secrets.GOOGLE_TTS_API_KEY }}
+          SARVAM_API_KEY:                      ${{ secrets.SARVAM_API_KEY }}
           YOUTUBE_CLIENT_ID:                   ${{ secrets.YOUTUBE_WILDLIFE_CLIENT_ID }}
           YOUTUBE_CLIENT_SECRET:               ${{ secrets.YOUTUBE_WILDLIFE_CLIENT_SECRET }}
           YOUTUBE_REFRESH_TOKEN:               ${{ secrets.YOUTUBE_WILDLIFE_REFRESH_TOKEN }}
-        run: python atlantis_wildlife/agent.py
+        run: python agent.py

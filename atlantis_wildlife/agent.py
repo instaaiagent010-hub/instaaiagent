@@ -35,12 +35,15 @@ INSTAGRAM_ACCOUNT_ID = os.getenv("WILDLIFE_INSTAGRAM_ACCOUNT_ID")
 IMGBB_API_KEY        = os.getenv("IMGBB_API_KEY")
 
 CHANNEL_HANDLE  = "@atlantis_wildlife"
-POST_DELAY      = 45
-CAROUSEL_SLIDES = 2    # 2 posts/run × 5 runs = 10 posts/day
+POST_DELAY      = 20
+CAROUSEL_SLIDES = 1
 
 LOGO_PATH     = os.path.join(os.path.dirname(os.path.abspath(__file__)), "atlantis_wildlife.png")
 HISTORY_FILE  = os.path.join(os.path.dirname(os.path.abspath(__file__)), "posted_history.json")
 YT_HISTORY_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "youtube_history.json")
+
+NPS_API_KEY     = os.getenv("NPS_API_KEY", "")
+PIXABAY_API_KEY = os.getenv("PIXABAY_API_KEY", "")
 
 # YouTube config
 YOUTUBE_CLIENT_ID     = os.getenv("YOUTUBE_CLIENT_ID", "")
@@ -683,6 +686,285 @@ def post_to_instagram(image_url: str, caption: str) -> str | None:
 
 # --- Reel / Video Pipeline ---------------------------------------------------
 
+def _download_video(url: str, prefix: str, min_size: int = 500_000) -> str | None:
+    """Download a video URL to temp file, return path or None if too small"""
+    try:
+        r = requests.get(url, timeout=90, stream=True,
+                         headers={"User-Agent": "AtlantisWildlifeBot/1.0"})
+        if r.status_code != 200:
+            return None
+        path = os.path.join(tempfile.gettempdir(), f"{prefix}_{int(time.time())}.mp4")
+        with open(path, "wb") as f:
+            for chunk in r.iter_content(8192):
+                f.write(chunk)
+        size = os.path.getsize(path)
+        if size >= min_size:
+            print(f"      Downloaded {size//1024//1024}MB → {prefix}")
+            return path
+        os.remove(path)
+    except Exception as e:
+        print(f"      Download error ({prefix}): {e}")
+    return None
+
+
+def _yt_dlp(url: str, prefix: str) -> str | None:
+    """Download via yt-dlp (for NPS/NOAA YouTube links)"""
+    import subprocess
+    try:
+        path = os.path.join(tempfile.gettempdir(), f"{prefix}_{int(time.time())}.mp4")
+        result = subprocess.run([
+            "yt-dlp", url,
+            "-f", "bestvideo[ext=mp4][height<=1080]+bestaudio[ext=m4a]/best[ext=mp4]/best",
+            "--merge-output-format", "mp4",
+            "-o", path, "--no-playlist", "--quiet", "--no-warnings",
+        ], capture_output=True, timeout=120)
+        if result.returncode == 0 and os.path.exists(path) and os.path.getsize(path) > 500_000:
+            print(f"      yt-dlp OK: {os.path.getsize(path)//1024//1024}MB")
+            return path
+    except Exception as e:
+        print(f"      yt-dlp error ({prefix}): {e}")
+    return None
+
+
+# ── NASA Image & Video Library ─────────────────────────────────────────────
+NASA_WILDLIFE_QUERIES = [
+    "sea turtle", "bald eagle", "manatee", "alligator everglades",
+    "whale dolphin ocean", "bear wildlife", "wolf yellowstone",
+    "bird migration wildlife", "coral reef fish", "wildlife animal"
+]
+
+# Words that indicate non-wildlife NASA content — skip these
+NASA_EXCLUDE = {
+    "ndvi", "satellite", "spacecraft", "rocket", "astronaut", "iss",
+    "telescope", "galaxy", "planet", "mars", "moon", "solar", "orbit",
+    "launch", "station", "hubble", "webb", "radar", "lidar", "sensor",
+    "instrument", "data", "visualization", "composite", "landsat",
+    "modis", "terra", "aqua", "goes", "suomi",
+}
+
+
+def fetch_nasa_video(keyword: str) -> str | None:
+    """NASA — public domain wildlife/nature videos (strict wildlife filter)"""
+    import random
+    # Use fixed wildlife queries — don't pass article keyword (too broad)
+    queries = [q for q in NASA_WILDLIFE_QUERIES
+               if any(w in keyword.lower() for w in q.split())]
+    if not queries:
+        queries = random.sample(NASA_WILDLIFE_QUERIES, 3)
+
+    try:
+        for q in queries[:3]:
+            r = requests.get(
+                "https://images-api.nasa.gov/search",
+                params={"q": q, "media_type": "video"},
+                timeout=10
+            )
+            items = r.json().get("collection", {}).get("items", [])
+            random.shuffle(items)
+            for item in items[:10]:
+                data    = item.get("data", [{}])[0]
+                nasa_id = data.get("nasa_id", "")
+                title   = data.get("title", "").lower()
+                desc    = data.get("description", "").lower()
+                if not nasa_id:
+                    continue
+                # Skip satellite/science content — wildlife only
+                combined = f"{title} {desc}"
+                if any(excl in combined for excl in NASA_EXCLUDE):
+                    continue
+                try:
+                    asset = requests.get(
+                        f"https://images-api.nasa.gov/asset/{nasa_id}",
+                        timeout=10
+                    ).json()
+                    for f in asset.get("collection", {}).get("items", []):
+                        href = f.get("href", "")
+                        if href.endswith("~mobile.mp4") or href.endswith(".mp4"):
+                            path = _download_video(href, "nasa")
+                            if path:
+                                print(f"      NASA video: {nasa_id} — {data.get('title','')[:50]}")
+                                return path
+                except Exception:
+                    continue
+    except Exception as e:
+        print(f"      NASA error: {e}")
+    return None
+
+
+# ── USFWS National Digital Library ────────────────────────────────────────
+def fetch_usfws_video(keyword: str) -> str | None:
+    """US Fish & Wildlife Service — public domain wildlife footage"""
+    try:
+        # CONTENTdm search API
+        url = (
+            f"https://digitalmedia.fws.gov/digital/api/search/collection/natdiglib"
+            f"/searchterm/{requests.utils.quote(keyword)}"
+            f"/field/all/mode/any/maxRecords/20/start/1/page/1/format/json"
+        )
+        r = requests.get(url, timeout=12,
+                         headers={"User-Agent": "AtlantisWildlifeBot/1.0"})
+        items = r.json().get("items", [])
+        import random
+        random.shuffle(items)
+        for item in items[:10]:
+            item_id  = item.get("itemid", "")
+            coll     = item.get("collection", "natdiglib")
+            filetype = item.get("filetype", "").lower()
+            if not item_id:
+                continue
+            if filetype not in ("mp4", "mov", "avi", "wmv", ""):
+                continue
+            dl_url = (
+                f"https://digitalmedia.fws.gov/digital/api"
+                f"/collection/{coll}/id/{item_id}/download"
+            )
+            path = _download_video(dl_url, "usfws")
+            if path:
+                print(f"      USFWS video: id={item_id}")
+                return path
+    except Exception as e:
+        print(f"      USFWS error: {e}")
+    return None
+
+
+# ── NPS — National Park Service ────────────────────────────────────────────
+def fetch_nps_video(keyword: str) -> str | None:
+    """NPS — public domain national park wildlife videos (via yt-dlp)"""
+    if not NPS_API_KEY:
+        return None
+    try:
+        r = requests.get(
+            "https://developer.nps.gov/api/v1/multimedia/videos",
+            params={"q": keyword, "api_key": NPS_API_KEY, "limit": 10},
+            timeout=10
+        )
+        items = r.json().get("data", [])
+        import random
+        random.shuffle(items)
+        for item in items[:6]:
+            video_url = item.get("url", "")
+            if not video_url:
+                continue
+            # NPS videos are YouTube embeds — use yt-dlp
+            if "youtube" in video_url or "youtu.be" in video_url:
+                path = _yt_dlp(video_url, "nps")
+                if path:
+                    print(f"      NPS video: {item.get('title','')[:50]}")
+                    return path
+    except Exception as e:
+        print(f"      NPS error: {e}")
+    return None
+
+
+# ── NOAA Ocean Exploration ─────────────────────────────────────────────────
+def fetch_noaa_video(keyword: str) -> str | None:
+    """NOAA — public domain ocean/marine wildlife footage via YouTube"""
+    # NOAA official YouTube channels (public domain content)
+    NOAA_CHANNELS = [
+        "UCIHQZBCEoNhMkFpFNNb2i-Q",   # NOAA Office of Response & Restoration
+        "UCVs3U-o8KDMdCXjhJzZ_oBQ",   # NOAA Ocean Exploration
+    ]
+    try:
+        # Search NOAA YouTube channel via yt-dlp playlist
+        channel_url = f"https://www.youtube.com/channel/{NOAA_CHANNELS[1]}/videos"
+        result_path = os.path.join(tempfile.gettempdir(), f"noaa_list_{int(time.time())}.json")
+        import subprocess
+        r = subprocess.run([
+            "yt-dlp", channel_url,
+            "--get-id", "--flat-playlist", "--playlist-end", "20",
+            "--quiet", "--no-warnings",
+        ], capture_output=True, timeout=30, text=True)
+        if r.returncode != 0 or not r.stdout.strip():
+            return None
+        video_ids = r.stdout.strip().split("\n")
+        import random
+        random.shuffle(video_ids)
+        for vid_id in video_ids[:5]:
+            path = _yt_dlp(f"https://www.youtube.com/watch?v={vid_id}", "noaa")
+            if path:
+                print(f"      NOAA video: {vid_id}")
+                return path
+    except Exception as e:
+        print(f"      NOAA error: {e}")
+    return None
+
+
+# ── USGS ScienceBase ───────────────────────────────────────────────────────
+def fetch_usgs_video(keyword: str) -> str | None:
+    """USGS — public domain wildlife science videos"""
+    try:
+        r = requests.get(
+            "https://www.sciencebase.gov/catalog/items",
+            params={
+                "q":      f"{keyword} wildlife video",
+                "format": "json",
+                "max":    20,
+                "fields": "id,title,webLinks,files",
+                "filter": "browseCategory=Video",
+            },
+            timeout=12
+        )
+        items = r.json().get("items", [])
+        import random
+        random.shuffle(items)
+        for item in items[:8]:
+            # Check webLinks for direct video URLs
+            for link in item.get("webLinks", []):
+                ltype = link.get("type", "").lower()
+                url   = link.get("uri", "")
+                if url and ("mp4" in url.lower() or ltype in ("download", "video")):
+                    path = _download_video(url, "usgs")
+                    if path:
+                        print(f"      USGS video: {item.get('title','')[:50]}")
+                        return path
+            # Check files array
+            for f in item.get("files", []):
+                url  = f.get("url", "")
+                name = f.get("name", "").lower()
+                if url and name.endswith((".mp4", ".mov", ".avi")):
+                    path = _download_video(url, "usgs")
+                    if path:
+                        print(f"      USGS file: {name}")
+                        return path
+    except Exception as e:
+        print(f"      USGS error: {e}")
+    return None
+
+
+# ── Pixabay ────────────────────────────────────────────────────────────────
+def fetch_pixabay_video(keyword: str) -> str | None:
+    """Pixabay — CC0 equivalent wildlife videos"""
+    if not PIXABAY_API_KEY:
+        return None
+    try:
+        r = requests.get(
+            "https://pixabay.com/api/videos/",
+            params={
+                "key":        PIXABAY_API_KEY,
+                "q":          keyword,
+                "video_type": "film",
+                "per_page":   10,
+                "safesearch": "true",
+            },
+            timeout=10
+        )
+        hits = r.json().get("hits", [])
+        import random
+        random.shuffle(hits)
+        for hit in hits[:5]:
+            videos = hit.get("videos", {})
+            for quality in ("large", "medium", "small"):
+                url = videos.get(quality, {}).get("url", "")
+                if url:
+                    path = _download_video(url, "pixabay")
+                    if path:
+                        print(f"      Pixabay video: id={hit.get('id')}")
+                        return path
+    except Exception as e:
+        print(f"      Pixabay error: {e}")
+    return None
+
+
 def fetch_pexels_video(keyword: str) -> str | None:
     """Pexels — free wildlife stock video"""
     if not PEXELS_API_KEY:
@@ -712,130 +994,440 @@ def fetch_pexels_video(keyword: str) -> str | None:
     return None
 
 
-def fetch_wildlife_video(keyword: str, source: str = "") -> str | None:
-    """Wildlife video — Pexels primary source"""
+def fetch_wikimedia_video(keyword: str) -> str | None:
+    """Wikimedia Commons — CC-licensed wildlife videos (direct MP4)"""
+    import re as _re
+    try:
+        # Search Commons for wildlife video files
+        search = requests.get(
+            "https://commons.wikimedia.org/w/api.php",
+            params={
+                "action": "query", "list": "search", "format": "json",
+                "srsearch": f"{keyword} wildlife filetype:webm OR filetype:ogv OR filetype:mp4",
+                "srnamespace": "6", "srlimit": 8,
+            }, timeout=10
+        )
+        results = search.json().get("query", {}).get("search", [])
+        video_titles = [
+            r["title"] for r in results
+            if any(r["title"].lower().endswith(e) for e in [".webm", ".ogv", ".mp4"])
+        ]
+        if not video_titles:
+            return None
+        # Get direct file URL
+        info = requests.get(
+            "https://commons.wikimedia.org/w/api.php",
+            params={"action": "query", "titles": video_titles[0],
+                    "prop": "imageinfo", "iiprop": "url|size|mediatype",
+                    "format": "json"},
+            timeout=10
+        )
+        pages = info.json().get("query", {}).get("pages", {})
+        for page in pages.values():
+            ii = page.get("imageinfo", [{}])[0]
+            url  = ii.get("url", "")
+            size = ii.get("size", 0)
+            if url and size > 500_000:   # skip tiny clips < 500KB
+                print(f"      Wikimedia video: {url[-50:]}")
+                r = requests.get(url, timeout=90, stream=True,
+                                 headers={"User-Agent": "AtlantisWildlifeBot/1.0"})
+                path = os.path.join(tempfile.gettempdir(),
+                                    f"wmv_{int(time.time())}.mp4")
+                with open(path, "wb") as f:
+                    for chunk in r.iter_content(8192):
+                        f.write(chunk)
+                size_mb = os.path.getsize(path) // 1024 // 1024
+                print(f"      Wikimedia downloaded: {size_mb}MB")
+                return path
+    except Exception as e:
+        print(f"      Wikimedia video error: {e}")
+    return None
+
+
+def fetch_article_video(article_url: str) -> str | None:
+    """Try to extract direct MP4 from news article (og:video / video src tags)"""
+    if not article_url or not article_url.startswith("http"):
+        return None
+    import re as _re
+    try:
+        resp = requests.get(article_url, timeout=10,
+                            headers={"User-Agent": "Mozilla/5.0 AtlantisWildlifeBot"})
+        html = resp.text
+        # og:video meta tag
+        m = _re.search(r'<meta[^>]+property=["\']og:video["\'][^>]+content=["\']([^"\']+)["\']', html)
+        if not m:
+            m = _re.search(r'<meta[^>]+content=["\']([^"\']+\.mp4[^"\']*)["\']', html)
+        if not m:
+            m = _re.search(r'["\']([^"\']+\.mp4)["\']', html)
+        url = m.group(1) if m else ""
+        if url and url.startswith("http"):
+            print(f"      Article video found: {url[:60]}")
+            r = requests.get(url, timeout=90, stream=True,
+                             headers={"User-Agent": "AtlantisWildlifeBot/1.0"})
+            path = os.path.join(tempfile.gettempdir(),
+                                f"artv_{int(time.time())}.mp4")
+            with open(path, "wb") as f:
+                for chunk in r.iter_content(8192):
+                    f.write(chunk)
+            if os.path.getsize(path) > 500_000:
+                return path
+            os.remove(path)
+    except Exception as e:
+        print(f"      Article video error: {e}")
+    return None
+
+
+def fetch_wildlife_video(keyword: str, source: str = "", article_url: str = "") -> tuple[str | None, str]:
+    """
+    Video priority (public domain first, Pexels last):
+      1. Article direct MP4
+      2. USFWS Digital Library     (most reliable wildlife govt source)
+      3. NPS National Park Service (national park wildlife, yt-dlp)
+      4. NOAA Ocean Exploration    (marine only, yt-dlp)
+      5. USGS ScienceBase          (wildlife science)
+      6. Wikimedia Commons         (CC licensed)
+      7. NASA Image Library        (wildlife filtered — last govt attempt)
+      8. Pixabay                   (CC0, if key available)
+      9. Pexels                    (last fallback)
+    """
     source_lower = source.lower()
     video_keyword = keyword
     for key, val in WILDLIFE_VIDEO_KEYWORDS.items():
         if key in source_lower:
             video_keyword = val
             break
-    print(f"      Searching wildlife footage: '{video_keyword}'")
-    path = fetch_pexels_video(video_keyword)
-    if path:
-        return path
-    if video_keyword != keyword:
-        path = fetch_pexels_video(keyword)
+
+    print(f"\n      [Video] '{video_keyword}' | source: {source}")
+
+    # 1. Article direct MP4
+    if article_url:
+        path = fetch_article_video(article_url)
         if path:
-            return path
-    # Generic wildlife fallback
-    return fetch_pexels_video("wildlife animal nature")
+            return path, video_keyword
+
+    # 2. USFWS — best US government wildlife library
+    print(f"      Trying USFWS...")
+    path = fetch_usfws_video(video_keyword)
+    if path:
+        return path, video_keyword
+
+    # 3. NPS — Yellowstone, Everglades, national park wildlife
+    print(f"      Trying NPS...")
+    path = fetch_nps_video(video_keyword)
+    if path:
+        return path, video_keyword
+
+    # 4. NOAA — deep sea, marine, ocean life (marine keywords only)
+    is_marine = any(w in video_keyword.lower() for w in
+                    ["ocean", "marine", "sea", "whale", "shark", "fish", "coral", "deep"])
+    if is_marine:
+        print(f"      Trying NOAA (marine)...")
+        path = fetch_noaa_video(video_keyword)
+        if path:
+            return path, video_keyword
+
+    # 5. USGS — bears, salmon, polar wildlife
+    print(f"      Trying USGS...")
+    path = fetch_usgs_video(video_keyword)
+    if path:
+        return path, video_keyword
+
+    # 6. Wikimedia Commons — CC licensed real wildlife clips
+    print(f"      Trying Wikimedia...")
+    path = fetch_wikimedia_video(video_keyword)
+    if path:
+        return path, video_keyword
+
+    # 7. NASA — wildlife strictly filtered (last govt attempt)
+    print(f"      Trying NASA (filtered)...")
+    path = fetch_nasa_video(video_keyword)
+    if path:
+        return path, video_keyword
+
+    # 8. Pixabay — CC0 stock (if key available)
+    if PIXABAY_API_KEY:
+        print(f"      Trying Pixabay...")
+        path = fetch_pixabay_video(video_keyword)
+        if path:
+            return path, video_keyword
+
+    print(f"      No video found for '{video_keyword}'")
+    return None, ""
 
 
 REALTIME_SOURCES = {"iNaturalist", "GBIF Wildlife"}
 
 
-def generate_narration(news_item: dict, headline: str, summary: str) -> str:
-    """Groq se 30-second wildlife Reel narration"""
+def generate_narration(news_item: dict, headline: str, summary: str,
+                       video_topic: str = "") -> str:
+    """Groq se 30-second wildlife Reel narration — video_topic se match karta hai"""
     source = news_item.get("source", "")
     title  = news_item.get("title", "")
     body   = news_item.get("body", "")[:500]
     is_rt  = any(s in source for s in REALTIME_SOURCES)
 
-    if is_rt:
-        style = (
-            "YE REAL WILDLIFE OBSERVATION HAI — abhi spotted kiya gaya.\n"
-            "Tone: 'Abhi is waqt...', 'Aaj...', 'Is exact moment mein...'\n"
-            "Excitement + urgency — viewers ko feel ho ki ye ABHI ho raha hai.\n"
-            "Animal ka naam, location, behavior detail mein batao."
+    # Video topic se visual context banao
+    visual_context = ""
+    if video_topic and video_topic not in ("wildlife animal nature", ""):
+        visual_context = (
+            f"\nVIDEO MEIN KYA DIKH RAHA HAI: '{video_topic}'\n"
+            f"Narration ISKO describe kare — viewer yahi dekh raha hai screen pe.\n"
+            f"Agar news topic alag hai, to thematically connect karo — "
+            f"lekin visual description video ke animal/scene ke baare mein hi ho.\n"
         )
     else:
-        style = (
-            "YE WILDLIFE EDUCATIONAL content hai.\n"
-            "Tone: 'Dekho zaraa...', 'Socho agar tum jungle mein hote...', 'Ye jo tum dekh rahe ho...'\n"
-            "Wonder aur curiosity — viewer ko nature se deeply connect karo.\n"
-            "Hidden animal facts, survival instincts, food chain batao jo mind blow kar de."
+        visual_context = (
+            "\nVideo mein general wildlife footage hai.\n"
+            "Narration wildlife aur nature ke baare mein broadly bolo — "
+            "kisi specific animal ka naam mat lo jo video mein na ho.\n"
+        )
+
+    if is_rt:
+        opening_style = (
+            "Ye ek REAL wildlife observation hai — abhi is waqt captured.\n"
+            "Open with scene: 'Yahan... is jagah pe... abhi kuch aisa hua jo...' \n"
+            "Urgency + wonder — jaise NatGeo ka cameraman abhi wahan maujood ho."
+        )
+    else:
+        opening_style = (
+            "Ye ek wildlife documentary scene hai.\n"
+            "Open with powerful scene-setting: location, environment, atmosphere.\n"
+            "'Duniya ke is kone mein...' / 'Karod saalon ki evolution ne...' / 'Jab raat dhalta hai...'\n"
+            "Animal ko protagonist ki tarah present karo — uski struggle, survival, beauty."
         )
 
     try:
         client = Groq(api_key=GROQ_API_KEY)
         resp = client.chat.completions.create(
             model="llama-3.3-70b-versatile",
-            max_tokens=400,
+            max_tokens=420,
             messages=[{"role": "user", "content": f"""
-Tu @atlantis_wildlife Instagram Reel ka narrator hai.
-Ek 30-second Hindi narration script likho jo poori Reel mein chale.
+Tu National Geographic / BBC Earth ke Hindi narrator ki tarah bol.
+Ek 30-second documentary narration likho — poetic, authoritative, awe-inspiring.
 
-Topic: {title}
+News Topic: {title}
 Details: {body}
 Summary: {summary}
+{visual_context}
+{opening_style}
 
-{style}
-
-STRICT RULES:
-- HEADLINE BILKUL MAT PADHO — woh screen pe already dikh raha hai
-- ~90-100 words likhoo — 30 second ke liye enough hoga
-- Actual animal facts, behavior, habitat context do
-- Hinglish (Hindi + English mix), conversational
-- FORBIDDEN: "yaar", "sun", "yaar sun", "bhai", "dosto"
-- Vary opener: "Socho zaraa...", "Ye dekhna zaroori hai...", "Is jungle mein...", "Nature ki ye sachai..."
-- "..." use karo dramatic pause ke liye
-- Chhoti punchy sentences = strong impact
+NATGEO NARRATOR STYLE — STRICT:
+- HEADLINE BILKUL MAT PADHO — screen pe already dikh raha hai
+- ~90-100 words — exactly 30 seconds ke liye
+- Scene se shuru karo — environment, light, sound imagine karo
+- Animal ko hero ki tarah present karo — uski strength, instinct, survival
+- Scientific fact ek do — lekin poetic language mein
+- End mein ek profound thought ya conservation message
+- Hindi dominant, English sirf technical terms ke liye
+- FORBIDDEN: "yaar", "sun", "bhai", "dosto", "chaliye", "dekhte hain"
+- "..." = dramatic pause — use karo wisely
 - Sirf bolne wala text — koi heading, bullet, asterisk nahi
 
-Script:"""}]
+Narration:"""}]
         )
         narration = resp.choices[0].message.content.strip()
         import re
         narration = re.sub(r'\*+', '', narration).strip()
         wc = len(narration.split())
-        print(f"      Narration ({wc} words, {'realtime' if is_rt else 'educational'})")
+        print(f"      Narration ({wc} words, NatGeo style)")
         return narration
     except Exception as e:
         print(f"      Narration error: {e}")
         return summary
 
 
-def generate_tts(text: str, out_path: str) -> bool:
-    """Edge TTS — SwaraNeural Hindi voice"""
-    import re as _re
+def _normalize_audio(path: str) -> None:
+    """Documentary-grade audio filter chain — warm, clear, broadcast quality"""
     import subprocess as _sp
+    norm = path.replace(".mp3", "_norm.mp3")
+    # Filter chain explanation:
+    # highpass=85      → remove mic rumble / low noise
+    # lowpass=13000    → soften harsh sibilance
+    # acompressor      → even out loud/soft parts (consistent volume)
+    # equalizer 250Hz  → warmth / body in voice
+    # equalizer 3500Hz → presence / clarity (makes Hindi consonants crisp)
+    # equalizer 7500Hz → subtle air / brightness
+    # loudnorm         → broadcast standard -14 LUFS
+    filters = (
+        "highpass=f=85,"
+        "lowpass=f=13000,"
+        "acompressor=threshold=-18dB:ratio=4:attack=5:release=50:makeup=2dB,"
+        "equalizer=f=250:t=q:w=2:g=2,"
+        "equalizer=f=3500:t=q:w=1.5:g=3,"
+        "equalizer=f=7500:t=q:w=2:g=1,"
+        "loudnorm=I=-14:TP=-1.5:LRA=7"
+    )
+    r = _sp.run(
+        ["ffmpeg", "-y", "-i", path, "-af", filters, norm],
+        capture_output=True, timeout=30
+    )
+    if r.returncode == 0 and os.path.exists(norm):
+        os.replace(norm, path)
 
+
+def _tts_google_wavenet(text: str, out_path: str) -> bool:
+    """Google Cloud WaveNet — best Hindi pronunciation (hi-IN-Wavenet-D female)"""
+    import base64
+    api_key = os.getenv("GOOGLE_TTS_API_KEY", "")
+    if not api_key:
+        return False
+    try:
+        # Split text into 4500-char chunks (Google limit is 5000)
+        chunks = [text[i:i+4500] for i in range(0, len(text), 4500)]
+        all_audio = b""
+        for chunk in chunks:
+            resp = requests.post(
+                f"https://texttospeech.googleapis.com/v1/text:synthesize?key={api_key}",
+                json={
+                    "input": {"text": chunk},
+                    "voice": {
+                        "languageCode": "hi-IN",
+                        "name":         "hi-IN-Wavenet-D",
+                        "ssmlGender":   "FEMALE"
+                    },
+                    "audioConfig": {
+                        "audioEncoding":  "MP3",
+                        "speakingRate":   0.93,
+                        "pitch":          -1.5,
+                        "volumeGainDb":   3.0,
+                        "effectsProfileId": ["headphone-class-device"]
+                    }
+                },
+                timeout=30
+            )
+            audio_b64 = resp.json().get("audioContent", "")
+            if not audio_b64:
+                print(f"      Google WaveNet error: {resp.json()}")
+                return False
+            all_audio += base64.b64decode(audio_b64)
+        with open(out_path, "wb") as f:
+            f.write(all_audio)
+        if os.path.exists(out_path) and os.path.getsize(out_path) > 1000:
+            print(f"      Google WaveNet (hi-IN-Wavenet-D) ready")
+            _normalize_audio(out_path)
+            return True
+    except Exception as e:
+        print(f"      Google WaveNet error: {e}")
+    return False
+
+
+def _tts_sarvam(text: str, out_path: str) -> bool:
+    """Sarvam AI bulbul:v1 — Indian language specialist, best Hinglish"""
+    import base64
+    api_key = os.getenv("SARVAM_API_KEY", "")
+    if not api_key:
+        return False
+    try:
+        # Sarvam max 500 chars per request — split and concatenate
+        MAX = 490
+        chunks = []
+        words = text.split()
+        cur = ""
+        for w in words:
+            test = f"{cur} {w}".strip()
+            if len(test) > MAX:
+                if cur:
+                    chunks.append(cur)
+                cur = w
+            else:
+                cur = test
+        if cur:
+            chunks.append(cur)
+
+        all_audio = b""
+        for chunk in chunks:
+            resp = requests.post(
+                "https://api.sarvam.ai/text-to-speech",
+                headers={"api-subscription-key": api_key, "Content-Type": "application/json"},
+                json={
+                    "inputs":               [chunk],
+                    "target_language_code": "hi-IN",
+                    "speaker":              "meera",
+                    "pitch":                0,
+                    "pace":                 0.9,
+                    "loudness":             1.5,
+                    "speech_sample_rate":   22050,
+                    "enable_preprocessing": True,
+                    "model":                "bulbul:v1"
+                },
+                timeout=30
+            )
+            audio_b64 = resp.json().get("audios", [""])[0]
+            if not audio_b64:
+                print(f"      Sarvam error: {resp.json()}")
+                return False
+            all_audio += base64.b64decode(audio_b64)
+
+        with open(out_path, "wb") as f:
+            f.write(all_audio)
+        if os.path.exists(out_path) and os.path.getsize(out_path) > 1000:
+            print(f"      Sarvam AI (bulbul:v1 meera) ready")
+            _normalize_audio(out_path)
+            return True
+    except Exception as e:
+        print(f"      Sarvam error: {e}")
+    return False
+
+
+def _tts_edge(text: str, out_path: str) -> bool:
+    """Edge TTS — try multiple Hindi voices, best quality first"""
+    # Voice priority:
+    # AnanyaNeural  — newer female, clearest Hindi pronunciation
+    # MadhurNeural  — deep male, NatGeo documentary feel
+    # SwaraNeural   — original female fallback
+    VOICES = [
+        ("hi-IN-AnanyaNeural", "-3%",  "-1Hz", "+15%"),
+        ("hi-IN-MadhurNeural", "-5%",  "+0Hz", "+12%"),
+        ("hi-IN-SwaraNeural",  "-5%",  "-2Hz", "+15%"),
+    ]
+    try:
+        import asyncio, edge_tts
+
+        for voice, rate, pitch, volume in VOICES:
+            try:
+                async def _speak(v=voice, r=rate, p=pitch, vol=volume):
+                    comm = edge_tts.Communicate(text, voice=v,
+                                                rate=r, pitch=p, volume=vol)
+                    await comm.save(out_path)
+
+                asyncio.run(_speak())
+                if os.path.exists(out_path) and os.path.getsize(out_path) > 1000:
+                    _normalize_audio(out_path)
+                    print(f"      Edge TTS ({voice}) ready")
+                    return True
+            except Exception:
+                continue
+    except Exception as e:
+        print(f"      Edge TTS error: {e}")
+    return False
+
+
+def generate_tts(text: str, out_path: str) -> bool:
+    """
+    Hindi TTS priority chain:
+      1. Sarvam AI bulbul:v1 meera      — Indian language specialist (100 credits)
+      2. Edge TTS AnanyaNeural           — unlimited free, clearest Hindi
+      3. Edge TTS MadhurNeural           — deep documentary male voice
+      4. Edge TTS SwaraNeural            — original fallback
+      5. gTTS                            — last resort
+    All voices go through documentary-grade FFmpeg filter chain.
+    """
+    import re as _re
     clean = _re.sub(r'\.{2,}', '... ', text)
     clean = _re.sub(r'\s+', ' ', clean).strip()
 
-    try:
-        import asyncio
-        import edge_tts
-
-        async def _speak():
-            comm = edge_tts.Communicate(clean, voice="hi-IN-SwaraNeural",
-                                        rate="+5%", pitch="+0Hz", volume="+15%")
-            await comm.save(out_path)
-
-        asyncio.run(_speak())
-        if os.path.exists(out_path) and os.path.getsize(out_path) > 1000:
-            norm_path = out_path.replace(".mp3", "_norm.mp3")
-            norm = _sp.run([
-                "ffmpeg", "-y", "-i", out_path,
-                "-af", "loudnorm=I=-14:TP=-1.5:LRA=7,highpass=f=80",
-                norm_path
-            ], capture_output=True, timeout=30)
-            if norm.returncode == 0 and os.path.exists(norm_path):
-                os.replace(norm_path, out_path)
-            print(f"      Edge TTS (SwaraNeural) ready")
-            return True
-    except Exception as e:
-        print(f"      Edge TTS error: {e}")
-
+    if _tts_edge(clean, out_path):   # tries Ananya → Madhur → Swara internally
+        return True
     try:
         from gtts import gTTS
         gTTS(text=clean, lang="hi", slow=False).save(out_path)
-        print(f"      gTTS fallback ready")
-        return os.path.exists(out_path) and os.path.getsize(out_path) > 0
-    except Exception as e2:
-        print(f"      gTTS error: {e2}")
-        return False
+        if os.path.exists(out_path) and os.path.getsize(out_path) > 0:
+            _normalize_audio(out_path)
+            print(f"      gTTS last-resort ready")
+            return True
+    except Exception as e:
+        print(f"      gTTS error: {e}")
+    return False
 
 
 def process_reel(video_path: str, headline: str, summary: str, narration: str = "", source: str = "") -> str | None:
@@ -849,11 +1441,36 @@ def process_reel(video_path: str, headline: str, summary: str, narration: str = 
         audio_path  = os.path.join(tmp, f"wtts_{ts}.mp3")
         out_path    = os.path.join(tmp, f"wreel_{ts}.mp4")
 
-        # Step 1: Full-screen 1080x1920 fill
+        # Step 1: TTS pehle banao taaki audio duration pata chale
+        tts_text  = narration if narration else summary
+        has_audio = generate_tts(tts_text, audio_path)
+
+        # Audio duration detect karo — video isi pe extend hoga
+        reel_dur = 30.0
+        if has_audio and os.path.exists(audio_path):
+            try:
+                import json as _json
+                probe = subprocess.run([
+                    "ffprobe", "-v", "quiet", "-print_format", "json",
+                    "-show_streams", audio_path
+                ], capture_output=True, timeout=10)
+                streams = _json.loads(probe.stdout).get("streams", [{}])
+                reel_dur = float(streams[0].get("duration", 30.0))
+                reel_dur = min(reel_dur + 0.3, 58.0)
+                print(f"      Audio duration: {reel_dur:.1f}s")
+            except Exception:
+                reel_dur = 30.0
+
+        # Step 1b: Full-screen 1080x1920 fill — tpad holds last frame to match audio
+        vf_main = (
+            "scale=1080:1920:force_original_aspect_ratio=increase,"
+            "crop=1080:1920,"
+            "tpad=stop=-1:stop_mode=clone"
+        )
         crop = subprocess.run([
             "ffmpeg", "-y", "-i", video_path,
-            "-t", "30",
-            "-vf", "scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920",
+            "-t", str(reel_dur),
+            "-vf", vf_main,
             "-r", "30",
             "-c:v", "libx264", "-profile:v", "high", "-level:v", "4.0",
             "-pix_fmt", "yuv420p", "-an", "-preset", "fast", "-crf", "22",
@@ -867,11 +1484,11 @@ def process_reel(video_path: str, headline: str, summary: str, narration: str = 
                 "crop=1080:1920,boxblur=30:3[bg_blur];"
                 "[fg]scale=1080:608:force_original_aspect_ratio=decrease,"
                 "pad=1080:608:(ow-iw)/2:(oh-ih)/2:black[fg_pad];"
-                "[bg_blur][fg_pad]overlay=(W-w)/2:(H-h)/2"
+                "[bg_blur][fg_pad]overlay=(W-w)/2:(H-h)/2,tpad=stop=-1:stop_mode=clone"
             )
             crop = subprocess.run([
                 "ffmpeg", "-y", "-i", video_path,
-                "-t", "30", "-vf", vf_blur, "-r", "30",
+                "-t", str(reel_dur), "-vf", vf_blur, "-r", "30",
                 "-c:v", "libx264", "-pix_fmt", "yuv420p",
                 "-an", "-preset", "fast", "-crf", "22",
                 base_path
@@ -957,11 +1574,7 @@ def process_reel(video_path: str, headline: str, summary: str, narration: str = 
 
         overlay.save(overlay_png, "PNG")
 
-        # Step 3: TTS
-        tts_text = narration if narration else summary
-        has_audio = generate_tts(tts_text, audio_path)
-
-        # Step 4: FFmpeg combine
+        # Step 3: FFmpeg combine — audio already generated in Step 1
         common = [
             "-c:v", "libx264", "-profile:v", "high", "-level:v", "4.0",
             "-pix_fmt", "yuv420p", "-preset", "fast", "-crf", "22",
@@ -972,10 +1585,10 @@ def process_reel(video_path: str, headline: str, summary: str, narration: str = 
                 "ffmpeg", "-y",
                 "-i", base_path, "-i", overlay_png, "-i", audio_path,
                 "-filter_complex",
-                "[0:v][1:v]overlay=0:0[vout];[2:a]volume=1.5,atrim=0:30[aout]",
+                "[0:v][1:v]overlay=0:0[vout];[2:a]volume=1.5[aout]",
                 "-map", "[vout]", "-map", "[aout]",
                 "-c:a", "aac", "-b:a", "128k",
-                "-shortest", *common, out_path
+                *common, out_path   # no -shortest, no atrim
             ], capture_output=True, timeout=180)
         else:
             result = subprocess.run([
@@ -1066,8 +1679,9 @@ def post_reel(video_url: str, caption: str) -> str | None:
         if not container_id:
             print(f"      Reel container error: {resp.json()}")
             return None
-        for _ in range(12):
-            time.sleep(8)
+        time.sleep(5)
+        for i in range(15):
+            time.sleep(5 if i < 3 else 8)
             status = requests.get(
                 f"https://graph.facebook.com/v25.0/{container_id}",
                 params={"fields": "status_code", "access_token": INSTAGRAM_TOKEN},
@@ -1085,10 +1699,24 @@ def post_reel(video_url: str, caption: str) -> str | None:
             timeout=15
         )
         media_id = pub.json().get("id")
-        if media_id:
-            print(f"      Reel posted! ID: {media_id}")
+        if not media_id:
+            print(f"      Reel publish error: {pub.json()}")
+            return None
+
+        # Verify post actually exists (Instagram sometimes silently rejects)
+        time.sleep(4)
+        verify = requests.get(
+            f"https://graph.facebook.com/v25.0/{media_id}",
+            params={"fields": "id,media_type,permalink", "access_token": INSTAGRAM_TOKEN},
+            timeout=10
+        ).json()
+        if verify.get("id"):
+            permalink = verify.get("permalink", "")
+            print(f"      Reel verified! {permalink}")
             return media_id
-        print(f"      Reel publish error: {pub.json()}")
+        else:
+            print(f"      Reel rejected by Instagram silently (bad video content?): {verify}")
+            return None
     except Exception as e:
         print(f"      Reel error: {e}")
     return None
@@ -1219,52 +1847,43 @@ def run_agent():
     print(f"  Time: {datetime.now().strftime('%Y-%m-%d %H:%M')}")
     print("=" * 55)
 
+    from concurrent.futures import ThreadPoolExecutor, as_completed
+
     all_news = []
 
-    # Source 1: iNaturalist — real wildlife observations
-    inat = fetch_inaturalist_obs()
-    if inat:
-        all_news.insert(0, inat)
+    # Fetch all RSS sources in parallel — ~10x faster than sequential
+    rss_sources = [
+        fetch_natgeo_animals,
+        fetch_bbc_wildlife,
+        fetch_wwf_news,
+        fetch_mongabay_news,
+        fetch_iucn_news,
+        fetch_smithsonian_nature,
+        fetch_audubon_birds,
+        fetch_earthsky_nature,
+    ]
 
-    # Source 2: GBIF — global biodiversity observations
-    gbif = fetch_gbif_species()
-    if gbif:
-        all_news.append(gbif)
+    print("\n[Fetch] Parallel fetching all sources...")
+    with ThreadPoolExecutor(max_workers=8) as ex:
+        api_futures  = {ex.submit(fetch_inaturalist_obs): "inat",
+                        ex.submit(fetch_gbif_species):    "gbif"}
+        rss_futures  = {ex.submit(fn): fn.__name__ for fn in rss_sources}
+        all_futures  = {**api_futures, **rss_futures}
 
-    # Source 3: National Geographic Animals
-    natgeo = fetch_natgeo_animals()
-    all_news.extend(natgeo)
+        for fut in as_completed(all_futures):
+            try:
+                result = fut.result()
+                if result is None:
+                    pass
+                elif isinstance(result, dict):
+                    all_news.append(result)
+                elif isinstance(result, list):
+                    all_news.extend(result)
+            except Exception as e:
+                print(f"      Source error: {e}")
 
-    # Source 4: BBC Wildlife / Science & Environment
-    bbc = fetch_bbc_wildlife()
-    all_news.extend(bbc)
-
-    # Source 5: WWF conservation news
-    wwf = fetch_wwf_news()
-    all_news.extend(wwf)
-
-    # Source 6: Mongabay — tropical wildlife
-    mongabay = fetch_mongabay_news()
-    all_news.extend(mongabay)
-
-    # Source 7: IUCN Red List news
-    iucn = fetch_iucn_news()
-    all_news.extend(iucn)
-
-    # Source 8: Smithsonian nature articles
-    smithsonian = fetch_smithsonian_nature()
-    all_news.extend(smithsonian)
-
-    # Source 9: Audubon birds
-    audubon = fetch_audubon_birds()
-    all_news.extend(audubon)
-
-    # Source 10: EarthSky nature
-    earthsky = fetch_earthsky_nature()
-    all_news.extend(earthsky)
-
-    # Source 11: DuckDuckGo fallback
-    if len(all_news) < 4:
+    # DuckDuckGo fallback only if very few results
+    if len(all_news) < 3:
         for topic in WILDLIFE_TOPICS[:2]:
             results = fetch_news(topic, max_results=3)
             all_news.extend(results)
@@ -1306,10 +1925,14 @@ def run_agent():
         hashtags = content.get("hashtags", "#Wildlife #Nature #Animals")
         caption  = content.get("caption", "")
 
-        media_id  = None
-        narration = generate_narration(news, headline, summary)
-        keyword   = content.get("image_keyword", "wildlife animal nature")
-        video_path = fetch_wildlife_video(keyword, source=news.get("source", ""))
+        media_id = None
+        keyword  = content.get("image_keyword", "wildlife animal nature")
+
+        # Fetch video FIRST — then narrate about what's actually in the video
+        video_path, video_topic = fetch_wildlife_video(
+            keyword, source=news.get("source", ""), article_url=news.get("url", "")
+        )
+        narration = generate_narration(news, headline, summary, video_topic=video_topic)
 
         if video_path:
             reel_path = process_reel(video_path, headline, summary, narration,

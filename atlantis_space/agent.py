@@ -1656,13 +1656,37 @@ def process_reel(video_path: str, headline: str, summary: str, narration: str = 
         audio_path  = os.path.join(tmp, f"rtts_{ts}.mp3")
         out_path    = os.path.join(tmp, f"reel_{ts}.mp4")
 
-        # Step 1: Convert to 1080x1920 (9:16) — full-screen fill
-        # Scale to COVER entire frame then center-crop — fills screen completely
-        # Best for YouTube Shorts & Instagram Reels (no blurred bars)
+        # Step 1: TTS pehle banao taaki audio duration pata chale
+        tts_text  = narration if narration else summary
+        has_audio = generate_tts(tts_text, audio_path)
+
+        # Audio duration detect karo — video isi pe extend hoga
+        reel_dur = 30.0
+        if has_audio and os.path.exists(audio_path):
+            try:
+                import json as _json
+                probe = subprocess.run([
+                    "ffprobe", "-v", "quiet", "-print_format", "json",
+                    "-show_streams", audio_path
+                ], capture_output=True, timeout=10)
+                streams = _json.loads(probe.stdout).get("streams", [{}])
+                reel_dur = float(streams[0].get("duration", 30.0))
+                reel_dur = min(reel_dur + 0.3, 58.0)   # 0.3s buffer, max 58s
+                print(f"      Audio duration: {reel_dur:.1f}s")
+            except Exception:
+                reel_dur = 30.0
+
+        # Step 2: Convert to 1080x1920 — hold last frame to fill audio duration
+        # tpad=stop=-1:stop_mode=clone → last frame freeze (professional look)
+        vf_main = (
+            "scale=1080:1920:force_original_aspect_ratio=increase,"
+            "crop=1080:1920,"
+            "tpad=stop=-1:stop_mode=clone"
+        )
         crop = subprocess.run([
             "ffmpeg", "-y", "-i", video_path,
-            "-t", "30",
-            "-vf", "scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920",
+            "-t", str(reel_dur),
+            "-vf", vf_main,
             "-r", "30",
             "-c:v", "libx264", "-profile:v", "high", "-level:v", "4.0",
             "-pix_fmt", "yuv420p", "-an", "-preset", "fast", "-crf", "22",
@@ -1670,18 +1694,17 @@ def process_reel(video_path: str, headline: str, summary: str, narration: str = 
         ], capture_output=True, timeout=180)
 
         if crop.returncode != 0 or not os.path.exists(base_path):
-            # Fallback: blur background for unusual aspect ratios
             vf_blur = (
                 "[0:v]split=2[bg][fg];"
                 "[bg]scale=1080:1920:force_original_aspect_ratio=increase,"
                 "crop=1080:1920,boxblur=30:3[bg_blur];"
                 "[fg]scale=1080:608:force_original_aspect_ratio=decrease,"
                 "pad=1080:608:(ow-iw)/2:(oh-ih)/2:black[fg_pad];"
-                "[bg_blur][fg_pad]overlay=(W-w)/2:(H-h)/2"
+                "[bg_blur][fg_pad]overlay=(W-w)/2:(H-h)/2,tpad=stop=-1:stop_mode=clone"
             )
             crop = subprocess.run([
                 "ffmpeg", "-y", "-i", video_path,
-                "-t", "30", "-vf", vf_blur, "-r", "30",
+                "-t", str(reel_dur), "-vf", vf_blur, "-r", "30",
                 "-c:v", "libx264", "-pix_fmt", "yuv420p",
                 "-an", "-preset", "fast", "-crf", "22",
                 base_path
@@ -1691,8 +1714,7 @@ def process_reel(video_path: str, headline: str, summary: str, narration: str = 
             print(f"      Crop fail: {crop.stderr[-200:].decode(errors='ignore')}")
             return None
 
-        # Step 2: Full-frame overlay PNG (1080x1920) — logo top + text bar bottom
-        # This gives complete control over positioning
+        # Step 2b: Full-frame overlay PNG (1080x1920) — logo top + text bar bottom
         FRAME_W  = 1080
         FRAME_H  = 1920
         BAR_H    = 460    # bottom text bar height
@@ -1775,25 +1797,21 @@ def process_reel(video_path: str, headline: str, summary: str, narration: str = 
 
         overlay.save(overlay_png, "PNG")
 
-        # Step 3: TTS — use full narration (covers entire 30s), not just headline
-        tts_text = narration if narration else summary
-        has_audio = generate_tts(tts_text, audio_path)
-
-        # Step 4: FFmpeg combine — 1080x1920, Instagram-compatible encoding
+        # Step 3: FFmpeg combine — audio already generated in Step 1
         common = [
             "-c:v", "libx264", "-profile:v", "high", "-level:v", "4.0",
             "-pix_fmt", "yuv420p", "-preset", "fast", "-crf", "23",
-            "-movflags", "+faststart"   # streaming-friendly
+            "-movflags", "+faststart"
         ]
         if has_audio:
             result = subprocess.run([
                 "ffmpeg", "-y",
                 "-i", base_path, "-i", overlay_png, "-i", audio_path,
                 "-filter_complex",
-                "[0:v][1:v]overlay=0:0[vout];[2:a]volume=1.5,atrim=0:30[aout]",
+                "[0:v][1:v]overlay=0:0[vout];[2:a]volume=1.5[aout]",
                 "-map", "[vout]", "-map", "[aout]",
                 "-c:a", "aac", "-b:a", "128k",
-                "-shortest", *common, out_path
+                *common, out_path   # no -shortest, no atrim
             ], capture_output=True, timeout=180)
         else:
             result = subprocess.run([
