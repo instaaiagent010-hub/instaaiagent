@@ -743,10 +743,9 @@ NASA_EXCLUDE = {
 }
 
 
-def fetch_nasa_video(keyword: str) -> str | None:
+def fetch_nasa_video(keyword: str) -> tuple[str | None, str]:
     """NASA — public domain wildlife/nature videos (strict wildlife filter)"""
     import random
-    # Use fixed wildlife queries — don't pass article keyword (too broad)
     queries = [q for q in NASA_WILDLIFE_QUERIES
                if any(w in keyword.lower() for w in q.split())]
     if not queries:
@@ -764,12 +763,11 @@ def fetch_nasa_video(keyword: str) -> str | None:
             for item in items[:10]:
                 data    = item.get("data", [{}])[0]
                 nasa_id = data.get("nasa_id", "")
-                title   = data.get("title", "").lower()
+                title   = data.get("title", "")
                 desc    = data.get("description", "").lower()
                 if not nasa_id:
                     continue
-                # Skip satellite/science content — wildlife only
-                combined = f"{title} {desc}"
+                combined = f"{title.lower()} {desc}"
                 if any(excl in combined for excl in NASA_EXCLUDE):
                     continue
                 try:
@@ -782,20 +780,19 @@ def fetch_nasa_video(keyword: str) -> str | None:
                         if href.endswith("~mobile.mp4") or href.endswith(".mp4"):
                             path = _download_video(href, "nasa")
                             if path:
-                                print(f"      NASA video: {nasa_id} — {data.get('title','')[:50]}")
-                                return path
+                                print(f"      NASA video: {title[:50]}")
+                                return path, title
                 except Exception:
                     continue
     except Exception as e:
         print(f"      NASA error: {e}")
-    return None
+    return None, ""
 
 
 # ── USFWS National Digital Library ────────────────────────────────────────
-def fetch_usfws_video(keyword: str) -> str | None:
+def fetch_usfws_video(keyword: str) -> tuple[str | None, str]:
     """US Fish & Wildlife Service — public domain wildlife footage"""
     try:
-        # CONTENTdm search API
         url = (
             f"https://digitalmedia.fws.gov/digital/api/search/collection/natdiglib"
             f"/searchterm/{requests.utils.quote(keyword)}"
@@ -810,28 +807,30 @@ def fetch_usfws_video(keyword: str) -> str | None:
             item_id  = item.get("itemid", "")
             coll     = item.get("collection", "natdiglib")
             filetype = item.get("filetype", "").lower()
+            title    = item.get("title", "")
             if not item_id:
                 continue
-            if filetype not in ("mp4", "mov", "avi", "wmv", ""):
+            # Only accept real video types — skip photos, PDFs, empty unknown
+            if filetype not in ("mp4", "mov", "avi", "wmv", "mpg", "mpeg", "m4v"):
                 continue
             dl_url = (
-                f"https://digitalmedia.fws.gov/digital/api"
+                f"https://digitalmedia.fws.gov/digital"
                 f"/collection/{coll}/id/{item_id}/download"
             )
             path = _download_video(dl_url, "usfws")
             if path:
-                print(f"      USFWS video: id={item_id}")
-                return path
+                print(f"      USFWS video: {title[:50]}")
+                return path, title
     except Exception as e:
         print(f"      USFWS error: {e}")
-    return None
+    return None, ""
 
 
 # ── NPS — National Park Service ────────────────────────────────────────────
-def fetch_nps_video(keyword: str) -> str | None:
+def fetch_nps_video(keyword: str) -> tuple[str | None, str]:
     """NPS — public domain national park wildlife videos (via yt-dlp)"""
     if not NPS_API_KEY:
-        return None
+        return None, ""
     try:
         r = requests.get(
             "https://developer.nps.gov/api/v1/multimedia/videos",
@@ -843,54 +842,63 @@ def fetch_nps_video(keyword: str) -> str | None:
         random.shuffle(items)
         for item in items[:6]:
             video_url = item.get("url", "")
+            title     = item.get("title", "")
             if not video_url:
                 continue
-            # NPS videos are YouTube embeds — use yt-dlp
             if "youtube" in video_url or "youtu.be" in video_url:
                 path = _yt_dlp(video_url, "nps")
                 if path:
-                    print(f"      NPS video: {item.get('title','')[:50]}")
-                    return path
+                    print(f"      NPS video: {title[:50]}")
+                    return path, title
     except Exception as e:
         print(f"      NPS error: {e}")
-    return None
+    return None, ""
 
 
 # ── NOAA Ocean Exploration ─────────────────────────────────────────────────
-def fetch_noaa_video(keyword: str) -> str | None:
-    """NOAA — public domain ocean/marine wildlife footage via YouTube"""
-    # NOAA official YouTube channels (public domain content)
-    NOAA_CHANNELS = [
-        "UCIHQZBCEoNhMkFpFNNb2i-Q",   # NOAA Office of Response & Restoration
-        "UCVs3U-o8KDMdCXjhJzZ_oBQ",   # NOAA Ocean Exploration
-    ]
+def fetch_noaa_video(keyword: str) -> tuple[str | None, str]:
+    """NOAA — public domain ocean/marine wildlife footage via YouTube search"""
+    import subprocess, random
     try:
-        # Search NOAA YouTube channel via yt-dlp playlist
-        channel_url = f"https://www.youtube.com/channel/{NOAA_CHANNELS[1]}/videos"
-        result_path = os.path.join(tempfile.gettempdir(), f"noaa_list_{int(time.time())}.json")
-        import subprocess
+        # Use yt-dlp to search NOAA channel directly for the keyword
         r = subprocess.run([
+            "yt-dlp",
+            f"ytsearch5:site:youtube.com/user/NOAAOceanExploration {keyword} wildlife",
+            "--get-id", "--get-title", "--quiet", "--no-warnings", "--flat-playlist",
+        ], capture_output=True, timeout=30, text=True)
+        if r.returncode == 0 and r.stdout.strip():
+            lines = [l.strip() for l in r.stdout.strip().split("\n") if l.strip()]
+            ids = [l for l in lines if len(l) == 11]
+            titles = [l for l in lines if len(l) != 11]
+            random.shuffle(ids)
+            for i, vid_id in enumerate(ids[:3]):
+                path = _yt_dlp(f"https://www.youtube.com/watch?v={vid_id}", "noaa")
+                if path:
+                    title = titles[i] if i < len(titles) else keyword
+                    print(f"      NOAA video: {title[:50]}")
+                    return path, title
+        # Fallback: NOAA Ocean Exploration channel direct
+        channel_url = "https://www.youtube.com/channel/UCVs3U-o8KDMdCXjhJzZ_oBQ/videos"
+        r2 = subprocess.run([
             "yt-dlp", channel_url,
-            "--get-id", "--flat-playlist", "--playlist-end", "20",
+            "--get-id", "--flat-playlist", "--playlist-end", "15",
             "--quiet", "--no-warnings",
         ], capture_output=True, timeout=30, text=True)
-        if r.returncode != 0 or not r.stdout.strip():
-            return None
-        video_ids = r.stdout.strip().split("\n")
-        import random
-        random.shuffle(video_ids)
-        for vid_id in video_ids[:5]:
-            path = _yt_dlp(f"https://www.youtube.com/watch?v={vid_id}", "noaa")
-            if path:
-                print(f"      NOAA video: {vid_id}")
-                return path
+        if r2.returncode == 0 and r2.stdout.strip():
+            ids = r2.stdout.strip().split("\n")
+            random.shuffle(ids)
+            for vid_id in ids[:3]:
+                path = _yt_dlp(f"https://www.youtube.com/watch?v={vid_id.strip()}", "noaa")
+                if path:
+                    print(f"      NOAA channel video: {vid_id}")
+                    return path, f"ocean wildlife {keyword}"
     except Exception as e:
         print(f"      NOAA error: {e}")
-    return None
+    return None, ""
 
 
 # ── USGS ScienceBase ───────────────────────────────────────────────────────
-def fetch_usgs_video(keyword: str) -> str | None:
+def fetch_usgs_video(keyword: str) -> tuple[str | None, str]:
     """USGS — public domain wildlife science videos"""
     try:
         r = requests.get(
@@ -908,16 +916,15 @@ def fetch_usgs_video(keyword: str) -> str | None:
         import random
         random.shuffle(items)
         for item in items[:8]:
-            # Check webLinks for direct video URLs
+            title = item.get("title", "")
             for link in item.get("webLinks", []):
                 ltype = link.get("type", "").lower()
                 url   = link.get("uri", "")
                 if url and ("mp4" in url.lower() or ltype in ("download", "video")):
                     path = _download_video(url, "usgs")
                     if path:
-                        print(f"      USGS video: {item.get('title','')[:50]}")
-                        return path
-            # Check files array
+                        print(f"      USGS video: {title[:50]}")
+                        return path, title
             for f in item.get("files", []):
                 url  = f.get("url", "")
                 name = f.get("name", "").lower()
@@ -925,17 +932,17 @@ def fetch_usgs_video(keyword: str) -> str | None:
                     path = _download_video(url, "usgs")
                     if path:
                         print(f"      USGS file: {name}")
-                        return path
+                        return path, title
     except Exception as e:
         print(f"      USGS error: {e}")
-    return None
+    return None, ""
 
 
 # ── Pixabay ────────────────────────────────────────────────────────────────
-def fetch_pixabay_video(keyword: str) -> str | None:
+def fetch_pixabay_video(keyword: str) -> tuple[str | None, str]:
     """Pixabay — CC0 equivalent wildlife videos"""
     if not PIXABAY_API_KEY:
-        return None
+        return None, ""
     try:
         r = requests.get(
             "https://pixabay.com/api/videos/",
@@ -959,10 +966,58 @@ def fetch_pixabay_video(keyword: str) -> str | None:
                     path = _download_video(url, "pixabay")
                     if path:
                         print(f"      Pixabay video: id={hit.get('id')}")
-                        return path
+                        return path, keyword
     except Exception as e:
         print(f"      Pixabay error: {e}")
-    return None
+    return None, ""
+
+
+def fetch_archive_video(keyword: str) -> tuple[str | None, str]:
+    """Internet Archive — CC/public domain wildlife documentaries (reliable fallback)"""
+    import random
+    # Wildlife-friendly search terms
+    search_q = f"({keyword} wildlife) AND mediatype:movies"
+    try:
+        r = requests.get(
+            "https://archive.org/advancedsearch.php",
+            params={
+                "q":      search_q,
+                "fl[]":   ["identifier", "title"],
+                "rows":   10,
+                "output": "json",
+            },
+            timeout=12,
+            headers={"User-Agent": "AtlantisWildlifeBot/1.0"}
+        )
+        docs = r.json().get("response", {}).get("docs", [])
+        random.shuffle(docs)
+        for doc in docs[:6]:
+            identifier = doc.get("identifier", "")
+            title      = doc.get("title", keyword)
+            if not identifier:
+                continue
+            # Get file list for this item
+            files_r = requests.get(
+                f"https://archive.org/metadata/{identifier}/files",
+                timeout=10
+            )
+            files = files_r.json().get("result", [])
+            # Prefer original mp4 files, then derivatives
+            mp4_files = [
+                f for f in files
+                if f.get("name", "").lower().endswith(".mp4")
+                and f.get("size", "0") != "0"
+            ]
+            mp4_files.sort(key=lambda f: int(f.get("size", 0) or 0), reverse=True)
+            for f in mp4_files[:3]:
+                url  = f"https://archive.org/download/{identifier}/{f['name']}"
+                path = _download_video(url, "archive", min_size=300_000)
+                if path:
+                    print(f"      Archive.org video: {title[:50]}")
+                    return path, title
+    except Exception as e:
+        print(f"      Archive.org error: {e}")
+    return None, ""
 
 
 def fetch_pexels_video(keyword: str) -> str | None:
@@ -994,54 +1049,86 @@ def fetch_pexels_video(keyword: str) -> str | None:
     return None
 
 
-def fetch_wikimedia_video(keyword: str) -> str | None:
-    """Wikimedia Commons — CC-licensed wildlife videos (direct MP4)"""
-    import re as _re
+def fetch_wikimedia_video(keyword: str) -> tuple[str | None, str]:
+    """Wikimedia Commons — CC-licensed wildlife videos"""
+    import re as _re, subprocess as _sp, random
     try:
-        # Search Commons for wildlife video files
         search = requests.get(
             "https://commons.wikimedia.org/w/api.php",
             params={
                 "action": "query", "list": "search", "format": "json",
                 "srsearch": f"{keyword} wildlife filetype:webm OR filetype:ogv OR filetype:mp4",
-                "srnamespace": "6", "srlimit": 8,
+                "srnamespace": "6", "srlimit": 12,
             }, timeout=10
         )
         results = search.json().get("query", {}).get("search", [])
         video_titles = [
             r["title"] for r in results
-            if any(r["title"].lower().endswith(e) for e in [".webm", ".ogv", ".mp4"])
+            if any(r["title"].lower().endswith(e) for e in (".webm", ".ogv", ".mp4"))
         ]
         if not video_titles:
-            return None
-        # Get direct file URL
-        info = requests.get(
-            "https://commons.wikimedia.org/w/api.php",
-            params={"action": "query", "titles": video_titles[0],
-                    "prop": "imageinfo", "iiprop": "url|size|mediatype",
-                    "format": "json"},
-            timeout=10
-        )
-        pages = info.json().get("query", {}).get("pages", {})
-        for page in pages.values():
-            ii = page.get("imageinfo", [{}])[0]
-            url  = ii.get("url", "")
-            size = ii.get("size", 0)
-            if url and size > 500_000:   # skip tiny clips < 500KB
-                print(f"      Wikimedia video: {url[-50:]}")
-                r = requests.get(url, timeout=90, stream=True,
-                                 headers={"User-Agent": "AtlantisWildlifeBot/1.0"})
-                path = os.path.join(tempfile.gettempdir(),
-                                    f"wmv_{int(time.time())}.mp4")
-                with open(path, "wb") as f:
-                    for chunk in r.iter_content(8192):
+            return None, ""
+
+        # Shuffle to add variety across runs
+        random.shuffle(video_titles)
+
+        for vtitle in video_titles[:6]:
+            info = requests.get(
+                "https://commons.wikimedia.org/w/api.php",
+                params={"action": "query", "titles": vtitle,
+                        "prop": "imageinfo", "iiprop": "url|size|mediatype",
+                        "format": "json"},
+                timeout=10
+            )
+            pages = info.json().get("query", {}).get("pages", {})
+            for page in pages.values():
+                ii   = page.get("imageinfo", [{}])[0]
+                url  = ii.get("url", "")
+                size = ii.get("size", 0)
+                if not url or size < 500_000:
+                    continue
+
+                # Detect real container type from URL extension
+                ext = url.rsplit(".", 1)[-1].lower().split("?")[0]
+                if ext not in ("webm", "ogv", "mp4", "ogg"):
+                    continue
+
+                print(f"      Wikimedia video ({ext}): {vtitle[:50]}")
+                tmp_path = os.path.join(tempfile.gettempdir(),
+                                        f"wmv_{int(time.time())}.{ext}")
+                dl = requests.get(url, timeout=90, stream=True,
+                                  headers={"User-Agent": "AtlantisWildlifeBot/1.0"})
+                with open(tmp_path, "wb") as f:
+                    for chunk in dl.iter_content(8192):
                         f.write(chunk)
-                size_mb = os.path.getsize(path) // 1024 // 1024
-                print(f"      Wikimedia downloaded: {size_mb}MB")
-                return path
+
+                if os.path.getsize(tmp_path) < 500_000:
+                    try: os.remove(tmp_path)
+                    except: pass
+                    continue
+
+                # Convert non-mp4 containers to mp4 for compatibility
+                if ext != "mp4":
+                    mp4_path = tmp_path.rsplit(".", 1)[0] + ".mp4"
+                    conv = _sp.run([
+                        "ffmpeg", "-y", "-i", tmp_path,
+                        "-c:v", "libx264", "-pix_fmt", "yuv420p",
+                        "-c:a", "aac", "-preset", "fast", "-crf", "22",
+                        mp4_path
+                    ], capture_output=True, timeout=120)
+                    try: os.remove(tmp_path)
+                    except: pass
+                    if conv.returncode != 0 or not os.path.exists(mp4_path):
+                        continue
+                    tmp_path = mp4_path
+
+                clean_title = vtitle.replace("File:", "").rsplit(".", 1)[0]
+                print(f"      Wikimedia ready: {os.path.getsize(tmp_path)//1024//1024}MB")
+                return tmp_path, clean_title
+
     except Exception as e:
         print(f"      Wikimedia video error: {e}")
-    return None
+    return None, ""
 
 
 def fetch_article_video(article_url: str) -> str | None:
@@ -1079,16 +1166,16 @@ def fetch_article_video(article_url: str) -> str | None:
 
 def fetch_wildlife_video(keyword: str, source: str = "", article_url: str = "") -> tuple[str | None, str]:
     """
-    Video priority (public domain first, Pexels last):
+    Video priority (actual video title returned as topic for narration accuracy):
       1. Article direct MP4
       2. USFWS Digital Library     (most reliable wildlife govt source)
       3. NPS National Park Service (national park wildlife, yt-dlp)
-      4. NOAA Ocean Exploration    (marine only, yt-dlp)
+      4. NOAA Ocean Exploration    (marine keywords + general)
       5. USGS ScienceBase          (wildlife science)
-      6. Wikimedia Commons         (CC licensed)
-      7. NASA Image Library        (wildlife filtered — last govt attempt)
-      8. Pixabay                   (CC0, if key available)
-      9. Pexels                    (last fallback)
+      6. Wikimedia Commons         (CC licensed, webm auto-converted)
+      7. NASA Image Library        (wildlife filtered)
+      8. Internet Archive          (CC0 wildlife documentaries — reliable fallback)
+      9. Pixabay                   (CC0, if key available)
     """
     source_lower = source.lower()
     video_keyword = keyword
@@ -1105,51 +1192,63 @@ def fetch_wildlife_video(keyword: str, source: str = "", article_url: str = "") 
         if path:
             return path, video_keyword
 
-    # 2. USFWS — best US government wildlife library
+    # 2. USFWS — US govt wildlife library (only real video types now)
     print(f"      Trying USFWS...")
-    path = fetch_usfws_video(video_keyword)
+    path, title = fetch_usfws_video(video_keyword)
     if path:
-        return path, video_keyword
+        return path, title or video_keyword
 
     # 3. NPS — Yellowstone, Everglades, national park wildlife
     print(f"      Trying NPS...")
-    path = fetch_nps_video(video_keyword)
+    path, title = fetch_nps_video(video_keyword)
     if path:
-        return path, video_keyword
+        return path, title or video_keyword
 
-    # 4. NOAA — deep sea, marine, ocean life (marine keywords only)
+    # 4. NOAA — ocean/marine wildlife
     is_marine = any(w in video_keyword.lower() for w in
                     ["ocean", "marine", "sea", "whale", "shark", "fish", "coral", "deep"])
     if is_marine:
         print(f"      Trying NOAA (marine)...")
-        path = fetch_noaa_video(video_keyword)
+        path, title = fetch_noaa_video(video_keyword)
         if path:
-            return path, video_keyword
+            return path, title or video_keyword
 
     # 5. USGS — bears, salmon, polar wildlife
     print(f"      Trying USGS...")
-    path = fetch_usgs_video(video_keyword)
+    path, title = fetch_usgs_video(video_keyword)
     if path:
-        return path, video_keyword
+        return path, title or video_keyword
 
-    # 6. Wikimedia Commons — CC licensed real wildlife clips
+    # 6. Wikimedia Commons — CC licensed (webm auto-converted to mp4)
     print(f"      Trying Wikimedia...")
-    path = fetch_wikimedia_video(video_keyword)
+    path, title = fetch_wikimedia_video(video_keyword)
     if path:
-        return path, video_keyword
+        return path, title or video_keyword
 
-    # 7. NASA — wildlife strictly filtered (last govt attempt)
+    # 7. NASA — wildlife strictly filtered
     print(f"      Trying NASA (filtered)...")
-    path = fetch_nasa_video(video_keyword)
+    path, title = fetch_nasa_video(video_keyword)
     if path:
-        return path, video_keyword
+        return path, title or video_keyword
 
-    # 8. Pixabay — CC0 stock (if key available)
+    # 8. Internet Archive — large CC0 wildlife documentary library
+    print(f"      Trying Internet Archive...")
+    path, title = fetch_archive_video(video_keyword)
+    if path:
+        return path, title or video_keyword
+
+    # 9. Pixabay — CC0 stock (if key available)
     if PIXABAY_API_KEY:
         print(f"      Trying Pixabay...")
-        path = fetch_pixabay_video(video_keyword)
+        path, title = fetch_pixabay_video(video_keyword)
         if path:
-            return path, video_keyword
+            return path, title or video_keyword
+
+    # Last resort: retry with broader "wildlife animal" keyword on Archive
+    print(f"      Trying Archive with generic wildlife query...")
+    path, title = fetch_archive_video("wildlife animal nature")
+    if path:
+        return path, title or "wildlife animal"
 
     print(f"      No video found for '{video_keyword}'")
     return None, ""
