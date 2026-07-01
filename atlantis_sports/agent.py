@@ -391,7 +391,7 @@ JSON:
 {{
   "caption": "sports commentator style caption, no hashtags",
   "hashtags": "#Cricket #Football #Sports #IPL #India #Sportsmanship #AtlantisSports #SportNews #GameDay #ChampionsMindset #WinnersMindset #SportMotivation #SportsIndia #HindiSports #CricketLovers #FootballIndia #SportsShorts #SportHighlights #AthleteLife #Champion (20 tags)",
-  "image_keyword": "2-3 word English description for video search (sport type + action)",
+  "video_search_query": "3-5 word stock footage search term — exact sport + action + setting. Examples: 'cricket batsman hitting six stadium', 'football goalkeeper diving save', 'tennis player serving court', 'Olympic sprinter finish line'. NEVER generic like 'sports match' or 'cricket action'.",
   "emoji_title": "emoji + short title",
   "headline": "5-8 word Hinglish headline — SIRF confirmed facts, spelling 100% correct",
   "image_summary": "2-3 Hinglish sentences (max 35 words) — match result / key fact only"
@@ -417,7 +417,7 @@ JSON:
         return {
             "caption": news_item.get('title', 'Sports Update!'),
             "hashtags": "#Sports #Cricket #Football #India #AtlantisSports",
-            "image_keyword": "sports action match",
+            "video_search_query": "sports action match",
             "emoji_title": "🏆 Sports",
             "headline": news_item.get('title', 'Sports')[:50],
             "image_summary": "",
@@ -759,27 +759,29 @@ def fetch_pixabay_video(keyword: str) -> tuple[str | None, str]:
     return None, ""
 
 
-# ── Pexels (last resort sports stock) ─────────────────────────────────────────
+# ── Pexels (primary stock footage — best keyword relevance) ────────────────────
 def fetch_pexels_video(keyword: str) -> tuple[str | None, str]:
     if not PEXELS_API_KEY:
         return None, ""
     try:
         headers = {"Authorization": PEXELS_API_KEY}
-        resp = requests.get(
-            f"https://api.pexels.com/videos/search?query={keyword}&per_page=8&orientation=portrait",
-            headers=headers, timeout=10
-        )
-        videos = resp.json().get("videos", [])
-        import random
-        random.shuffle(videos)
-        for video in videos[:5]:
-            for vf in video.get("video_files", []):
-                if vf.get("file_type") == "video/mp4" and vf.get("height", 0) >= 720:
-                    url  = vf["link"]
-                    path = _download_video(url, "pexels")
-                    if path:
-                        print(f"      Pexels video found")
-                        return path, keyword
+        for orientation in ("portrait", "landscape"):
+            resp = requests.get(
+                "https://api.pexels.com/videos/search",
+                params={"query": keyword, "per_page": 10, "orientation": orientation},
+                headers=headers, timeout=10
+            )
+            videos = resp.json().get("videos", [])
+            for video in videos:
+                title = video.get("url", "").rstrip("/").split("/")[-1].replace("-", " ")
+                for vf in sorted(video.get("video_files", []),
+                                 key=lambda x: x.get("height", 0), reverse=True):
+                    if vf.get("file_type") == "video/mp4" and vf.get("height", 0) >= 720:
+                        url  = vf["link"]
+                        path = _download_video(url, "pexels")
+                        if path:
+                            print(f"      Pexels: {title[:50]}")
+                            return path, title or keyword
     except Exception as e:
         print(f"      Pexels video error: {e}")
     return None, ""
@@ -811,61 +813,58 @@ def fetch_article_video(article_url: str) -> str | None:
 
 def fetch_sports_video(keyword: str, source: str = "", article_url: str = "") -> tuple[str | None, str]:
     """
-    Video priority:
+    Video priority — specific AI keyword used throughout, NO source override.
       1. Article direct MP4
-      2. Wikimedia Commons (CC-licensed sports footage)
-      3. Internet Archive  (CC0 sports documentaries)
-      4. Pixabay           (CC0 stock, if key)
-      5. Pexels            (last resort, if key)
+      2. Pexels     (best keyword relevance — specific sport + action)
+      3. Pixabay    (CC0, good keyword matching)
+      4. Wikimedia  (CC-licensed sports footage)
+      5. Archive.org (CC0 sports documentaries)
+      6. Last resort: Pexels + Archive with generic "sports" keyword
     """
-    source_lower  = source.lower()
-    video_keyword = keyword
-    for key, val in SPORTS_VIDEO_KEYWORDS.items():
-        if key in source_lower or key in keyword.lower():
-            video_keyword = val
-            break
-
-    print(f"\n      [Video] '{video_keyword}' | source: {source}")
+    print(f"\n      [Video] '{keyword}' | source: {source}")
 
     # 1. Article direct MP4
     if article_url:
         path = fetch_article_video(article_url)
         if path:
-            return path, video_keyword
+            return path, keyword
 
-    # 2. Wikimedia Commons — CC licensed sports clips
-    print(f"      Trying Wikimedia...")
-    path, title = fetch_wikimedia_video(video_keyword)
-    if path:
-        return path, title or video_keyword
-
-    # 3. Internet Archive — sports documentaries
-    print(f"      Trying Internet Archive...")
-    path, title = fetch_archive_video(video_keyword)
-    if path:
-        return path, title or video_keyword
-
-    # 4. Pixabay — CC0 sports stock
-    if PIXABAY_API_KEY:
-        print(f"      Trying Pixabay...")
-        path, title = fetch_pixabay_video(video_keyword)
-        if path:
-            return path, title or video_keyword
-
-    # 5. Pexels — last resort
+    # 2. Pexels — best keyword-to-footage relevance
     if PEXELS_API_KEY:
         print(f"      Trying Pexels...")
-        path, title = fetch_pexels_video(video_keyword)
+        path, title = fetch_pexels_video(keyword)
         if path:
-            return path, title or video_keyword
+            return path, title or keyword
 
-    # Retry Archive with generic "sports" keyword
-    print(f"      Trying Archive with generic sports query...")
+    # 3. Pixabay — CC0 sports stock
+    if PIXABAY_API_KEY:
+        print(f"      Trying Pixabay...")
+        path, title = fetch_pixabay_video(keyword)
+        if path:
+            return path, title or keyword
+
+    # 4. Wikimedia Commons — CC licensed sports clips
+    print(f"      Trying Wikimedia...")
+    path, title = fetch_wikimedia_video(keyword)
+    if path:
+        return path, title or keyword
+
+    # 5. Internet Archive — sports documentaries
+    print(f"      Trying Internet Archive...")
+    path, title = fetch_archive_video(keyword)
+    if path:
+        return path, title or keyword
+
+    # Last resort: retry with generic sports keyword
+    if PEXELS_API_KEY:
+        path, title = fetch_pexels_video("sports athlete action")
+        if path:
+            return path, title or "sports"
     path, title = fetch_archive_video("sports athletics")
     if path:
         return path, title or "sports"
 
-    print(f"      No video found for '{video_keyword}'")
+    print(f"      No video found for '{keyword}'")
     return None, ""
 
 
@@ -1475,7 +1474,7 @@ def run_agent():
         caption  = content.get("caption", "")
 
         media_id = None
-        keyword  = content.get("image_keyword", "sports action match")
+        keyword  = content.get("video_search_query", content.get("image_keyword", "sports action match"))
 
         # Fetch video FIRST — then narrate about what's in the video
         video_path, video_topic = fetch_sports_video(
