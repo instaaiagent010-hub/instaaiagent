@@ -1,0 +1,11 @@
+.env
+__pycache__/
+*.pyc
+*.pyo
+*.mp4
+*.mp3
+*.jpg
+*.jpeg
+*.png
+!atlantis_sports.png
+youtube_history.json
