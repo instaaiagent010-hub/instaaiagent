@@ -129,7 +129,108 @@ def fetch_news(topic: str, max_results: int = 5) -> list[dict]:
     return []
 
 
-# --- Token Auto-Refresh -------------------------------------------------------
+# ── Copyright-Free News Sources ────────────────────────────────────────────────
+def _parse_rss(url: str, source_name: str, max_results: int = 4) -> list[dict]:
+    """Generic RSS/Atom parser — public domain / CC sources ke liye"""
+    import xml.etree.ElementTree as ET
+    import re as _re
+    try:
+        resp = requests.get(url, timeout=14, headers={"User-Agent": "AtlantisNewsBot/1.0"})
+        if resp.status_code != 200:
+            return []
+        root = ET.fromstring(resp.content)
+        ns   = {"media": "http://search.yahoo.com/mrss/"}
+        items = (root.findall(".//item") or
+                 root.findall(".//{http://www.w3.org/2005/Atom}entry"))
+        news = []
+        for item in items:
+            t_el  = item.find("title") or item.find("{http://www.w3.org/2005/Atom}title")
+            title = (t_el.text or "").strip() if t_el is not None else ""
+            if not title: continue
+            title = clean_title(title)
+            d_el  = (item.find("description") or
+                     item.find("{http://www.w3.org/2005/Atom}summary") or
+                     item.find("{http://www.w3.org/2005/Atom}content"))
+            raw  = (d_el.text or "") if d_el is not None else ""
+            desc = _re.sub(r'<[^>]+>', '', raw).strip()[:600]
+            img  = ""
+            mc   = item.find("media:content", ns)
+            if mc is not None: img = mc.get("url", "")
+            if not img:
+                enc = item.find("enclosure")
+                if enc is not None and "image" in enc.get("type", ""): img = enc.get("url", "")
+            if not img:
+                m = _re.search(r'<img[^>]+src=["\']([^"\']+)["\']', raw)
+                if m: img = m.group(1)
+            link_el = item.find("link") or item.find("{http://www.w3.org/2005/Atom}link")
+            url_out = (link_el.text or link_el.get("href", "")) if link_el is not None else ""
+            date_el = (item.find("pubDate") or item.find("{http://www.w3.org/2005/Atom}published"))
+            date    = (date_el.text or "")[:10] if date_el is not None else ""
+            news.append({"title": title, "body": desc, "image": img,
+                         "source": source_name, "date": date, "url": url_out})
+            if len(news) >= max_results * 2: break
+        result = [n for n in news if n["image"]][:max_results] or news[:max_results]
+        print(f"      {source_name}: {len(result)} items")
+        return result
+    except Exception as e:
+        print(f"      {source_name} RSS error: {e}")
+        return []
+
+
+def fetch_pib_rss() -> list[dict]:
+    """PIB — Press Information Bureau (India Govt, public domain)"""
+    return _parse_rss("https://pib.gov.in/RssMain.aspx", "PIB India", 5)
+
+
+def fetch_dd_news_rss() -> list[dict]:
+    """DD News — Doordarshan (India Govt TV, public domain)"""
+    for url in ["https://ddnews.gov.in/en/rss.xml", "https://www.ddnews.gov.in/rss.xml"]:
+        result = _parse_rss(url, "DD News", 4)
+        if result: return result
+    return []
+
+
+def fetch_newsonair_rss() -> list[dict]:
+    """NewsonAir / Akashvani — India official radio (public domain)"""
+    for url in [
+        "https://newsonair.gov.in/NSD.aspx?Action=rss",
+        "https://newsonair.gov.in/NSD_rss.aspx",
+        "https://www.newsonair.gov.in/rss.xml",
+    ]:
+        result = _parse_rss(url, "NewsonAir", 4)
+        if result: return result
+    return []
+
+
+def fetch_un_news_rss() -> list[dict]:
+    """UN News — United Nations (CC licensed, free to republish)"""
+    return _parse_rss("https://news.un.org/feed/subscribe/en/news/all/rss.xml", "UN News", 4)
+
+
+def fetch_wikinews_rss() -> list[dict]:
+    """Wikinews — CC BY 2.5 (fully free to republish)"""
+    return _parse_rss(
+        "https://en.wikinews.org/w/index.php?"
+        "title=Special:NewsFeed&feed=rss&categories=&"
+        "notcategories=No+publish%7CArchived%7CDisputed&"
+        "namespace=0&count=20&ordermethod=categoryadd&stablepages=only",
+        "Wikinews CC", 5
+    )
+
+
+def fetch_ein_presswire_rss() -> list[dict]:
+    """EIN Presswire — free press releases, meant for publishing"""
+    return _parse_rss("https://www.einpresswire.com/rss/", "EIN Presswire", 4)
+
+
+def fetch_who_rss() -> list[dict]:
+    """WHO — World Health Organization (CC licensed)"""
+    return _parse_rss(
+        "https://www.who.int/feeds/entity/mediacentre/news/en/rss.xml", "WHO News", 3
+    )
+
+
+# ── Token Auto-Refresh ────────────────────────────────────────────────────────
 def update_github_secret(secret_name: str, secret_value: str) -> bool:
     """GitHub Actions secret ko update karo — token auto-renew ke liye"""
     github_token = os.getenv("GH_PAT")
@@ -1059,73 +1160,46 @@ def process_video_for_reel(video_path: str, headline: str, summary: str) -> str 
             except: pass
 
         if result.returncode == 0 and os.path.exists(out_path):
-            size_mb = os.path.getsize(out_path) // 1024 // 1024
-            print(f"      Reel ready: {size_mb}MB {'(with audio)' if has_audio else '(silent)'}")
+            size_bytes = os.path.getsize(out_path)
+            size_kb    = size_bytes // 1024
+            print(f"      Reel ready: {size_kb}KB {'(with audio)' if has_audio else '(silent)'}")
+            if size_bytes < 10_000:
+                print(f"      WARNING: reel too small ({size_bytes}B) — skipping")
+                return None
             return out_path
-        print(f"      ffmpeg error: {result.stderr[-200:].decode(errors='ignore')}")
+        print(f"      ffmpeg error: {result.stderr[-300:].decode(errors='ignore')}")
     except Exception as e:
         print(f"      Reel process error: {e}")
     return None
 
 
 def upload_video_to_github(video_path: str) -> str | None:
-    """Video GitHub Release pe upload karo — GH Actions se hamesha accessible"""
+    """Video GitHub Contents API pe upload karo (wildlife agent style — reliable)"""
     gh_token = os.getenv("GH_PAT") or os.getenv("GITHUB_TOKEN")
-    repo = os.getenv("GITHUB_REPOSITORY")
+    repo     = os.getenv("GITHUB_REPOSITORY")
     if not gh_token or not repo:
         print("      GitHub token ya repo missing")
         return None
-
-    headers = {
-        "Authorization": f"token {gh_token}",
-        "Accept": "application/vnd.github.v3+json"
-    }
-    filename = f"reel_{int(time.time())}.mp4"
-
     try:
-        # "media" tag wala release dhundo ya banao
-        releases = requests.get(
-            f"https://api.github.com/repos/{repo}/releases",
-            headers=headers, timeout=10
-        ).json()
-
-        upload_url = None
-        for rel in (releases if isinstance(releases, list) else []):
-            if rel.get("tag_name") == "media-assets":
-                upload_url = rel["upload_url"].split("{")[0]
-                break
-
-        if not upload_url:
-            create = requests.post(
-                f"https://api.github.com/repos/{repo}/releases",
-                headers=headers,
-                json={"tag_name": "media-assets", "name": "Media Assets",
-                      "body": "Auto-generated media for Instagram reels", "draft": False},
-                timeout=10
-            ).json()
-            upload_url = create.get("upload_url", "").split("{")[0]
-
-        if not upload_url:
-            print("      Release URL nahi mili")
-            return None
-
-        size_mb = os.path.getsize(video_path) // 1024 // 1024
-        print(f"      GitHub release upload ({size_mb}MB)...")
-
+        import base64
         with open(video_path, "rb") as f:
-            up = requests.post(
-                f"{upload_url}?name={filename}",
-                headers={**headers, "Content-Type": "video/mp4"},
-                data=f,
-                timeout=300
-            ).json()
-
-        url = up.get("browser_download_url", "")
+            content = base64.b64encode(f.read()).decode()
+        filename = f"news_reel_{int(time.time())}.mp4"
+        api_url  = f"https://api.github.com/repos/{repo}/contents/reels/{filename}"
+        size_mb  = os.path.getsize(video_path) // 1024 // 1024
+        print(f"      GitHub upload ({size_mb}MB)...")
+        resp = requests.put(
+            api_url,
+            headers={"Authorization": f"token {gh_token}",
+                     "Content-Type": "application/json"},
+            json={"message": f"reel: {filename}", "content": content, "branch": "main"},
+            timeout=300
+        )
+        url = resp.json().get("content", {}).get("download_url")
         if url:
             print(f"      GitHub URL: {url[:80]}")
             return url
-        print(f"      Upload response: {up}")
-
+        print(f"      GitHub upload error: {resp.json()}")
     except Exception as e:
         print(f"      GitHub upload error: {e}")
     return None
@@ -1830,11 +1904,35 @@ def run_agent():
     # Token refresh karo (60-day long-lived token)
     refresh_token()
 
-    # 1. Multiple topics se news fetch karo
+    # 1a. Copyright-free official sources — PRIMARY (PIB, DD News, UN, Wikinews etc.)
+    from concurrent.futures import ThreadPoolExecutor, as_completed
     all_news = []
-    for topic in NEWS_TOPICS:
-        results = fetch_news(topic, max_results=3)
-        all_news.extend(results)
+    official_sources = [
+        fetch_pib_rss,
+        fetch_dd_news_rss,
+        fetch_newsonair_rss,
+        fetch_un_news_rss,
+        fetch_wikinews_rss,
+        fetch_ein_presswire_rss,
+        fetch_who_rss,
+    ]
+    print("\n[Fetch] Copyright-free sources se news fetch kar raha hoon...")
+    with ThreadPoolExecutor(max_workers=7) as ex:
+        futs = {ex.submit(fn): fn.__name__ for fn in official_sources}
+        for fut in as_completed(futs):
+            try:
+                result = fut.result()
+                if isinstance(result, list): all_news.extend(result)
+            except Exception as e:
+                print(f"      Source error: {e}")
+    print(f"      Official sources: {len(all_news)} items")
+
+    # 1b. DuckDuckGo — SIRF FALLBACK (facts rewrite, fair use) — agar < 6 items mile
+    if len(all_news) < 6:
+        print("[Fetch] DuckDuckGo fallback (facts rewrite)...")
+        for topic in NEWS_TOPICS[:3]:
+            results = fetch_news(topic, max_results=3)
+            all_news.extend(results)
 
     # Sirf wahi news jisme image ho
     all_news = [n for n in all_news if n.get("image")]
