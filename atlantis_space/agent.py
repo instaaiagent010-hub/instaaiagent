@@ -1106,7 +1106,7 @@ JSON:
 {{
   "caption": "space explorer style caption, no hashtags",
   "hashtags": "#Space #ISRO #NASA #Astronomy #SpaceScience #Cosmos #Universe #IndiaInSpace #SpaceExploration #MarsExploration #BlackHole #SpaceTech #ScienceIsAwesome #AtlantisSpace #Stargazing #RocketLaunch #AstroPhotography #SpaceLovers #NASAIndia #FutureOfSpace (20 tags)",
-  "image_keyword": "2-3 word English description for image search",
+  "video_search_query": "3-5 word stock footage search term — exact space object + action. Examples: 'rocket launch fire trail', 'galaxy spiral nebula stars', 'astronaut spacewalk earth'. NEVER generic like 'space science' or 'astronomy'.",
   "emoji_title": "emoji + short title",
   "headline": "5-8 word Hinglish headline — SIRF confirmed facts, spelling 100% correct",
   "image_summary": "2-3 Hinglish sentences (max 35 words) — confirmed facts only, spelling correct"
@@ -1160,7 +1160,7 @@ JSON: {{"headline": "corrected", "summary": "corrected"}}"""}],
         return {
             "caption": news_item.get('title', 'Space Breaking News!'),
             "hashtags": "#Space #ISRO #NASA #Astronomy #SpaceScience",
-            "image_keyword": "space astronomy",
+            "video_search_query": "space rocket stars",
             "emoji_title": "🚀 Space News",
             "headline": news_item.get('title', 'Space News')[:50],
             "image_summary": "",
@@ -1671,20 +1671,18 @@ def process_reel(video_path: str, headline: str, summary: str, narration: str = 
                 ], capture_output=True, timeout=10)
                 streams = _json.loads(probe.stdout).get("streams", [{}])
                 reel_dur = float(streams[0].get("duration", 30.0))
-                reel_dur = min(reel_dur + 0.3, 58.0)   # 0.3s buffer, max 58s
+                reel_dur = min(reel_dur + 0.3, 88.0)
                 print(f"      Audio duration: {reel_dur:.1f}s")
             except Exception:
                 reel_dur = 30.0
 
-        # Step 2: Convert to 1080x1920 — hold last frame to fill audio duration
-        # tpad=stop=-1:stop_mode=clone → last frame freeze (professional look)
+        # Step 2: Convert to 1080x1920 — loop video to match audio duration
         vf_main = (
             "scale=1080:1920:force_original_aspect_ratio=increase,"
-            "crop=1080:1920,"
-            "tpad=stop=-1:stop_mode=clone"
+            "crop=1080:1920"
         )
         crop = subprocess.run([
-            "ffmpeg", "-y", "-i", video_path,
+            "ffmpeg", "-y", "-stream_loop", "-1", "-i", video_path,
             "-t", str(reel_dur),
             "-vf", vf_main,
             "-r", "30",
@@ -1700,10 +1698,10 @@ def process_reel(video_path: str, headline: str, summary: str, narration: str = 
                 "crop=1080:1920,boxblur=30:3[bg_blur];"
                 "[fg]scale=1080:608:force_original_aspect_ratio=decrease,"
                 "pad=1080:608:(ow-iw)/2:(oh-ih)/2:black[fg_pad];"
-                "[bg_blur][fg_pad]overlay=(W-w)/2:(H-h)/2,tpad=stop=-1:stop_mode=clone"
+                "[bg_blur][fg_pad]overlay=(W-w)/2:(H-h)/2"
             )
             crop = subprocess.run([
-                "ffmpeg", "-y", "-i", video_path,
+                "ffmpeg", "-y", "-stream_loop", "-1", "-i", video_path,
                 "-t", str(reel_dur), "-vf", vf_blur, "-r", "30",
                 "-c:v", "libx264", "-pix_fmt", "yuv420p",
                 "-an", "-preset", "fast", "-crf", "22",
@@ -2114,7 +2112,7 @@ def run_agent():
 
         if is_visual:
             print(f"      [Reel mode] Space video dhund raha hoon...")
-            keyword    = content.get("image_keyword", "space astronomy")
+            keyword    = content.get("video_search_query", content.get("image_keyword", "space rocket stars"))
             narration  = generate_narration(news, headline, summary)
             video_path = fetch_space_video(keyword, source=news.get("source", ""))
             if video_path:
