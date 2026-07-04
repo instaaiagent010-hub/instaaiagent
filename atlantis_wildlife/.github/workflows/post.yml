@@ -1,15 +1,17 @@
-name: Atlantis Wildlife — Instagram Reels (8×/day)
+name: Atlantis Wildlife — Instagram Reels (10×/day)
 
 on:
   schedule:
-    - cron: '30 1 * * *'    # IST 07:00 — morning coffee scroll
-    - cron: '30 2 * * *'    # IST 08:00 — early morning
-    - cron: '30 4 * * *'    # IST 10:00 — mid-morning
-    - cron: '30 6 * * *'    # IST 11:30 — late morning
-    - cron: '30 8 * * *'    # IST 14:00 — lunch break
-    - cron: '30 10 * * *'   # IST 15:30 — afternoon
-    - cron: '30 12 * * *'   # IST 18:00 — evening commute
-    - cron: '30 15 * * *'   # IST 21:00 — prime time
+    - cron: '30 0 * * *'    # IST 06:00
+    - cron: '0 2 * * *'     # IST 07:30
+    - cron: '30 3 * * *'    # IST 09:00
+    - cron: '0 5 * * *'     # IST 10:30
+    - cron: '30 6 * * *'    # IST 12:00
+    - cron: '0 8 * * *'     # IST 13:30
+    - cron: '30 9 * * *'    # IST 15:00
+    - cron: '30 11 * * *'   # IST 17:00
+    - cron: '30 13 * * *'   # IST 19:00
+    - cron: '30 15 * * *'   # IST 21:00
   workflow_dispatch:
 
 jobs:

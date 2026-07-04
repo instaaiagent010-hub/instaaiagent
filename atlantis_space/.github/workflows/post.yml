@@ -1,12 +1,17 @@
-name: Atlantis Space — Daily 10 Posts
+name: Atlantis Space — Instagram Reels (10×/day)
 
 on:
   schedule:
-    - cron: '0 3 * * *'    # IST 08:30
-    - cron: '0 6 * * *'    # IST 11:30
-    - cron: '30 9 * * *'   # IST 15:00
-    - cron: '0 13 * * *'   # IST 18:30
-    - cron: '0 16 * * *'   # IST 21:30
+    - cron: '50 0 * * *'    # IST 06:20
+    - cron: '20 2 * * *'    # IST 07:50
+    - cron: '50 3 * * *'    # IST 09:20
+    - cron: '20 5 * * *'    # IST 10:50
+    - cron: '50 6 * * *'    # IST 12:20
+    - cron: '20 8 * * *'    # IST 13:50
+    - cron: '50 9 * * *'    # IST 15:20
+    - cron: '50 11 * * *'   # IST 17:20
+    - cron: '50 13 * * *'   # IST 19:20
+    - cron: '50 15 * * *'   # IST 21:20
   workflow_dispatch:
 
 jobs:
