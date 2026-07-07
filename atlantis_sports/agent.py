@@ -202,7 +202,7 @@ def fetch_bbc_sport() -> list[dict]:
     return _parse_rss("https://feeds.bbci.co.uk/sport/rss.xml", "BBC Sport", 3)
 
 def fetch_bbc_cricket() -> list[dict]:
-    return _parse_rss("https://feeds.bbci.co.uk/sport/cricket/rss.xml", "BBC Cricket", 2)
+    return _parse_rss("https://feeds.bbci.co.uk/sport/cricket/rss.xml", "BBC Cricket", 3)
 
 def fetch_bbc_football() -> list[dict]:
     return _parse_rss("https://feeds.bbci.co.uk/sport/football/rss.xml", "BBC Football", 2)
@@ -211,10 +211,10 @@ def fetch_guardian_sport() -> list[dict]:
     return _parse_rss("https://www.theguardian.com/sport/rss", "Guardian Sport", 3)
 
 def fetch_ndtv_sports() -> list[dict]:
-    return _parse_rss("https://sports.ndtv.com/rss/all", "NDTV Sports", 3)
+    return _parse_rss("https://sports.ndtv.com/rss/all", "NDTV Sports", 4)
 
 def fetch_espncricinfo() -> list[dict]:
-    return _parse_rss("https://www.espncricinfo.com/rss/content/story/feeds/6.xml", "ESPNcricinfo", 3)
+    return _parse_rss("https://www.espncricinfo.com/rss/content/story/feeds/6.xml", "ESPNcricinfo", 4)
 
 def fetch_skysports() -> list[dict]:
     return _parse_rss("https://www.skysports.com/rss/0,20514,11661,00.xml", "Sky Sports", 2)
@@ -224,6 +224,22 @@ def fetch_goal_football() -> list[dict]:
 
 def fetch_athletics_world() -> list[dict]:
     return _parse_rss("https://worldathletics.org/news/rss", "World Athletics", 2)
+
+# India-focused sources — primary audience ke liye
+def fetch_toi_sports() -> list[dict]:
+    return _parse_rss("https://timesofindia.indiatimes.com/rss/sport.cms", "Times of India Sports", 4)
+
+def fetch_ht_sports() -> list[dict]:
+    return _parse_rss("https://www.hindustantimes.com/feeds/rss/sports/rssfeed.xml", "Hindustan Times Sports", 3)
+
+def fetch_sportstar() -> list[dict]:
+    return _parse_rss("https://sportstar.thehindu.com/rss/sport/feeds.rss", "Sportstar", 3)
+
+def fetch_icc_cricket() -> list[dict]:
+    return _parse_rss("https://www.icc-cricket.com/media-releases/feed/rss.xml", "ICC Cricket", 3)
+
+def fetch_olympics_news() -> list[dict]:
+    return _parse_rss("https://olympics.com/ioc/news/feed", "Olympics", 2)
 
 
 # --- History ------------------------------------------------------------------
@@ -338,7 +354,7 @@ Ye sports content hai. Visual aur excitement score do (1-10):
 - 5-6: Team selection, injury news, transfer
 - 1-4: Background/opinion piece, no visual appeal
 
-Priority: ESPNcricinfo > BBC Cricket > BBC Sport > NDTV Sports > Guardian > BBC Football > Goal.com
+Priority: ESPNcricinfo > ICC Cricket > BBC Cricket > Sportstar > NDTV Sports > TOI Sports > HT Sports > BBC Sport > Guardian > BBC Football > Goal.com
 
 {news_list_str}
 
@@ -968,15 +984,18 @@ def _tts_edge(text: str, out_path: str) -> bool:
         ("hi-IN-MadhurNeural", "-5%", "+0Hz", "+12%"),
         ("hi-IN-SwaraNeural",  "-5%", "-2Hz", "+15%"),
     ]
+    # Hourly rotation — har ghante ek naya voice
+    voice_idx = (int(time.time()) // 3600) % len(VOICES)
+    ordered = VOICES[voice_idx:] + VOICES[:voice_idx]
     clean = _re.sub(r'[*_`#~\[\]{}|<>\\]', '', text).strip()
-    for voice, rate, pitch, vol in VOICES:
+    for voice, rate, pitch, vol in ordered:
         try:
             comm = edge_tts.Communicate(clean, voice=voice,
                                         rate=rate, pitch=pitch, volume=vol)
             asyncio.run(comm.save(out_path))
             if os.path.exists(out_path) and os.path.getsize(out_path) > 1000:
                 _normalize_audio(out_path)
-                print(f"      TTS: {voice}")
+                print(f"      TTS: {voice} (slot {voice_idx})")
                 return True
         except Exception:
             continue
@@ -1176,10 +1195,13 @@ def process_reel(video_path: str, headline: str, summary: str,
             except: pass
 
         if result.returncode == 0 and os.path.exists(out_path):
-            size_mb = os.path.getsize(out_path) // 1024 // 1024
-            print(f"      Reel ready: {size_mb}MB {'(with audio)' if has_audio else ''}")
+            size_kb = os.path.getsize(out_path) // 1024
+            print(f"      Reel ready: {size_kb}KB {'(with audio)' if has_audio else ''}")
+            if size_kb < 10:
+                print(f"      WARNING: reel too small ({size_kb}KB) — skip")
+                return None
             return out_path
-        print(f"      FFmpeg error: {result.stderr[-150:].decode(errors='ignore')}")
+        print(f"      FFmpeg error: {result.stderr[-200:].decode(errors='ignore')}")
     except Exception as e:
         print(f"      Reel process error: {e}")
     return None
@@ -1411,10 +1433,15 @@ def run_agent():
         fetch_skysports,
         fetch_goal_football,
         fetch_athletics_world,
+        fetch_toi_sports,
+        fetch_ht_sports,
+        fetch_sportstar,
+        fetch_icc_cricket,
+        fetch_olympics_news,
     ]
 
     print("\n[Fetch] Parallel fetching all sports sources...")
-    with ThreadPoolExecutor(max_workers=9) as ex:
+    with ThreadPoolExecutor(max_workers=14) as ex:
         rss_futures = {ex.submit(fn): fn.__name__ for fn in rss_sources}
         for fut in as_completed(rss_futures):
             try:
