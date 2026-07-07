@@ -56,11 +56,13 @@ if YOUTUBE_ONLY:
     CAROUSEL_SLIDES = 1
 
 WILDLIFE_TOPICS = [
-    "rare wildlife animal discovery 2025",
-    "endangered species conservation news",
-    "tiger lion leopard wildlife India",
+    "rare wildlife animal discovery 2026",
+    "endangered species conservation news India",
+    "tiger lion leopard cheetah wildlife India",
     "marine life ocean deep sea creature",
     "bird migration butterfly insect nature",
+    "new species discovered rainforest 2026",
+    "wildlife rescue rehabilitation India",
 ]
 
 WILDLIFE_VIDEO_KEYWORDS = {
@@ -69,11 +71,26 @@ WILDLIFE_VIDEO_KEYWORDS = {
     "national geo":   "wild animal predator prey",
     "bbc wildlife":   "wildlife documentary nature",
     "inaturalist":    "wildlife observation animals nature",
+    "gbif":           "wildlife animal observation nature",
     "bird":           "bird flight wildlife nature",
     "marine":         "ocean fish shark whale dolphins",
     "insect":         "butterfly insect macro nature",
     "tiger":          "tiger wildlife India forest",
     "elephant":       "elephant wildlife Africa India",
+    "lion":           "lion pride savanna wildlife",
+    "leopard":        "leopard big cat wildlife",
+    "cheetah":        "cheetah sprint wildlife africa",
+    "bear":           "bear wildlife nature forest",
+    "wolf":           "wolf pack wildlife yellowstone",
+    "whale":          "whale dolphin ocean wildlife",
+    "shark":          "shark ocean marine wildlife",
+    "coral":          "coral reef marine wildlife",
+    "monkey":         "monkey primate wildlife forest",
+    "snake":          "snake reptile wildlife nature",
+    "frog":           "frog amphibian wildlife nature",
+    "science daily":  "animal wildlife nature science",
+    "guardian":       "wildlife nature animal habitat",
+    "phys.org":       "animal wildlife nature discovery",
     "pexels":         "wildlife animal nature",
 }
 
@@ -234,80 +251,126 @@ def fetch_earthsky_nature() -> list[dict]:
     return _parse_rss("https://earthsky.org/feed/", "EarthSky Nature", max_results=2)
 
 
-def fetch_inaturalist_obs() -> dict | None:
-    """iNaturalist API — recent interesting wildlife observation"""
+def fetch_sciencedaily_animals() -> list[dict]:
+    """ScienceDaily — Plants & Animals (very active, daily animal discoveries)"""
+    return _parse_rss("https://www.sciencedaily.com/rss/plants_animals.xml", "ScienceDaily", max_results=4)
+
+
+def fetch_guardian_environment() -> list[dict]:
+    """The Guardian — Environment & Wildlife"""
+    return _parse_rss("https://www.theguardian.com/environment/animals/rss", "Guardian Wildlife", max_results=3)
+
+
+def fetch_physorg_animals() -> list[dict]:
+    """Phys.org — Plants & Animals science news"""
+    return _parse_rss("https://phys.org/rss-feed/biology-news/plants-animals/", "Phys.org Nature", max_results=3)
+
+
+def fetch_wildaid_news() -> list[dict]:
+    """WildAid — anti-poaching & conservation news"""
+    return _parse_rss("https://wildaid.org/feed/", "WildAid", max_results=2)
+
+
+def fetch_wcs_news() -> list[dict]:
+    """WCS — Wildlife Conservation Society newsroom"""
+    return _parse_rss("https://newsroom.wcs.org/rss.aspx", "WCS", max_results=2)
+
+
+def fetch_inaturalist_obs() -> list[dict]:
+    """iNaturalist API — 3 diverse recent wildlife observations (Mammal+Bird+Reptile)"""
+    import random
+    results_out = []
+    # Fetch from 3 different taxa for variety
+    taxa_groups = [
+        "Mammalia,Aves",
+        "Reptilia,Amphibia",
+        "Actinopterygii,Insecta",
+    ]
     try:
-        resp = requests.get(
-            "https://api.inaturalist.org/v1/observations",
-            params={
-                "quality_grade": "research",
-                "photos":        "true",
-                "order":         "desc",
-                "order_by":      "votes",
-                "per_page":      10,
-                "iconic_taxa":   "Mammalia,Aves,Reptilia,Amphibia,Actinopterygii"
-            },
-            timeout=12,
-            headers={"User-Agent": "AtlantisWildlifeBot/1.0"}
-        )
-        results = resp.json().get("results", [])
-        for obs in results:
-            taxon   = obs.get("taxon", {}) or {}
-            name    = taxon.get("preferred_common_name", "") or taxon.get("name", "")
-            sci     = taxon.get("name", "")
-            place   = obs.get("place_guess", "Unknown location")
-            photos  = obs.get("photos", [])
-            img     = photos[0].get("url", "").replace("square", "large") if photos else ""
-            desc    = taxon.get("wikipedia_summary", "")[:400]
-            if name and img:
-                print(f"      iNaturalist: {name} @ {place}")
-                return {
-                    "title": f"{name} Spotted — {place}",
-                    "body":  desc or f"{name} ({sci}) ki ek amazing wildlife observation. Location: {place}.",
-                    "image": img,
-                    "source": "iNaturalist",
-                    "date": datetime.now().strftime("%Y-%m-%d")
-                }
+        for taxa in taxa_groups:
+            resp = requests.get(
+                "https://api.inaturalist.org/v1/observations",
+                params={
+                    "quality_grade": "research",
+                    "photos":        "true",
+                    "order":         "desc",
+                    "order_by":      "votes",
+                    "per_page":      15,
+                    "iconic_taxa":   taxa,
+                },
+                timeout=12,
+                headers={"User-Agent": "AtlantisWildlifeBot/1.0"}
+            )
+            obs_list = resp.json().get("results", [])
+            random.shuffle(obs_list)
+            for obs in obs_list[:8]:
+                taxon  = obs.get("taxon", {}) or {}
+                name   = taxon.get("preferred_common_name", "") or taxon.get("name", "")
+                sci    = taxon.get("name", "")
+                place  = obs.get("place_guess", "Unknown location")
+                photos = obs.get("photos", [])
+                img    = photos[0].get("url", "").replace("square", "large") if photos else ""
+                desc   = taxon.get("wikipedia_summary", "")[:400]
+                if name and img:
+                    print(f"      iNaturalist: {name} @ {place}")
+                    results_out.append({
+                        "title":  f"{name} Spotted — {place}",
+                        "body":   desc or f"{name} ({sci}) ki ek amazing observation. Location: {place}.",
+                        "image":  img,
+                        "source": "iNaturalist",
+                        "date":   datetime.now().strftime("%Y-%m-%d"),
+                        "url":    obs.get("uri", ""),
+                    })
+                    break   # 1 observation per taxa group
     except Exception as e:
         print(f"      iNaturalist error: {e}")
-    return None
+    return results_out
 
 
-def fetch_gbif_species() -> dict | None:
-    """GBIF — Global Biodiversity species observation"""
+def fetch_gbif_species() -> list[dict]:
+    """GBIF — 2 diverse Global Biodiversity species observations"""
+    import random
+    results_out = []
+    # Two searches: one for charismatic megafauna, one for anything
+    searches = [
+        {"mediaType": "StillImage", "basisOfRecord": "HUMAN_OBSERVATION",
+         "hasCoordinate": "true", "taxonKey": "1", "limit": 20},   # Animalia
+        {"mediaType": "StillImage", "basisOfRecord": "HUMAN_OBSERVATION",
+         "hasCoordinate": "true", "limit": 20},
+    ]
     try:
-        resp = requests.get(
-            "https://api.gbif.org/v1/occurrence/search",
-            params={
-                "mediaType":  "StillImage",
-                "basisOfRecord": "HUMAN_OBSERVATION",
-                "hasCoordinate": "true",
-                "limit": 10,
-            },
-            timeout=12,
-            headers={"User-Agent": "AtlantisWildlifeBot/1.0"}
-        )
-        results = resp.json().get("results", [])
-        import random
-        random.shuffle(results)
-        for obs in results:
-            name    = obs.get("vernacularName", "") or obs.get("species", "")
-            sci     = obs.get("species", "")
-            country = obs.get("country", "")
-            media   = obs.get("media", [])
-            img     = media[0].get("identifier", "") if media else ""
-            if name and img and img.startswith("http"):
-                print(f"      GBIF: {name}, {country}")
-                return {
-                    "title": f"{name} — Wildlife Observation",
-                    "body":  f"{name} ({sci}) {country} mein observe kiya gaya. GBIF global biodiversity database pe record hai.",
-                    "image": img,
-                    "source": "GBIF Wildlife",
-                    "date":  datetime.now().strftime("%Y-%m-%d")
-                }
+        for params in searches:
+            resp = requests.get(
+                "https://api.gbif.org/v1/occurrence/search",
+                params=params, timeout=12,
+                headers={"User-Agent": "AtlantisWildlifeBot/1.0"}
+            )
+            items = resp.json().get("results", [])
+            random.shuffle(items)
+            for obs in items:
+                name    = obs.get("vernacularName", "") or obs.get("species", "")
+                sci     = obs.get("species", "")
+                country = obs.get("country", "")
+                media   = obs.get("media", [])
+                img     = media[0].get("identifier", "") if media else ""
+                if name and img and img.startswith("http"):
+                    # Avoid duplicating the same species in both calls
+                    if not any(r["title"].startswith(name) for r in results_out):
+                        print(f"      GBIF: {name}, {country}")
+                        results_out.append({
+                            "title":  f"{name} — Wildlife Observation",
+                            "body":   f"{name} ({sci}) {country} mein observe kiya gaya. GBIF global biodiversity database pe record hai.",
+                            "image":  img,
+                            "source": "GBIF Wildlife",
+                            "date":   datetime.now().strftime("%Y-%m-%d"),
+                            "url":    "",
+                        })
+                        break
+            if len(results_out) >= 2:
+                break
     except Exception as e:
         print(f"      GBIF error: {e}")
-    return None
+    return results_out
 
 
 def fetch_wikimedia_wildlife_image(keyword: str) -> str | None:
@@ -448,22 +511,26 @@ def smart_plan(all_news: list[dict], count: int = CAROUSEL_SLIDES) -> list[dict]
             model="llama-3.3-70b-versatile",
             max_tokens=500,
             messages=[{"role": "user", "content": f"""
-Ye wildlife/nature content hai. Visual aur wow-factor score do (1-10):
-- 9-10: Stunning animal photo/video (rare species, predator-prey, close-up)
-- 7-8: Interesting discovery (new species, conservation win, migration)
-- 5-6: Informative (research findings, wildlife news)
-- 1-4: Boring, no visual
+Ye wildlife/nature content hai. Visual + emotional + viral potential score do (1-10):
 
-Priority: iNaturalist > GBIF > National Geographic > BBC Wildlife > WWF > Mongabay
+SCORING GUIDE:
+- 9-10: Rare species / dramatic predator-prey / new discovery / cute animal moment — Instagram pe viral potential
+- 7-8: Conservation win / migration / interesting behavior / India wildlife
+- 5-6: Research news / habitat / biodiversity report
+- 1-4: Opinion piece / no clear visual / no animal focus
+
+SOURCE PRIORITY (boost by +1 if from these): iNaturalist > GBIF > ScienceDaily > NatGeo > BBC Wildlife > Mongabay > Guardian Wildlife
+
+INDIA BONUS: +2 if Indian wildlife (tiger, elephant, leopard, gharial, one-horned rhino, Gangetic dolphin, etc.)
 
 {news_list_str}
 
-TOP {count} choose karo. JSON:
+TOP {count} choose karo — most visually striking + emotionally engaging. JSON:
 {{
   "plan": [
-    {{"index": 0, "wow_score": 9, "reason": "why this is visually stunning"}}
+    {{"index": 0, "wow_score": 9, "reason": "why this works for Instagram"}}
   ],
-  "strategy": "one line content strategy"
+  "strategy": "one line about what makes this content special today"
 }}"""}],
             response_format={"type": "json_object"}
         )
@@ -486,31 +553,41 @@ TOP {count} choose karo. JSON:
 def generate_caption(news_item: dict) -> dict:
     print(f"\n[Caption] Generate kar raha hoon...")
     client = Groq(api_key=GROQ_API_KEY)
+    import random as _rand
+    caption_styles = [
+        "STORYTELLER: Ek choti si story ki tarah likho — 'Ek baar ki baat hai, jungle mein...' Emotional connection banao.",
+        "FACT BOMBER: Shuruaat ek shocking fact se karo jo log nahi jaante. Phir context do. End mein 'Ye tum jaante the?'",
+        "CONSERVATIONIST: Crisis + Hope ka angle. Kya kho rahe hain aur kya bach sakta hai — action call ke saath.",
+    ]
+    chosen_style = _rand.choice(caption_styles)
+
     prompt = f"""
 Tu {CHANNEL_HANDLE} ka Instagram content creator hai — ye ek WILDLIFE EXPLORATION channel hai.
+Audience: 18-35 saal ke Indian wildlife lovers, nature photographers, conservation supporters.
 
 Content:
 Title: {news_item.get('title', '')}
 Description: {news_item.get('body', '')[:500]}
 Source: {news_item.get('source', '')}
 
-TONE — WILDLIFE EXPLORER, NOT NEWS REPORTER:
-- Wonder, curiosity, amazement — jaisa koi wildlife photographer baat kar raha ho
-- "Dekho ye sher ki aankhein!", "Socho zaraa — ye jungle mein raat ko kya hota hai!", "Ye moment camera ne capture kiya!"
-- Readers ko nature se CONNECT karwao — unhe feel ho ki ye unki bhi duniya hai
-- Hindi+English mix (Hinglish), young Indian audience ke liye
-- 6-8 lines, educational but exciting — David Attenborough wali curiosity
-- End mein ek mind-blowing animal fact ya question
-- CAPTION MEIN HASHTAG NAHI — sirf "hashtags" field mein
+CAPTION STYLE THIS POST: {chosen_style}
+
+RULES:
+- Wonder + curiosity + amazement — NatGeo photographer ki tarah
+- Hinglish (Hindi dominant, English sirf proper nouns/scientific terms)
+- 6-8 punchy lines — har line punch honi chahiye, padding nahi
+- End mein ek question ya call-to-action (save, share, comment)
+- India connection dhundo — agar Indian species/place mention ho to highlight karo
+- CAPTION MEIN HASHTAG MAT LIKHO
 
 JSON:
 {{
-  "caption": "wildlife explorer style caption, no hashtags",
-  "hashtags": "#Wildlife #Nature #Animals #WildIndia #NaturePhotography #WildlifePhotography #IndianWildlife #NatureLovers #WildAnimal #Jungle #Conservation #BBCWildlife #NatGeo #WildlifeConservation #AnimalLovers #Predator #WildBeauty #NatureIsAmazing #AtlantisWildlife #SaveWildlife (20 tags)",
-  "image_keyword": "2-3 word English description for video search",
-  "emoji_title": "emoji + short title",
-  "headline": "5-8 word Hinglish headline — SIRF confirmed facts, spelling 100% correct",
-  "image_summary": "2-3 Hinglish sentences (max 35 words) — confirmed facts only"
+  "caption": "caption in chosen style, no hashtags, Hinglish",
+  "hashtags": "#Wildlife #WildIndia #NatureIndia #IndianWildlife #AnimalPhotography #WildlifePhotography #NatureLovers #Conservation #SaveWildlife #WildAnimal #BBCEarth #NatGeo #AtlantisWildlife #JungleLife #WildlifeConservation #Biodiversity #NatureIsBeautiful #WildBeauty #AnimalsOfInstagram #NaturePhotography",
+  "video_search_query": "3-5 word stock footage search term — exact species + action + habitat. Examples: 'Bengal tiger drinking river', 'humpback whale breach ocean', 'snow leopard hunting mountain', 'elephant herd crossing savanna'. NEVER generic like 'wildlife conservation' or 'animal nature'.",
+  "emoji_title": "1-2 emoji + 3-4 word title",
+  "headline": "5-8 word Hinglish headline — confirmed facts only, correct spelling",
+  "image_summary": "2 Hinglish sentences (max 30 words) — what's happening in the video/image"
 }}
 """
     try:
@@ -533,7 +610,7 @@ JSON:
         return {
             "caption": news_item.get('title', 'Amazing Wildlife!'),
             "hashtags": "#Wildlife #Nature #Animals #WildIndia",
-            "image_keyword": "wildlife animal nature",
+            "video_search_query": "wildlife animal nature",
             "emoji_title": "🦁 Wildlife",
             "headline": news_item.get('title', 'Wildlife')[:50],
             "image_summary": "",
@@ -1020,33 +1097,37 @@ def fetch_archive_video(keyword: str) -> tuple[str | None, str]:
     return None, ""
 
 
-def fetch_pexels_video(keyword: str) -> str | None:
-    """Pexels — free wildlife stock video"""
+def fetch_pexels_video(keyword: str) -> tuple[str | None, str]:
+    """Pexels — best keyword-relevance stock footage (portrait/vertical preferred)"""
     if not PEXELS_API_KEY:
-        return None
+        return None, ""
     try:
         headers = {"Authorization": PEXELS_API_KEY}
-        resp = requests.get(
-            f"https://api.pexels.com/videos/search?query={keyword}&per_page=8&orientation=portrait",
-            headers=headers, timeout=10
-        )
-        videos = resp.json().get("videos", [])
-        for video in videos:
-            for vf in video.get("video_files", []):
-                if vf.get("file_type") == "video/mp4" and vf.get("height", 0) >= 720:
-                    url = vf["link"]
-                    print(f"      Pexels video: {url[:60]}")
-                    r = requests.get(url, timeout=90, stream=True)
-                    path = os.path.join(tempfile.gettempdir(), f"wildlife_vid_{int(time.time())}.mp4")
-                    with open(path, "wb") as f:
-                        for chunk in r.iter_content(8192):
-                            f.write(chunk)
-                    size_mb = os.path.getsize(path) // 1024 // 1024
-                    print(f"      Downloaded: {size_mb}MB")
-                    return path
+        for orientation in ("portrait", "landscape"):
+            resp = requests.get(
+                "https://api.pexels.com/videos/search",
+                params={"query": keyword, "per_page": 10, "orientation": orientation},
+                headers=headers, timeout=10
+            )
+            videos = resp.json().get("videos", [])
+            for video in videos:
+                title = video.get("url", "").rstrip("/").split("/")[-1].replace("-", " ")
+                for vf in sorted(video.get("video_files", []),
+                                 key=lambda x: x.get("height", 0), reverse=True):
+                    if vf.get("file_type") == "video/mp4" and vf.get("height", 0) >= 720:
+                        url = vf["link"]
+                        print(f"      Pexels: {title[:50]} ({vf['height']}p)")
+                        r = requests.get(url, timeout=90, stream=True)
+                        path = os.path.join(tempfile.gettempdir(), f"wildlife_vid_{int(time.time())}.mp4")
+                        with open(path, "wb") as f:
+                            for chunk in r.iter_content(8192):
+                                f.write(chunk)
+                        if os.path.getsize(path) > 100_000:
+                            return path, title or keyword
+                        os.remove(path)
     except Exception as e:
         print(f"      Pexels video error: {e}")
-    return None
+    return None, ""
 
 
 def fetch_wikimedia_video(keyword: str) -> tuple[str | None, str]:
@@ -1166,91 +1247,103 @@ def fetch_article_video(article_url: str) -> str | None:
 
 def fetch_wildlife_video(keyword: str, source: str = "", article_url: str = "") -> tuple[str | None, str]:
     """
-    Video priority (actual video title returned as topic for narration accuracy):
+    Video priority — specific keyword (AI-generated) used throughout, NO source override.
       1. Article direct MP4
-      2. USFWS Digital Library     (most reliable wildlife govt source)
-      3. NPS National Park Service (national park wildlife, yt-dlp)
-      4. NOAA Ocean Exploration    (marine keywords + general)
-      5. USGS ScienceBase          (wildlife science)
-      6. Wikimedia Commons         (CC licensed, webm auto-converted)
-      7. NASA Image Library        (wildlife filtered)
-      8. Internet Archive          (CC0 wildlife documentaries — reliable fallback)
-      9. Pixabay                   (CC0, if key available)
+      2. Pexels     (best keyword relevance for specific animals/scenes)
+      3. Pixabay    (CC0, good keyword matching)
+      4. Wikimedia  (CC licensed, webm auto-converted)
+      5. Archive.org (CC0 wildlife documentaries)
+      6. USFWS      (US govt library — broader, less specific)
+      7. NPS        (national park clips)
+      8. NOAA       (marine keywords only)
+      9. USGS       (science footage)
+     10. NASA       (strictly filtered)
+     11. Last resort: Archive with generic keyword
     """
-    source_lower = source.lower()
-    video_keyword = keyword
-    for key, val in WILDLIFE_VIDEO_KEYWORDS.items():
-        if key in source_lower:
-            video_keyword = val
-            break
-
-    print(f"\n      [Video] '{video_keyword}' | source: {source}")
+    print(f"\n      [Video] '{keyword}' | source: {source}")
 
     # 1. Article direct MP4
     if article_url:
         path = fetch_article_video(article_url)
         if path:
-            return path, video_keyword
+            return path, keyword
 
-    # 2. USFWS — US govt wildlife library (only real video types now)
+    # 2. Pexels — best keyword-to-footage relevance, smart retry with simpler keywords
+    if PEXELS_API_KEY:
+        words = keyword.split()
+        pexels_attempts = [keyword]
+        if len(words) > 2:
+            pexels_attempts.append(" ".join(words[:2]))   # first 2 words
+        if len(words) > 1:
+            pexels_attempts.append(words[0])              # just species name
+        for kw in pexels_attempts:
+            print(f"      Trying Pexels: '{kw}'")
+            path, title = fetch_pexels_video(kw)
+            if path:
+                return path, title or kw
+
+    # 3. Pixabay — CC0, good keyword search
+    if PIXABAY_API_KEY:
+        print(f"      Trying Pixabay...")
+        path, title = fetch_pixabay_video(keyword)
+        if path:
+            return path, title or keyword
+
+    # 4. Wikimedia Commons — CC licensed (webm auto-converted to mp4)
+    print(f"      Trying Wikimedia...")
+    path, title = fetch_wikimedia_video(keyword)
+    if path:
+        return path, title or keyword
+
+    # 5. Internet Archive — CC0 wildlife documentary library
+    print(f"      Trying Internet Archive...")
+    path, title = fetch_archive_video(keyword)
+    if path:
+        return path, title or keyword
+
+    # 6. USFWS — US govt wildlife library
     print(f"      Trying USFWS...")
-    path, title = fetch_usfws_video(video_keyword)
+    path, title = fetch_usfws_video(keyword)
     if path:
-        return path, title or video_keyword
+        return path, title or keyword
 
-    # 3. NPS — Yellowstone, Everglades, national park wildlife
+    # 7. NPS — national park wildlife
     print(f"      Trying NPS...")
-    path, title = fetch_nps_video(video_keyword)
+    path, title = fetch_nps_video(keyword)
     if path:
-        return path, title or video_keyword
+        return path, title or keyword
 
-    # 4. NOAA — ocean/marine wildlife
-    is_marine = any(w in video_keyword.lower() for w in
+    # 8. NOAA — marine/ocean only
+    is_marine = any(w in keyword.lower() for w in
                     ["ocean", "marine", "sea", "whale", "shark", "fish", "coral", "deep"])
     if is_marine:
         print(f"      Trying NOAA (marine)...")
-        path, title = fetch_noaa_video(video_keyword)
+        path, title = fetch_noaa_video(keyword)
         if path:
-            return path, title or video_keyword
+            return path, title or keyword
 
-    # 5. USGS — bears, salmon, polar wildlife
+    # 9. USGS — science footage
     print(f"      Trying USGS...")
-    path, title = fetch_usgs_video(video_keyword)
+    path, title = fetch_usgs_video(keyword)
     if path:
-        return path, title or video_keyword
+        return path, title or keyword
 
-    # 6. Wikimedia Commons — CC licensed (webm auto-converted to mp4)
-    print(f"      Trying Wikimedia...")
-    path, title = fetch_wikimedia_video(video_keyword)
-    if path:
-        return path, title or video_keyword
-
-    # 7. NASA — wildlife strictly filtered
+    # 10. NASA — strictly filtered
     print(f"      Trying NASA (filtered)...")
-    path, title = fetch_nasa_video(video_keyword)
+    path, title = fetch_nasa_video(keyword)
     if path:
-        return path, title or video_keyword
+        return path, title or keyword
 
-    # 8. Internet Archive — large CC0 wildlife documentary library
-    print(f"      Trying Internet Archive...")
-    path, title = fetch_archive_video(video_keyword)
-    if path:
-        return path, title or video_keyword
-
-    # 9. Pixabay — CC0 stock (if key available)
-    if PIXABAY_API_KEY:
-        print(f"      Trying Pixabay...")
-        path, title = fetch_pixabay_video(video_keyword)
+    # Last resort: retry Pexels + Archive with generic keyword
+    if PEXELS_API_KEY:
+        path, title = fetch_pexels_video("wildlife animal nature")
         if path:
-            return path, title or video_keyword
-
-    # Last resort: retry with broader "wildlife animal" keyword on Archive
-    print(f"      Trying Archive with generic wildlife query...")
+            return path, title or "wildlife animal"
     path, title = fetch_archive_video("wildlife animal nature")
     if path:
         return path, title or "wildlife animal"
 
-    print(f"      No video found for '{video_keyword}'")
+    print(f"      No video found for '{keyword}'")
     return None, ""
 
 
@@ -1259,28 +1352,13 @@ REALTIME_SOURCES = {"iNaturalist", "GBIF Wildlife"}
 
 def generate_narration(news_item: dict, headline: str, summary: str,
                        video_topic: str = "") -> str:
-    """Groq se 30-second wildlife Reel narration — video_topic se match karta hai"""
+    """Groq se 30-second wildlife Reel narration — news story pe focused"""
     source = news_item.get("source", "")
     title  = news_item.get("title", "")
     body   = news_item.get("body", "")[:500]
     is_rt  = any(s in source for s in REALTIME_SOURCES)
 
-    # Video topic se visual context banao
-    visual_context = ""
-    if video_topic and video_topic not in ("wildlife animal nature", ""):
-        visual_context = (
-            f"\nVIDEO MEIN KYA DIKH RAHA HAI: '{video_topic}'\n"
-            f"Narration ISKO describe kare — viewer yahi dekh raha hai screen pe.\n"
-            f"Agar news topic alag hai, to thematically connect karo — "
-            f"lekin visual description video ke animal/scene ke baare mein hi ho.\n"
-        )
-    else:
-        visual_context = (
-            "\nVideo mein general wildlife footage hai.\n"
-            "Narration wildlife aur nature ke baare mein broadly bolo — "
-            "kisi specific animal ka naam mat lo jo video mein na ho.\n"
-        )
-
+    import random as _rand
     if is_rt:
         opening_style = (
             "Ye ek REAL wildlife observation hai — abhi is waqt captured.\n"
@@ -1288,12 +1366,28 @@ def generate_narration(news_item: dict, headline: str, summary: str,
             "Urgency + wonder — jaise NatGeo ka cameraman abhi wahan maujood ho."
         )
     else:
-        opening_style = (
-            "Ye ek wildlife documentary scene hai.\n"
-            "Open with powerful scene-setting: location, environment, atmosphere.\n"
-            "'Duniya ke is kone mein...' / 'Karod saalon ki evolution ne...' / 'Jab raat dhalta hai...'\n"
-            "Animal ko protagonist ki tarah present karo — uski struggle, survival, beauty."
-        )
+        narration_styles = [
+            # Style 1: Classic NatGeo documentary
+            (
+                "CLASSIC DOCUMENTARY: Powerful scene-setting se shuru karo.\n"
+                "'Duniya ke is kone mein...' / 'Karod saalon ki evolution ne...' / 'Jab raat dhalta hai...'\n"
+                "Animal ko protagonist ki tarah present karo — uski struggle, survival, beauty."
+            ),
+            # Style 2: Intimate whisper (Planet Earth II style)
+            (
+                "INTIMATE WHISPER STYLE (Planet Earth II): Ekdum close-up angle.\n"
+                "Jaise sirf tum aur ye animal — baaki duniya exist hi nahi karti.\n"
+                "'Is pal mein...' / 'Sirf kuch kadam ki doori pe...' / 'Ye aankhein jo dekh rahi hain...'\n"
+                "Sensory details — smell, sound, texture — use karo."
+            ),
+            # Style 3: Wonder + Science (David Attenborough style)
+            (
+                "WONDER + SCIENCE (Attenborough style): Amazement + ek surprising scientific fact.\n"
+                "Shuruaat ek question se: 'Kya tumne kabhi socha...?' / 'Ye creature 200 million saal se...'\n"
+                "Science ko poetry ki tarah explain karo — jargon free, visual metaphors use karo."
+            ),
+        ]
+        opening_style = _rand.choice(narration_styles)
 
     try:
         client = Groq(api_key=GROQ_API_KEY)
@@ -1307,14 +1401,14 @@ Ek 30-second documentary narration likho — poetic, authoritative, awe-inspirin
 News Topic: {title}
 Details: {body}
 Summary: {summary}
-{visual_context}
 {opening_style}
 
 NATGEO NARRATOR STYLE — STRICT:
+- NEWS KI STORY sunao — video sirf background hai, usse describe mat karo
 - HEADLINE BILKUL MAT PADHO — screen pe already dikh raha hai
 - ~90-100 words — exactly 30 seconds ke liye
 - Scene se shuru karo — environment, light, sound imagine karo
-- Animal ko hero ki tarah present karo — uski strength, instinct, survival
+- Animal/nature ko hero ki tarah present karo — strength, instinct, survival
 - Scientific fact ek do — lekin poetic language mein
 - End mein ek profound thought ya conservation message
 - Hindi dominant, English sirf technical terms ke liye
@@ -1555,19 +1649,18 @@ def process_reel(video_path: str, headline: str, summary: str, narration: str = 
                 ], capture_output=True, timeout=10)
                 streams = _json.loads(probe.stdout).get("streams", [{}])
                 reel_dur = float(streams[0].get("duration", 30.0))
-                reel_dur = min(reel_dur + 0.3, 58.0)
+                reel_dur = min(reel_dur + 0.3, 88.0)
                 print(f"      Audio duration: {reel_dur:.1f}s")
             except Exception:
                 reel_dur = 30.0
 
-        # Step 1b: Full-screen 1080x1920 fill — tpad holds last frame to match audio
+        # Step 1b: Full-screen 1080x1920 fill — loop video to match audio duration
         vf_main = (
             "scale=1080:1920:force_original_aspect_ratio=increase,"
-            "crop=1080:1920,"
-            "tpad=stop=-1:stop_mode=clone"
+            "crop=1080:1920"
         )
         crop = subprocess.run([
-            "ffmpeg", "-y", "-i", video_path,
+            "ffmpeg", "-y", "-stream_loop", "-1", "-i", video_path,
             "-t", str(reel_dur),
             "-vf", vf_main,
             "-r", "30",
@@ -1583,10 +1676,10 @@ def process_reel(video_path: str, headline: str, summary: str, narration: str = 
                 "crop=1080:1920,boxblur=30:3[bg_blur];"
                 "[fg]scale=1080:608:force_original_aspect_ratio=decrease,"
                 "pad=1080:608:(ow-iw)/2:(oh-ih)/2:black[fg_pad];"
-                "[bg_blur][fg_pad]overlay=(W-w)/2:(H-h)/2,tpad=stop=-1:stop_mode=clone"
+                "[bg_blur][fg_pad]overlay=(W-w)/2:(H-h)/2"
             )
             crop = subprocess.run([
-                "ffmpeg", "-y", "-i", video_path,
+                "ffmpeg", "-y", "-stream_loop", "-1", "-i", video_path,
                 "-t", str(reel_dur), "-vf", vf_blur, "-r", "30",
                 "-c:v", "libx264", "-pix_fmt", "yuv420p",
                 "-an", "-preset", "fast", "-crf", "22",
@@ -1714,49 +1807,32 @@ def process_reel(video_path: str, headline: str, summary: str, narration: str = 
 
 
 def upload_video_github(video_path: str) -> str | None:
-    """Reel video GitHub Release pe upload karo"""
+    """GitHub Contents API — reliable upload"""
+    import base64
     gh_token = (os.getenv("GH_PAT") or os.getenv("GITHUB_TOKEN") or "").strip()
-    repo = os.getenv("GITHUB_REPOSITORY")
+    repo     = os.getenv("GITHUB_REPOSITORY", "")
     if not gh_token or not repo:
+        print("      GitHub token ya repo missing")
         return None
-    headers = {
-        "Authorization": f"token {gh_token}",
-        "Accept": "application/vnd.github.v3+json"
-    }
-    filename = f"wildlife_reel_{int(time.time())}.mp4"
     try:
-        releases = requests.get(
-            f"https://api.github.com/repos/{repo}/releases",
-            headers=headers, timeout=10
-        ).json()
-        upload_url = None
-        for rel in (releases if isinstance(releases, list) else []):
-            if rel.get("tag_name") == "media-assets":
-                upload_url = rel["upload_url"].split("{")[0]
-                break
-        if not upload_url:
-            create = requests.post(
-                f"https://api.github.com/repos/{repo}/releases",
-                headers=headers,
-                json={"tag_name": "media-assets", "name": "Media Assets",
-                      "draft": False, "body": "Auto-generated wildlife reels"},
-                timeout=10
-            ).json()
-            upload_url = create.get("upload_url", "").split("{")[0]
-        if not upload_url:
-            return None
-        size_mb = os.path.getsize(video_path) // 1024 // 1024
-        print(f"      GitHub upload ({size_mb}MB)...")
         with open(video_path, "rb") as f:
-            up = requests.post(
-                f"{upload_url}?name={filename}",
-                headers={**headers, "Content-Type": "video/mp4"},
-                data=f, timeout=300
-            ).json()
-        url = up.get("browser_download_url", "")
+            content = base64.b64encode(f.read()).decode()
+        filename = f"wildlife_reel_{int(time.time())}.mp4"
+        api_url  = f"https://api.github.com/repos/{repo}/contents/reels/{filename}"
+        size_kb  = os.path.getsize(video_path) // 1024
+        print(f"      GitHub upload ({size_kb}KB)...")
+        resp = requests.put(
+            api_url,
+            headers={"Authorization": f"token {gh_token}",
+                     "Content-Type": "application/json"},
+            json={"message": f"reel: {filename}", "content": content, "branch": "main"},
+            timeout=300
+        )
+        url = resp.json().get("content", {}).get("download_url")
         if url:
-            print(f"      Video URL: {url[:80]}")
+            print(f"      GitHub URL: {url[:80]}")
             return url
+        print(f"      GitHub upload error: {resp.json()}")
     except Exception as e:
         print(f"      GitHub upload error: {e}")
     return None
@@ -1950,7 +2026,7 @@ def run_agent():
 
     all_news = []
 
-    # Fetch all RSS sources in parallel — ~10x faster than sequential
+    # Fetch all sources in parallel — 13 RSS + 2 API sources
     rss_sources = [
         fetch_natgeo_animals,
         fetch_bbc_wildlife,
@@ -1960,10 +2036,16 @@ def run_agent():
         fetch_smithsonian_nature,
         fetch_audubon_birds,
         fetch_earthsky_nature,
+        # New sources
+        fetch_sciencedaily_animals,
+        fetch_guardian_environment,
+        fetch_physorg_animals,
+        fetch_wildaid_news,
+        fetch_wcs_news,
     ]
 
-    print("\n[Fetch] Parallel fetching all sources...")
-    with ThreadPoolExecutor(max_workers=8) as ex:
+    print("\n[Fetch] Parallel fetching all 15 sources...")
+    with ThreadPoolExecutor(max_workers=15) as ex:
         api_futures  = {ex.submit(fetch_inaturalist_obs): "inat",
                         ex.submit(fetch_gbif_species):    "gbif"}
         rss_futures  = {ex.submit(fn): fn.__name__ for fn in rss_sources}
@@ -1982,9 +2064,10 @@ def run_agent():
                 print(f"      Source error: {e}")
 
     # DuckDuckGo fallback only if very few results
-    if len(all_news) < 3:
-        for topic in WILDLIFE_TOPICS[:2]:
-            results = fetch_news(topic, max_results=3)
+    if len(all_news) < 5:
+        import random as _rand
+        for topic in _rand.sample(WILDLIFE_TOPICS, min(3, len(WILDLIFE_TOPICS))):
+            results = fetch_news(topic, max_results=4)
             all_news.extend(results)
 
     all_news = [n for n in all_news if n.get("image")]
@@ -2025,7 +2108,7 @@ def run_agent():
         caption  = content.get("caption", "")
 
         media_id = None
-        keyword  = content.get("image_keyword", "wildlife animal nature")
+        keyword  = content.get("video_search_query", content.get("image_keyword", "wildlife animal nature"))
 
         # Fetch video FIRST — then narrate about what's actually in the video
         video_path, video_topic = fetch_wildlife_video(
@@ -2042,28 +2125,23 @@ def run_agent():
                 pass
 
             if reel_path:
-                # YouTube Shorts
-                yt_id = None
-                if YOUTUBE_CLIENT_ID and YOUTUBE_CLIENT_SECRET and YOUTUBE_REFRESH_TOKEN:
-                    yt_id = upload_youtube_short(reel_path, headline, caption)
+                # --- YouTube DISABLED — channel set up hone par uncomment karo ---
+                # yt_id = None
+                # if YOUTUBE_CLIENT_ID and YOUTUBE_CLIENT_SECRET and YOUTUBE_REFRESH_TOKEN:
+                #     yt_id = upload_youtube_short(reel_path, headline, caption)
+                # ------------------------------------------------------------------
 
-                # Instagram Reel
-                if not YOUTUBE_ONLY:
-                    video_url = upload_video_github(reel_path)
+                # Instagram only
+                video_url = upload_video_github(reel_path)
                 try:
                     os.remove(reel_path)
                 except:
                     pass
 
-                if not YOUTUBE_ONLY and video_url:
+                if video_url:
                     media_id = post_reel(video_url, caption)
-                elif yt_id:
-                    media_id = f"yt_{yt_id}"
 
         if not media_id:
-            if YOUTUBE_ONLY:
-                print("      Reel fail — skipping (YouTube-only mode)")
-            else:
                 print("      Reel fail — photo post pe fallback")
                 img_url = add_watermark(
                     news.get("image"),

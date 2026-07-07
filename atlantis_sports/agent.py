@@ -214,10 +214,10 @@ def fetch_ndtv_sports() -> list[dict]:
     return _parse_rss("https://sports.ndtv.com/rss/all", "NDTV Sports", 3)
 
 def fetch_espncricinfo() -> list[dict]:
-    return _parse_rss("https://www.espncricinfo.com/rss/content/story/feeds/0.xml", "ESPNcricinfo", 3)
+    return _parse_rss("https://www.espncricinfo.com/rss/content/story/feeds/6.xml", "ESPNcricinfo", 3)
 
 def fetch_skysports() -> list[dict]:
-    return _parse_rss("https://www.skysports.com/rss/12040", "Sky Sports", 2)
+    return _parse_rss("https://www.skysports.com/rss/0,20514,11661,00.xml", "Sky Sports", 2)
 
 def fetch_goal_football() -> list[dict]:
     return _parse_rss("https://www.goal.com/feeds/en/news", "Goal.com Football", 2)
@@ -370,6 +370,13 @@ TOP {count} choose karo. JSON:
 def generate_caption(news_item: dict) -> dict:
     print(f"\n[Caption] Generate kar raha hoon...")
     client = Groq(api_key=GROQ_API_KEY)
+    import random as _rand
+    caption_styles = [
+        "LIVE COMMENTARY: Jaise match abhi chal raha ho — real-time energy. 'Aur woh shot!', 'Crowd ki saans ruki hui hai...', 'Ye moment history mein darz ho gaya!'",
+        "PLAYER LEGEND: Player ko legend ki tarah present karo — unki struggle, dedication, sacrifice. Emotional connection banao fans ke saath.",
+        "STAT ATTACK: Ek mind-blowing stat ya record se shuru karo jo log nahi jaante. 'Kya tum jaante ho ki...?' Phir poora context do.",
+    ]
+    chosen_style = _rand.choice(caption_styles)
     prompt = f"""
 Tu {CHANNEL_HANDLE} ka Instagram content creator hai — ye ek SPORTS channel hai.
 
@@ -378,13 +385,12 @@ Title: {news_item.get('title', '')}
 Description: {news_item.get('body', '')[:500]}
 Source: {news_item.get('source', '')}
 
-TONE — SPORTS COMMENTATOR, EXCITING:
-- Ek passionate sports commentator ki tarah likho
-- "Kya shot tha!", "History ban gayi!", "Ye moment yaad rahega!"
-- Readers ko feel ho ki match abhi chal raha hai — real-time energy
+CAPTION STYLE THIS POST: {chosen_style}
+
+RULES:
 - Hindi+English mix (Hinglish), young Indian sports fans ke liye
 - 6-8 lines, exciting but factual
-- End mein ek bold prediction ya trivia fact
+- End mein ek bold prediction ya call-to-action
 - CAPTION MEIN HASHTAG NAHI — sirf "hashtags" field mein
 
 JSON:
@@ -555,7 +561,7 @@ def post_to_instagram(image_url: str, caption: str) -> str | None:
         pub = requests.post(
             f"https://graph.facebook.com/v25.0/{INSTAGRAM_ACCOUNT_ID}/media_publish",
             data={"creation_id": container_id, "access_token": INSTAGRAM_TOKEN},
-            timeout=15
+            timeout=60
         )
         media_id = pub.json().get("id")
         if media_id:
@@ -829,12 +835,19 @@ def fetch_sports_video(keyword: str, source: str = "", article_url: str = "") ->
         if path:
             return path, keyword
 
-    # 2. Pexels — best keyword-to-footage relevance
+    # 2. Pexels — best keyword-to-footage relevance, smart retry with simpler keywords
     if PEXELS_API_KEY:
-        print(f"      Trying Pexels...")
-        path, title = fetch_pexels_video(keyword)
-        if path:
-            return path, title or keyword
+        words = keyword.split()
+        pexels_attempts = [keyword]
+        if len(words) > 2:
+            pexels_attempts.append(" ".join(words[:2]))   # first 2 words
+        if len(words) > 1:
+            pexels_attempts.append(words[0])              # just sport type
+        for kw in pexels_attempts:
+            print(f"      Trying Pexels: '{kw}'")
+            path, title = fetch_pexels_video(kw)
+            if path:
+                return path, title or kw
 
     # 3. Pixabay — CC0 sports stock
     if PIXABAY_API_KEY:
@@ -871,22 +884,21 @@ def fetch_sports_video(keyword: str, source: str = "", article_url: str = "") ->
 # --- Narration Generation -----------------------------------------------------
 def generate_narration(news_item: dict, headline: str, summary: str,
                        video_topic: str = "") -> str:
-    """Sports commentary narration — Hindi, energetic, 30-45 seconds"""
+    """Sports commentary narration — news story pe focused, video sirf background"""
     source = news_item.get("source", "")
     title  = news_item.get("title", "")
     body   = news_item.get("body", "")[:500]
 
-    if video_topic and video_topic not in ("sports action match", ""):
-        visual_context = (
-            f"\nVIDEO MEIN KYA DIKH RAHA HAI: '{video_topic}'\n"
-            f"Narration ISKO describe kare — viewer yahi dekh raha hai screen pe.\n"
-            f"Sport ke action ko describe karo — jo video mein ho raha hai.\n"
-        )
-    else:
-        visual_context = (
-            "\nVideo mein sports action footage hai.\n"
-            "Narration mein sports energy aur excitement capture karo.\n"
-        )
+    import random as _rand
+    narration_styles = [
+        "LIVE COMMENTARY: Seedha action mein jump karo — crowd ka shor, tension, woh exact moment. 'Aur woh shot...', 'Sirf 2 seconds bache the...'",
+        "STAT BOMB: Ek shocking number ya record se shuru karo — '93 saalon mein pehli baar...', 'Ye record 47 saal baad toota...' Jaw drop guaranteed.",
+        "PLAYER JOURNEY: Champion ki struggle story — rejection se record tak. Emotional, inspiring, viewer ko feel ho.",
+        "COMPARISON HOOK: 'Agar ye match cricket mein hota...' ya 'IPL ki poori prize money isse kam hai...' — relatable comparison se start.",
+        "TURNING POINT: Ek exact 30-second moment jo match/career badal gaya — last over, injury, substitute, referee decision.",
+        "FAN ANGLE: Viewer ko stadium mein rakh do — 'Imagine karo tum wahan the...', crowd ka josh, atmosphere, woh feeling.",
+    ]
+    chosen_style = _rand.choice(narration_styles)
 
     try:
         client = Groq(api_key=GROQ_API_KEY)
@@ -900,13 +912,14 @@ Ek 30-second sports Reel narration likho — energetic, dramatic, awe-inspiring.
 News Topic: {title}
 Details: {body}
 Summary: {summary}
-{visual_context}
+
+STYLE THIS POST: {chosen_style}
 
 SPORTS COMMENTATOR STYLE — STRICT:
+- NEWS KI STORY sunao — video sirf background hai, usse describe mat karo
 - HEADLINE BILKUL MAT PADHO — screen pe already dikh raha hai
 - ~90-100 words — exactly 30 seconds ke liye
-- Action se shuru karo — "Aur woh shot!", "Ye moment history mein darz ho gaya!", "Dekho..."
-- Player/team ko hero ki tarah present karo — unki mehnat, dedication, achievement
+- Player/team ko hero ki tarah present karo — mehnat, dedication, achievement
 - Ek shocking stat ya record — poetic style mein
 - End mein ek powerful line — fans ke liye motivation
 - Hindi dominant, English sirf proper nouns ke liye (player names, team names)
@@ -1017,19 +1030,18 @@ def process_reel(video_path: str, headline: str, summary: str,
                 ], capture_output=True, timeout=10)
                 streams = _json.loads(probe.stdout).get("streams", [{}])
                 reel_dur = float(streams[0].get("duration", 30.0))
-                reel_dur = min(reel_dur + 0.3, 58.0)
+                reel_dur = min(reel_dur + 0.3, 88.0)
                 print(f"      Audio duration: {reel_dur:.1f}s")
             except Exception:
                 reel_dur = 30.0
 
-        # Step 1b: Video → 1080x1920, hold last frame to match audio
+        # Step 1b: Video → 1080x1920, loop to match audio duration
         vf_main = (
             "scale=1080:1920:force_original_aspect_ratio=increase,"
-            "crop=1080:1920,"
-            "tpad=stop=-1:stop_mode=clone"
+            "crop=1080:1920"
         )
         crop = subprocess.run([
-            "ffmpeg", "-y", "-i", video_path,
+            "ffmpeg", "-y", "-stream_loop", "-1", "-i", video_path,
             "-t", str(reel_dur),
             "-vf", vf_main, "-r", "30",
             "-c:v", "libx264", "-profile:v", "high", "-level:v", "4.0",
@@ -1044,10 +1056,10 @@ def process_reel(video_path: str, headline: str, summary: str,
                 "crop=1080:1920,boxblur=30:3[bg_blur];"
                 "[fg]scale=1080:608:force_original_aspect_ratio=decrease,"
                 "pad=1080:608:(ow-iw)/2:(oh-ih)/2:black[fg_pad];"
-                "[bg_blur][fg_pad]overlay=(W-w)/2:(H-h)/2,tpad=stop=-1:stop_mode=clone"
+                "[bg_blur][fg_pad]overlay=(W-w)/2:(H-h)/2"
             )
             crop = subprocess.run([
-                "ffmpeg", "-y", "-i", video_path,
+                "ffmpeg", "-y", "-stream_loop", "-1", "-i", video_path,
                 "-t", str(reel_dur), "-vf", vf_blur, "-r", "30",
                 "-c:v", "libx264", "-pix_fmt", "yuv420p",
                 "-an", "-preset", "fast", "-crf", "22",
@@ -1175,48 +1187,32 @@ def process_reel(video_path: str, headline: str, summary: str,
 
 # --- GitHub Video Upload ------------------------------------------------------
 def upload_video_github(video_path: str) -> str | None:
+    """GitHub Contents API — reliable upload (same as wildlife agent)"""
+    import base64
     gh_token = (os.getenv("GH_PAT") or os.getenv("GITHUB_TOKEN") or "").strip()
-    repo = os.getenv("GITHUB_REPOSITORY")
+    repo     = os.getenv("GITHUB_REPOSITORY", "")
     if not gh_token or not repo:
+        print("      GitHub token ya repo missing")
         return None
-    headers = {
-        "Authorization": f"token {gh_token}",
-        "Accept": "application/vnd.github.v3+json"
-    }
-    filename = f"sports_reel_{int(time.time())}.mp4"
     try:
-        releases = requests.get(
-            f"https://api.github.com/repos/{repo}/releases",
-            headers=headers, timeout=10
-        ).json()
-        upload_url = None
-        for rel in (releases if isinstance(releases, list) else []):
-            if rel.get("tag_name") == "media-assets":
-                upload_url = rel["upload_url"].split("{")[0]
-                break
-        if not upload_url:
-            create = requests.post(
-                f"https://api.github.com/repos/{repo}/releases",
-                headers=headers,
-                json={"tag_name": "media-assets", "name": "Media Assets",
-                      "draft": False, "body": "Auto-generated sports reels"},
-                timeout=10
-            ).json()
-            upload_url = create.get("upload_url", "").split("{")[0]
-        if not upload_url:
-            return None
-        size_mb = os.path.getsize(video_path) // 1024 // 1024
-        print(f"      GitHub upload ({size_mb}MB)...")
         with open(video_path, "rb") as f:
-            up = requests.post(
-                f"{upload_url}?name={filename}",
-                headers={**headers, "Content-Type": "video/mp4"},
-                data=f, timeout=300
-            ).json()
-        url = up.get("browser_download_url", "")
+            content = base64.b64encode(f.read()).decode()
+        filename = f"sports_reel_{int(time.time())}.mp4"
+        api_url  = f"https://api.github.com/repos/{repo}/contents/reels/{filename}"
+        size_kb  = os.path.getsize(video_path) // 1024
+        print(f"      GitHub upload ({size_kb}KB)...")
+        resp = requests.put(
+            api_url,
+            headers={"Authorization": f"token {gh_token}",
+                     "Content-Type": "application/json"},
+            json={"message": f"reel: {filename}", "content": content, "branch": "main"},
+            timeout=300
+        )
+        url = resp.json().get("content", {}).get("download_url")
         if url:
-            print(f"      Video URL: {url[:80]}")
+            print(f"      GitHub URL: {url[:80]}")
             return url
+        print(f"      GitHub upload error: {resp.json()}")
     except Exception as e:
         print(f"      GitHub upload error: {e}")
     return None
@@ -1255,7 +1251,7 @@ def post_reel(video_url: str, caption: str) -> str | None:
         pub = requests.post(
             f"https://graph.facebook.com/v25.0/{INSTAGRAM_ACCOUNT_ID}/media_publish",
             data={"creation_id": container_id, "access_token": INSTAGRAM_TOKEN},
-            timeout=15
+            timeout=60
         )
         media_id = pub.json().get("id")
         if not media_id:
@@ -1431,7 +1427,7 @@ def run_agent():
                 print(f"      Source error: {e}")
 
     # DuckDuckGo fallback if few results
-    if len(all_news) < 3:
+    if len(all_news) < 5:
         for topic in SPORTS_TOPICS[:2]:
             results = fetch_news(topic, max_results=4)
             all_news.extend(results)

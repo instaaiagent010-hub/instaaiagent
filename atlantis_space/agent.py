@@ -42,7 +42,7 @@ NASA_API_KEY         = os.getenv("NASA_API_KEY")
 
 CHANNEL_HANDLE  = "@atlantis_space"
 POST_DELAY      = 45   # seconds between posts in same run
-CAROUSEL_SLIDES = 2    # 2 posts per run × 5 runs = 10 posts/day
+CAROUSEL_SLIDES = 1    # 1 post per run × 10 runs = 10 posts/day
 
 LOGO_PATH        = os.path.join(os.path.dirname(os.path.abspath(__file__)), "atlantis_space.png")
 HISTORY_FILE     = os.path.join(os.path.dirname(os.path.abspath(__file__)), "posted_history.json")
@@ -60,11 +60,13 @@ if YOUTUBE_ONLY:
     CAROUSEL_SLIDES = 1                 # 1 Short/run × 5 runs = 5/day = 8,000 API units (hard limit: 10,000)
 
 SPACE_DISCOVERY_TOPICS = [
-    "ISRO India space mission launch 2025",
-    "Mars Moon Jupiter solar system discovery",
-    "black hole nebula galaxy telescope image",
-    "astronaut ISS space station update",
-    "asteroid comet solar flare space event",
+    "ISRO Gaganyaan Chandrayaan mission 2026",
+    "NASA Artemis Moon Mars mission 2026",
+    "James Webb telescope new galaxy discovery 2026",
+    "asteroid comet solar flare space weather 2026",
+    "black hole neutron star gravitational wave discovery",
+    "SpaceX Starship launch Mars mission update",
+    "astronaut ISS space station 2026 update",
 ]
 
 
@@ -1524,113 +1526,119 @@ REALTIME_SOURCES = {
 
 
 def generate_narration(news_item: dict, headline: str, summary: str) -> str:
-    """Groq se 30-second Reel narration — real-time vs educational, headline nahi padega"""
-    source  = news_item.get("source", "")
-    title   = news_item.get("title", "")
-    body    = news_item.get("body", "")[:500]
-    is_rt   = any(s in source for s in REALTIME_SOURCES)
+    """6 rotating hooks — attention grab in first 2 seconds, then story"""
+    import random, re
+    source = news_item.get("source", "")
+    title  = news_item.get("title", "")
+    body   = news_item.get("body", "")[:500]
+    is_rt  = any(s in source for s in REALTIME_SOURCES)
 
-    if is_rt:
-        style = (
-            "YE REAL-TIME EVENT HAI — abhi ho raha hai ya aaj hoga.\n"
-            "Tone: 'Abhi is waqt...', 'Aaj...', 'Is exact moment mein...'\n"
-            "Urgency + excitement — viewers ko feel ho ki ye ABHI ho raha hai.\n"
-            "Exact numbers, distances, speeds, dates zaroor batao."
-        )
-    else:
-        style = (
-            "YE EDUCATIONAL/DISCOVERY content hai — photo ya historical finding.\n"
-            "Tone: 'Dekho zaraa...', 'Socho agar tum wahan hote...', 'Ye jo tum dekh rahe ho...'\n"
-            "Wonder aur curiosity — viewer ko space se deeply connect karo.\n"
-            "Hidden facts, scale, comparisons batao jo mind blow kar de."
-        )
+    hooks = [
+        # Hook 1 — Jaw-drop number
+        "EK SHOCKING NUMBER se shuru karo — distance, speed, size, ya time. Phir context do ki ye number kyun mind-blowing hai. Numbers chhoti punchy lines mein: 'Speed? 28,000 km/h. Distance? 40 crore kilometer.'",
+        # Hook 2 — You are there
+        "VIEWER KO WAHAN LE JAO — 'Imagine karo tum wahan hote...', 'Agar tum ISS pe khade hote...'. Sensory details do — kya dikhta, kya feel hota. End mein real fact.",
+        # Hook 3 — Secret reveal
+        "EK HIDDEN FACT se shuru karo jo log nahi jaante — 'Ye baat school mein nahi padhate...', 'Ye jaankari sirf kuch logon ko hai...'. Curiosity gap banao, phir jawab do.",
+        # Hook 4 — Real-time urgency
+        "ABHI IS WAQT angle — 'Ye abhi ho raha hai...', 'Aaj raat ko...', 'Is exact second mein space mein...'. Real-time feel do — jaise live commentary.",
+        # Hook 5 — Scale comparison
+        "SCALE COMPARISON se shuru karo jo relateable ho — 'Ye Mumbai se London se bhi bada hai...', 'Agar Sun ek football hota to Earth ek pea hoti...'. Phir actual discovery.",
+        # Hook 6 — Question hook
+        "EK QUESTION se shuru karo jo viewer ko sochne pe majboor kare — 'Kabhi socha hai...?', 'Agar aapko bataya jaye ki...?'. 3 second mein jawab ka hint do, end mein full reveal.",
+    ]
+
+    chosen_hook = random.choice(hooks)
 
     try:
         client = Groq(api_key=GROQ_API_KEY)
         resp = client.chat.completions.create(
             model="llama-3.3-70b-versatile",
-            max_tokens=400,
+            max_tokens=420,
             messages=[{"role": "user", "content": f"""
-Tu @atlantis_space Instagram Reel ka narrator hai.
-Ek 30-second Hindi narration script likho jo poori Reel mein chale.
+Tu @atlantis_space Instagram Reel ka narrator hai — Carl Sagan ka Hindi version.
+Ek 30-second narration script likho jo pehle 2 seconds mein hi viewer ko pakad le.
 
 Topic: {title}
 Details: {body}
 Summary: {summary}
+Real-time event: {is_rt}
 
-{style}
+HOOK STRATEGY (isi se shuru karo):
+{chosen_hook}
 
 STRICT RULES:
-- HEADLINE BILKUL MAT PADHO — woh screen pe already dikh raha hai
-- ~90-100 words likhoo — 30 second ke liye enough hoga
-- Actual facts, numbers, context do jo screen pe nahi dikh raha
-- Hinglish (Hindi + English mix), conversational documentary style
-- FORBIDDEN words/phrases: "yaar", "sun", "yaar sun", "bhai", "dosto"
-- Vary the opening — NEVER repeat same opener. Options: "Socho zaraa...", "Ye dekhna zaroori hai...", "Is pal ko samjho...", "Ek baat batao...", "Space ki ye sachai..."
-- "..." use karo dramatic pause ke liye — TTS naturally pause karta hai
-- Chhoti punchy sentences = strong impact. Example: "Distance? 40 lakh kilometer. Speed? 28,000 km per ghante."
-- Sirf bolne wala text — koi heading, bullet, asterisk nahi
+- HEADLINE BILKUL MAT PADHO — woh screen pe dikh raha hai
+- ~90-100 words exactly — 30 seconds
+- Facts + numbers — vague words nahi ("bahut bada" → "40 crore km")
+- Hinglish — Hindi dominant, English sirf proper nouns (NASA, JWST, Nifty)
+- FORBIDDEN: "yaar", "sun", "bhai", "dosto", "chaliye", "dekhte hain"
+- "..." = dramatic pause — wisely use karo
+- Chhoti punchy sentences — max 10 words per sentence
+- End mein ek powerful line — wonder ya call to action
+- SIRF bolne wala text — koi *, #, bullet, heading nahi
 
 Script:"""}]
         )
         narration = resp.choices[0].message.content.strip()
-        # Clean up any formatting
-        import re
         narration = re.sub(r'\*+', '', narration).strip()
         wc = len(narration.split())
-        print(f"      Narration ({wc} words, {'realtime' if is_rt else 'educational'})")
+        print(f"      Narration ({wc} words, hook#{hooks.index(chosen_hook)+1})")
         return narration
     except Exception as e:
-        print(f"      Narration error: {e} — using summary")
-        return f"{summary}"
+        print(f"      Narration error: {e}")
+        return summary
 
 
 def generate_tts(text: str, out_path: str) -> bool:
-    """Edge TTS — improved Hindi neural voice with audio normalization."""
-    import re as _re
-    import subprocess as _sp
+    """Edge TTS — AnanyaNeural primary (clearest Hindi), fallback chain"""
+    import re as _re, subprocess as _sp, asyncio, random
 
-    # Clean text — normalize ellipsis for natural TTS pauses
-    clean = _re.sub(r'\.{2,}', '... ', text)
+    clean = _re.sub(r'[*_`#~\[\]{}|<>\\]', '', text)
+    clean = _re.sub(r'\.{2,}', '... ', clean)
     clean = _re.sub(r'\s+', ' ', clean).strip()
+    if not clean:
+        return False
 
-    # Voice: hi-IN-SwaraNeural female — same as before, slightly improved
-    voices = [
-        # (voice_name, rate, pitch, volume)
-        ("hi-IN-SwaraNeural", "+5%", "+0Hz", "+15%"),   # original speed, clean pitch, louder
+    # AnanyaNeural — Microsoft's best Hindi neural voice (clear, natural)
+    # Alternate male/female for variety
+    voice_options = [
+        ("hi-IN-AnanyaNeural",  "-3%", "-1Hz", "+15%"),   # female, best clarity
+        ("hi-IN-MadhurNeural",  "-5%", "+0Hz", "+12%"),   # male, documentary feel
+        ("hi-IN-SwaraNeural",   "+5%", "+0Hz", "+15%"),   # female, original
     ]
+    # Rotate voice based on time — variety without randomness per post
+    voice_idx = (int(time.time()) // 3600) % len(voice_options)
+    ordered   = [voice_options[voice_idx]] + [v for i, v in enumerate(voice_options) if i != voice_idx]
 
     try:
-        import asyncio
         import edge_tts
 
-        for voice, rate, pitch, volume in voices:
+        for voice, rate, pitch, volume in ordered:
             try:
                 async def _speak(v=voice, r=rate, p=pitch, vol=volume):
-                    comm = edge_tts.Communicate(clean, voice=v,
-                                                rate=r, pitch=p, volume=vol)
+                    comm = edge_tts.Communicate(clean, voice=v, rate=r, pitch=p, volume=vol)
                     await comm.save(out_path)
-
                 asyncio.run(_speak())
                 if not (os.path.exists(out_path) and os.path.getsize(out_path) > 1000):
                     continue
-
-                # Audio normalization — consistent loudness, cleaner sound
+                # Normalize audio — consistent loudness, remove low-freq noise
                 norm_path = out_path.replace(".mp3", "_norm.mp3")
                 norm = _sp.run([
                     "ffmpeg", "-y", "-i", out_path,
-                    "-af", "loudnorm=I=-14:TP=-1.5:LRA=7,highpass=f=80",
+                    "-af", ("highpass=f=85,lowpass=f=13000,"
+                            "acompressor=threshold=-18dB:ratio=4:attack=5:release=50:makeup=2dB,"
+                            "equalizer=f=3500:t=q:w=1.5:g=3,"
+                            "loudnorm=I=-14:TP=-1.5:LRA=7"),
                     norm_path
                 ], capture_output=True, timeout=30)
                 if norm.returncode == 0 and os.path.exists(norm_path):
                     os.replace(norm_path, out_path)
-
-                print(f"      Edge TTS ({voice}) ready")
+                print(f"      TTS: {voice}")
                 return True
             except Exception as ve:
                 print(f"      {voice} error: {ve}")
                 continue
-
     except Exception as e:
         print(f"      Edge TTS error: {e}")
 
@@ -1824,59 +1832,45 @@ def process_reel(video_path: str, headline: str, summary: str, narration: str = 
             except: pass
 
         if result.returncode == 0 and os.path.exists(out_path):
-            size_mb = os.path.getsize(out_path) // 1024 // 1024
-            print(f"      Reel ready: {size_mb}MB {'(with audio)' if has_audio else ''}")
+            size_kb = os.path.getsize(out_path) // 1024
+            print(f"      Reel ready: {size_kb}KB {'(with audio)' if has_audio else ''}")
+            if size_kb < 10:
+                print(f"      WARNING: reel too small ({size_kb}KB) — skip")
+                return None
             return out_path
-        print(f"      FFmpeg error: {result.stderr[-150:].decode(errors='ignore')}")
+        print(f"      FFmpeg error: {result.stderr[-200:].decode(errors='ignore')}")
     except Exception as e:
         print(f"      Reel process error: {e}")
     return None
 
 
 def upload_video_github(video_path: str) -> str | None:
-    """Reel video GitHub Release pe upload karo — public URL milegi"""
+    """GitHub Contents API pe upload — reliable, same method as wildlife agent"""
+    import base64
     gh_token = (os.getenv("GH_PAT") or os.getenv("GITHUB_TOKEN") or "").strip()
-    repo = os.getenv("GITHUB_REPOSITORY")
+    repo     = os.getenv("GITHUB_REPOSITORY", "")
     if not gh_token or not repo:
+        print("      GitHub token ya repo missing")
         return None
-    headers = {
-        "Authorization": f"token {gh_token}",
-        "Accept": "application/vnd.github.v3+json"
-    }
-    filename = f"space_reel_{int(time.time())}.mp4"
     try:
-        releases = requests.get(
-            f"https://api.github.com/repos/{repo}/releases",
-            headers=headers, timeout=10
-        ).json()
-        upload_url = None
-        for rel in (releases if isinstance(releases, list) else []):
-            if rel.get("tag_name") == "media-assets":
-                upload_url = rel["upload_url"].split("{")[0]
-                break
-        if not upload_url:
-            create = requests.post(
-                f"https://api.github.com/repos/{repo}/releases",
-                headers=headers,
-                json={"tag_name": "media-assets", "name": "Media Assets",
-                      "draft": False, "body": "Auto-generated space reels"},
-                timeout=10
-            ).json()
-            upload_url = create.get("upload_url", "").split("{")[0]
-        if not upload_url:
-            return None
-        size_mb = os.path.getsize(video_path) // 1024 // 1024
-        print(f"      GitHub upload ({size_mb}MB)...")
         with open(video_path, "rb") as f:
-            up = requests.post(
-                f"{upload_url}?name={filename}",
-                headers={**headers, "Content-Type": "video/mp4"},
-                data=f, timeout=300
-            ).json()
-        url = up.get("browser_download_url", "")
+            content = base64.b64encode(f.read()).decode()
+        filename = f"space_reel_{int(time.time())}.mp4"
+        api_url  = f"https://api.github.com/repos/{repo}/contents/reels/{filename}"
+        size_kb  = os.path.getsize(video_path) // 1024
+        print(f"      GitHub upload ({size_kb}KB)...")
+        resp = requests.put(
+            api_url,
+            headers={"Authorization": f"token {gh_token}",
+                     "Content-Type": "application/json"},
+            json={"message": f"reel: {filename}", "content": content, "branch": "main"},
+            timeout=300
+        )
+        url = resp.json().get("content", {}).get("download_url")
         if url:
-            print(f"      Video URL: {url[:80]}")
+            print(f"      GitHub URL: {url[:80]}")
             return url
+        print(f"      GitHub upload error: {resp.json()}")
     except Exception as e:
         print(f"      GitHub upload error: {e}")
     return None
@@ -1958,102 +1952,57 @@ def run_agent():
     print(f"  Time: {datetime.now().strftime('%Y-%m-%d %H:%M')}")
     print("=" * 55)
 
+    from concurrent.futures import ThreadPoolExecutor, as_completed
+
     all_news = []
+    apod_item = [None]   # APOD gets priority slot 0
 
-    # Source 1: NASA APOD — stunning daily astronomy photo (highest priority)
-    apod = fetch_nasa_apod()
-    if apod:
-        all_news.insert(0, apod)
+    # Parallel fetch — all sources simultaneously (was sequential, 23× slower)
+    def _safe(fn):
+        try:
+            result = fn()
+            return result if result is not None else []
+        except Exception as e:
+            print(f"      {fn.__name__} error: {e}")
+            return []
 
-    # Source 2: Mars Rover latest photos — actual Mars surface
-    mars = fetch_mars_photos()
-    if mars:
-        all_news.append(mars)
+    list_sources = [
+        fetch_spacedevs_events, fetch_spacex_launches, fetch_spacedevs_launches,
+        fetch_spaceflight_news, fetch_nasa_eonet,
+        fetch_jwst_news, fetch_hubble_news, fetch_esa_news, fetch_isro_news,
+        fetch_nasa_jpl_news, fetch_sky_telescope, fetch_earthsky, fetch_nasa_blogs,
+    ]
+    single_sources = [
+        fetch_nasa_apod, fetch_mars_photos, fetch_nasa_epic, fetch_iss_update,
+        fetch_nasa_asteroids, fetch_spacedevs_expeditions, fetch_spacedevs_dockings,
+        fetch_spacedevs_astronauts,
+    ]
 
-    # Source 3: NASA EPIC — Earth from space (beautiful full-disc Earth)
-    epic = fetch_nasa_epic()
-    if epic:
-        all_news.append(epic)
+    print("\n[Sources] Parallel fetch kar raha hoon (23 sources)...")
+    with ThreadPoolExecutor(max_workers=10) as ex:
+        futures = {}
+        for fn in list_sources:
+            futures[ex.submit(_safe, fn)] = fn.__name__
+        for fn in single_sources:
+            futures[ex.submit(_safe, fn)] = fn.__name__
 
-    # Source 4: ISS live update — astronauts in space right now
-    iss = fetch_iss_update()
-    if iss:
-        all_news.append(iss)
+        for future in as_completed(futures):
+            result = future.result()
+            fn_name = futures[future]
+            if fn_name == "fetch_nasa_apod" and result and not isinstance(result, list):
+                apod_item[0] = result      # APOD goes first
+            elif isinstance(result, list):
+                all_news.extend(result)
+            elif result:
+                all_news.append(result)
 
-    # Source 5: Asteroids passing Earth today
-    asteroids = fetch_nasa_asteroids()
-    if asteroids:
-        all_news.append(asteroids)
+    # APOD at position 0 — highest quality content first
+    if apod_item[0]:
+        all_news.insert(0, apod_item[0])
 
-    # Source 6: SpaceDevs Events — spacewalks, landings, crewed milestones
-    events = fetch_spacedevs_events()
-    all_news.extend(events)
-
-    # Source 7: Current ISS expedition
-    expedition = fetch_spacedevs_expeditions()
-    if expedition:
-        all_news.append(expedition)
-
-    # Source 8: Recent spacecraft docking
-    docking = fetch_spacedevs_dockings()
-    if docking:
-        all_news.append(docking)
-
-    # Source 9: Featured astronaut (Indian/Asian priority)
-    astronaut = fetch_spacedevs_astronauts()
-    if astronaut:
-        all_news.append(astronaut)
-
-    # Source 10: SpaceX upcoming launches
-    spacex = fetch_spacex_launches()
-    all_news.extend(spacex)
-
-    # Source 11: SpaceDevs — other agency launches
-    launches = fetch_spacedevs_launches()
-    all_news.extend(launches)
-
-    # Source 12: Spaceflight News API — space articles with images
-    sf_news = fetch_spaceflight_news(max_results=5)
-    all_news.extend(sf_news)
-
-    # Source 13: NASA EONET — Earth/space weather events
-    eonet = fetch_nasa_eonet()
-    all_news.extend(eonet)
-
-    # Source 15: James Webb Space Telescope — cutting-edge deep universe imagery
-    jwst = fetch_jwst_news()
-    all_news.extend(jwst)
-
-    # Source 16: Hubble Space Telescope — classic iconic space photos
-    hubble = fetch_hubble_news()
-    all_news.extend(hubble)
-
-    # Source 17: ESA — European Space Agency (Rosetta, Gaia, Solar Orbiter etc.)
-    esa = fetch_esa_news()
-    all_news.extend(esa)
-
-    # Source 18: ISRO — Indian missions (Chandrayaan, Gaganyaan, Aditya-L1)
-    isro = fetch_isro_news()
-    all_news.extend(isro)
-
-    # Source 19: NASA JPL — planetary science, rover missions, deep space probes
-    jpl = fetch_nasa_jpl_news()
-    all_news.extend(jpl)
-
-    # Source 20: Sky & Telescope — telescope-worthy astronomy events
-    sky_tel = fetch_sky_telescope()
-    all_news.extend(sky_tel)
-
-    # Source 21: EarthSky — skywatching events, eclipses, meteor showers
-    earthsky = fetch_earthsky()
-    all_news.extend(earthsky)
-
-    # Source 22: NASA Blogs (rotating: Webb, Artemis, Space Station, Science)
-    blogs = fetch_nasa_blogs()
-    all_news.extend(blogs)
-
-    # Source 23: DuckDuckGo fallback (ISRO + regional space news) — last resort
+    # DuckDuckGo fallback — only if < 4 items
     if len(all_news) < 4:
+        print("[Fallback] DuckDuckGo...")
         for topic in SPACE_DISCOVERY_TOPICS[:2]:
             results = fetch_news(topic, max_results=2)
             all_news.extend(results)
