@@ -1,0 +1,52 @@
+name: Atlantis Pinterest — Auto Pins (9x/day)
+
+on:
+  schedule:
+    - cron: '0 2 * * *'     # IST 07:30
+    - cron: '0 6 * * *'     # IST 11:30
+    - cron: '0 10 * * *'    # IST 15:30
+  workflow_dispatch:
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT }}
+
+      - name: Python setup
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: System packages
+        run: sudo apt-get install -y fonts-noto fonts-noto-extra
+
+      - name: Install dependencies
+        run: pip install groq requests Pillow python-dotenv
+
+      - name: Configure git
+        run: |
+          git config --global user.email "bot@atlantispinterest.ai"
+          git config --global user.name "Atlantis Pinterest Bot"
+          git remote set-url origin https://x-access-token:${{ secrets.GH_PAT }}@github.com/${{ github.repository }}.git
+
+      - name: Post Pinterest pins
+        env:
+          GROQ_API_KEY:                ${{ secrets.GROQ_API_KEY }}
+          PEXELS_API_KEY:              ${{ secrets.PEXELS_API_KEY }}
+          PIXABAY_API_KEY:             ${{ secrets.PIXABAY_API_KEY }}
+          IMGBB_API_KEY:               ${{ secrets.IMGBB_API_KEY }}
+          NASA_API_KEY:                ${{ secrets.NASA_API_KEY }}
+          PINTEREST_ACCESS_TOKEN:      ${{ secrets.PINTEREST_ACCESS_TOKEN }}
+          PINTEREST_SPACE_BOARD_ID:    ${{ secrets.PINTEREST_SPACE_BOARD_ID }}
+          PINTEREST_WILDLIFE_BOARD_ID: ${{ secrets.PINTEREST_WILDLIFE_BOARD_ID }}
+          PINTEREST_INDIA_BOARD_ID:    ${{ secrets.PINTEREST_INDIA_BOARD_ID }}
+          PINTEREST_SCIENCE_BOARD_ID:  ${{ secrets.PINTEREST_SCIENCE_BOARD_ID }}
+          GH_PAT:                      ${{ secrets.GH_PAT }}
+          GITHUB_REPOSITORY:           ${{ github.repository }}
+        run: python atlantis_pinterest/agent.py
