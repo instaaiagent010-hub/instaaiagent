@@ -1080,19 +1080,139 @@ def fetch_news_video_free(keyword: str) -> str | None:
     return fetch_video_pexels_mp4(keyword)
 
 
+def _normalize_audio(path: str) -> None:
+    import subprocess as _sp
+    norm = path.replace(".mp3", "_norm.mp3")
+    filters = (
+        "highpass=f=85,"
+        "lowpass=f=13000,"
+        "acompressor=threshold=-18dB:ratio=4:attack=5:release=50:makeup=2dB,"
+        "equalizer=f=250:t=q:w=2:g=2,"
+        "equalizer=f=3500:t=q:w=1.5:g=3,"
+        "equalizer=f=7500:t=q:w=2:g=1,"
+        "loudnorm=I=-14:TP=-1.5:LRA=7"
+    )
+    r = _sp.run(
+        ["ffmpeg", "-y", "-i", path, "-af", filters, norm],
+        capture_output=True, timeout=30
+    )
+    if r.returncode == 0 and os.path.exists(norm):
+        os.replace(norm, path)
+
+
 def generate_tts_audio(text: str, out_path: str) -> bool:
-    """gTTS se Hindi narration generate karo"""
-    try:
-        from gtts import gTTS
-        tts = gTTS(text=text, lang="hi", slow=False)
-        tts.save(out_path)
-        return os.path.exists(out_path) and os.path.getsize(out_path) > 0
-    except Exception as e:
-        print(f"      TTS error: {e}")
+    """Edge TTS (hourly rotation) → gTTS fallback"""
+    import re as _re
+    clean = _re.sub(r'[*_`#~\[\]{}|<>\\]', '', text).strip()
+    if not clean:
         return False
 
+    VOICES = [
+        ("hi-IN-AnanyaNeural", "-3%", "-1Hz", "+15%"),
+        ("hi-IN-MadhurNeural", "-5%", "+0Hz", "+12%"),
+        ("hi-IN-SwaraNeural",  "-5%", "-2Hz", "+15%"),
+    ]
+    voice_idx = (int(time.time()) // 3600) % len(VOICES)
+    ordered   = VOICES[voice_idx:] + VOICES[:voice_idx]
 
-def process_video_for_reel(video_path: str, headline: str, summary: str) -> str | None:
+    try:
+        import asyncio, edge_tts
+        for voice, rate, pitch, vol in ordered:
+            try:
+                async def _speak(v=voice, r=rate, p=pitch, vl=vol):
+                    comm = edge_tts.Communicate(clean, voice=v, rate=r, pitch=p, volume=vl)
+                    await comm.save(out_path)
+                asyncio.run(_speak())
+                if os.path.exists(out_path) and os.path.getsize(out_path) > 1000:
+                    _normalize_audio(out_path)
+                    print(f"      TTS: {voice} (slot {voice_idx})")
+                    return True
+            except Exception:
+                continue
+    except Exception as e:
+        print(f"      Edge TTS error: {e}")
+
+    # gTTS last resort
+    try:
+        from gtts import gTTS
+        gTTS(text=clean, lang="hi", slow=False).save(out_path)
+        if os.path.exists(out_path) and os.path.getsize(out_path) > 0:
+            _normalize_audio(out_path)
+            print(f"      TTS: gTTS fallback")
+            return True
+    except Exception as e:
+        print(f"      gTTS error: {e}")
+    return False
+
+
+def generate_narration(news_item: dict, headline: str, summary: str) -> str:
+    """Groq se 30-second news Reel narration — 6 rotating hooks"""
+    title = news_item.get("title", headline)
+    body  = news_item.get("body", summary)[:500]
+
+    import random as _rand
+    narration_styles = [
+        "BREAKING NEWS ENERGY: Jaise LIVE bulletin chal raha ho — urgency, speed, impact.\n"
+        "'Abhi-abhi khabar aayi hai...' / 'Is pal poori duniya ki nazar...' — listener ko screen se chipka do.",
+
+        "IMPACT FIRST: Seedha consequence se shuru karo — ye news logon ki zindagi pe kya asar dalegi?\n"
+        "'Iska matlab hai ke agle 6 mahine...' / 'Ye faisla 140 crore logon ko...' — personal connection banao.",
+
+        "HISTORICAL CONTEXT: Ek shocking historical fact se shuru karo.\n"
+        "'Aakhri baar aisa tab hua tha jab...' / '50 saal mein pehli baar...' — gravity feel karao.",
+
+        "NUMBERS HOOK: Ek mind-blowing stat ya number se shuru karo.\n"
+        "'Sirf 72 ghante mein...' / 'Rs. 40,000 crore ka sawaal...' — number drop karo, phir context do.",
+
+        "COMMON MAN ANGLE: Common Indian ke perspective se — unka kya hoga?\n"
+        "'Agar tum aam aadmi ho...' / 'Ghar ka budget, petrol ka rate, ek naukri...' — relatable real-life impact.",
+
+        "QUESTION HOOK: Ek thought-provoking question se shuru karo.\n"
+        "'Kya tum jaante ho...?' / 'Socho agar kal se...' — curiosity jagao, phir jawab do.",
+    ]
+    style_idx     = (int(time.time()) // 3600) % len(narration_styles)
+    chosen_style  = narration_styles[style_idx]
+
+    try:
+        client = Groq(api_key=GROQ_API_KEY)
+        resp = client.chat.completions.create(
+            model="llama-3.3-70b-versatile",
+            max_tokens=420,
+            messages=[{"role": "user", "content": f"""
+Tu @atlantis_news_ai ka Hindi news anchor hai — clear, credible, impactful.
+Ek 30-second news Reel narration likho.
+
+News: {title}
+Details: {body}
+Summary: {summary}
+
+STYLE THIS POST: {chosen_style}
+
+STRICT RULES:
+- NEWS KI STORY sunao — facts, impact, significance
+- HEADLINE MAT PADHO — screen pe already dikh raha hai
+- ~90-100 words — exactly 30 seconds ke liye
+- Ek concrete fact ya stat zaroor ho
+- End mein ek line jo viewer ko sochne pe majboor kare
+- Hindi dominant, English sirf proper nouns ke liye
+- FORBIDDEN: "yaar", "sun", "bhai", "dosto", "chaliye", "dekhte hain"
+- Sirf bolne wala text — koi heading, bullet, asterisk nahi
+
+Narration:"""}]
+        )
+        narration = resp.choices[0].message.content.strip()
+        import re as _re
+        narration = _re.sub(r'\*+', '', narration).strip()
+        wc = len(narration.split())
+        print(f"      Narration ({wc} words, style {style_idx+1})")
+        return narration
+    except Exception as e:
+        print(f"      Narration error: {e}")
+        return f"{headline}. {summary}"
+
+
+def process_video_for_reel(video_path: str, headline: str, summary: str,
+                           narration: str = "", news_item: dict = None) -> str | None:
     """Video ko 9:16 Reel format mein trim karo + text overlay + Hindi TTS audio"""
     import subprocess
     try:
@@ -1128,7 +1248,7 @@ def process_video_for_reel(video_path: str, headline: str, summary: str) -> str 
         overlay.save(overlay_png, "PNG")
 
         # Step 3: Hindi TTS narration generate karo
-        tts_text = f"{headline}. {summary}"
+        tts_text  = narration if narration else f"{headline}. {summary}"
         has_audio = generate_tts_audio(tts_text, audio_path)
         if has_audio:
             print("      TTS narration ready")
@@ -1988,10 +2108,16 @@ def run_agent():
             print(f"      Government news — PIB Reel try kar raha hoon...")
             pib_path = fetch_news_video_free(content.get("image_keyword", news.get("title", "")[:30]))
             if pib_path:
+                narration = generate_narration(
+                    news,
+                    content.get("headline") or news.get("title", ""),
+                    content.get("image_summary", "")
+                )
                 reel_path = process_video_for_reel(
                     pib_path,
                     content.get("headline") or news.get("title", ""),
-                    content.get("image_summary", "")
+                    content.get("image_summary", ""),
+                    narration=narration
                 )
                 if reel_path:
                     video_url = upload_video_free(reel_path)
@@ -2194,10 +2320,16 @@ Instagram Reel ke liye JSON banao:
                 pass
             continue
 
+        narration = generate_narration(
+            {"title": content.get("headline", topic), "body": content.get("summary", "")},
+            content.get("headline", "India Government News"),
+            content.get("summary", "")
+        )
         reel_path = process_video_for_reel(
             pib_path,
             content.get("headline", "India Government News"),
-            content.get("summary", "")
+            content.get("summary", ""),
+            narration=narration
         )
         try:
             os.remove(pib_path)
