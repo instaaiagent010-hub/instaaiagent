@@ -40,6 +40,28 @@ APP_SECRET           = os.getenv("SPACE_APP_SECRET")
 
 NASA_API_KEY         = os.getenv("NASA_API_KEY")
 
+# --- Groq model auto-select: best available model khud pick karo (future-proof) ---
+GROQ_MODEL_PREFERENCES = [
+    "openai/gpt-oss-120b",      # 2026: sabse smart Groq model
+    "llama-3.3-70b-versatile",  # proven fallback
+    "llama-3.1-8b-instant",     # last resort
+]
+
+def _pick_groq_model() -> str:
+    try:
+        r = requests.get("https://api.groq.com/openai/v1/models",
+                         headers={"Authorization": f"Bearer {GROQ_API_KEY}"}, timeout=15)
+        available = {m.get("id") for m in r.json().get("data", [])}
+        for _m in GROQ_MODEL_PREFERENCES:
+            if _m in available:
+                return _m
+    except Exception:
+        pass
+    return "llama-3.3-70b-versatile"
+
+GROQ_MODEL = _pick_groq_model()
+print(f"🧠 Groq model: {GROQ_MODEL}")
+
 CHANNEL_HANDLE  = "@atlantis_space"
 POST_DELAY      = 45   # seconds between posts in same run
 CAROUSEL_SLIDES = 1    # 1 post per run × 10 runs = 10 posts/day
@@ -1046,7 +1068,7 @@ def smart_plan(all_news: list[dict], count: int = CAROUSEL_SLIDES) -> list[dict]
     try:
         client = Groq(api_key=GROQ_API_KEY)
         resp = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
+            model=GROQ_MODEL,
             max_tokens=500,
             messages=[{"role": "user", "content": f"""
 Ye space/astronomy content hai. Visual aur wow-factor score do (1-10):
@@ -1122,7 +1144,7 @@ JSON:
 
     try:
         message = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
+            model=GROQ_MODEL,
             max_tokens=900,
             messages=[{"role": "user", "content": prompt}],
             response_format={"type": "json_object"}
@@ -1141,7 +1163,7 @@ JSON:
         if headline or summary:
             try:
                 fix = client.chat.completions.create(
-                    model="llama-3.3-70b-versatile",
+                    model=GROQ_MODEL,
                     max_tokens=200,
                     messages=[{"role": "user", "content": f"""Fix spelling mistakes only. Do NOT change meaning or words.
 
@@ -1558,7 +1580,7 @@ def generate_narration(news_item: dict, headline: str, summary: str) -> str:
     try:
         client = Groq(api_key=GROQ_API_KEY)
         resp = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
+            model=GROQ_MODEL,
             max_tokens=420,
             messages=[{"role": "user", "content": f"""
 Tu @atlantis_space Instagram Reel ka narrator hai — Carl Sagan ka Hindi version.
