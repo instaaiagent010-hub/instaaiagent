@@ -1658,17 +1658,20 @@ def generate_tts(text: str, out_path: str) -> bool:
                 if not (os.path.exists(out_path) and os.path.getsize(out_path) > 1000):
                     continue
                 # Normalize audio — consistent loudness, remove low-freq noise
-                norm_path = out_path.replace(".mp3", "_norm.mp3")
-                norm = _sp.run([
-                    "ffmpeg", "-y", "-i", out_path,
-                    "-af", ("highpass=f=85,lowpass=f=13000,"
-                            "acompressor=threshold=-18dB:ratio=4:attack=5:release=50:makeup=2dB,"
-                            "equalizer=f=3500:t=q:w=1.5:g=3,"
-                            "loudnorm=I=-14:TP=-1.5:LRA=7"),
-                    norm_path
-                ], capture_output=True, timeout=30)
-                if norm.returncode == 0 and os.path.exists(norm_path):
-                    os.replace(norm_path, out_path)
+                try:
+                    norm_path = out_path.replace(".mp3", "_norm.mp3")
+                    norm = _sp.run([
+                        "ffmpeg", "-y", "-i", out_path,
+                        "-af", ("highpass=f=85,lowpass=f=13000,"
+                                "acompressor=threshold=-18dB:ratio=4:attack=5:release=50:makeup=2dB,"
+                                "equalizer=f=3500:t=q:w=1.5:g=3,"
+                                "loudnorm=I=-14:TP=-1.5:LRA=7"),
+                        norm_path
+                    ], capture_output=True, timeout=30)
+                    if norm.returncode == 0 and os.path.exists(norm_path):
+                        os.replace(norm_path, out_path)
+                except Exception:
+                    pass  # ffmpeg na mile to bhi voice zinda rahe (bina polish ke)
                 print(f"      TTS: {voice}")
                 return True
             except Exception as ve:
