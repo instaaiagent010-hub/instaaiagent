@@ -354,25 +354,30 @@ def load_posted_history() -> set:
 def save_posted_title(title: str) -> None:
     """Title history mein save karo aur GitHub pe push karo"""
     try:
-        titles = list(load_posted_history())
+        import subprocess
+        repo_dir = os.path.dirname(os.path.abspath(__file__))
+        # Pull latest FIRST — avoid overwriting concurrent run's history
+        subprocess.run(["git", "stash"], cwd=repo_dir, capture_output=True)
+        subprocess.run(["git", "pull", "origin", "main", "--no-rebase"], cwd=repo_dir, capture_output=True)
+        subprocess.run(["git", "stash", "pop"], cwd=repo_dir, capture_output=True)
+
+        existing = {}
+        if os.path.exists(HISTORY_FILE):
+            with open(HISTORY_FILE, "r", encoding="utf-8") as f:
+                existing = json.load(f)
+        titles = existing.get("titles", [])
         normalized = title.lower().strip()[:120]
         if normalized not in titles:
             titles.append(normalized)
-        titles = titles[-100:]  # Last 100 titles rakhon
+        titles = titles[-300:]
         with open(HISTORY_FILE, "w", encoding="utf-8") as f:
             json.dump({"titles": titles, "updated": datetime.now().isoformat()}, f,
                       ensure_ascii=False, indent=2)
-        # GitHub Actions mein git push karo
-        import subprocess
-        repo_dir = os.path.dirname(os.path.abspath(__file__))
-        subprocess.run(["git", "config", "user.email", "bot@atlantisnews.ai"], cwd=repo_dir)
-        subprocess.run(["git", "config", "user.name", "Atlantis News Bot"], cwd=repo_dir)
         subprocess.run(["git", "add", "posted_history.json"], cwd=repo_dir)
         result = subprocess.run(["git", "commit", "-m", "chore: update posted history [skip ci]"],
                                 cwd=repo_dir, capture_output=True)
         if result.returncode == 0:
-            subprocess.run(["git", "pull", "--rebase", "origin", "main"], cwd=repo_dir)
-            subprocess.run(["git", "push", "origin", "main"], cwd=repo_dir)
+            subprocess.run(["git", "push", "origin", "HEAD:main"], cwd=repo_dir)
             print(f"      History saved: {title[:60]}")
         else:
             print(f"      History commit skip (no change)")
@@ -388,7 +393,7 @@ def get_recently_posted_titles() -> set:
     try:
         resp = requests.get(
             f"https://graph.facebook.com/v25.0/{INSTAGRAM_ACCOUNT_ID}/media",
-            params={"fields": "caption", "limit": 12, "access_token": INSTAGRAM_TOKEN},
+            params={"fields": "caption", "limit": 30, "access_token": INSTAGRAM_TOKEN},
             timeout=10
         )
         for post in resp.json().get("data", []):
@@ -400,13 +405,20 @@ def get_recently_posted_titles() -> set:
     return titles
 
 
+STOP_WORDS = {"the","a","an","is","in","of","on","at","to","for","and","or","with",
+              "his","her","its","this","that","was","has","are","were","will","been",
+              "new","says","india","news","today","government","latest","update"}
+
 def is_duplicate(news_title: str, recent_titles: set) -> bool:
-    """40%+ word overlap = duplicate (stricter than before)"""
-    words = set(news_title.lower().split())
+    words = set(news_title.lower().split()) - STOP_WORDS
+    if not words:
+        return False
     for stored in recent_titles:
-        stored_words = set(stored.split())
-        overlap = len(words & stored_words) / max(len(words), 1)
-        if overlap >= 0.4:
+        stored_words = set(stored.split()) - STOP_WORDS
+        if not stored_words:
+            continue
+        overlap = len(words & stored_words) / max(len(words), len(stored_words))
+        if overlap >= 0.50:
             return True
     return False
 
