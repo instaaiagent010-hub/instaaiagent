@@ -64,6 +64,28 @@ HF_API_KEY          = os.getenv("HF_API_KEY")
 APP_ID              = os.getenv("APP_ID")
 APP_SECRET          = os.getenv("APP_SECRET")
 
+# --- Groq model auto-select: best available model khud pick karo (future-proof) ---
+GROQ_MODEL_PREFERENCES = [
+    "openai/gpt-oss-120b",      # 2026: sabse smart Groq model
+    "llama-3.3-70b-versatile",  # proven fallback
+    "llama-3.1-8b-instant",     # last resort
+]
+
+def _pick_groq_model() -> str:
+    try:
+        r = requests.get("https://api.groq.com/openai/v1/models",
+                         headers={"Authorization": f"Bearer {GROQ_API_KEY}"}, timeout=15)
+        available = {m.get("id") for m in r.json().get("data", [])}
+        for _m in GROQ_MODEL_PREFERENCES:
+            if _m in available:
+                return _m
+    except Exception:
+        pass
+    return "llama-3.3-70b-versatile"
+
+GROQ_MODEL = _pick_groq_model()
+print(f"🧠 Groq model: {GROQ_MODEL}")
+
 POST_DELAY     = 60   # seconds between posts
 CAROUSEL_SLIDES = 4   # carousel mein kitni images
 
@@ -476,7 +498,7 @@ Sirf JSON respond karo:
     try:
         client = Groq(api_key=GROQ_API_KEY)
         resp = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
+            model=GROQ_MODEL,
             max_tokens=500,
             messages=[{"role": "user", "content": prompt}],
             response_format={"type": "json_object"}
@@ -505,7 +527,7 @@ def is_worth_posting(caption: str, news_title: str) -> bool:
     try:
         client = Groq(api_key=GROQ_API_KEY)
         resp = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
+            model=GROQ_MODEL,
             max_tokens=150,
             messages=[{"role": "user", "content": f"""
 Tu ek strict Indian news quality editor hai.
@@ -582,7 +604,7 @@ Sirf JSON format mein respond karo:
 
     try:
         message = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
+            model=GROQ_MODEL,
             max_tokens=900,
             messages=[{"role": "user", "content": prompt}],
             response_format={"type": "json_object"}
@@ -606,7 +628,7 @@ Sirf JSON format mein respond karo:
         if headline or summary:
             try:
                 fix_resp = client.chat.completions.create(
-                    model="llama-3.3-70b-versatile",
+                    model=GROQ_MODEL,
                     max_tokens=200,
                     messages=[{"role": "user", "content": f"""Fix spelling mistakes only. Do NOT change meaning, words, or language. Return corrected versions only.
 
@@ -1188,7 +1210,7 @@ def generate_narration(news_item: dict, headline: str, summary: str) -> str:
     try:
         client = Groq(api_key=GROQ_API_KEY)
         resp = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
+            model=GROQ_MODEL,
             max_tokens=420,
             messages=[{"role": "user", "content": f"""
 Tu @atlantis_news_ai ka Hindi news anchor hai — clear, credible, impactful.
@@ -1610,7 +1632,7 @@ def generate_story_question(news_title: str) -> str:
     try:
         client = Groq(api_key=GROQ_API_KEY)
         resp = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
+            model=GROQ_MODEL,
             max_tokens=60,
             messages=[{"role": "user", "content": f"""
 News: {news_title[:150]}
@@ -1920,7 +1942,7 @@ def generate_reply(comment_text: str, post_caption: str) -> str:
     try:
         client = Groq(api_key=GROQ_API_KEY)
         resp = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
+            model=GROQ_MODEL,
             max_tokens=80,
             messages=[{"role": "user", "content": f"""
 Tu ek Indian Instagram news page ka community manager hai.
@@ -2222,7 +2244,7 @@ def check_breaking_news() -> None:
     try:
         client = Groq(api_key=GROQ_API_KEY)
         resp = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
+            model=GROQ_MODEL,
             max_tokens=200,
             messages=[{"role": "user", "content": f"""
 Ye Indian news headlines hain. Kaunsa sabse breaking/critical hai?
@@ -2299,7 +2321,7 @@ def post_pib_reel() -> None:
         try:
             client = Groq(api_key=GROQ_API_KEY)
             resp = client.chat.completions.create(
-                model="llama-3.3-70b-versatile",
+                model=GROQ_MODEL,
                 max_tokens=300,
                 messages=[{"role": "user", "content": f"""
 Ye ek PIB India (Press Information Bureau) ka official government video hai.
