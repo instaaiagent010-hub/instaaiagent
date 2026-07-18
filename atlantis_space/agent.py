@@ -1627,12 +1627,13 @@ def generate_tts(text: str, out_path: str) -> bool:
     if not clean:
         return False
 
-    # AnanyaNeural — Microsoft's best Hindi neural voice (clear, natural)
-    # Alternate male/female for variety
+    # Verified working voices (AnanyaNeural Edge TTS pe exist nahi karti — hata di)
     voice_options = [
-        ("hi-IN-AnanyaNeural",  "-3%", "-1Hz", "+15%"),   # female, best clarity
-        ("hi-IN-MadhurNeural",  "-5%", "+0Hz", "+12%"),   # male, documentary feel
-        ("hi-IN-SwaraNeural",   "+5%", "+0Hz", "+15%"),   # female, original
+        ("hi-IN-MadhurNeural",           "-5%", "+0Hz", "+12%"),  # male, documentary feel
+        ("hi-IN-SwaraNeural",            "-4%", "-2Hz", "+15%"),  # female, clear Hindi
+        ("en-IN-NeerjaExpressiveNeural", "-2%", "+0Hz", "+15%"),  # female, energetic
+        ("en-IN-PrabhatNeural",          "-4%", "+0Hz", "+15%"),  # male, crisp
+        ("en-IN-NeerjaNeural",           "-3%", "+0Hz", "+15%"),  # female, smooth
     ]
     # Rotate voice based on time — variety without randomness per post
     voice_idx = (int(time.time()) // 3600) % len(voice_options)
@@ -1640,6 +1641,13 @@ def generate_tts(text: str, out_path: str) -> bool:
 
     try:
         import edge_tts
+        try:
+            # kuch systems pe aiodns broken hota hai — system DNS resolver force karo
+            import aiohttp.resolver, aiohttp.connector
+            aiohttp.resolver.DefaultResolver = aiohttp.resolver.ThreadedResolver
+            aiohttp.connector.DefaultResolver = aiohttp.resolver.ThreadedResolver
+        except Exception:
+            pass
 
         for voice, rate, pitch, volume in ordered:
             try:
