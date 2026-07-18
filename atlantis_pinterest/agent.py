@@ -41,6 +41,28 @@ WILDLIFE_BOARD_ID = os.getenv("PINTEREST_WILDLIFE_BOARD_ID", "")
 INDIA_BOARD_ID    = os.getenv("PINTEREST_INDIA_BOARD_ID", "")
 SCIENCE_BOARD_ID  = os.getenv("PINTEREST_SCIENCE_BOARD_ID", "")
 
+# --- Groq model auto-select: best available model khud pick karo (future-proof) ---
+GROQ_MODEL_PREFERENCES = [
+    "openai/gpt-oss-120b",      # 2026: sabse smart Groq model
+    "llama-3.3-70b-versatile",  # proven fallback
+    "llama-3.1-8b-instant",     # last resort
+]
+
+def _pick_groq_model() -> str:
+    try:
+        r = requests.get("https://api.groq.com/openai/v1/models",
+                         headers={"Authorization": f"Bearer {GROQ_API_KEY}"}, timeout=15)
+        available = {m.get("id") for m in r.json().get("data", [])}
+        for _m in GROQ_MODEL_PREFERENCES:
+            if _m in available:
+                return _m
+    except Exception:
+        pass
+    return "llama-3.3-70b-versatile"
+
+GROQ_MODEL = _pick_groq_model()
+print(f"🧠 Groq model: {GROQ_MODEL}")
+
 CHANNEL_HANDLE  = "@atlantis_pinterest"
 HISTORY_FILE    = os.path.join(os.path.dirname(os.path.abspath(__file__)), "posted_history.json")
 LOGO_PATH       = os.path.join(os.path.dirname(os.path.abspath(__file__)), "atlantis_pinterest.png")
@@ -332,7 +354,7 @@ def generate_pin_description(title: str, fact: str, category: str) -> str:
     try:
         client = Groq(api_key=GROQ_API_KEY)
         resp = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
+            model=GROQ_MODEL,
             max_tokens=200,
             messages=[{"role": "user", "content": f"""
 Pinterest pin ke liye SEO description likho — English mein.
