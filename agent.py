@@ -1126,12 +1126,15 @@ def _normalize_audio(path: str) -> None:
         "equalizer=f=7500:t=q:w=2:g=1,"
         "loudnorm=I=-14:TP=-1.5:LRA=7"
     )
-    r = _sp.run(
-        ["ffmpeg", "-y", "-i", path, "-af", filters, norm],
-        capture_output=True, timeout=30
-    )
-    if r.returncode == 0 and os.path.exists(norm):
-        os.replace(norm, path)
+    try:
+        r = _sp.run(
+            ["ffmpeg", "-y", "-i", path, "-af", filters, norm],
+            capture_output=True, timeout=30
+        )
+        if r.returncode == 0 and os.path.exists(norm):
+            os.replace(norm, path)
+    except Exception:
+        pass  # ffmpeg na mile to bhi voice zinda rahe (bina polish ke)
 
 
 def generate_tts_audio(text: str, out_path: str) -> bool:
