@@ -950,7 +950,13 @@ def load_posted_images() -> set:
 
 def save_posted_title(title: str, image_url: str = "") -> None:
     try:
-        # Load existing history (titles + images both)
+        import subprocess
+        repo_dir = os.path.dirname(os.path.abspath(__file__))
+        # Pull latest FIRST — avoid overwriting concurrent run's history
+        subprocess.run(["git", "stash"], cwd=repo_dir, capture_output=True)
+        subprocess.run(["git", "pull", "origin", "main", "--no-rebase"], cwd=repo_dir, capture_output=True)
+        subprocess.run(["git", "stash", "pop"], cwd=repo_dir, capture_output=True)
+
         existing = {}
         if os.path.exists(HISTORY_FILE):
             with open(HISTORY_FILE, "r", encoding="utf-8") as f:
@@ -959,36 +965,27 @@ def save_posted_title(title: str, image_url: str = "") -> None:
         titles = existing.get("titles", [])
         images = existing.get("images", [])
 
-        # Save title
         normalized = title.lower().strip()[:120]
         if normalized not in titles:
             titles.append(normalized)
-        titles = titles[-150:]
+        titles = titles[-300:]
 
-        # Save image URL fingerprint (first 120 chars = unique enough)
         if image_url:
             img_key = image_url.strip()[:120]
             if img_key not in images:
                 images.append(img_key)
-            images = images[-150:]
+            images = images[-300:]
 
         with open(HISTORY_FILE, "w", encoding="utf-8") as f:
-            json.dump({
-                "titles": titles,
-                "images": images,
-                "updated": datetime.now().isoformat()
-            }, f, ensure_ascii=False, indent=2)
+            json.dump({"titles": titles, "images": images,
+                       "updated": datetime.now().isoformat()}, f, ensure_ascii=False, indent=2)
 
-        import subprocess
-        repo_dir = os.path.dirname(os.path.abspath(__file__))
         subprocess.run(["git", "add", "posted_history.json"], cwd=repo_dir)
         result = subprocess.run(
             ["git", "commit", "-m", "chore: update space posted history [skip ci]"],
             cwd=repo_dir, capture_output=True
         )
         if result.returncode == 0:
-            subprocess.run(["git", "pull", "--rebase", "origin", "main"],
-                           cwd=repo_dir, capture_output=True)
             subprocess.run(["git", "push", "origin", "HEAD:main"], cwd=repo_dir)
         print(f"      History saved ({len(titles)} titles, {len(images)} images)")
     except Exception as e:
@@ -1002,7 +999,7 @@ def get_recently_posted_titles() -> set:
     try:
         resp = requests.get(
             f"https://graph.facebook.com/v25.0/{INSTAGRAM_ACCOUNT_ID}/media",
-            params={"fields": "caption", "limit": 20, "access_token": INSTAGRAM_TOKEN},
+            params={"fields": "caption", "limit": 30, "access_token": INSTAGRAM_TOKEN},
             timeout=10
         )
         for post in resp.json().get("data", []):
@@ -1014,12 +1011,20 @@ def get_recently_posted_titles() -> set:
     return titles
 
 
+STOP_WORDS = {"the","a","an","is","in","of","on","at","to","for","and","or","with",
+              "his","her","its","this","that","was","has","are","were","will","been",
+              "new","says","space","nasa","mission","launch","star","galaxy","update"}
+
 def is_duplicate(news_title: str, recent_titles: set) -> bool:
-    words = set(news_title.lower().split())
+    words = set(news_title.lower().split()) - STOP_WORDS
+    if not words:
+        return False
     for stored in recent_titles:
-        stored_words = set(stored.split())
-        overlap = len(words & stored_words) / max(len(words), 1)
-        if overlap >= 0.35:   # 35% — tighter than before (was 40%)
+        stored_words = set(stored.split()) - STOP_WORDS
+        if not stored_words:
+            continue
+        overlap = len(words & stored_words) / max(len(words), len(stored_words))
+        if overlap >= 0.50:
             return True
     return False
 
