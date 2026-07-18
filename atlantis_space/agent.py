@@ -42,9 +42,10 @@ NASA_API_KEY         = os.getenv("NASA_API_KEY")
 
 # --- Groq model auto-select: best available model khud pick karo (future-proof) ---
 GROQ_MODEL_PREFERENCES = [
-    "openai/gpt-oss-120b",      # 2026: sabse smart Groq model
-    "llama-3.3-70b-versatile",  # proven fallback
-    "llama-3.1-8b-instant",     # last resort
+    "llama-3.3-70b-versatile",  # proven — reliable content output
+    "llama-3.1-8b-instant",     # fallback
+    # gpt-oss-120b HATAYA: reasoning model chhote max_tokens pe EMPTY content deta hai
+    # (narration 0 words → silent reels). Wapas mat daalo bina empty-output guard ke.
 ]
 
 def _pick_groq_model() -> str:
