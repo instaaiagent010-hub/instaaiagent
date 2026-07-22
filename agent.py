@@ -900,35 +900,45 @@ def fetch_rss_video(keyword: str) -> str | None:
     candidates.sort(key=lambda c: c[0], reverse=True)
 
     # Step 2: top matches try karo jab tak koi download na ho jaye
+    # Format selectors — sakht se dheela. Cookies ke saath YouTube kam formats deta hai,
+    # isliye ek fail ho to agla try karo.
+    FORMAT_CHAIN = [
+        "bv*[height<=720][ext=mp4]+ba[ext=m4a]/b[height<=720][ext=mp4]",
+        "bv*[height<=720]+ba/b[height<=720]",
+        "best",
+    ]
+
     for score, ch_name, video_id, video_title in candidates[:5]:
         print(f"      [{ch_name}] match(score {score}): {video_title[:50]}")
         out_template = os.path.join(out_dir, f"rss_{video_id}.%(ext)s")
-        cmd = [
-            "yt-dlp",
-            f"https://www.youtube.com/watch?v={video_id}",
-            # YouTube ab video+audio alag deta hai — merge zaroori (progressive mp4 mostly dead)
-            "-f", "bestvideo[height<=720][ext=mp4]+bestaudio[ext=m4a]/best[height<=720]/best",
-            "--merge-output-format", "mp4",
-            # Reel ko sirf ~90s chahiye — pura 1GB video download karna waste hai
-            "--download-sections", "*0-90",
-            "-o", out_template,
-            "--no-playlist", "--no-warnings",
-            "--sleep-interval", "2"
-        ]
-        if cookies_path:
-            cmd += ["--cookies", cookies_path]
-        try:
-            dl = subprocess.run(cmd, capture_output=True, timeout=180)
-            for fname in os.listdir(out_dir):
-                if fname.startswith(f"rss_{video_id}") and fname.endswith(".mp4"):
-                    path = os.path.join(out_dir, fname)
-                    LAST_VIDEO_ID = f"yt:{video_id}"
-                    USED_VIDEO_IDS.add(LAST_VIDEO_ID)
-                    print(f"      [{ch_name}] Downloaded: {os.path.getsize(path)//1024//1024}MB ✓")
-                    return path
-            print(f"      [{ch_name}] fail: {dl.stderr[-90:].decode(errors='ignore')}")
-        except Exception as e:
-            print(f"      [{ch_name}] download error: {e}")
+        last_err = ""
+        for fmt in FORMAT_CHAIN:
+            cmd = [
+                "yt-dlp",
+                f"https://www.youtube.com/watch?v={video_id}",
+                "-f", fmt,
+                "--merge-output-format", "mp4",
+                # Reel ko sirf ~90s chahiye — pura 1GB video download karna waste hai
+                "--download-sections", "*0-90",
+                "-o", out_template,
+                "--no-playlist", "--no-warnings",
+                "--sleep-interval", "2"
+            ]
+            if cookies_path:
+                cmd += ["--cookies", cookies_path]
+            try:
+                dl = subprocess.run(cmd, capture_output=True, timeout=180)
+                for fname in os.listdir(out_dir):
+                    if fname.startswith(f"rss_{video_id}") and fname.endswith(".mp4"):
+                        path = os.path.join(out_dir, fname)
+                        LAST_VIDEO_ID = f"yt:{video_id}"
+                        USED_VIDEO_IDS.add(LAST_VIDEO_ID)
+                        print(f"      [{ch_name}] Downloaded: {os.path.getsize(path)//1024//1024}MB ✓ (fmt: {fmt[:22]})")
+                        return path
+                last_err = dl.stderr[-90:].decode(errors="ignore")
+            except Exception as e:
+                last_err = str(e)[:90]
+        print(f"      [{ch_name}] saare formats fail: {last_err}")
 
     return None
 
@@ -1304,11 +1314,18 @@ Narration:"""}])
         narration = resp.choices[0].message.content.strip()
         import re as _re
         narration = _re.sub(r'\*+', '', narration).strip()
-        wc = len(narration.split())
-        if wc >= 20:
-            print(f"      Narration ({wc} words, style {style_idx+1})")
+        words = narration.split()
+        # Zyada lambi narration = 80s+ ki boring reel. ~45s (110 words) pe cap karo.
+        if len(words) > 110:
+            trimmed = " ".join(words[:110])
+            cut = max(trimmed.rfind("."), trimmed.rfind("!"), trimmed.rfind("?"))
+            narration = trimmed[:cut + 1] if cut > 200 else trimmed + "."
+            print(f"      Narration {len(words)} words thi — {len(narration.split())} pe trim ki")
             return narration
-        print(f"      Narration bahut chhoti ({wc} words) — fallback use kar raha hoon")
+        if len(words) >= 20:
+            print(f"      Narration ({len(words)} words, style {style_idx+1})")
+            return narration
+        print(f"      Narration bahut chhoti ({len(words)} words) — fallback use kar raha hoon")
     except Exception as e:
         print(f"      Narration error: {e}")
 
