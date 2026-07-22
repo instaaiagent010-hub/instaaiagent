@@ -63,6 +63,27 @@ def _pick_groq_model() -> str:
 GROQ_MODEL = _pick_groq_model()
 print(f"🧠 Groq model: {GROQ_MODEL}")
 
+
+def _groq_complete(messages, max_tokens=500, **kwargs):
+    """Groq call — rate limit (429) pe agle model pe switch karo.
+    Groq ke daily token limits PER MODEL hote hain (saare agents ek hi key share
+    karte hain, isliye 70b ka limit din mein khatam ho jata hai)."""
+    client = Groq(api_key=GROQ_API_KEY)
+    models = [GROQ_MODEL] + [m for m in GROQ_MODEL_PREFERENCES if m != GROQ_MODEL]
+    last_err = None
+    for m in models:
+        try:
+            return client.chat.completions.create(
+                model=m, max_tokens=max_tokens, messages=messages, **kwargs
+            )
+        except Exception as e:
+            last_err = e
+            if "rate_limit" in str(e) or "429" in str(e):
+                print(f"      {m} rate-limited — agla model try kar raha hoon")
+                continue
+            raise
+    raise last_err
+
 CHANNEL_HANDLE  = "@atlantis_space"
 POST_DELAY      = 45   # seconds between posts in same run
 CAROUSEL_SLIDES = 1    # 1 post per run × 10 runs = 10 posts/day
@@ -1067,9 +1088,7 @@ def smart_plan(all_news: list[dict], count: int = CAROUSEL_SLIDES) -> list[dict]
         for i, n in enumerate(all_news[:12])
     ])
     try:
-        client = Groq(api_key=GROQ_API_KEY)
-        resp = client.chat.completions.create(
-            model=GROQ_MODEL,
+        resp = _groq_complete(
             max_tokens=500,
             messages=[{"role": "user", "content": f"""
 Ye space/astronomy content hai. Visual aur wow-factor score do (1-10):
@@ -1109,7 +1128,6 @@ TOP {count} choose karo. JSON:
 # --- Caption Generation -------------------------------------------------------
 def generate_caption(news_item: dict) -> dict:
     print(f"\n[2/4] Caption generate kar raha hoon...")
-    client = Groq(api_key=GROQ_API_KEY)
 
     prompt = f"""
 Tu {CHANNEL_HANDLE} ka Instagram content creator hai — ye ek SPACE EXPLORATION channel hai, news channel nahi.
@@ -1144,8 +1162,7 @@ JSON:
 """
 
     try:
-        message = client.chat.completions.create(
-            model=GROQ_MODEL,
+        message = _groq_complete(
             max_tokens=900,
             messages=[{"role": "user", "content": prompt}],
             response_format={"type": "json_object"}
@@ -1163,8 +1180,7 @@ JSON:
         summary  = result.get("image_summary", "")
         if headline or summary:
             try:
-                fix = client.chat.completions.create(
-                    model=GROQ_MODEL,
+                fix = _groq_complete(
                     max_tokens=200,
                     messages=[{"role": "user", "content": f"""Fix spelling mistakes only. Do NOT change meaning or words.
 
@@ -1579,9 +1595,7 @@ def generate_narration(news_item: dict, headline: str, summary: str) -> str:
     chosen_hook = random.choice(hooks)
 
     try:
-        client = Groq(api_key=GROQ_API_KEY)
-        resp = client.chat.completions.create(
-            model=GROQ_MODEL,
+        resp = _groq_complete(
             max_tokens=420,
             messages=[{"role": "user", "content": f"""
 Tu @atlantis_space Instagram Reel ka narrator hai — Carl Sagan ka Hindi version.
