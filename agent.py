@@ -1197,11 +1197,83 @@ def fetch_archive_video(keyword: str) -> str | None:
 REALTIME_ONLY = True
 
 
+QUEUE_DIR = "video_queue"
+LAST_QUEUE_ITEM = ""   # queue se uthayi gayi file ka naam (post ke baad delete karne ke liye)
+
+
+def fetch_queued_video() -> str | None:
+    """Laptop ne jo real-time govt footage queue ki hai wahan se lo.
+    YouTube CI (datacenter IP) se blocked hai, isliye laptop producer ka kaam karta hai."""
+    global LAST_QUEUE_ITEM
+    gh_token = (os.getenv("GH_PAT") or os.getenv("GITHUB_TOKEN") or "").strip()
+    repo     = os.getenv("GITHUB_REPOSITORY", "").strip()
+    if not gh_token or not repo:
+        return None
+    hdr = {"Authorization": f"Bearer {gh_token}", "Accept": "application/vnd.github+json"}
+    try:
+        r = requests.get(f"https://api.github.com/repos/{repo}/contents/{QUEUE_DIR}",
+                         headers=hdr, timeout=30)
+        if r.status_code != 200:
+            print("      [Queue] khali hai")
+            return None
+        vids = sorted([f for f in r.json() if f["name"].endswith(".mp4")],
+                      key=lambda f: f["name"])   # sabse purani pehle
+        if not vids:
+            print("      [Queue] koi video nahi")
+            return None
+
+        item = vids[0]
+        print(f"      [Queue] {item['name']} ({item['size']//1024//1024}MB) le raha hoon")
+        dl = requests.get(item["download_url"], timeout=180, stream=True)
+        path = os.path.join(tempfile.gettempdir(), f"queued_{item['name']}")
+        with open(path, "wb") as f:
+            for chunk in dl.iter_content(8192):
+                f.write(chunk)
+        if os.path.getsize(path) < 200_000:
+            os.remove(path)
+            return None
+        LAST_QUEUE_ITEM = item["name"]
+        print(f"      [Queue] Downloaded ✓")
+        return path
+    except Exception as e:
+        print(f"      [Queue] error: {e}")
+    return None
+
+
+def delete_queued_video() -> None:
+    """Post safal hone ke baad queue se video hata do (warna dobara post hogi)"""
+    global LAST_QUEUE_ITEM
+    if not LAST_QUEUE_ITEM:
+        return
+    gh_token = (os.getenv("GH_PAT") or os.getenv("GITHUB_TOKEN") or "").strip()
+    repo     = os.getenv("GITHUB_REPOSITORY", "").strip()
+    hdr = {"Authorization": f"Bearer {gh_token}", "Accept": "application/vnd.github+json"}
+    stem = LAST_QUEUE_ITEM.rsplit(".", 1)[0]
+    for name in (LAST_QUEUE_ITEM, f"{stem}.json"):
+        try:
+            meta = requests.get(f"https://api.github.com/repos/{repo}/contents/{QUEUE_DIR}/{name}",
+                                headers=hdr, timeout=30).json()
+            if "sha" in meta:
+                requests.delete(f"https://api.github.com/repos/{repo}/contents/{QUEUE_DIR}/{name}",
+                                headers=hdr, timeout=30,
+                                json={"message": f"queue: {name} post ho gayi", "sha": meta["sha"]})
+        except Exception:
+            pass
+    print(f"      [Queue] {LAST_QUEUE_ITEM} hata di")
+    LAST_QUEUE_ITEM = ""
+
+
 def fetch_news_video_free(keyword: str) -> str | None:
     """News reel ke liye video — default sirf real-time govt footage"""
     print(f"\n[Video] '{keyword}' ke liye video dhund raha hoon...")
 
+    # Source 0: laptop ki bheji hui queue (cloud pe yahi kaam karta hai)
+    path = fetch_queued_video()
+    if path:
+        return path
+
     # Source 1: PIB / PMO / DD News / MEA / MyGov — aaj ki asli govt footage
+    # (local pe chalta hai; GitHub runners pe YouTube block karta hai)
     path = fetch_rss_video(keyword)
     if path:
         return path
@@ -2361,6 +2433,8 @@ def run_agent():
                     video_url = upload_video_free(reel_path)
                     if video_url:
                         media_id = post_reel_to_instagram(video_url, content.get("caption", ""))
+                        if media_id:
+                            delete_queued_video()   # queue se hatao — dobara post na ho
                     try:
                         os.remove(pib_path)
                         os.remove(reel_path)
@@ -2591,6 +2665,7 @@ Instagram Reel ke liye JSON banao:
         media_id = post_reel_to_instagram(video_url, content.get("caption", ""))
         if media_id:
             save_posted_title(content.get("headline", topic))
+            delete_queued_video()   # queue se hatao — warna yahi video dobara post hogi
             time.sleep(8)
             auto_first_comment(media_id, content.get("hashtags", "#India #PIBIndia #Government"))
             print(f"  Reel post ho gaya!")
