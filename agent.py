@@ -407,6 +407,8 @@ def load_posted_videos() -> set:
 
 USED_VIDEO_IDS: set = set()   # run start pe history se load hota hai
 LAST_VIDEO_ID  = ""           # jo video use hui uska id — history mein save hota hai
+LAST_VIDEO_TITLE  = ""        # video ka ASLI title — reel ka text isse banta hai
+LAST_VIDEO_SOURCE = ""        # kis govt channel se aayi
 
 
 def save_posted_title(title: str) -> None:
@@ -954,6 +956,8 @@ def fetch_rss_video(keyword: str) -> str | None:
                     if fname.startswith(f"rss_{video_id}") and fname.endswith(".mp4"):
                         path = os.path.join(out_dir, fname)
                         LAST_VIDEO_ID = f"yt:{video_id}"
+                        globals()["LAST_VIDEO_TITLE"]  = video_title
+                        globals()["LAST_VIDEO_SOURCE"] = ch_name
                         USED_VIDEO_IDS.add(LAST_VIDEO_ID)
                         print(f"      [{ch_name}] Downloaded: {os.path.getsize(path)//1024//1024}MB ✓ (fmt: {fmt[:22]})")
                         return path
@@ -1252,6 +1256,23 @@ def fetch_queued_video() -> str | None:
             os.remove(path)
             return None
         LAST_QUEUE_ITEM = item["name"]
+
+        # Saath wali .json se video ka ASLI title lo — reel ka text isi se banega
+        try:
+            stem = item["name"].rsplit(".", 1)[0]
+            mr = requests.get(
+                f"https://raw.githubusercontent.com/{repo}/main/{QUEUE_DIR}/{stem}.json",
+                timeout=20
+            )
+            if mr.status_code == 200:
+                meta = mr.json()
+                globals()["LAST_VIDEO_TITLE"]  = meta.get("title", "")
+                globals()["LAST_VIDEO_SOURCE"] = meta.get("source", "")
+                globals()["LAST_VIDEO_ID"]     = meta.get("video_id", "")
+                print(f"      [Queue] {meta.get('source','')}: {meta.get('title','')[:55]}")
+        except Exception:
+            pass
+
         print(f"      [Queue] Downloaded ✓")
         return path
     except Exception as e:
@@ -2616,32 +2637,40 @@ def post_pib_reel() -> None:
         if not pib_path:
             continue
 
-        # Caption ke liye Groq se title generate karo
+        # Screen pe jo text dikhega wo VIDEO ke asli content se banega — generic topic se nahi
+        vid_title  = LAST_VIDEO_TITLE or topic
+        vid_source = LAST_VIDEO_SOURCE or "PIB India"
+        print(f"      Text banate hain is video se: {vid_title[:60]}")
         try:
-            client = Groq(api_key=GROQ_API_KEY)
-            resp = client.chat.completions.create(
-                model=GROQ_MODEL,
-                max_tokens=300,
+            resp = _groq_complete(max_tokens=400, response_format={"type": "json_object"},
                 messages=[{"role": "user", "content": f"""
-Ye ek PIB India (Press Information Bureau) ka official government video hai.
-Topic: {topic}
+Ye {vid_source} ka official government video hai — uska ASLI title neeche diya hai.
+Reel pe jo text dikhega wo IS VIDEO ke baare mein hona chahiye, generic nahi.
+
+VIDEO KA ASLI TITLE: {vid_title}
+Search topic (sirf context ke liye): {topic}
+
+RULES:
+- headline aur summary SIRF is video ke content pe based ho
+- Video title Hindi mein ho to bhi output Hinglish (Roman script) mein likho
+- Koi jhooti detail mat jodo jo title mein nahi hai
+- Headline mein channel ka naam mat likho
 
 Instagram Reel ke liye JSON banao:
 {{
-  "headline": "5-7 word Hinglish headline — punchy, bold",
-  "summary": "1-2 sentence Hinglish summary (max 20 words) — kya hai ye video",
+  "headline": "5-7 word Hinglish headline — is video ka nichod, punchy",
+  "summary": "1-2 sentence Hinglish summary (max 20 words) — is video mein kya hai",
   "caption": "4-6 line Hinglish caption — informative, engaging, no hashtags",
   "hashtags": "#India #Government #PIB #IndiaNews #BreakingNews #ModiGovernment (15 hashtags)"
 }}
-"""}],
-                response_format={"type": "json_object"}
-            )
+"""}])
             content = json.loads(resp.choices[0].message.content)
-        except Exception:
+        except Exception as e:
+            print(f"      Caption AI fail ({e}) — video title se fallback")
             content = {
-                "headline": "India Government Update",
-                "summary": "PIB India ki taraf se official government news.",
-                "caption": "India mein aaj ka government update. PIB India se latest khabar.",
+                "headline": vid_title[:60],
+                "summary":  f"{vid_source} ki official report.",
+                "caption":  f"{vid_title}\n\n{vid_source} se aaj ki official update.",
                 "hashtags": "#India #Government #PIBIndia #IndiaNews #BreakingNews"
             }
 
@@ -2653,8 +2682,11 @@ Instagram Reel ke liye JSON banao:
                 pass
             continue
 
+        # Narration bhi VIDEO ke asli content pe — warna video train ki aur baat kisi aur ki
         narration = generate_narration(
-            {"title": content.get("headline", topic), "body": content.get("summary", "")},
+            {"title": vid_title,
+             "body":  f"{vid_source} ka official video: {vid_title}. {content.get('summary','')}",
+             "source": vid_source},
             content.get("headline", "India Government News"),
             content.get("summary", "")
         )
