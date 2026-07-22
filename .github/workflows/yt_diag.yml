@@ -1,0 +1,42 @@
+name: YT Diagnostic (temporary)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  diag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup
+        run: |
+          pip install -U yt-dlp
+          yt-dlp --version
+
+      - name: Write cookies
+        env:
+          YT_COOKIES: ${{ secrets.YT_COOKIES }}
+        run: |
+          printf '%s' "$YT_COOKIES" > /tmp/ck.txt
+          wc -l /tmp/ck.txt
+
+      - name: Test client configs
+        run: |
+          VID="https://www.youtube.com/feeds/videos.xml?channel_id=UCGn6a5SI8SNlj7WylmPD6GQ"
+          curl -s "$VID" | grep -o '<yt:videoId>[^<]*' | head -1 | cut -d'>' -f2 > /tmp/vid.txt
+          ID=$(cat /tmp/vid.txt)
+          echo "TESTING VIDEO: $ID"
+          URL="https://www.youtube.com/watch?v=$ID"
+
+          for CFG in "no-cookies-default::" \
+                     "cookies-default:--cookies /tmp/ck.txt:" \
+                     "no-cookies-android_vr::--extractor-args youtube:player_client=android_vr" \
+                     "no-cookies-tv::--extractor-args youtube:player_client=tv" \
+                     "no-cookies-web_safari::--extractor-args youtube:player_client=web_safari" \
+                     "cookies-tv:--cookies /tmp/ck.txt:--extractor-args youtube:player_client=tv" ; do
+            NAME=$(echo "$CFG" | cut -d: -f1)
+            CK=$(echo "$CFG" | cut -d: -f2)
+            EA=$(echo "$CFG" | cut -d: -f3-)
+            echo "=============================="
+            echo "CONFIG: $NAME"
+            yt-dlp "$URL" $CK $EA --list-formats --no-warnings 2>&1 | tail -6
+          done
