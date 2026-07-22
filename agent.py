@@ -836,10 +836,13 @@ GOVT_CHANNELS = {
     "Doordarshan National": "UCSjPe5kinQtwcyHcFJyyMfw",   # DD National
     "MEA India":            "UCJyP-OtuzlRV-r-3vR9qQTg",   # Ministry of External Affairs
     "MyGov India":          "UCQTQ_iXM32kU7GfIcsEBaYw",   # MyGov
-    "NASA":                 "UC9SM7V7J1pAhPabOUST01fw",   # public domain
     "United Nations":       "UCCKy7J6X7ofXXpNnlXfVGlw",   # UN
     "WHO":                  "UCT7a_fVlSrjOs9jyvtH-uhA",   # World Health Organization
+    # NASA yahan NAHI — user ne mana kiya (wo space channel ke liye hai)
 }
+
+# Wikimedia/Archive dono descriptive User-Agent maangte hain, warna 403 dete hain
+API_UA = {"User-Agent": "AtlantisNewsBot/1.0 (contact: varunsoni01062004@gmail.com)"}
 
 # Matching mein ye words ignore — inse fake match banta hai
 _RSS_STOP = {
@@ -1075,54 +1078,66 @@ def fetch_video_pexels_mp4(keyword: str) -> str | None:
 
 
 def fetch_wikimedia_video(keyword: str) -> str | None:
-    """Wikimedia Commons MediaWiki API se free India news video dhundo"""
+    """Wikimedia Commons se free India news/govt video — YouTube ke bina, CI mein bhi chalta hai"""
+    global LAST_VIDEO_ID
+    import random
     print(f"      [Wikimedia] Searching: {keyword}")
     try:
-        search = requests.get(
-            "https://commons.wikimedia.org/w/api.php",
-            params={
-                "action": "query", "list": "search", "format": "json",
-                "srsearch": f"{keyword} India",
-                "srnamespace": "6", "srlimit": 8,
-                "srqiprofile": "classic_noboostlinks"
-            },
-            timeout=10
-        )
-        results = search.json().get("query", {}).get("search", [])
-        video_titles = [r["title"] for r in results
-                        if any(r["title"].lower().endswith(ext)
-                               for ext in [".webm", ".ogv", ".mp4"])]
+        # Do queries — specific keyword, phir India-general (fallback)
+        video_titles = []
+        for query in (f"{keyword} filetype:video", "India government filetype:video"):
+            search = requests.get(
+                "https://commons.wikimedia.org/w/api.php",
+                params={
+                    "action": "query", "list": "search", "format": "json",
+                    "srsearch": query, "srnamespace": "6", "srlimit": 20,
+                },
+                headers=API_UA, timeout=15   # UA ke bina Wikimedia 403 deta hai
+            )
+            results = search.json().get("query", {}).get("search", [])
+            titles = [r["title"] for r in results
+                      if r["title"].lower().endswith((".webm", ".ogv", ".mp4", ".ogg"))]
+            video_titles.extend(t for t in titles if t not in video_titles)
+            if len(video_titles) >= 8:
+                break
+
+        # Pehle use hui videos hata do, phir shuffle — har reel mein alag footage
+        video_titles = [t for t in video_titles if f"wiki:{t}" not in USED_VIDEO_IDS]
+        random.shuffle(video_titles)
         if not video_titles:
-            print("      [Wikimedia] Koi video nahi mili")
+            print("      [Wikimedia] Koi nayi video nahi mili")
             return None
 
-        # Pehli valid video ka URL lo
         info = requests.get(
             "https://commons.wikimedia.org/w/api.php",
             params={
-                "action": "query", "titles": "|".join(video_titles[:3]),
-                "prop": "imageinfo", "iiprop": "url|size|mediatype",
-                "format": "json"
+                "action": "query", "titles": "|".join(video_titles[:8]),
+                "prop": "imageinfo", "iiprop": "url|size|mediatype", "format": "json"
             },
-            timeout=10
+            headers=API_UA, timeout=15
         )
-        pages = info.json().get("query", {}).get("pages", {})
-        for page in pages.values():
-            ii = page.get("imageinfo", [{}])[0]
-            url = ii.get("url", "")
-            size = ii.get("size", 0)
-            if url and size < 80 * 1024 * 1024:  # 80MB limit
-                ext = ".webm" if ".webm" in url else ".mp4"
-                path = os.path.join(tempfile.gettempdir(), f"wiki_{int(time.time())}{ext}")
-                print(f"      [Wikimedia] Downloading: {page.get('title','')[:50]}")
-                r = requests.get(url, timeout=120, stream=True)
-                with open(path, "wb") as f:
-                    for chunk in r.iter_content(8192):
-                        f.write(chunk)
-                size_mb = os.path.getsize(path) // 1024 // 1024
-                if size_mb > 0:
-                    print(f"      [Wikimedia] Downloaded: {size_mb}MB")
-                    return path
+        pages = list(info.json().get("query", {}).get("pages", {}).values())
+        random.shuffle(pages)
+        for page in pages:
+            ii    = (page.get("imageinfo") or [{}])[0]
+            url   = ii.get("url", "")
+            size  = ii.get("size", 0)
+            title = page.get("title", "")
+            if not url or not (200_000 < size < 90 * 1024 * 1024):
+                continue
+            ext  = os.path.splitext(url)[1].lower() or ".webm"
+            path = os.path.join(tempfile.gettempdir(), f"wiki_{int(time.time())}{ext}")
+            print(f"      [Wikimedia] Downloading: {title[5:55]}")
+            r = requests.get(url, timeout=150, stream=True, headers=API_UA)
+            with open(path, "wb") as f:
+                for chunk in r.iter_content(8192):
+                    f.write(chunk)
+            if os.path.getsize(path) > 200_000:
+                LAST_VIDEO_ID = f"wiki:{title}"
+                USED_VIDEO_IDS.add(LAST_VIDEO_ID)
+                print(f"      [Wikimedia] Downloaded: {os.path.getsize(path)//1024//1024}MB ✓")
+                return path
+            os.remove(path)
     except Exception as e:
         print(f"      [Wikimedia] Error: {e}")
     return None
@@ -1173,26 +1188,36 @@ def fetch_archive_video(keyword: str) -> str | None:
     return None
 
 
+# News channel pe SIRF real-time footage — purani archive ya generic stock video se
+# news reel banana viewer ko dhokha hai. Isliye default REALTIME_ONLY=True.
+#   • Govt YouTube RSS (PIB/PMO/DD/MEA/MyGov) = aaj ki asli footage → ALLOWED
+#   • Wikimedia / Archive.org                 = purana archive        → BLOCKED
+#   • Pexels stock                            = generic stock         → BLOCKED
+# Non-realtime fallbacks wapas chahiye to REALTIME_ONLY = False kar do.
+REALTIME_ONLY = True
+
+
 def fetch_news_video_free(keyword: str) -> str | None:
-    """Multi-source free video: RSS(Sansad/DD) → Wikimedia → Archive.org → Pexels"""
+    """News reel ke liye video — default sirf real-time govt footage"""
     print(f"\n[Video] '{keyword}' ke liye video dhund raha hoon...")
 
-    # Source 1: Sansad TV / DD News / PIB — YouTube RSS (real-time, govt content)
+    # Source 1: PIB / PMO / DD News / MEA / MyGov — aaj ki asli govt footage
     path = fetch_rss_video(keyword)
     if path:
         return path
 
-    # Source 2: Wikimedia Commons (public domain, direct MP4)
-    path = fetch_wikimedia_video(keyword)
+    if REALTIME_ONLY:
+        print("      Real-time govt footage nahi mili — reel SKIP "
+              "(purani/stock video se news reel nahi banayenge)")
+        return None
+
+    # --- Non-realtime fallbacks (REALTIME_ONLY=False hone par hi chalte hain) ---
+    path = fetch_wikimedia_video(keyword)      # public domain archive
     if path:
         return path
-
-    # Source 3: Internet Archive (DD News, Doordarshan collections)
-    path = fetch_archive_video(keyword)
+    path = fetch_archive_video(keyword)        # Internet Archive
     if path:
         return path
-
-    # Source 4: Pexels stock video (always works, copyright-free)
     print("      Pexels stock video try kar raha hoon...")
     return fetch_video_pexels_mp4(keyword)
 
