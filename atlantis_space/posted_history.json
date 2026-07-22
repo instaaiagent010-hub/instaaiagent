@@ -30,7 +30,8 @@
     "mapping alien continents: achieving optical vlbi for exoplanet imaging",
     "nisar’s l-band radar reveals ‘hummingbird’ in antarctica",
     "the corona australis molecular cloud and the chandelier cluster",
-    "a week of smoky skies across north america"
+    "a week of smoky skies across north america",
+    "vehicle testing: spacex starship booster b20 testing"
   ],
   "images": [
     "https://apod.nasa.gov/apod/image/2607/ShadowandRainbow_Loschiavo.jpg",
@@ -64,7 +65,8 @@
     "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia26/pia26617/PIA26617.png",
     "https://apod.nasa.gov/apod/image/2607/corona_australis.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/ontario-wildfire-smoke-drifts-east/o",
-    "https://epic.gsfc.nasa.gov/archive/natural/2026/07/19/png/epic_1b_20260719010437.png"
+    "https://epic.gsfc.nasa.gov/archive/natural/2026/07/19/png/epic_1b_20260719010437.png",
+    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/booster_19_duri_image_20260307203559.jpg"
   ],
-  "updated": "2026-07-22T07:46:33.072681"
+  "updated": "2026-07-22T09:20:25.926954"
 }
