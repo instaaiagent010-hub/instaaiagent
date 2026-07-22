@@ -87,6 +87,26 @@ def _pick_groq_model() -> str:
 GROQ_MODEL = _pick_groq_model()
 print(f"🧠 Groq model: {GROQ_MODEL}")
 
+
+def _groq_complete(messages, max_tokens=500, **kwargs):
+    """Groq call — rate limit (429) pe agle model pe switch karo.
+    Groq ke daily token limits PER MODEL hote hain, isliye dusra model abhi bhi chalega."""
+    client = Groq(api_key=GROQ_API_KEY)
+    models = [GROQ_MODEL] + [m for m in GROQ_MODEL_PREFERENCES if m != GROQ_MODEL]
+    last_err = None
+    for m in models:
+        try:
+            return client.chat.completions.create(
+                model=m, max_tokens=max_tokens, messages=messages, **kwargs
+            )
+        except Exception as e:
+            last_err = e
+            if "rate_limit" in str(e) or "429" in str(e):
+                print(f"      {m} rate-limited — agla model try kar raha hoon")
+                continue
+            raise
+    raise last_err
+
 POST_DELAY     = 60   # seconds between posts
 CAROUSEL_SLIDES = 4   # carousel mein kitni images
 
@@ -1260,11 +1280,7 @@ def generate_narration(news_item: dict, headline: str, summary: str) -> str:
     chosen_style  = narration_styles[style_idx]
 
     try:
-        client = Groq(api_key=GROQ_API_KEY)
-        resp = client.chat.completions.create(
-            model=GROQ_MODEL,
-            max_tokens=420,
-            messages=[{"role": "user", "content": f"""
+        resp = _groq_complete(max_tokens=420, messages=[{"role": "user", "content": f"""
 Tu @atlantis_news_ai ka Hindi news anchor hai — clear, credible, impactful.
 Ek 30-second news Reel narration likho.
 
@@ -1284,17 +1300,29 @@ STRICT RULES:
 - FORBIDDEN: "yaar", "sun", "bhai", "dosto", "chaliye", "dekhte hain"
 - Sirf bolne wala text — koi heading, bullet, asterisk nahi
 
-Narration:"""}]
-        )
+Narration:"""}])
         narration = resp.choices[0].message.content.strip()
         import re as _re
         narration = _re.sub(r'\*+', '', narration).strip()
         wc = len(narration.split())
-        print(f"      Narration ({wc} words, style {style_idx+1})")
-        return narration
+        if wc >= 20:
+            print(f"      Narration ({wc} words, style {style_idx+1})")
+            return narration
+        print(f"      Narration bahut chhoti ({wc} words) — fallback use kar raha hoon")
     except Exception as e:
         print(f"      Narration error: {e}")
-        return f"{headline}. {summary}"
+
+    # Fallback — AI fail ho to bhi 25-30s ka bolne layak text bane (5s ki reel na bane)
+    body_txt = (news_item.get("body", "") if news_item else "") or summary
+    parts = [p.strip() for p in [headline, summary, body_txt] if p and p.strip()]
+    seen, out = set(), []
+    for p in parts:
+        if p.lower() not in seen:
+            seen.add(p.lower())
+            out.append(p if p.endswith((".", "!", "?")) else p + ".")
+    fallback = " ".join(out)[:900]
+    print(f"      Fallback narration ({len(fallback.split())} words)")
+    return fallback
 
 
 def process_video_for_reel(video_path: str, headline: str, summary: str,
