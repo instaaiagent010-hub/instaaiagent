@@ -27,6 +27,7 @@ jobs:
           wget -q https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz
           tar xf ffmpeg-release-amd64-static.tar.xz
           sudo mv ffmpeg-*-static/ffmpeg /usr/local/bin/ffmpeg
+          sudo mv ffmpeg-*-static/ffprobe /usr/local/bin/ffprobe
           ffmpeg -version | head -1
 
       - name: Dependencies install
