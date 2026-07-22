@@ -30,7 +30,7 @@ jobs:
           ffmpeg -version | head -1
 
       - name: Dependencies install
-        run: pip install ddgs groq requests Pillow python-dotenv PyNaCl yt-dlp feedparser gTTS
+        run: pip install ddgs groq requests Pillow python-dotenv PyNaCl yt-dlp feedparser gTTS edge-tts
 
       - name: Post Reel
         env:
