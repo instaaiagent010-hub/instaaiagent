@@ -1309,54 +1309,117 @@ def process_video_for_reel(video_path: str, headline: str, summary: str,
         audio_path  = os.path.join(tmp_dir, f"narration_{ts}.mp3")
         out_path    = os.path.join(tmp_dir, f"reel_{ts}.mp4")
 
-        # Step 1: Video crop + resize
-        crop = subprocess.run([
-            "ffmpeg", "-y", "-i", video_path,
-            "-t", "59",
-            "-vf", "crop=ih*9/16:ih:(iw-ih*9/16)/2:0,scale=720:1280",
-            "-c:v", "libx264", "-an", "-preset", "fast", "-crf", "28",
-            base_path
-        ], capture_output=True, timeout=180)
-
-        if crop.returncode != 0 or not os.path.exists(base_path):
-            print(f"      Crop fail: {crop.stderr[-100:].decode(errors='ignore')}")
-            return None
-
-        # Step 2: Pillow text overlay PNG
-        overlay = Image.new("RGBA", (720, 310), (0, 0, 0, 0))
-        ov_draw = ImageDraw.Draw(overlay)
-        ov_draw.rectangle([0, 0, 720, 310], fill=(0, 0, 0, 190))
-        ov_draw.text((20, 18),  headline[:52],  font=get_font(48), fill=(255, 255, 255, 255))
-        ov_draw.text((20, 82),  summary[:80],   font=get_font(30), fill=(220, 220, 220, 245))
-        date_str = datetime.now().strftime("%d %b %Y")
-        ov_draw.text((20, 265), f"@atlantis_news_ai  •  {date_str}",
-                     font=get_font(24), fill=(170, 170, 170, 230))
-        overlay.save(overlay_png, "PNG")
-
-        # Step 3: Hindi TTS narration generate karo
+        # Step 1: TTS pehle banao — video ki length isi pe decide hogi
         tts_text  = narration if narration else f"{headline}. {summary}"
         has_audio = generate_tts_audio(tts_text, audio_path)
         if has_audio:
             print("      TTS narration ready")
 
-        # Step 4: ffmpeg — video + overlay + audio combine
+        # Audio duration detect karo — video utna hi loop hoga (bolna beech mein na kate)
+        reel_dur = 30.0
+        if has_audio and os.path.exists(audio_path):
+            try:
+                probe = subprocess.run([
+                    "ffprobe", "-v", "quiet", "-print_format", "json",
+                    "-show_streams", audio_path
+                ], capture_output=True, timeout=10)
+                streams  = json.loads(probe.stdout).get("streams", [{}])
+                reel_dur = float(streams[0].get("duration", 30.0))
+                reel_dur = min(reel_dur + 0.5, 88.0)   # thoda buffer, Instagram limit 90s
+                print(f"      Audio duration: {reel_dur:.1f}s — video isi tak loop hoga")
+            except Exception:
+                reel_dur = 30.0
+
+        # Step 2: Video crop + resize — narration khatam hone tak loop
+        crop = subprocess.run([
+            "ffmpeg", "-y", "-stream_loop", "-1", "-i", video_path,
+            "-t", str(reel_dur),
+            "-vf", "crop=ih*9/16:ih:(iw-ih*9/16)/2:0,scale=720:1280",
+            "-r", "30",
+            "-c:v", "libx264", "-an", "-preset", "fast", "-crf", "28",
+            base_path
+        ], capture_output=True, timeout=240)
+
+        if crop.returncode != 0 or not os.path.exists(base_path):
+            print(f"      Crop fail: {crop.stderr[-100:].decode(errors='ignore')}")
+            return None
+
+        # Step 3: Full-frame overlay — logo top-left + text bar bottom
+        FRAME_W, FRAME_H, BAR_H = 720, 1280, 310
+        overlay = Image.new("RGBA", (FRAME_W, FRAME_H), (0, 0, 0, 0))
+        ov_draw = ImageDraw.Draw(overlay)
+
+        # Logo — top-left (baaki channels jaisa)
+        if os.path.exists(LOGO_PATH):
+            try:
+                logo_img = Image.open(LOGO_PATH).convert("RGB")
+                logo_w = 120
+                logo_h = int(logo_img.height * (logo_w / logo_img.width))
+                logo_img = logo_img.resize((logo_w, logo_h), Image.LANCZOS)
+                lx, ly, pad = 28, 40, 8
+                ov_draw.rounded_rectangle(
+                    [lx - pad, ly - pad, lx + logo_w + pad, ly + logo_h + pad],
+                    radius=10, fill=(255, 255, 255, 255)
+                )
+                overlay.paste(logo_img, (lx, ly))
+            except Exception as le:
+                print(f"      Logo error: {le}")
+
+        # Text ko frame ke andar wrap karo — warna headline right side se kat jati hai
+        PAD, MAX_W = 22, FRAME_W - 44
+
+        def wrap_px(text, font, max_px):
+            lines, line = [], ""
+            for word in text.split():
+                test = f"{line} {word}".strip()
+                if ov_draw.textlength(test, font=font) > max_px and line:
+                    lines.append(line)
+                    line = word
+                else:
+                    line = test
+            if line:
+                lines.append(line)
+            return lines
+
+        font_head, font_body = get_font(44), get_font(28)
+        head_lines = wrap_px(headline, font_head, MAX_W)[:2]
+        body_lines = wrap_px(summary,  font_body, MAX_W)[:3]
+
+        bar_y = FRAME_H - BAR_H
+        ov_draw.rectangle([0, bar_y, FRAME_W, FRAME_H], fill=(0, 0, 0, 190))
+
+        y = bar_y + 20
+        for line in head_lines:
+            ov_draw.text((PAD, y), line, font=font_head, fill=(255, 255, 255, 255))
+            y += 54
+        y += 6
+        for line in body_lines:
+            ov_draw.text((PAD, y), line, font=font_body, fill=(220, 220, 220, 245))
+            y += 38
+
+        date_str = datetime.now().strftime("%d %b %Y")
+        ov_draw.text((PAD, FRAME_H - 38), f"@atlantis_news_ai  •  {date_str}",
+                     font=get_font(24), fill=(170, 170, 170, 230))
+        overlay.save(overlay_png, "PNG")
+
+        # Step 4: ffmpeg — video + overlay + audio combine (narration pura chalega)
         if has_audio:
             result = subprocess.run([
                 "ffmpeg", "-y",
                 "-i", base_path, "-i", overlay_png, "-i", audio_path,
                 "-filter_complex",
-                "[0:v][1:v]overlay=0:H-310[vout];"
-                "[2:a]volume=1.5,atrim=0:59[aout]",
+                "[0:v][1:v]overlay=0:0[vout];"
+                "[2:a]volume=1.5[aout]",
                 "-map", "[vout]", "-map", "[aout]",
                 "-c:v", "libx264", "-c:a", "aac",
-                "-shortest", "-preset", "fast", "-crf", "28",
-                out_path
-            ], capture_output=True, timeout=180)
+                "-preset", "fast", "-crf", "28",
+                out_path   # no -shortest, no atrim — narration kabhi kate nahi
+            ], capture_output=True, timeout=240)
         else:
             result = subprocess.run([
                 "ffmpeg", "-y",
                 "-i", base_path, "-i", overlay_png,
-                "-filter_complex", "[0:v][1:v]overlay=0:H-310[out]",
+                "-filter_complex", "[0:v][1:v]overlay=0:0[out]",
                 "-map", "[out]", "-c:v", "libx264",
                 "-preset", "fast", "-crf", "28", out_path
             ], capture_output=True, timeout=180)
