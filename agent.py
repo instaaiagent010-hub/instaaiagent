@@ -1324,11 +1324,15 @@ def process_video_for_reel(video_path: str, headline: str, summary: str,
                     "-show_streams", audio_path
                 ], capture_output=True, timeout=10)
                 streams  = json.loads(probe.stdout).get("streams", [{}])
-                reel_dur = float(streams[0].get("duration", 30.0))
+                reel_dur = float(streams[0].get("duration", 0)) or 0
+                if reel_dur <= 0:
+                    raise ValueError("ffprobe se duration nahi mili")
                 reel_dur = min(reel_dur + 0.5, 88.0)   # thoda buffer, Instagram limit 90s
                 print(f"      Audio duration: {reel_dur:.1f}s — video isi tak loop hoga")
-            except Exception:
-                reel_dur = 30.0
+            except Exception as pe:
+                # ffprobe na ho to word-count se estimate (Hindi TTS ~2.3 words/sec)
+                reel_dur = min(max(len(tts_text.split()) / 2.3 + 2.0, 15.0), 88.0)
+                print(f"      ffprobe unavailable ({pe}) — estimated {reel_dur:.1f}s")
 
         # Step 2: Video crop + resize — narration khatam hone tak loop
         crop = subprocess.run([
