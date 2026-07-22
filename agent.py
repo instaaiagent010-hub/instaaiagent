@@ -844,6 +844,10 @@ GOVT_CHANNELS = {
 # Wikimedia/Archive dono descriptive User-Agent maangte hain, warna 403 dete hain
 API_UA = {"User-Agent": "AtlantisNewsBot/1.0 (contact: varunsoni01062004@gmail.com)"}
 
+# News channel hai — isse purani footage "aaj ki khabar" nahi kahi ja sakti.
+# (MEA 33 din purana, MyGov 153 din purana post karte hain — wo apne aap chhant jayenge)
+MAX_VIDEO_AGE_HOURS = 48
+
 # Matching mein ye words ignore — inse fake match banta hai
 _RSS_STOP = {
     "the", "a", "an", "in", "on", "of", "and", "to", "for", "with", "is", "are",
@@ -879,20 +883,35 @@ def fetch_rss_video(keyword: str) -> str | None:
             if resp.status_code != 200:
                 continue
             entries = ET.fromstring(resp.content).findall("atom:entry", ns)
-            for rank, entry in enumerate(entries[:15]):
+            for entry in entries[:15]:
                 vid_el   = entry.find("yt:videoId", ns)
                 title_el = entry.find("atom:title", ns)
+                pub_el   = entry.find("atom:published", ns)
                 if vid_el is None:
                     continue
                 vid   = vid_el.text
                 title = title_el.text if title_el is not None else ""
                 if f"yt:{vid}" in USED_VIDEO_IDS:
                     continue   # ye video pehle post ho chuki
+
+                # NEWS CHANNEL: purani footage aaj ki khabar nahi ban sakti.
+                # MEA/MyGov jaise channels mahino tak post nahi karte — unhe skip karo.
+                age_h = 999.0
+                if pub_el is not None and pub_el.text:
+                    try:
+                        pub = datetime.fromisoformat(pub_el.text.replace("Z", "+00:00"))
+                        age_h = (datetime.now(pub.tzinfo) - pub).total_seconds() / 3600
+                    except Exception:
+                        pass
+                if age_h > MAX_VIDEO_AGE_HOURS:
+                    continue
+
                 t_words = {w for w in title.lower().split() if w not in _RSS_STOP and len(w) > 2}
                 overlap = len(kw_words & t_words)
-                # freshness bonus — feed mein upar wali videos nayi hoti hain
-                score   = overlap * 10 + max(0, 15 - rank)
-                candidates.append((score, ch_name, vid, title))
+                # jitni nayi video, utna bada bonus (24h ke andar wali sabse upar)
+                freshness = max(0, 24 - age_h / 2)
+                score = overlap * 10 + freshness
+                candidates.append((round(score, 1), ch_name, vid, title))
         except Exception as e:
             print(f"      [{ch_name}] RSS error: {e}")
 
