@@ -374,6 +374,21 @@ def load_posted_history() -> set:
     return set()
 
 
+def load_posted_videos() -> set:
+    """Pehle use hui govt videos ke IDs — same footage repeat na ho"""
+    try:
+        if os.path.exists(HISTORY_FILE):
+            with open(HISTORY_FILE, "r", encoding="utf-8") as f:
+                return set(json.load(f).get("videos", []))
+    except Exception:
+        pass
+    return set()
+
+
+USED_VIDEO_IDS: set = set()   # run start pe history se load hota hai
+LAST_VIDEO_ID  = ""           # jo video use hui uska id — history mein save hota hai
+
+
 def save_posted_title(title: str) -> None:
     """Title history mein save karo aur GitHub pe push karo"""
     try:
@@ -393,8 +408,15 @@ def save_posted_title(title: str) -> None:
         if normalized not in titles:
             titles.append(normalized)
         titles = titles[-300:]
+
+        videos = existing.get("videos", [])
+        if LAST_VIDEO_ID and LAST_VIDEO_ID not in videos:
+            videos.append(LAST_VIDEO_ID)
+        videos = videos[-200:]
+
         with open(HISTORY_FILE, "w", encoding="utf-8") as f:
-            json.dump({"titles": titles, "updated": datetime.now().isoformat()}, f,
+            json.dump({"titles": titles, "videos": videos,
+                       "updated": datetime.now().isoformat()}, f,
                       ensure_ascii=False, indent=2)
         subprocess.run(["git", "add", "posted_history.json"], cwd=repo_dir)
         result = subprocess.run(["git", "commit", "-m", "chore: update posted history [skip ci]"],
@@ -785,17 +807,31 @@ def fetch_video(keyword: str) -> str | None:
     return None
 
 
-def fetch_rss_video(keyword: str) -> str | None:
-    """Sansad TV + DD News YouTube RSS feed se latest govt video download karo"""
-    import subprocess, xml.etree.ElementTree as ET
+# Public-domain / government YouTube channels — sab channel_id se (legacy user= dead ho chuke)
+# NOTE: private news channels (Aaj Tak, NDTV, India Today, ANI...) yahan KABHI mat daalna — copyright.
+GOVT_CHANNELS = {
+    "PIB India":            "UCGn6a5SI8SNlj7WylmPD6GQ",   # Press Information Bureau
+    "PMO India":            "UCDS9hpqUEXsXUIcf0qDcBIA",   # Prime Minister's Office
+    "DD News":              "UCKwucPzHZ7zCUIf7If-Wo1g",   # Doordarshan News
+    "Doordarshan National": "UCSjPe5kinQtwcyHcFJyyMfw",   # DD National
+    "MEA India":            "UCJyP-OtuzlRV-r-3vR9qQTg",   # Ministry of External Affairs
+    "MyGov India":          "UCQTQ_iXM32kU7GfIcsEBaYw",   # MyGov
+    "NASA":                 "UC9SM7V7J1pAhPabOUST01fw",   # public domain
+    "United Nations":       "UCCKy7J6X7ofXXpNnlXfVGlw",   # UN
+    "WHO":                  "UCT7a_fVlSrjOs9jyvtH-uhA",   # World Health Organization
+}
 
-    # Government YouTube channels — (type, value): user= ya channel_id=
-    GOVT_CHANNELS = {
-        "Sansad TV":  ("user", "sansadtv"),
-        "PIB India":  ("user", "pibindia"),
-        "DD News":    ("user", "DDNewslive"),
-        "DD India":   ("user", "ddindia"),
-    }
+# Matching mein ye words ignore — inse fake match banta hai
+_RSS_STOP = {
+    "the", "a", "an", "in", "on", "of", "and", "to", "for", "with", "is", "are",
+    "news", "india", "indian", "today", "latest", "new", "video", "live", "update",
+}
+
+
+def fetch_rss_video(keyword: str) -> str | None:
+    """Govt/public-domain YouTube channels se news video — best keyword match wali choose karo"""
+    import subprocess, xml.etree.ElementTree as ET
+    global LAST_VIDEO_ID
 
     yt_cookies = os.getenv("YT_COOKIES", "")
     cookies_path = None
@@ -804,73 +840,75 @@ def fetch_rss_video(keyword: str) -> str | None:
         with open(cookies_path, "w") as f:
             f.write(yt_cookies)
 
-    kw_lower = keyword.lower()
-    out_dir = tempfile.gettempdir()
+    kw_words = {w for w in keyword.lower().split() if w not in _RSS_STOP and len(w) > 2}
+    out_dir  = tempfile.gettempdir()
+    ns = {"atom": "http://www.w3.org/2005/Atom",
+          "yt":   "http://www.youtube.com/xml/schemas/2015"}
 
-    for ch_name, (param, value) in GOVT_CHANNELS.items():
+    # Step 1: saare channels se candidates lo aur keyword-overlap se score karo
+    candidates = []   # (score, channel, video_id, title)
+    for ch_name, ch_id in GOVT_CHANNELS.items():
         try:
-            rss_url = f"https://www.youtube.com/feeds/videos.xml?{param}={value}"
-            resp = requests.get(rss_url, timeout=10,
-                                headers={"User-Agent": "Mozilla/5.0"})
+            resp = requests.get(
+                f"https://www.youtube.com/feeds/videos.xml?channel_id={ch_id}",
+                timeout=10, headers={"User-Agent": "Mozilla/5.0"}
+            )
             if resp.status_code != 200:
-                print(f"      RSS {ch_name}: HTTP {resp.status_code}")
                 continue
-
-            root = ET.fromstring(resp.content)
-            ns = {"atom": "http://www.w3.org/2005/Atom",
-                  "yt":   "http://www.youtube.com/xml/schemas/2015"}
-
-            entries = root.findall("atom:entry", ns)
-            if not entries:
-                continue
-
-            # Keyword match wala entry prefer karo, warna latest lo
-            selected = entries[0]
-            for entry in entries[:10]:
+            entries = ET.fromstring(resp.content).findall("atom:entry", ns)
+            for rank, entry in enumerate(entries[:15]):
+                vid_el   = entry.find("yt:videoId", ns)
                 title_el = entry.find("atom:title", ns)
-                title_text = title_el.text.lower() if title_el is not None else ""
-                if any(w in title_text for w in kw_lower.split()[:3]):
-                    selected = entry
-                    break
+                if vid_el is None:
+                    continue
+                vid   = vid_el.text
+                title = title_el.text if title_el is not None else ""
+                if f"yt:{vid}" in USED_VIDEO_IDS:
+                    continue   # ye video pehle post ho chuki
+                t_words = {w for w in title.lower().split() if w not in _RSS_STOP and len(w) > 2}
+                overlap = len(kw_words & t_words)
+                # freshness bonus — feed mein upar wali videos nayi hoti hain
+                score   = overlap * 10 + max(0, 15 - rank)
+                candidates.append((score, ch_name, vid, title))
+        except Exception as e:
+            print(f"      [{ch_name}] RSS error: {e}")
 
-            vid_el = selected.find("yt:videoId", ns)
-            title_el = selected.find("atom:title", ns)
-            if vid_el is None:
-                continue
+    if not candidates:
+        print("      Govt RSS: koi naya video nahi mila")
+        return None
 
-            video_id = vid_el.text
-            video_title = title_el.text if title_el is not None else ""
-            print(f"      [{ch_name}] RSS: {video_title[:55]}")
+    candidates.sort(key=lambda c: c[0], reverse=True)
 
-            out_template = os.path.join(out_dir, f"rss_{video_id}.%(ext)s")
-            cmd = [
-                "yt-dlp",
-                f"https://www.youtube.com/watch?v={video_id}",
-                "-f", "mp4[height<=480]/best[height<=480]/best",
-                "-o", out_template,
-                "--no-playlist", "--no-warnings",
-                "--extractor-args", "youtube:player_client=web",
-                "--add-header", "User-Agent:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-                "--add-header", "Accept-Language:en-US,en;q=0.9",
-                "--sleep-interval", "2"
-            ]
-            if cookies_path:
-                cmd += ["--cookies", cookies_path]
-
+    # Step 2: top matches try karo jab tak koi download na ho jaye
+    for score, ch_name, video_id, video_title in candidates[:5]:
+        print(f"      [{ch_name}] match(score {score}): {video_title[:50]}")
+        out_template = os.path.join(out_dir, f"rss_{video_id}.%(ext)s")
+        cmd = [
+            "yt-dlp",
+            f"https://www.youtube.com/watch?v={video_id}",
+            # YouTube ab video+audio alag deta hai — merge zaroori (progressive mp4 mostly dead)
+            "-f", "bestvideo[height<=720][ext=mp4]+bestaudio[ext=m4a]/best[height<=720]/best",
+            "--merge-output-format", "mp4",
+            # Reel ko sirf ~90s chahiye — pura 1GB video download karna waste hai
+            "--download-sections", "*0-90",
+            "-o", out_template,
+            "--no-playlist", "--no-warnings",
+            "--sleep-interval", "2"
+        ]
+        if cookies_path:
+            cmd += ["--cookies", cookies_path]
+        try:
             dl = subprocess.run(cmd, capture_output=True, timeout=180)
-
             for fname in os.listdir(out_dir):
                 if fname.startswith(f"rss_{video_id}") and fname.endswith(".mp4"):
                     path = os.path.join(out_dir, fname)
-                    size_mb = os.path.getsize(path) // 1024 // 1024
-                    print(f"      [{ch_name}] Downloaded: {size_mb}MB ✓")
+                    LAST_VIDEO_ID = f"yt:{video_id}"
+                    USED_VIDEO_IDS.add(LAST_VIDEO_ID)
+                    print(f"      [{ch_name}] Downloaded: {os.path.getsize(path)//1024//1024}MB ✓")
                     return path
-
-            err = dl.stderr[-100:].decode(errors="ignore")
-            print(f"      [{ch_name}] Download fail: {err}")
-
+            print(f"      [{ch_name}] fail: {dl.stderr[-90:].decode(errors='ignore')}")
         except Exception as e:
-            print(f"      [{ch_name}] Error: {e}")
+            print(f"      [{ch_name}] download error: {e}")
 
     return None
 
@@ -2113,6 +2151,7 @@ def run_agent():
     # 2. Duplicate check — recently posted titles fetch karo
     print(f"\n[Duplicate Check] Recent posts check kar raha hoon...")
     recent_titles = get_recently_posted_titles()
+    USED_VIDEO_IDS.update(load_posted_videos())   # pehle use hui videos repeat na hon
     all_news = [n for n in all_news
                 if not is_duplicate(n.get("title", ""), recent_titles)]
     print(f"      Duplicate hataane ke baad: {len(all_news)} news")
@@ -2231,6 +2270,7 @@ def check_breaking_news() -> None:
 
     # Last 2 ghante mein koi post hua? Recent check
     recent_titles = get_recently_posted_titles()
+    USED_VIDEO_IDS.update(load_posted_videos())   # pehle use hui videos repeat na hon
 
     # Fresh news fetch — last 1 hour
     breaking_news = []
@@ -2324,6 +2364,7 @@ def post_pib_reel() -> None:
     ]
 
     recent_titles = get_recently_posted_titles()
+    USED_VIDEO_IDS.update(load_posted_videos())   # pehle use hui videos repeat na hon
 
     for topic in topics:
         print(f"\n[PIB] Topic: {topic}")
