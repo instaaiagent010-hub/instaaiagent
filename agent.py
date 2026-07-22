@@ -1031,29 +1031,43 @@ def fetch_pib_video(keyword: str) -> str | None:
 
 
 def fetch_video_pexels_mp4(keyword: str) -> str | None:
-    """Pexels se stock video download karo — MP4 local file return"""
+    """Pexels se stock video — shuffle + dedupe taaki har reel mein alag video aaye"""
+    global LAST_VIDEO_ID
     if not PEXELS_API_KEY:
         return None
+    import random
     try:
         headers = {"Authorization": PEXELS_API_KEY}
-        resp = requests.get(
-            f"https://api.pexels.com/videos/search?query={keyword}&per_page=5&orientation=portrait",
-            headers=headers, timeout=10
-        )
-        videos = resp.json().get("videos", [])
+        videos = []
+        for orientation in ("portrait", "landscape"):
+            resp = requests.get(
+                "https://api.pexels.com/videos/search",
+                params={"query": keyword, "per_page": 15, "orientation": orientation},
+                headers=headers, timeout=10
+            )
+            videos.extend(resp.json().get("videos", []))
+        random.shuffle(videos)   # warna Pexels hamesha wahi pehla video deta hai
+
         for video in videos:
-            for vf in video.get("video_files", []):
+            vid_key = f"pexels:{video.get('id')}"
+            if vid_key in USED_VIDEO_IDS:
+                continue   # ye video pehle post ho chuki
+            for vf in sorted(video.get("video_files", []),
+                             key=lambda x: x.get("height", 0), reverse=True):
                 if vf.get("file_type") == "video/mp4" and vf.get("height", 0) >= 720:
                     url = vf["link"]
-                    print(f"      Pexels video: {url[:60]}")
-                    # Download to temp file
+                    print(f"      Pexels video id={video.get('id')}")
                     r = requests.get(url, timeout=60, stream=True)
                     path = os.path.join(tempfile.gettempdir(), f"pexels_{int(time.time())}.mp4")
                     with open(path, "wb") as f:
                         for chunk in r.iter_content(chunk_size=8192):
                             f.write(chunk)
-                    size_mb = os.path.getsize(path) // 1024 // 1024
-                    print(f"      Pexels downloaded: {size_mb}MB")
+                    if os.path.getsize(path) < 200_000:
+                        os.remove(path)
+                        break
+                    LAST_VIDEO_ID = vid_key
+                    USED_VIDEO_IDS.add(vid_key)
+                    print(f"      Pexels downloaded: {os.path.getsize(path)//1024//1024}MB")
                     return path
     except Exception as e:
         print(f"      Pexels video error: {e}")
