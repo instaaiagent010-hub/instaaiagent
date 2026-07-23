@@ -1493,9 +1493,64 @@ Narration:"""}])
     return fallback
 
 
+def _ass_time(t: float) -> str:
+    h = int(t // 3600); m = int((t % 3600) // 60); s = t % 60
+    return f"{h:d}:{m:02d}:{s:05.2f}"
+
+
+def make_subtitles(narration: str, duration: float, ass_path: str,
+                   play_w: int = 1080, play_h: int = 1920, margin_v: int = 470) -> bool:
+    """Narration ko short phrases mein tod ke ASS banao — audio duration pe evenly synced.
+    ASS mein PlayRes fix hai to positioning exact pixels mein — libass margin ambiguity nahi."""
+    import re as _re
+    clean = _re.sub(r'[*_`#~\[\]{}|<>\\]', '', narration or '').strip()
+    if not clean:
+        return False
+    raw = _re.split(r'(?<=[।.!?])\s+|\.\.\.', clean)
+    phrases = []
+    for seg in raw:
+        seg = seg.strip()
+        if not seg:
+            continue
+        words = seg.split()
+        if len(words) <= 6:
+            phrases.append(seg)
+        else:
+            for i in range(0, len(words), 5):
+                phrases.append(" ".join(words[i:i+5]))
+    if not phrases:
+        return False
+    total_words = sum(len(p.split()) for p in phrases) or 1
+    header = f"""[Script Info]
+ScriptType: v4.00+
+PlayResX: {play_w}
+PlayResY: {play_h}
+WrapStyle: 0
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Sub,Arial,58,&H00FFFFFF,&H00000000,&H80000000,1,0,0,0,100,100,0,0,1,4,2,2,60,60,{margin_v},1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+"""
+    try:
+        t = 0.0
+        with open(ass_path, "w", encoding="utf-8") as f:
+            f.write(header)
+            for p in phrases:
+                share = (len(p.split()) / total_words) * duration
+                start, end = t, min(t + share, duration)
+                t = end
+                f.write(f"Dialogue: 0,{_ass_time(start)},{_ass_time(end)},Sub,,0,0,0,,{p}\n")
+        return True
+    except Exception:
+        return False
+
+
 def process_video_for_reel(video_path: str, headline: str, summary: str,
                            narration: str = "", news_item: dict = None) -> str | None:
-    """Video ko 9:16 Reel format mein trim karo + text overlay + Hindi TTS audio"""
+    """Video ko 9:16 Reel format mein trim karo + logo + subtitles + hook + Hindi TTS audio"""
     import subprocess
     try:
         tmp_dir     = tempfile.gettempdir()
@@ -1530,43 +1585,44 @@ def process_video_for_reel(video_path: str, headline: str, summary: str,
                 reel_dur = min(max(len(tts_text.split()) / 2.3 + 2.0, 15.0), 88.0)
                 print(f"      ffprobe unavailable ({pe}) — estimated {reel_dur:.1f}s")
 
-        # Step 2: Video crop + resize — narration khatam hone tak loop
+        # Step 2: Video crop + resize — 1080x1920 (full HD, YouTube-quality), loop till audio
+        hook_png = os.path.join(tmp_dir, f"hook_{ts}.png")
+        srt_path = os.path.join(tmp_dir, "subs.ass")
         crop = subprocess.run([
             "ffmpeg", "-y", "-stream_loop", "-1", "-i", video_path,
             "-t", str(reel_dur),
-            "-vf", "crop=ih*9/16:ih:(iw-ih*9/16)/2:0,scale=720:1280",
+            "-vf", "crop=ih*9/16:ih:(iw-ih*9/16)/2:0,scale=1080:1920",
             "-r", "30",
-            "-c:v", "libx264", "-an", "-preset", "fast", "-crf", "28",
+            "-c:v", "libx264", "-an", "-preset", "fast", "-crf", "23",
             base_path
-        ], capture_output=True, timeout=240)
+        ], capture_output=True, timeout=300)
 
         if crop.returncode != 0 or not os.path.exists(base_path):
             print(f"      Crop fail: {crop.stderr[-100:].decode(errors='ignore')}")
             return None
 
-        # Step 3: Full-frame overlay — logo top-left + text bar bottom
-        FRAME_W, FRAME_H, BAR_H = 720, 1280, 310
+        # Step 3: Full-frame overlay (1080x1920) — logo top-left + text bar bottom
+        FRAME_W, FRAME_H, BAR_H = 1080, 1920, 460
         overlay = Image.new("RGBA", (FRAME_W, FRAME_H), (0, 0, 0, 0))
         ov_draw = ImageDraw.Draw(overlay)
 
-        # Logo — top-left (baaki channels jaisa)
+        # Logo — top-left
         if os.path.exists(LOGO_PATH):
             try:
                 logo_img = Image.open(LOGO_PATH).convert("RGB")
-                logo_w = 120
+                logo_w = 180
                 logo_h = int(logo_img.height * (logo_w / logo_img.width))
                 logo_img = logo_img.resize((logo_w, logo_h), Image.LANCZOS)
-                lx, ly, pad = 28, 40, 8
+                lx, ly, pad = 40, 60, 12
                 ov_draw.rounded_rectangle(
                     [lx - pad, ly - pad, lx + logo_w + pad, ly + logo_h + pad],
-                    radius=10, fill=(255, 255, 255, 255)
+                    radius=14, fill=(255, 255, 255, 255)
                 )
                 overlay.paste(logo_img, (lx, ly))
             except Exception as le:
                 print(f"      Logo error: {le}")
 
-        # Text ko frame ke andar wrap karo — warna headline right side se kat jati hai
-        PAD, MAX_W = 22, FRAME_W - 44
+        PAD, MAX_W = 34, FRAME_W - 68
 
         def wrap_px(text, font, max_px):
             lines, line = [], ""
@@ -1581,57 +1637,80 @@ def process_video_for_reel(video_path: str, headline: str, summary: str,
                 lines.append(line)
             return lines
 
-        font_head, font_body = get_font(44), get_font(28)
+        font_head, font_body = get_font(64), get_font(40)
         head_lines = wrap_px(headline, font_head, MAX_W)[:2]
-        body_lines = wrap_px(summary,  font_body, MAX_W)[:3]
+        body_lines = wrap_px(summary,  font_body, MAX_W)[:2]
 
         bar_y = FRAME_H - BAR_H
-        ov_draw.rectangle([0, bar_y, FRAME_W, FRAME_H], fill=(0, 0, 0, 190))
+        ov_draw.rectangle([0, bar_y, FRAME_W, FRAME_H], fill=(0, 0, 0, 175))
+        ov_draw.rectangle([0, bar_y, FRAME_W, bar_y + 8], fill=(255, 80, 80, 255))  # red accent
 
-        y = bar_y + 20
+        y = bar_y + 28
         for line in head_lines:
             ov_draw.text((PAD, y), line, font=font_head, fill=(255, 255, 255, 255))
-            y += 54
-        y += 6
+            y += 78
+        y += 8
         for line in body_lines:
-            ov_draw.text((PAD, y), line, font=font_body, fill=(220, 220, 220, 245))
-            y += 38
+            ov_draw.text((PAD, y), line, font=font_body, fill=(225, 225, 225, 245))
+            y += 54
 
         date_str = datetime.now().strftime("%d %b %Y")
-        ov_draw.text((PAD, FRAME_H - 38), f"@atlantis_news_ai  •  {date_str}",
-                     font=get_font(24), fill=(170, 170, 170, 230))
+        ov_draw.text((PAD, FRAME_H - 52), f"@atlantis_news_ai  •  {date_str}",
+                     font=get_font(34), fill=(180, 180, 180, 230))
         overlay.save(overlay_png, "PNG")
 
-        # Step 4: ffmpeg — video + overlay + audio combine (narration pura chalega)
-        if has_audio:
-            result = subprocess.run([
-                "ffmpeg", "-y",
-                "-i", base_path, "-i", overlay_png, "-i", audio_path,
-                "-filter_complex",
-                "[0:v][1:v]overlay=0:0[vout];"
-                "[2:a]volume=1.5[aout]",
-                "-map", "[vout]", "-map", "[aout]",
-                "-c:v", "libx264", "-c:a", "aac",
-                "-preset", "fast", "-crf", "28",
-                out_path   # no -shortest, no atrim — narration kabhi kate nahi
-            ], capture_output=True, timeout=240)
-        else:
-            result = subprocess.run([
-                "ffmpeg", "-y",
-                "-i", base_path, "-i", overlay_png,
-                "-filter_complex", "[0:v][1:v]overlay=0:0[out]",
-                "-map", "[out]", "-c:v", "libx264",
-                "-preset", "fast", "-crf", "28", out_path
-            ], capture_output=True, timeout=180)
+        # Step 3b: Hook — pehle 2.5s ke liye bada center text (scroll rokta hai)
+        hook = Image.new("RGBA", (FRAME_W, FRAME_H), (0, 0, 0, 0))
+        hk_draw = ImageDraw.Draw(hook)
+        font_hook = get_font(76)
+        hook_lines = wrap_px(headline, font_hook, MAX_W)[:3]
+        blk_h = len(hook_lines) * 92 + 60
+        blk_y = 560
+        hk_draw.rectangle([0, blk_y - 30, FRAME_W, blk_y + blk_h], fill=(0, 0, 0, 150))
+        hk_draw.rectangle([0, blk_y - 30, 14, blk_y + blk_h], fill=(255, 80, 80, 255))
+        yy = blk_y + 10
+        for line in hook_lines:
+            w = hk_draw.textlength(line, font=font_hook)
+            hk_draw.text(((FRAME_W - w) / 2, yy), line, font=font_hook, fill=(255, 255, 255, 255))
+            yy += 92
+        hook.save(hook_png, "PNG")
 
-        for p in [base_path, overlay_png, audio_path]:
+        # Subtitles ASS — narration se, audio duration pe synced (bottom bar ke thoda upar)
+        have_subs = has_audio and make_subtitles(tts_text, reel_dur, srt_path)
+
+        # Step 4: sab combine — video + overlay + hook(2.5s) + subtitles + louder audio
+        def _build(with_subs: bool):
+            vchain = "[0:v][1:v]overlay=0:0[v1];[v1][3:v]overlay=0:0:enable='lte(t,2.5)'[v2]"
+            if with_subs:
+                vchain += ";[v2]subtitles=subs.ass[vout]"
+                last = "[vout]"
+            else:
+                last = "[v2]"
+            if has_audio:
+                fc = vchain + ";[2:a]volume=1.9,loudnorm=I=-13:TP=-1.5[aout]"
+                maps = ["-map", last, "-map", "[aout]", "-c:a", "aac", "-b:a", "160k"]
+            else:
+                fc = vchain
+                maps = ["-map", last]
+            return (["ffmpeg", "-y", "-i", base_path, "-i", overlay_png, "-i", audio_path,
+                     "-i", hook_png, "-filter_complex", fc] + maps +
+                    ["-c:v", "libx264", "-preset", "fast", "-crf", "23",
+                     "-pix_fmt", "yuv420p", "-movflags", "+faststart", out_path])
+
+        # subtitles ke saath try, fail ho to bina subtitles (graceful)
+        result = subprocess.run(_build(have_subs), capture_output=True, timeout=300, cwd=tmp_dir)
+        if result.returncode != 0 and have_subs:
+            print(f"      Subtitles burn fail — bina subs retry")
+            result = subprocess.run(_build(False), capture_output=True, timeout=300, cwd=tmp_dir)
+
+        for p in [base_path, overlay_png, audio_path, hook_png, srt_path]:
             try: os.remove(p)
             except: pass
 
         if result.returncode == 0 and os.path.exists(out_path):
             size_bytes = os.path.getsize(out_path)
-            size_kb    = size_bytes // 1024
-            print(f"      Reel ready: {size_kb}KB {'(with audio)' if has_audio else '(silent)'}")
+            print(f"      Reel ready: {size_bytes//1024}KB "
+                  f"{'(with audio+subs)' if have_subs else '(with audio)' if has_audio else '(silent)'}")
             if size_bytes < 10_000:
                 print(f"      WARNING: reel too small ({size_bytes}B) — skipping")
                 return None
