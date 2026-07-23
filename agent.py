@@ -1735,6 +1735,76 @@ def post_video_to_instagram(video_url: str, caption: str, hashtags: str) -> bool
     return post_reel_to_instagram(video_url, f"{caption}\n\n{hashtags}") is not None
 
 
+# --- Facebook Page Reel -------------------------------------------------------
+FB_PAGE_ID = os.getenv("FB_PAGE_ID", "").strip()
+
+
+def _get_fb_page_token() -> str | None:
+    """User token se Page access token nikaalo (FB posting ke liye alag token chahiye)"""
+    if not INSTAGRAM_TOKEN:
+        return None
+    try:
+        r = requests.get("https://graph.facebook.com/v25.0/me/accounts",
+                         params={"access_token": INSTAGRAM_TOKEN, "limit": 100}, timeout=15)
+        for page in r.json().get("data", []):
+            if not FB_PAGE_ID or page.get("id") == FB_PAGE_ID:
+                return page.get("access_token")
+    except Exception as e:
+        print(f"      FB page token error: {e}")
+    return None
+
+
+def post_reel_to_facebook(video_url: str, caption: str) -> str | None:
+    """Same reel Facebook Page pe bhi post karo — Instagram jaisa hi video URL"""
+    if not FB_PAGE_ID:
+        return None
+    print(f"\n[FB] Facebook Page pe reel post kar raha hoon...")
+    page_token = _get_fb_page_token()
+    if not page_token:
+        print("      FB page token nahi mila — FB_PAGE_ID / permissions check karo")
+        return None
+    try:
+        # Phase 1: reel session start
+        start = requests.post(
+            f"https://graph.facebook.com/v25.0/{FB_PAGE_ID}/video_reels",
+            data={"upload_phase": "start", "access_token": page_token}, timeout=20
+        ).json()
+        video_id = start.get("video_id")
+        if not video_id:
+            print(f"      FB start error: {start}")
+            return None
+
+        # Phase 2: video ko URL se upload karwao (Facebook khud fetch karega)
+        up = requests.post(
+            f"https://rupload.facebook.com/video-upload/v25.0/{video_id}",
+            headers={"Authorization": f"OAuth {page_token}", "file_url": video_url},
+            timeout=120
+        ).json()
+        if not up.get("success", True) and "error" in up:
+            print(f"      FB upload error: {up}")
+            return None
+
+        # Phase 3: publish
+        for _ in range(10):
+            time.sleep(8)
+            fin = requests.post(
+                f"https://graph.facebook.com/v25.0/{FB_PAGE_ID}/video_reels",
+                data={"upload_phase": "finish", "video_id": video_id,
+                      "video_state": "PUBLISHED", "description": caption,
+                      "access_token": page_token}, timeout=20
+            ).json()
+            if fin.get("success"):
+                print(f"      FB Reel posted! video_id: {video_id}")
+                return video_id
+            if "error" in fin and fin["error"].get("code") not in (None,):
+                # processing abhi baaki ho sakti hai — retry
+                continue
+        print(f"      FB publish timeout (video_id: {video_id})")
+    except Exception as e:
+        print(f"      FB reel error: {e}")
+    return None
+
+
 def upload_image(image_path: str) -> str | None:
     """Local image ko ImgBB pe upload karo — free"""
     try:
@@ -2474,6 +2544,7 @@ def run_agent():
                     if video_url:
                         media_id = post_reel_to_instagram(video_url, content.get("caption", ""))
                         if media_id:
+                            post_reel_to_facebook(video_url, content.get("caption", ""))
                             delete_queued_video()   # queue se hatao — dobara post na ho
                     try:
                         os.remove(pib_path)
@@ -2715,6 +2786,7 @@ Instagram Reel ke liye JSON banao:
 
         media_id = post_reel_to_instagram(video_url, content.get("caption", ""))
         if media_id:
+            post_reel_to_facebook(video_url, content.get("caption", ""))   # same reel FB pe bhi
             save_posted_title(content.get("headline", topic))
             delete_queued_video()   # queue se hatao — warna yahi video dobara post hogi
             time.sleep(8)
