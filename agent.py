@@ -2569,7 +2569,7 @@ def run_agent():
                     if video_url:
                         media_id = post_reel_to_instagram(video_url, content.get("caption", ""))
                         if media_id:
-                            post_reel_to_facebook(video_url, content.get("caption", ""))
+                            # post_reel_to_facebook(video_url, content.get("caption", ""))   # FB: token milne pe uncomment
                             delete_queued_video()   # queue se hatao — dobara post na ho
                     try:
                         os.remove(pib_path)
@@ -2579,8 +2579,8 @@ def run_agent():
 
         if not media_id:
             media_id = post_to_instagram(img_url, content.get("caption", ""))
-            if media_id:
-                post_photo_to_facebook(img_url, content.get("caption", ""))   # same photo FB pe
+            # if media_id:
+            #     post_photo_to_facebook(img_url, content.get("caption", ""))   # FB: token milne pe uncomment
 
         if media_id:
             save_posted_title(news.get("title", ""))
@@ -2698,7 +2698,7 @@ JSON: {{"index": 0, "importance": 9, "reason": "why"}}
 
         media_id = post_to_instagram(img_url, content.get("caption", ""))
         if media_id:
-            post_photo_to_facebook(img_url, content.get("caption", ""))   # same photo FB pe
+            # post_photo_to_facebook(img_url, content.get("caption", ""))   # FB: token milne pe uncomment
             save_posted_title(news.get("title", ""))
             time.sleep(8)
             auto_first_comment(media_id, content.get("hashtags", "#India #BreakingNews #IndianNews"))
@@ -2814,7 +2814,7 @@ Instagram Reel ke liye JSON banao:
 
         media_id = post_reel_to_instagram(video_url, content.get("caption", ""))
         if media_id:
-            post_reel_to_facebook(video_url, content.get("caption", ""))   # same reel FB pe bhi
+            # post_reel_to_facebook(video_url, content.get("caption", ""))   # FB: token permissions milne pe uncomment
             save_posted_title(content.get("headline", topic))
             delete_queued_video()   # queue se hatao — warna yahi video dobara post hogi
             time.sleep(8)
