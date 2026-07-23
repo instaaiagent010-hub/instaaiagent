@@ -1805,6 +1805,31 @@ def post_reel_to_facebook(video_url: str, caption: str) -> str | None:
     return None
 
 
+def post_photo_to_facebook(image_url: str, caption: str) -> str | None:
+    """Same photo Facebook Page pe bhi post karo (image_url = public URL)"""
+    if not FB_PAGE_ID or not image_url:
+        return None
+    print(f"\n[FB] Facebook Page pe photo post kar raha hoon...")
+    page_token = _get_fb_page_token()
+    if not page_token:
+        print("      FB page token nahi mila — FB_PAGE_ID / permissions check karo")
+        return None
+    try:
+        r = requests.post(
+            f"https://graph.facebook.com/v25.0/{FB_PAGE_ID}/photos",
+            data={"url": image_url, "caption": caption, "access_token": page_token},
+            timeout=30
+        ).json()
+        pid = r.get("post_id") or r.get("id")
+        if pid:
+            print(f"      FB photo posted! id: {pid}")
+            return pid
+        print(f"      FB photo error: {r}")
+    except Exception as e:
+        print(f"      FB photo error: {e}")
+    return None
+
+
 def upload_image(image_path: str) -> str | None:
     """Local image ko ImgBB pe upload karo — free"""
     try:
@@ -2554,6 +2579,8 @@ def run_agent():
 
         if not media_id:
             media_id = post_to_instagram(img_url, content.get("caption", ""))
+            if media_id:
+                post_photo_to_facebook(img_url, content.get("caption", ""))   # same photo FB pe
 
         if media_id:
             save_posted_title(news.get("title", ""))
@@ -2671,6 +2698,7 @@ JSON: {{"index": 0, "importance": 9, "reason": "why"}}
 
         media_id = post_to_instagram(img_url, content.get("caption", ""))
         if media_id:
+            post_photo_to_facebook(img_url, content.get("caption", ""))   # same photo FB pe
             save_posted_title(news.get("title", ""))
             time.sleep(8)
             auto_first_comment(media_id, content.get("hashtags", "#India #BreakingNews #IndianNews"))
