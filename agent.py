@@ -27,6 +27,12 @@ from ddgs import DDGS
 from PIL import Image, ImageDraw
 from groq import Groq
 
+# Agentic learning layer — perceive/learn/decide (token/data na ho to gracefully skip)
+try:
+    import agentic
+except Exception:
+    agentic = None
+
 
 def get_font(size: int):
     """Hindi + emoji support wala font load karo, fallback default"""
@@ -409,6 +415,7 @@ USED_VIDEO_IDS: set = set()   # run start pe history se load hota hai
 LAST_VIDEO_ID  = ""           # jo video use hui uska id — history mein save hota hai
 LAST_VIDEO_TITLE  = ""        # video ka ASLI title — reel ka text isse banta hai
 LAST_VIDEO_SOURCE = ""        # kis govt channel se aayi
+_LAST_HOOK_IDX    = -1        # AGENTIC: pichhli narration mein kaunsa hook use hua
 
 
 def save_posted_title(title: str) -> None:
@@ -1437,8 +1444,11 @@ def generate_narration(news_item: dict, headline: str, summary: str) -> str:
         "QUESTION HOOK: Ek thought-provoking question se shuru karo.\n"
         "'Kya tum jaante ho...?' / 'Socho agar kal se...' — curiosity jagao, phir jawab do.",
     ]
-    style_idx     = (int(time.time()) // 3600) % len(narration_styles)
+    default_idx   = (int(time.time()) // 3600) % len(narration_styles)
+    # AGENTIC: best-performing hook use karo (learned), warna time rotation
+    style_idx     = agentic.choose_hook(len(narration_styles), default_idx) if agentic else default_idx
     chosen_style  = narration_styles[style_idx]
+    globals()["_LAST_HOOK_IDX"] = style_idx   # recipe record ke liye
 
     try:
         resp = _groq_complete(max_tokens=420, messages=[{"role": "user", "content": f"""
@@ -2662,6 +2672,11 @@ def run_agent():
             #     post_photo_to_facebook(img_url, content.get("caption", ""))   # FB: token milne pe uncomment
 
         if media_id:
+            if agentic:   # AGENTIC: recipe record — reel(hook) ya photo
+                agentic.record_recipe(
+                    media_id, topic=news.get("title", ""),
+                    hook_idx=(_LAST_HOOK_IDX if is_govt else -1),
+                    media_type=("reel" if is_govt else "photo"))
             save_posted_title(news.get("title", ""))
             time.sleep(8)
             hashtags = content.get("hashtags", "#India #News #BreakingNews")
@@ -2809,6 +2824,9 @@ def post_pib_reel() -> None:
     recent_titles = get_recently_posted_titles()
     USED_VIDEO_IDS.update(load_posted_videos())   # pehle use hui videos repeat na hon
 
+    if agentic:   # AGENTIC: best-performing topics pehle try karo
+        topics = agentic.rank_topics(topics)
+
     for topic in topics:
         print(f"\n[PIB] Topic: {topic}")
         pib_path = fetch_news_video_free(topic)
@@ -2894,6 +2912,9 @@ Instagram Reel ke liye JSON banao:
         media_id = post_reel_to_instagram(video_url, content.get("caption", ""))
         if media_id:
             # post_reel_to_facebook(video_url, content.get("caption", ""))   # FB: token permissions milne pe uncomment
+            if agentic:   # AGENTIC: kya banaya wo yaad rakho (learning ke liye)
+                agentic.record_recipe(media_id, topic=vid_title, hook_idx=_LAST_HOOK_IDX,
+                                      media_type="reel")
             save_posted_title(content.get("headline", topic))
             delete_queued_video()   # queue se hatao — warna yahi video dobara post hogi
             time.sleep(8)
@@ -2910,5 +2931,11 @@ if __name__ == "__main__":
         check_breaking_news()
     elif "--reel" in sys.argv:
         post_pib_reel()
+    elif "--learn" in sys.argv:
+        # AGENTIC: pichli posts ka performance padho aur seekho
+        if agentic:
+            agentic.learn_from_performance()
+        else:
+            print("agentic module load nahi hua")
     else:
         run_agent()
