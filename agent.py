@@ -1419,6 +1419,43 @@ def generate_tts_audio(text: str, out_path: str) -> bool:
     return False
 
 
+def fetch_websearch_topics(max_topics: int = 6) -> list[str]:
+    """Groq compound-mini (FREE web search, existing key) se aaj ke asli trending India topics.
+    Ye DuckDuckGo/RSS ke ALAWA hai — unhe replace nahi karta, sirf fresh topics add karta hai."""
+    if not GROQ_API_KEY:
+        return []
+    try:
+        import re as _re
+        client = Groq(api_key=GROQ_API_KEY)
+        # ye phrasing reliably web-search trigger karti hai (compound decide karta hai)
+        resp = client.chat.completions.create(
+            model="groq/compound-mini",   # built-in web search, free
+            max_tokens=350,
+            messages=[{"role": "user",
+                       "content": f"Top {max_topics} India news headlines today"}],
+        )
+        raw = resp.choices[0].message.content or ""
+        if _re.search(r"sorry|don'?t have|cannot|can'?t browse", raw, _re.I):
+            return []
+        topics = []
+        for line in raw.splitlines():
+            m = _re.match(r'^\s*\d+[\.\)]\s*(.+)', line)   # numbered headline lines
+            if not m:
+                continue
+            txt = _re.sub(r'\*+', '', m.group(1))                 # bold hatao
+            txt = _re.split(r'[–\-:|]', txt)[0]                   # dash/colon se pehle
+            txt = _re.sub(r'\[.*?\]|\(.*?\)', '', txt).strip().strip('."')
+            words = txt.split()
+            if len(words) >= 3:
+                topics.append(" ".join(words[:8]))               # short search topic
+        if topics:
+            print(f"      [WebSearch] {len(topics)} trending topics mile (compound-mini, free)")
+        return topics[:max_topics]
+    except Exception as e:
+        print(f"      [WebSearch] error: {str(e)[:80]}")
+        return []
+
+
 def generate_narration(news_item: dict, headline: str, summary: str) -> str:
     """Groq se 30-second news Reel narration — 6 rotating hooks"""
     title = news_item.get("title", headline)
@@ -2812,14 +2849,17 @@ def post_pib_reel() -> None:
     print(f"  Time: {datetime.now().strftime('%Y-%m-%d %H:%M')}")
     print("=" * 55)
 
-    # Aaj ke top government news topics
-    topics = [
+    # Aaj ke top government news topics (fixed base)
+    base_topics = [
         "India government scheme today",
         "PM Modi announcement today",
         "India Parliament news today",
         "India economy RBI today",
         "India defense ministry today",
     ]
+    # Web search se aaj ke ASLI trending topics (free, compound-mini) — base se pehle
+    trending = fetch_websearch_topics(5)
+    topics = trending + [t for t in base_topics if t not in trending]
 
     recent_titles = get_recently_posted_titles()
     USED_VIDEO_IDS.update(load_posted_videos())   # pehle use hui videos repeat na hon
