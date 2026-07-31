@@ -1,8 +1,32 @@
 {
-  "updated": 1785482194,
-  "posts_scored": 0,
+  "updated": 1785520570,
+  "posts_scored": 7,
   "hook_avg": {},
-  "hour_avg": {},
+  "hour_avg": {
+    "5": 5.0,
+    "10": 4.25
+  },
   "voice_avg": {},
-  "topic_avg": {}
+  "topic_avg": {
+    "today": 5.0,
+    "deaths,": 5.0,
+    "take": 5.0,
+    "judges": 5.0,
+    "parliament": 5.0,
+    "bills": 5.0,
+    "births": 5.0,
+    "[live]:": 5.0,
+    "crossing": 5.0,
+    "hegde": 5.0,
+    "pooja": 5.0,
+    "starrer": 5.0,
+    "vijay": 5.0,
+    "weekend": 5.0,
+    "nayagan'": 5.0,
+    "collection": 5.0,
+    "office": 5.0,
+    "second": 5.0,
+    "enters": 5.0,
+    "'jana": 5.0
+  }
 }
