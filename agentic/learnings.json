@@ -1,6 +1,6 @@
 {
-  "updated": 1786165891,
-  "posts_scored": 56,
+  "updated": 1786207995,
+  "posts_scored": 60,
   "hook_avg": {},
   "hour_avg": {
     "5": 4.538,
@@ -13,29 +13,30 @@
     "6": 4.0,
     "4": 4.0,
     "8": 4.0,
-    "13": 4.0
+    "13": 4.0,
+    "3": 4.0
   },
   "voice_avg": {},
   "topic_avg": {
-    "5.25%": 5.5,
     "unchanged": 5.5,
-    "births": 5.0,
-    "take": 5.0,
-    "today": 5.0,
+    "5.25%": 5.5,
+    "deaths,": 5.0,
     "judges": 5.0,
     "bills": 5.0,
-    "deaths,": 5.0,
-    "crossing": 5.0,
-    "weekend": 5.0,
-    "collection": 5.0,
+    "take": 5.0,
+    "today": 5.0,
+    "births": 5.0,
     "[live]:": 5.0,
-    "vijay": 5.0,
-    "nayagan'": 5.0,
-    "enters": 5.0,
-    "second": 5.0,
-    "hegde": 5.0,
     "pooja": 5.0,
+    "second": 5.0,
+    "weekend": 5.0,
+    "crossing": 5.0,
+    "hegde": 5.0,
+    "'jana": 5.0,
+    "collection": 5.0,
+    "nayagan'": 5.0,
     "starrer": 5.0,
-    "'jana": 5.0
+    "enters": 5.0,
+    "vijay": 5.0
   }
 }
