@@ -297,10 +297,10 @@
     "starbase, louisiana: the largest private spaceport in the world",
     "eva: us eva-98",
     "upcoming launch: falcon heavy | nancy grace roman space telescope",
-    "mtg"
+    "mtg",
+    "the threat environment and processing at the edge"
   ],
   "images": [
-    "https://apod.nasa.gov/apod/image/2607/ShadowandRainbow_Loschiavo.jpg",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2023/09/ispace-apex.jpg?fit=1024%2C580&ssl=1",
     "https://apod.nasa.gov/apod/image/2607/Genesisimpact_nasa_960.jpg",
     "https://epic.gsfc.nasa.gov/epic-galleries/2022/high_cadence/thumbs/epic_1b_20220613185138.jpg",
@@ -599,7 +599,8 @@
     "https://apod.nasa.gov/apod/image/2608/lions_head_nebula.jpg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/08/NSF-2026-08-26-04-42-39-997.jpg",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_heavy_image_20220129192819.jpeg",
-    "https://www.esa.int/var/esa/storage/images/esa_multimedia/videos/2026/08/mtg-i2_ready_for_launch/27433458-1-eng-GB/MTG-I"
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/videos/2026/08/mtg-i2_ready_for_launch/27433458-1-eng-GB/MTG-I",
+    "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/08/1500-1000-space-minds-frontgrade-smallsat26-scaled.jpg?fit=10"
   ],
-  "updated": "2026-08-26T12:21:24.029829"
+  "updated": "2026-08-26T14:40:20.248632"
 }
