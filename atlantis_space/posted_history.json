@@ -1,6 +1,5 @@
 {
   "titles": [
-    "pentagon awards $7.1 million to expand u.s. production of cover glass for satellites",
     "ngc 3576: the statue of liberty nebula",
     "asteroid 524474 (2002 kj3) aaj earth ke paas se guzrega — 364-813m",
     "flyby: juice earth flyby",
@@ -299,10 +298,10 @@
     "upcoming launch: angara 1.2 | kosmos (unknown payload)",
     "spacecraft undocking: progress ms-33 undocking",
     "civil servants sworn in at nasa ames",
-    "9 things to know about nasa’s nancy grace roman space telescope"
+    "9 things to know about nasa’s nancy grace roman space telescope",
+    "wildfire calico, humboldt, nevada — nasa eonet 27 aug"
   ],
   "images": [
-    "https://www.nasa.gov/wp-content/uploads/2023/03/bennu-osiris-rex-1041.jpg",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/255bauto255d__image_20240307192047.jpeg",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon2520925_image_20221009234147.png",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/07/vikram1-1stlaunch.jpeg?fit=1024%2C577&ssl=1",
@@ -601,7 +600,8 @@
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/angara25201.2_image_20190224012254.jpeg",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/progress2520ms-112520docking_image_20190318202147.jpe",
     "https://www.nasa.gov/wp-content/uploads/2026/08/acd26-0108-042orig.jpg",
-    "https://science.nasa.gov/wp-content/uploads/2026/08/encap.jpg"
+    "https://science.nasa.gov/wp-content/uploads/2026/08/encap.jpg",
+    "https://epic.gsfc.nasa.gov/epic-galleries/2022/high_cadence/thumbs/epic_1b_20220613185138.jpg"
   ],
-  "updated": "2026-08-27T20:06:16.427463"
+  "updated": "2026-08-27T21:23:10.860257"
 }
