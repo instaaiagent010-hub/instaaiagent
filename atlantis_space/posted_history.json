@@ -1,6 +1,5 @@
 {
   "titles": [
-    "wildfire 0460 hopkin, gilliam, oregon — nasa eonet 19 jul",
     "celestial event: total solar eclipse in europe",
     "soyuz ms-29 ne iss ke saath docking ki!",
     "12 astronauts space mein hain — iss update 19 jul 2026",
@@ -299,10 +298,10 @@
     "rtx’s blue canyon technologies introduces new spacecraft mission enabler",
     "colorful aurora over icelandic waterfall",
     "first contracts kick off european launcher challenge",
-    "rare, widespread snow in the atacama desert"
+    "rare, widespread snow in the atacama desert",
+    "upcoming launch: angara 1.2 | kosmos (unknown payload)"
   ],
   "images": [
-    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/soyuz_ms_in_orb_image_20240313130407.jpeg",
     "https://www.nasa.gov/wp-content/uploads/2023/03/iss068e027100.jpg",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/07/Screenshot-2026-07-18-at-6.29.48-PM.png?fit=1024%2C445&ssl=1",
     "https://apod.nasa.gov/apod/image/2607/LibertyNeb_Carpenter_1830.jpg",
@@ -601,7 +600,8 @@
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/08/blue-canyon-technologies-logo-square.png?fit=962%2C964&ssl=1",
     "https://apod.nasa.gov/apod/image/2608/Aurora_over_Fall.jpg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2024/06/european_launcher_challenge_visual/26128354-4-e",
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/rare,-widespread-snow-in-the-atacama"
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/rare,-widespread-snow-in-the-atacama",
+    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/angara25201.2_image_20190224012254.jpeg"
   ],
-  "updated": "2026-08-27T14:57:06.052079"
+  "updated": "2026-08-27T16:38:17.528801"
 }
