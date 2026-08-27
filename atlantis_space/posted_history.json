@@ -1,6 +1,5 @@
 {
   "titles": [
-    "12 astronauts space mein hain — iss update 19 jul 2026",
     "pentagon awards $7.1 million to expand u.s. production of cover glass for satellites",
     "ngc 3576: the statue of liberty nebula",
     "asteroid 524474 (2002 kj3) aaj earth ke paas se guzrega — 364-813m",
@@ -299,10 +298,10 @@
     "rare, widespread snow in the atacama desert",
     "upcoming launch: angara 1.2 | kosmos (unknown payload)",
     "spacecraft undocking: progress ms-33 undocking",
-    "civil servants sworn in at nasa ames"
+    "civil servants sworn in at nasa ames",
+    "9 things to know about nasa’s nancy grace roman space telescope"
   ],
   "images": [
-    "https://apod.nasa.gov/apod/image/2607/LibertyNeb_Carpenter_1830.jpg",
     "https://www.nasa.gov/wp-content/uploads/2023/03/bennu-osiris-rex-1041.jpg",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/255bauto255d__image_20240307192047.jpeg",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon2520925_image_20221009234147.png",
@@ -601,7 +600,8 @@
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/rare,-widespread-snow-in-the-atacama",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/angara25201.2_image_20190224012254.jpeg",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/progress2520ms-112520docking_image_20190318202147.jpe",
-    "https://www.nasa.gov/wp-content/uploads/2026/08/acd26-0108-042orig.jpg"
+    "https://www.nasa.gov/wp-content/uploads/2026/08/acd26-0108-042orig.jpg",
+    "https://science.nasa.gov/wp-content/uploads/2026/08/encap.jpg"
   ],
-  "updated": "2026-08-27T19:12:09.749974"
+  "updated": "2026-08-27T20:06:16.427463"
 }
