@@ -1,6 +1,5 @@
 {
   "titles": [
-    "asteroid 524474 (2002 kj3) aaj earth ke paas se guzrega — 364-813m",
     "flyby: juice earth flyby",
     "upcoming launch: falcon 9 block 5 | starlink group 17-39",
     "skyroot aerospace reaches orbit on first vikram-1 launch",
@@ -299,10 +298,10 @@
     "civil servants sworn in at nasa ames",
     "9 things to know about nasa’s nancy grace roman space telescope",
     "wildfire calico, humboldt, nevada — nasa eonet 27 aug",
-    "soyuz ms-29 ne iss ke saath docking ki!"
+    "soyuz ms-29 ne iss ke saath docking ki!",
+    "12 astronauts space mein hain — iss update 28 aug 2026"
   ],
   "images": [
-    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon2520925_image_20221009234147.png",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/07/vikram1-1stlaunch.jpeg?fit=1024%2C577&ssl=1",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/videos/2026/07/artemis_ii_crew_at_estec/27383126-1-eng-GB/Arte",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/ravish2520malhotra_image_20181201174749.jpg",
@@ -601,7 +600,8 @@
     "https://www.nasa.gov/wp-content/uploads/2026/08/acd26-0108-042orig.jpg",
     "https://science.nasa.gov/wp-content/uploads/2026/08/encap.jpg",
     "https://epic.gsfc.nasa.gov/epic-galleries/2022/high_cadence/thumbs/epic_1b_20220613185138.jpg",
-    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/soyuz_ms_in_orb_image_20240313130407.jpeg"
+    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/soyuz_ms_in_orb_image_20240313130407.jpeg",
+    "https://www.nasa.gov/wp-content/uploads/2023/03/iss068e027100.jpg"
   ],
-  "updated": "2026-08-27T23:08:19.435480"
+  "updated": "2026-08-28T00:42:41.701314"
 }
