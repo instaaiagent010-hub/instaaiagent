@@ -1,6 +1,5 @@
 {
   "titles": [
-    "astronaut spotlight: ravish malhotra — indian space hero",
     "upcoming launch: gravity-1 | unknown payload",
     "uk misses deadline to award contract for space debris removal mission",
     "from hampton to mars: how nasa langley helped land on the red planet",
@@ -299,10 +298,10 @@
     "the sky turns above paranal",
     "ariane 6 launch with mtg-i2 – highlights",
     "sophie adenot's third spacewalk (u.s. spacewalk 99)",
-    "static fire: spacex starship booster b21 static fire"
+    "static fire: spacex starship booster b21 static fire",
+    "trump calls for creation of a \"space academy\" to train future nasa leaders"
   ],
   "images": [
-    "https://europeanspaceflight.com/wp-content/uploads/2026/07/UK-Misses-Deadline-to-Award-Contract-for-Space-Debris-Removal",
     "https://www.nasa.gov/wp-content/uploads/2025/07/e1-viking-1-pia00381.jpg",
     "https://images-assets.nasa.gov/image/jsc2026e040446/jsc2026e040446~large.jpg",
     "https://apod.nasa.gov/apod/image/2607/TurtleRock_Curiosity_2048.jpg",
@@ -601,7 +600,8 @@
     "https://apod.nasa.gov/apod/image/2608/TheSkyTurnsAboveParanal.jpg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/videos/2026/08/ariane_6_launch_with_mtg-i2_highlights/27439862",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/videos/2026/08/sophie_adenot_s_third_spacewalk_u.s._spacewalk_",
-    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/supeheavy_boost_image_20260828161901.jpeg"
+    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/supeheavy_boost_image_20260828161901.jpeg",
+    "https://cdn.arstechnica.net/wp-content/uploads/2026/08/GettyImages-2291885998.jpg"
   ],
-  "updated": "2026-08-28T17:33:41.769184"
+  "updated": "2026-08-28T19:06:09.410498"
 }
