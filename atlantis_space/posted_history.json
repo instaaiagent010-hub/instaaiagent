@@ -1,6 +1,5 @@
 {
   "titles": [
-    "uk misses deadline to award contract for space debris removal mission",
     "from hampton to mars: how nasa langley helped land on the red planet",
     "nasa sets briefings for spacex crew-13 mission to space station",
     "turtle rock on mars",
@@ -299,10 +298,10 @@
     "sophie adenot's third spacewalk (u.s. spacewalk 99)",
     "static fire: spacex starship booster b21 static fire",
     "trump calls for creation of a \"space academy\" to train future nasa leaders",
-    "astronaut spotlight: ravish malhotra — indian space hero"
+    "astronaut spotlight: ravish malhotra — indian space hero",
+    "nasa awards first prize in phase 2 of agency’s lunarecycle challenge"
   ],
   "images": [
-    "https://images-assets.nasa.gov/image/jsc2026e040446/jsc2026e040446~large.jpg",
     "https://apod.nasa.gov/apod/image/2607/TurtleRock_Curiosity_2048.jpg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2025/05/julia-streak-3.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/why-maine's-sandy-shorelines-turn-ja",
@@ -601,7 +600,8 @@
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/videos/2026/08/sophie_adenot_s_third_spacewalk_u.s._spacewalk_",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/supeheavy_boost_image_20260828161901.jpeg",
     "https://cdn.arstechnica.net/wp-content/uploads/2026/08/GettyImages-2291885998.jpg",
-    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/ravish2520malhotra_image_20181201174749.jpg"
+    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/ravish2520malhotra_image_20181201174749.jpg",
+    "https://www.nasa.gov/wp-content/uploads/2026/08/cerberuz-lunarecycle-winners.jpg"
   ],
-  "updated": "2026-08-28T20:17:44.077136"
+  "updated": "2026-08-28T21:04:00.049549"
 }
