@@ -1,6 +1,5 @@
 {
   "titles": [
-    "flyby: juice earth flyby",
     "upcoming launch: falcon 9 block 5 | starlink group 17-39",
     "skyroot aerospace reaches orbit on first vikram-1 launch",
     "artemis ii crew at estec",
@@ -299,10 +298,10 @@
     "9 things to know about nasa’s nancy grace roman space telescope",
     "wildfire calico, humboldt, nevada — nasa eonet 27 aug",
     "soyuz ms-29 ne iss ke saath docking ki!",
-    "12 astronauts space mein hain — iss update 28 aug 2026"
+    "12 astronauts space mein hain — iss update 28 aug 2026",
+    "the sky turns above paranal"
   ],
   "images": [
-    "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/07/vikram1-1stlaunch.jpeg?fit=1024%2C577&ssl=1",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/videos/2026/07/artemis_ii_crew_at_estec/27383126-1-eng-GB/Arte",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/ravish2520malhotra_image_20181201174749.jpg",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/gravity-1_image_20240108105446.jpeg",
@@ -601,7 +600,8 @@
     "https://science.nasa.gov/wp-content/uploads/2026/08/encap.jpg",
     "https://epic.gsfc.nasa.gov/epic-galleries/2022/high_cadence/thumbs/epic_1b_20220613185138.jpg",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/soyuz_ms_in_orb_image_20240313130407.jpeg",
-    "https://www.nasa.gov/wp-content/uploads/2023/03/iss068e027100.jpg"
+    "https://www.nasa.gov/wp-content/uploads/2023/03/iss068e027100.jpg",
+    "https://apod.nasa.gov/apod/image/2608/TheSkyTurnsAboveParanal.jpg"
   ],
-  "updated": "2026-08-28T00:42:41.701314"
+  "updated": "2026-08-28T12:19:38.666103"
 }
