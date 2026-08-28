@@ -1,6 +1,5 @@
 {
   "titles": [
-    "skyroot aerospace reaches orbit on first vikram-1 launch",
     "artemis ii crew at estec",
     "astronaut spotlight: ravish malhotra — indian space hero",
     "upcoming launch: gravity-1 | unknown payload",
@@ -299,10 +298,10 @@
     "soyuz ms-29 ne iss ke saath docking ki!",
     "12 astronauts space mein hain — iss update 28 aug 2026",
     "the sky turns above paranal",
-    "ariane 6 launch with mtg-i2 – highlights"
+    "ariane 6 launch with mtg-i2 – highlights",
+    "sophie adenot's third spacewalk (u.s. spacewalk 99)"
   ],
   "images": [
-    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/ravish2520malhotra_image_20181201174749.jpg",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/gravity-1_image_20240108105446.jpeg",
     "https://europeanspaceflight.com/wp-content/uploads/2026/07/UK-Misses-Deadline-to-Award-Contract-for-Space-Debris-Removal",
     "https://www.nasa.gov/wp-content/uploads/2025/07/e1-viking-1-pia00381.jpg",
@@ -601,7 +600,8 @@
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/soyuz_ms_in_orb_image_20240313130407.jpeg",
     "https://www.nasa.gov/wp-content/uploads/2023/03/iss068e027100.jpg",
     "https://apod.nasa.gov/apod/image/2608/TheSkyTurnsAboveParanal.jpg",
-    "https://www.esa.int/var/esa/storage/images/esa_multimedia/videos/2026/08/ariane_6_launch_with_mtg-i2_highlights/27439862"
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/videos/2026/08/ariane_6_launch_with_mtg-i2_highlights/27439862",
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/videos/2026/08/sophie_adenot_s_third_spacewalk_u.s._spacewalk_"
   ],
-  "updated": "2026-08-28T14:27:33.527543"
+  "updated": "2026-08-28T15:45:35.997773"
 }
