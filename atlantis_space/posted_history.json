@@ -1,6 +1,5 @@
 {
   "titles": [
-    "artemis ii crew at estec",
     "astronaut spotlight: ravish malhotra — indian space hero",
     "upcoming launch: gravity-1 | unknown payload",
     "uk misses deadline to award contract for space debris removal mission",
@@ -299,10 +298,10 @@
     "12 astronauts space mein hain — iss update 28 aug 2026",
     "the sky turns above paranal",
     "ariane 6 launch with mtg-i2 – highlights",
-    "sophie adenot's third spacewalk (u.s. spacewalk 99)"
+    "sophie adenot's third spacewalk (u.s. spacewalk 99)",
+    "static fire: spacex starship booster b21 static fire"
   ],
   "images": [
-    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/gravity-1_image_20240108105446.jpeg",
     "https://europeanspaceflight.com/wp-content/uploads/2026/07/UK-Misses-Deadline-to-Award-Contract-for-Space-Debris-Removal",
     "https://www.nasa.gov/wp-content/uploads/2025/07/e1-viking-1-pia00381.jpg",
     "https://images-assets.nasa.gov/image/jsc2026e040446/jsc2026e040446~large.jpg",
@@ -601,7 +600,8 @@
     "https://www.nasa.gov/wp-content/uploads/2023/03/iss068e027100.jpg",
     "https://apod.nasa.gov/apod/image/2608/TheSkyTurnsAboveParanal.jpg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/videos/2026/08/ariane_6_launch_with_mtg-i2_highlights/27439862",
-    "https://www.esa.int/var/esa/storage/images/esa_multimedia/videos/2026/08/sophie_adenot_s_third_spacewalk_u.s._spacewalk_"
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/videos/2026/08/sophie_adenot_s_third_spacewalk_u.s._spacewalk_",
+    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/supeheavy_boost_image_20260828161901.jpeg"
   ],
-  "updated": "2026-08-28T15:45:35.997773"
+  "updated": "2026-08-28T17:33:41.769184"
 }
