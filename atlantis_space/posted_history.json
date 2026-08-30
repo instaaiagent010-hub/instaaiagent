@@ -1,6 +1,5 @@
 {
   "titles": [
-    "ihi explores kuva hyperspectral satellites for japan’s multi-sensor constellation",
     "nasa epic camera ne space se earth ki tasveer li",
     "live coverage: spacex tries again to launch starlink mission from california following abort",
     "live coverage: spacex to launch novel geosynchronous robotic servicing satellite on decade-long mission",
@@ -299,10 +298,10 @@
     "nasa’s artemis ii crew receives congressional space medal of honor",
     "eclipse pair",
     "nasa’s roman space telescope go for launch, five years of discovery",
-    "m74: a grand design spiral"
+    "m74: a grand design spiral",
+    "roman space telescope, nasa’s next ‘great observatory,’ poised for sunday launch"
   ],
   "images": [
-    "http://spaceflightnow.com/wp-content/uploads/2024/02/20240214_Starlink_7-14_prelaunch_small-678x452.jpg",
     "http://spaceflightnow.com/wp-content/uploads/2026/07/20260721-mev-mep-high-01.jpg",
     "https://www.nasa.gov/wp-content/uploads/2026/07/pia26586.png",
     "https://www.nasa.gov/wp-content/uploads/2026/06/niac-2026-ph1-stankus-1.png",
@@ -601,7 +600,8 @@
     "https://www.nasa.gov/wp-content/uploads/2026/08/20260828-120552-jk1-3999-1.jpg",
     "https://apod.nasa.gov/apod/image/2608/2026-08_12and28-EclipsePair.jpg",
     "https://i0.wp.com/www.spacescout.info/wp-content/uploads/2026/08/image-19.png",
-    "https://apod.nasa.gov/apod/image/2608/m74_hst_1280.jpg"
+    "https://apod.nasa.gov/apod/image/2608/m74_hst_1280.jpg",
+    "http://spaceflightnow.com/wp-content/uploads/2022/07/20220719roman.jpg"
   ],
-  "updated": "2026-08-30T05:56:00.094363"
+  "updated": "2026-08-30T08:26:25.671515"
 }
