@@ -1,6 +1,5 @@
 {
   "titles": [
-    "live coverage: spacex to launch novel geosynchronous robotic servicing satellite on decade-long mission",
     "psyche approaches mars",
     "mapping alien continents: achieving optical vlbi for exoplanet imaging",
     "nisar’s l-band radar reveals ‘hummingbird’ in antarctica",
@@ -299,10 +298,10 @@
     "m74: a grand design spiral",
     "roman space telescope, nasa’s next ‘great observatory,’ poised for sunday launch",
     "nasa, spacex set to launch the nancy grace roman space telescope from florida on sunday",
-    "nasa deep space network’s new goldstone antenna goes online"
+    "nasa deep space network’s new goldstone antenna goes online",
+    "why it matters that president trump just dialed into a nasa news conference"
   ],
   "images": [
-    "https://www.nasa.gov/wp-content/uploads/2026/06/niac-2026-ph1-stankus-1.png",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia26/pia26617/PIA26617.png",
     "https://apod.nasa.gov/apod/image/2607/corona_australis.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/ontario-wildfire-smoke-drifts-east/o",
@@ -601,7 +600,8 @@
     "https://apod.nasa.gov/apod/image/2608/m74_hst_1280.jpg",
     "http://spaceflightnow.com/wp-content/uploads/2022/07/20220719roman.jpg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/08/IMG_0596.jpeg",
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia26/pia26778/PIA26778.jpg"
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia26/pia26778/PIA26778.jpg",
+    "https://cdn.arstechnica.net/wp-content/uploads/2026/08/NHQ20260828_admin_0045large.jpg"
   ],
-  "updated": "2026-08-30T17:50:03.257437"
+  "updated": "2026-08-30T18:53:41.850640"
 }
