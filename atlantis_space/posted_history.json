@@ -1,6 +1,5 @@
 {
   "titles": [
-    "live coverage: spacex tries again to launch starlink mission from california following abort",
     "live coverage: spacex to launch novel geosynchronous robotic servicing satellite on decade-long mission",
     "psyche approaches mars",
     "mapping alien continents: achieving optical vlbi for exoplanet imaging",
@@ -299,10 +298,10 @@
     "nasa’s roman space telescope go for launch, five years of discovery",
     "m74: a grand design spiral",
     "roman space telescope, nasa’s next ‘great observatory,’ poised for sunday launch",
-    "nasa, spacex set to launch the nancy grace roman space telescope from florida on sunday"
+    "nasa, spacex set to launch the nancy grace roman space telescope from florida on sunday",
+    "nasa deep space network’s new goldstone antenna goes online"
   ],
   "images": [
-    "https://www.nasa.gov/wp-content/uploads/2026/07/pia26586.png",
     "https://www.nasa.gov/wp-content/uploads/2026/06/niac-2026-ph1-stankus-1.png",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia26/pia26617/PIA26617.png",
     "https://apod.nasa.gov/apod/image/2607/corona_australis.jpg",
@@ -601,7 +600,8 @@
     "https://i0.wp.com/www.spacescout.info/wp-content/uploads/2026/08/image-19.png",
     "https://apod.nasa.gov/apod/image/2608/m74_hst_1280.jpg",
     "http://spaceflightnow.com/wp-content/uploads/2022/07/20220719roman.jpg",
-    "https://www.nasaspaceflight.com/wp-content/uploads/2026/08/IMG_0596.jpeg"
+    "https://www.nasaspaceflight.com/wp-content/uploads/2026/08/IMG_0596.jpeg",
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia26/pia26778/PIA26778.jpg"
   ],
-  "updated": "2026-08-30T15:32:50.292100"
+  "updated": "2026-08-30T17:50:03.257437"
 }
