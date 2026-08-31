@@ -1,6 +1,5 @@
 {
   "titles": [
-    "mapping alien continents: achieving optical vlbi for exoplanet imaging",
     "nisar’s l-band radar reveals ‘hummingbird’ in antarctica",
     "the corona australis molecular cloud and the chandelier cluster",
     "a week of smoky skies across north america",
@@ -299,10 +298,10 @@
     "nasa, spacex set to launch the nancy grace roman space telescope from florida on sunday",
     "nasa deep space network’s new goldstone antenna goes online",
     "why it matters that president trump just dialed into a nasa news conference",
-    "roman lifts off on a mission to survey the infrared sky"
+    "roman lifts off on a mission to survey the infrared sky",
+    "sls picks up the pace, four vehicles in production"
   ],
   "images": [
-    "https://apod.nasa.gov/apod/image/2607/corona_australis.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/ontario-wildfire-smoke-drifts-east/o",
     "https://epic.gsfc.nasa.gov/archive/natural/2026/07/19/png/epic_1b_20260719010437.png",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/booster_19_duri_image_20260307203559.jpg",
@@ -601,7 +600,8 @@
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/08/IMG_0596.jpeg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia26/pia26778/PIA26778.jpg",
     "https://cdn.arstechnica.net/wp-content/uploads/2026/08/NHQ20260828_admin_0045large.jpg",
-    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/08/roman_lifts_off_on_a_mission_to_survey_the_infr"
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/08/roman_lifts_off_on_a_mission_to_survey_the_infr",
+    "https://www.nasaspaceflight.com/wp-content/uploads/2026/08/NSF-2026-08-31-01-01-10-310.jpg"
   ],
-  "updated": "2026-08-31T06:18:48.655582"
+  "updated": "2026-08-31T08:47:14.892123"
 }
