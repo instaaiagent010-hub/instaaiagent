@@ -1,6 +1,5 @@
 {
   "titles": [
-    "mapping io’s hidden heat with nasa’s juno",
     "a new look – and sound – for messier 94",
     "soyuz ms-29 crew arrives at iss, u.s. eva completes canadarm2 repairs",
     "the large magellanic cloud",
@@ -299,10 +298,10 @@
     "commercial space federation (csf) welcomes two new associate members",
     "speed to field starts below the prime",
     "launch of the roman space telescope",
-    "september 2026 satellite puzzler"
+    "september 2026 satellite puzzler",
+    "launch preview: array of international launches planned this week"
   ],
   "images": [
-    "https://www.nasa.gov/wp-content/uploads/2026/07/250th-ngc4736.jpg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/07/IMG_5280.jpeg",
     "https://apod.nasa.gov/apod/image/2607/LMC.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/olympic-mountain-glory/ISS047-E-1041",
@@ -601,7 +600,8 @@
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/05/Anniversary-Logo.jpg?fit=1024%2C883&ssl=1",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2024/08/Astronaut001-headerImage-1200x930-1.webp?fit=1024%2C519&ssl=1",
     "https://apod.nasa.gov/apod/image/2608/RomanLaunch_NASA.mp4",
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/satellite-puzzler/2026_septemberpuzzler.jpg"
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/satellite-puzzler/2026_septemberpuzzler.jpg",
+    "https://www.nasaspaceflight.com/wp-content/uploads/2025/05/julia-streak-3.jpg"
   ],
-  "updated": "2026-08-31T19:48:03.002568"
+  "updated": "2026-08-31T21:11:29.797290"
 }
