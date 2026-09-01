@@ -1,6 +1,5 @@
 {
   "titles": [
-    "a new look – and sound – for messier 94",
     "soyuz ms-29 crew arrives at iss, u.s. eva completes canadarm2 repairs",
     "the large magellanic cloud",
     "olympic mountain glory",
@@ -299,10 +298,10 @@
     "speed to field starts below the prime",
     "launch of the roman space telescope",
     "september 2026 satellite puzzler",
-    "launch preview: array of international launches planned this week"
+    "launch preview: array of international launches planned this week",
+    "a plane lunar eclipse"
   ],
   "images": [
-    "https://www.nasaspaceflight.com/wp-content/uploads/2026/07/IMG_5280.jpeg",
     "https://apod.nasa.gov/apod/image/2607/LMC.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/olympic-mountain-glory/ISS047-E-1041",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/soyuz2520ms-122520landing_image_20190929074125.jpg",
@@ -601,7 +600,8 @@
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2024/08/Astronaut001-headerImage-1200x930-1.webp?fit=1024%2C519&ssl=1",
     "https://apod.nasa.gov/apod/image/2608/RomanLaunch_NASA.mp4",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/satellite-puzzler/2026_septemberpuzzler.jpg",
-    "https://www.nasaspaceflight.com/wp-content/uploads/2025/05/julia-streak-3.jpg"
+    "https://www.nasaspaceflight.com/wp-content/uploads/2025/05/julia-streak-3.jpg",
+    "https://apod.nasa.gov/apod/image/2608/PlaneEclipse_Ferreira_1059.jpg"
   ],
-  "updated": "2026-08-31T21:11:29.797290"
+  "updated": "2026-09-01T05:49:18.967825"
 }
