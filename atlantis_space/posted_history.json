@@ -1,6 +1,5 @@
 {
   "titles": [
-    "the large magellanic cloud",
     "olympic mountain glory",
     "spacecraft landing: soyuz ms-28 landing",
     "nasa to showcase agency’s newest wind tunnel in virginia",
@@ -299,10 +298,10 @@
     "september 2026 satellite puzzler",
     "launch preview: array of international launches planned this week",
     "a plane lunar eclipse",
-    "ice island survives run"
+    "ice island survives run",
+    "nasa welcomes türkiye as newest artemis accords signatory"
   ],
   "images": [
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/olympic-mountain-glory/ISS047-E-1041",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/soyuz2520ms-122520landing_image_20190929074125.jpg",
     "https://www.nasa.gov/wp-content/uploads/2026/07/langleyfdrfjune2026.jpg",
     "https://europeanspaceflight.com/wp-content/uploads/2026/07/ONERA-Selects-AMOS-to-Build-French-Space-Surveillance-Telesco",
@@ -601,7 +600,8 @@
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/satellite-puzzler/2026_septemberpuzzler.jpg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2025/05/julia-streak-3.jpg",
     "https://apod.nasa.gov/apod/image/2608/PlaneEclipse_Ferreira_1059.jpg",
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/greenland-sheds-its-largest-berg-of-"
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/greenland-sheds-its-largest-berg-of-",
+    "https://www.nasa.gov/wp-content/uploads/2026/08/nhq202608310009large.jpg"
   ],
-  "updated": "2026-09-01T07:55:42.082711"
+  "updated": "2026-09-01T09:00:38.098935"
 }
