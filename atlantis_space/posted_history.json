@@ -1,6 +1,5 @@
 {
   "titles": [
-    "onera selects amos to build french space surveillance telescope",
     "china’s shijian-31 satellite is sweeping geo using a unique orbit",
     "upcoming launch: long march 3b/e | tianlian 2-06",
     "nasa astronaut chris williams closes out space station mission",
@@ -299,10 +298,10 @@
     "nasa welcomes türkiye as newest artemis accords signatory",
     "upcoming launch: pallas-1 | demo flight",
     "pld space adds €108 million to series c funding round",
-    "it turns out that orion's much-maligned heat shield performed really well"
+    "it turns out that orion's much-maligned heat shield performed really well",
+    "hubble's superbubble scene"
   ],
   "images": [
-    "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/07/Shijian31-CZ3B-XSLC-16june2026-CASC.jpg?fit=1024%2C599&ssl=1",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/long2520march_image_20230907120240.jpeg",
     "https://www.nasa.gov/wp-content/uploads/2026/05/jsc2025e063520-altorig.jpg",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/07/space-minds-podcast-varda-2000-1500.jpg?fit=1024%2C768&ssl=1",
@@ -601,7 +600,8 @@
     "https://www.nasa.gov/wp-content/uploads/2026/08/nhq202608310009large.jpg",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/pallas-1_y1_image_20260901030251.jpg",
     "https://europeanspaceflight.com/wp-content/uploads/2026/09/PLD-Space-Adds-E108-million-to-Series-C-Funding-Round-.webp",
-    "https://cdn.arstechnica.net/wp-content/uploads/2026/09/heat-shield-nasa.jpg"
+    "https://cdn.arstechnica.net/wp-content/uploads/2026/09/heat-shield-nasa.jpg",
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/hubble_s_superbubble_scene/27445597-2-eng-GB/Hu"
   ],
-  "updated": "2026-09-01T15:44:00.323220"
+  "updated": "2026-09-03T09:59:15.107681"
 }
