@@ -1,6 +1,5 @@
 {
   "titles": [
-    "upcoming launch: long march 3b/e | tianlian 2-06",
     "nasa astronaut chris williams closes out space station mission",
     "will bruey on rethinking the role of pharmaceuticals in low earth orbit",
     "curiosity blog, sols 4954–4960: celebrating our rover engineers past and present",
@@ -299,10 +298,10 @@
     "pld space adds €108 million to series c funding round",
     "it turns out that orion's much-maligned heat shield performed really well",
     "hubble's superbubble scene",
-    "upcoming launch: gslv mk ii | gisat-1a (eos-05)"
+    "upcoming launch: gslv mk ii | gisat-1a (eos-05)",
+    "nasa to cover progress 96 spacecraft launch, docking"
   ],
   "images": [
-    "https://www.nasa.gov/wp-content/uploads/2026/05/jsc2025e063520-altorig.jpg",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/07/space-minds-podcast-varda-2000-1500.jpg?fit=1024%2C768&ssl=1",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/msl/2026/curiosity-rover-updates/july/https___mars.",
     "https://apod.nasa.gov/apod/image/2607/RCW86Final2048.jpg",
@@ -601,7 +600,8 @@
     "https://europeanspaceflight.com/wp-content/uploads/2026/09/PLD-Space-Adds-E108-million-to-Series-C-Funding-Round-.webp",
     "https://cdn.arstechnica.net/wp-content/uploads/2026/09/heat-shield-nasa.jpg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/hubble_s_superbubble_scene/27445597-2-eng-GB/Hu",
-    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/gslv2520mk2520ii_image_20190825171642.jpg"
+    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/gslv2520mk2520ii_image_20190825171642.jpg",
+    "https://images-assets.nasa.gov/image/iss074e0395792/iss074e0395792~large.jpg"
   ],
-  "updated": "2026-09-03T15:20:52.831355"
+  "updated": "2026-09-03T17:22:21.348132"
 }
