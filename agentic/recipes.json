@@ -2428,5 +2428,15 @@
     "hour": 7,
     "posted_at": 1788506967,
     "scored": false
+  },
+  {
+    "media_id": "18333199633256858",
+    "topic": "Breaking News Live Updates: One terrorist killed in joint operation in Budgam",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 12,
+    "posted_at": 1788524232,
+    "scored": false
   }
 ]
