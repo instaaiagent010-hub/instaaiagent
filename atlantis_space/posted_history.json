@@ -1,6 +1,5 @@
 {
   "titles": [
-    "rcw 86: historical supernova remnant",
     "a million",
     "upcoming launch: kinetica 1 | 5 satellites",
     "earth from space: agricultural patchwork",
@@ -299,10 +298,10 @@
     "nasa to cover progress 96 spacecraft launch, docking",
     "nā ʻuhane māhoe huki pū i ke ola",
     "german space situation awareness startup project",
-    "isar aerospace calls off 4 september spectrum launch attempt"
+    "isar aerospace calls off 4 september spectrum launch attempt",
+    "lunar occultation of venus"
   ],
   "images": [
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/a-million-panel-project/solarutah_ol",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/zhongke-1a_image_20220912002218.png",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/07/earth_from_space_agricultural_patchwork/2738859",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2022/09/050304-A-4920C-019.jpg?fit=1024%2C672&ssl=1",
@@ -601,7 +600,8 @@
     "https://images-assets.nasa.gov/image/iss074e0395792/iss074e0395792~large.jpg",
     "https://apod.nasa.gov/apod/image/2609/noirlab2621a.jpg",
     "https://europeanspaceflight.com/wp-content/uploads/2026/09/German-Space-Situation-Awareness-Startup-Project-S-Emerges-fr",
-    "https://europeanspaceflight.com/wp-content/uploads/2026/09/Isar-Aerospace-Calls-Off-4-September-Spectrum-Launch-Attempt."
+    "https://europeanspaceflight.com/wp-content/uploads/2026/09/Isar-Aerospace-Calls-Off-4-September-Spectrum-Launch-Attempt.",
+    "https://images-assets.nasa.gov/image/NHQ202606170001/NHQ202606170001~large.jpg"
   ],
-  "updated": "2026-09-04T13:53:57.687222"
+  "updated": "2026-09-04T15:14:29.275991"
 }
