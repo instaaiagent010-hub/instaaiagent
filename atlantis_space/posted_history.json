@@ -1,6 +1,5 @@
 {
   "titles": [
-    "air force takes over troubled military gps receiver program",
     "lightning strikes long march 3b after liftoff, kinetica-1 launches 5 satellites",
     "hubble spies one",
     "latconnect 60 unveils proprietary ai capabilities following growing indo",
@@ -299,10 +298,10 @@
     "lunar occultation of venus",
     "nasa hosts virtual artemis webinar for blind, low",
     "blue origin nets nasa mars orbiter contract",
-    "chasing the moon's shadow"
+    "chasing the moon's shadow",
+    "blue origin expands test and launch sites across the cape"
   ],
   "images": [
-    "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/07/Tianlian2-06-CZ3B-XSLC-23july2026-CASC.jpg?fit=1024%2C599&ssl",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/galaxies/spiral/Hubble_NGC4654_potm2607a.jpg",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/07/latconnect-60.png?fit=277%2C277&ssl=1",
     "https://www.nasa.gov/wp-content/uploads/2026/07/capstone2.jpg",
@@ -601,7 +600,8 @@
     "https://images-assets.nasa.gov/image/NHQ202606170001/NHQ202606170001~large.jpg",
     "https://www.nasa.gov/wp-content/uploads/2026/09/blindlowvision.jpg",
     "https://i0.wp.com/www.spacescout.info/wp-content/uploads/2026/09/RingMTO.webp",
-    "https://apod.nasa.gov/apod/image/2609/2026Eclipse_WB57GoPro_Totality_H264_Abridged.jpg"
+    "https://apod.nasa.gov/apod/image/2609/2026Eclipse_WB57GoPro_Totality_H264_Abridged.jpg",
+    "https://www.nasaspaceflight.com/wp-content/uploads/2026/09/NSF-2026-09-04-20-18-03-569.jpg"
   ],
-  "updated": "2026-09-05T05:02:05.615995"
+  "updated": "2026-09-05T07:03:01.200876"
 }
