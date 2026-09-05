@@ -1,6 +1,5 @@
 {
   "titles": [
-    "latconnect 60 unveils proprietary ai capabilities following growing indo",
     "nasa announces new spacecraft technology demonstration mission at moon",
     "spacex conducts 13th starship test flight",
     "tranquility and serenity",
@@ -299,10 +298,10 @@
     "chasing the moon's shadow",
     "blue origin expands test and launch sites across the cape",
     "flyby: juice earth flyby",
-    "upcoming launch: long march 2d/yz-3 | unknown payload"
+    "upcoming launch: long march 2d/yz-3 | unknown payload",
+    "isar aerospace attempts launch of spectrum rocket after months of delays"
   ],
   "images": [
-    "https://www.nasa.gov/wp-content/uploads/2026/07/capstone2.jpg",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/07/starship-flt13-liftoff.jpeg?fit=1024%2C569&ssl=1",
     "https://apod.nasa.gov/apod/image/2607/TranquilitySerenity2048.jpg",
     "http://spaceflightnow.com/wp-content/uploads/2026/07/20260724_launch1.jpeg",
@@ -601,7 +600,8 @@
     "https://apod.nasa.gov/apod/image/2609/2026Eclipse_WB57GoPro_Totality_H264_Abridged.jpg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/09/NSF-2026-09-04-20-18-03-569.jpg",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/255bauto255d__image_20240307192047.jpeg",
-    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/long_march_2d2_image_20231123203521.jpeg"
+    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/long_march_2d2_image_20231123203521.jpeg",
+    "https://www.nasaspaceflight.com/wp-content/uploads/2026/01/IMG_6221-scaled.jpeg"
   ],
-  "updated": "2026-09-05T14:05:33.697250"
+  "updated": "2026-09-05T16:21:29.554869"
 }
