@@ -1,6 +1,5 @@
 {
   "titles": [
-    "earth from space: agricultural patchwork",
     "air force takes over troubled military gps receiver program",
     "lightning strikes long march 3b after liftoff, kinetica-1 launches 5 satellites",
     "hubble spies one",
@@ -299,10 +298,10 @@
     "isar aerospace calls off 4 september spectrum launch attempt",
     "lunar occultation of venus",
     "nasa hosts virtual artemis webinar for blind, low",
-    "blue origin nets nasa mars orbiter contract"
+    "blue origin nets nasa mars orbiter contract",
+    "chasing the moon's shadow"
   ],
   "images": [
-    "https://i0.wp.com/spacenews.com/wp-content/uploads/2022/09/050304-A-4920C-019.jpg?fit=1024%2C672&ssl=1",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/07/Tianlian2-06-CZ3B-XSLC-23july2026-CASC.jpg?fit=1024%2C599&ssl",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/galaxies/spiral/Hubble_NGC4654_potm2607a.jpg",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/07/latconnect-60.png?fit=277%2C277&ssl=1",
@@ -601,7 +600,8 @@
     "https://europeanspaceflight.com/wp-content/uploads/2026/09/Isar-Aerospace-Calls-Off-4-September-Spectrum-Launch-Attempt.",
     "https://images-assets.nasa.gov/image/NHQ202606170001/NHQ202606170001~large.jpg",
     "https://www.nasa.gov/wp-content/uploads/2026/09/blindlowvision.jpg",
-    "https://i0.wp.com/www.spacescout.info/wp-content/uploads/2026/09/RingMTO.webp"
+    "https://i0.wp.com/www.spacescout.info/wp-content/uploads/2026/09/RingMTO.webp",
+    "https://apod.nasa.gov/apod/image/2609/2026Eclipse_WB57GoPro_Totality_H264_Abridged.jpg"
   ],
-  "updated": "2026-09-04T18:39:29.493162"
+  "updated": "2026-09-05T05:02:05.615995"
 }
