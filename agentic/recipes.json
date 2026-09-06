@@ -2648,5 +2648,15 @@
     "hour": 11,
     "posted_at": 1788695173,
     "scored": false
+  },
+  {
+    "media_id": "18053213753597095",
+    "topic": "BREAKING: Several people feared trapped in Delhi building collapse",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 11,
+    "posted_at": 1788695259,
+    "scored": false
   }
 ]
