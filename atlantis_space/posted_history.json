@@ -1,6 +1,5 @@
 {
   "titles": [
-    "spacex conducts 13th starship test flight",
     "tranquility and serenity",
     "super heavy-starship rocket chalks up mostly successful test flight",
     "change of command: iss expedition 74-75 change of command ceremony",
@@ -299,10 +298,10 @@
     "flyby: juice earth flyby",
     "upcoming launch: long march 2d/yz-3 | unknown payload",
     "isar aerospace attempts launch of spectrum rocket after months of delays",
-    "pluto in enhanced color"
+    "pluto in enhanced color",
+    "isar aerospace achieves first launch to orbit from continental europe"
   ],
   "images": [
-    "https://apod.nasa.gov/apod/image/2607/TranquilitySerenity2048.jpg",
     "http://spaceflightnow.com/wp-content/uploads/2026/07/20260724_launch1.jpeg",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/iss_expedition__image_20260723114944.jpg",
     "https://spacepolicyonline.com/wp-content/uploads/2026/07/Madrid-300x60.jpg",
@@ -601,7 +600,8 @@
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/255bauto255d__image_20240307192047.jpeg",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/long_march_2d2_image_20231123203521.jpeg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/01/IMG_6221-scaled.jpeg",
-    "https://apod.nasa.gov/apod/image/2609/PlutoEnhancedHiRes_NewHorizons_5000.jpg"
+    "https://apod.nasa.gov/apod/image/2609/PlutoEnhancedHiRes_NewHorizons_5000.jpg",
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/spectrum_launches_to_orbit/27452129-2-eng-GB/Sp"
   ],
-  "updated": "2026-09-06T05:11:59.165170"
+  "updated": "2026-09-06T07:14:48.988537"
 }
