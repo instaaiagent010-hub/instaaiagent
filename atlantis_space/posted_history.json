@@ -1,6 +1,5 @@
 {
   "titles": [
-    "tranquility and serenity",
     "super heavy-starship rocket chalks up mostly successful test flight",
     "change of command: iss expedition 74-75 change of command ceremony",
     "fires near madrid force evacuation of nasa’s dsn facility",
@@ -299,10 +298,10 @@
     "upcoming launch: long march 2d/yz-3 | unknown payload",
     "isar aerospace attempts launch of spectrum rocket after months of delays",
     "pluto in enhanced color",
-    "isar aerospace achieves first launch to orbit from continental europe"
+    "isar aerospace achieves first launch to orbit from continental europe",
+    "cape neighbors stoke and relativity advance lc-14 and lc-16 toward first flights"
   ],
   "images": [
-    "http://spaceflightnow.com/wp-content/uploads/2026/07/20260724_launch1.jpeg",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/iss_expedition__image_20260723114944.jpg",
     "https://spacepolicyonline.com/wp-content/uploads/2026/07/Madrid-300x60.jpg",
     "http://spaceflightnow.com/wp-content/uploads/2026/07/20260724_Madrid_DSN.jpg",
@@ -601,7 +600,8 @@
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/long_march_2d2_image_20231123203521.jpeg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/01/IMG_6221-scaled.jpeg",
     "https://apod.nasa.gov/apod/image/2609/PlutoEnhancedHiRes_NewHorizons_5000.jpg",
-    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/spectrum_launches_to_orbit/27452129-2-eng-GB/Sp"
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/spectrum_launches_to_orbit/27452129-2-eng-GB/Sp",
+    "https://www.nasaspaceflight.com/wp-content/uploads/2026/09/NSF-2026-09-06-06-08-48-181.jpg"
   ],
-  "updated": "2026-09-06T14:30:10.874758"
+  "updated": "2026-09-06T16:31:49.745740"
 }
