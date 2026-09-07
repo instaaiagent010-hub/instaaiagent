@@ -1,6 +1,5 @@
 {
   "titles": [
-    "super heavy-starship rocket chalks up mostly successful test flight",
     "change of command: iss expedition 74-75 change of command ceremony",
     "fires near madrid force evacuation of nasa’s dsn facility",
     "critical nasa deep space ground station in spain evacuated due to wildfires",
@@ -299,10 +298,10 @@
     "isar aerospace attempts launch of spectrum rocket after months of delays",
     "pluto in enhanced color",
     "isar aerospace achieves first launch to orbit from continental europe",
-    "cape neighbors stoke and relativity advance lc-14 and lc-16 toward first flights"
+    "cape neighbors stoke and relativity advance lc-14 and lc-16 toward first flights",
+    "the pelican nebula in gas, dust, and stars"
   ],
   "images": [
-    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/iss_expedition__image_20260723114944.jpg",
     "https://spacepolicyonline.com/wp-content/uploads/2026/07/Madrid-300x60.jpg",
     "http://spaceflightnow.com/wp-content/uploads/2026/07/20260724_Madrid_DSN.jpg",
     "https://apod.nasa.gov/apod/image/2607/ClusterFormation_TNG50.mp4",
@@ -601,7 +600,8 @@
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/01/IMG_6221-scaled.jpeg",
     "https://apod.nasa.gov/apod/image/2609/PlutoEnhancedHiRes_NewHorizons_5000.jpg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/spectrum_launches_to_orbit/27452129-2-eng-GB/Sp",
-    "https://www.nasaspaceflight.com/wp-content/uploads/2026/09/NSF-2026-09-06-06-08-48-181.jpg"
+    "https://www.nasaspaceflight.com/wp-content/uploads/2026/09/NSF-2026-09-06-06-08-48-181.jpg",
+    "https://apod.nasa.gov/apod/image/2609/Pelican_Killion_4800.jpg"
   ],
-  "updated": "2026-09-06T17:51:14.104632"
+  "updated": "2026-09-07T05:21:02.627789"
 }
