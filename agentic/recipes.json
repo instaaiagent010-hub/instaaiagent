@@ -2698,5 +2698,15 @@
     "hour": 7,
     "posted_at": 1788766401,
     "scored": false
+  },
+  {
+    "media_id": "18481788793108768",
+    "topic": "Bigoted Policies",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 7,
+    "posted_at": 1788766486,
+    "scored": false
   }
 ]
