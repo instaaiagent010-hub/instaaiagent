@@ -1,6 +1,5 @@
 {
   "titles": [
-    "critical nasa deep space ground station in spain evacuated due to wildfires",
     "simulation tng50: a galaxy cluster forms",
     "successful flight for starship ift-13",
     "nasa and esa facilities avoid major damage from wildfires in spain",
@@ -299,10 +298,10 @@
     "cape neighbors stoke and relativity advance lc-14 and lc-16 toward first flights",
     "the pelican nebula in gas, dust, and stars",
     "a bright spot at mount michael",
-    "upcoming launch: soyuz 2.1b | progress ms-35 (96p)"
+    "upcoming launch: soyuz 2.1b | progress ms-35 (96p)",
+    "bepicolombo begins mercury arrival with mtm separation success"
   ],
   "images": [
-    "https://apod.nasa.gov/apod/image/2607/ClusterFormation_TNG50.mp4",
     "https://spacepolicyonline.com/wp-content/uploads/2026/07/Starship-IFT13-liftoff-July-24-26-300x170.jpg",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/07/dsn-madrid-fire.jpeg?fit=1024%2C576&ssl=1",
     "https://www.nasa.gov/wp-content/uploads/2026/07/ms28-landing.png",
@@ -601,7 +600,8 @@
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/09/NSF-2026-09-06-06-08-48-181.jpg",
     "https://apod.nasa.gov/apod/image/2609/Pelican_Killion_4800.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/a-bright-spot-at-mount-michael/mount",
-    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/soyuz_2.1b_image_20230802085331.jpg"
+    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/soyuz_2.1b_image_20230802085331.jpg",
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/mtm_separation_signal_confirmation/27452584-1-e"
   ],
-  "updated": "2026-09-07T10:34:52.302896"
+  "updated": "2026-09-07T13:08:20.573742"
 }
