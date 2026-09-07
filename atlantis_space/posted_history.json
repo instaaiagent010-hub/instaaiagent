@@ -1,6 +1,5 @@
 {
   "titles": [
-    "nasa and esa facilities avoid major damage from wildfires in spain",
     "nasa astronaut chris williams, crewmates return from space station",
     "soyuz ms-28 back home after 8 months on iss",
     "ngc 7635: the bubble nebula",
@@ -299,10 +298,10 @@
     "upcoming launch: soyuz 2.1b | progress ms-35 (96p)",
     "bepicolombo begins mercury arrival with mtm separation success",
     "europe's space future in focus at the international space summit",
-    "isar aerospace soars to orbit on historic second launch"
+    "isar aerospace soars to orbit on historic second launch",
+    "artemis iii sls stacking advances as orion results confirm trajectory fix"
   ],
   "images": [
-    "https://www.nasa.gov/wp-content/uploads/2026/07/ms28-landing.png",
     "https://spacepolicyonline.com/wp-content/uploads/2026/07/ms28-landed-300x169.png",
     "https://apod.nasa.gov/apod/image/2607/Bubble_Piechnik_1616.jpg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/07/io-juno-oct-2023-e1785107357626.png",
@@ -601,7 +600,8 @@
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/soyuz_2.1b_image_20230802085331.jpg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/mtm_separation_signal_confirmation/27452584-1-e",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/08/esa_astronaut_sophie_adenot_during_eva-975/2742",
-    "https://i0.wp.com/www.spacescout.info/wp-content/uploads/2026/09/Spectrum_mission_Onwards_and_upwards_liftoff-scaled.png"
+    "https://i0.wp.com/www.spacescout.info/wp-content/uploads/2026/09/Spectrum_mission_Onwards_and_upwards_liftoff-scaled.png",
+    "https://www.nasaspaceflight.com/wp-content/uploads/2026/09/NSF-2026-09-07-19-28-25-151.jpg"
   ],
-  "updated": "2026-09-07T18:29:41.895311"
+  "updated": "2026-09-07T19:30:54.641218"
 }
