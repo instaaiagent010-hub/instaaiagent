@@ -1,6 +1,5 @@
 {
   "titles": [
-    "juno reveals surprising subsurface tempertures at io, remarkably smooth surface",
     "what’s happening in space policy july 26-august 1, 2026",
     "press event: spacex crew-13 mission overview news conference",
     "esa ground station in spain cleared to return to service after wildfire threat",
@@ -299,10 +298,10 @@
     "artemis iii sls stacking advances as orion results confirm trajectory fix",
     "hubble: decagon around saturn's south pole",
     "apod: 2026 september 8 – hubble: decagon around saturn’s south pole",
-    "anak krakatau eruption by sentinel-3"
+    "anak krakatau eruption by sentinel-3",
+    "stoke space sets debut launch target, reveals plans for larger rocket"
   ],
   "images": [
-    "https://spacepolicyonline.com/wp-content/uploads/2026/07/ms28-williams-doll-better-300x169.png",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_on_slc_image_20240926072512.jpg",
     "https://europeanspaceflight.com/wp-content/uploads/2026/07/ESA-Ground-Station-in-Spain-Cleared-to-Return-to-Service-Afte",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/02/161021-D-ZZ999-998-e1771452020431.jpg?fit=1024%2C550&ssl=1",
@@ -601,7 +600,8 @@
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/09/NSF-2026-09-07-19-28-25-151.jpg",
     "https://apod.nasa.gov/apod/image/2609/SaturnDecagon_Hubble_960.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/september/SaturnDecagon_Hubble_960.jpg",
-    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/anak_krakatau_eruption_by_sentinel-3/27456765-1"
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/anak_krakatau_eruption_by_sentinel-3/27456765-1",
+    "https://cdn.arstechnica.net/wp-content/uploads/2026/09/Stage2.jpg"
   ],
-  "updated": "2026-09-08T11:51:50.813721"
+  "updated": "2026-09-08T13:00:23.208131"
 }
