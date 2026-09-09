@@ -1,6 +1,5 @@
 {
   "titles": [
-    "blue origin to test new glenn upper stages at stennis",
     "raging wildfires near madrid, spain",
     "nasa’s swift sees ‘wandering’ mega black hole shredding star",
     "launch preview: falcon 9 and chang zheng rockets set to launch this week",
@@ -299,10 +298,10 @@
     "superbubble in the large magellanic cloud",
     "nasa’s hubble, webb find far-out solar system objects ‘remember’ past",
     "witness xz andromedae wink",
-    "anak krakatau rumbles again"
+    "anak krakatau rumbles again",
+    "from the corps to the cosmos, featuring jaden caradine"
   ],
   "images": [
-    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/07/raging_wildfires_near_madrid_spain/27392687-1-e",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia22/pia22355/PIA22355.jpg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/01/Falcon-9-launch-and-landing-Credit-Julia-Bergeron-for-NSF-sca",
     "https://apod.nasa.gov/apod/image/2607/LoopVolcanos_Laserna_5815.jpg",
@@ -601,7 +600,8 @@
     "https://www.nasa.gov/wp-content/uploads/2026/09/hubble-n44-wfc3-large.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/2026/09/STScI-01KZC81GGE6DAJKS1C8KA",
     "https://apod.nasa.gov/apod/image/2609/xz_and.mp4",
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/anak-krakatau-rumbles-again/krakatau"
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/anak-krakatau-rumbles-again/krakatau",
+    "https://www.nasa.gov/wp-content/uploads/2026/02/caradine-jaden.jpg"
   ],
-  "updated": "2026-09-09T07:32:32.947283"
+  "updated": "2026-09-09T08:29:01.460446"
 }
