@@ -1,6 +1,5 @@
 {
   "titles": [
-    "raging wildfires near madrid, spain",
     "nasa’s swift sees ‘wandering’ mega black hole shredding star",
     "launch preview: falcon 9 and chang zheng rockets set to launch this week",
     "barnards loop over twin volcanoes",
@@ -299,10 +298,10 @@
     "nasa’s hubble, webb find far-out solar system objects ‘remember’ past",
     "witness xz andromedae wink",
     "anak krakatau rumbles again",
-    "from the corps to the cosmos, featuring jaden caradine"
+    "from the corps to the cosmos, featuring jaden caradine",
+    "nasa calls for proposals to accelerate lunar surface technologies"
   ],
   "images": [
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia22/pia22355/PIA22355.jpg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/01/Falcon-9-launch-and-landing-Credit-Julia-Bergeron-for-NSF-sca",
     "https://apod.nasa.gov/apod/image/2607/LoopVolcanos_Laserna_5815.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/smoke-blankets-oregon/oregonfires_am",
@@ -601,7 +600,8 @@
     "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/2026/09/STScI-01KZC81GGE6DAJKS1C8KA",
     "https://apod.nasa.gov/apod/image/2609/xz_and.mp4",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/anak-krakatau-rumbles-again/krakatau",
-    "https://www.nasa.gov/wp-content/uploads/2026/02/caradine-jaden.jpg"
+    "https://www.nasa.gov/wp-content/uploads/2026/02/caradine-jaden.jpg",
+    "https://www.nasa.gov/wp-content/uploads/2026/09/lunar-enabling-infrastructure-06292026-1.png"
   ],
-  "updated": "2026-09-09T08:29:01.460446"
+  "updated": "2026-09-09T09:58:32.004063"
 }
