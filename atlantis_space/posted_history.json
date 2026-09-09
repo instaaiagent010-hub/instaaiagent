@@ -1,6 +1,5 @@
 {
   "titles": [
-    "launch preview: falcon 9 and chang zheng rockets set to launch this week",
     "barnards loop over twin volcanoes",
     "smoke blankets oregon",
     "vertical liftoff as ariane 6 takes flight for the first time",
@@ -299,10 +298,10 @@
     "anak krakatau rumbles again",
     "from the corps to the cosmos, featuring jaden caradine",
     "nasa calls for proposals to accelerate lunar surface technologies",
-    "uk to leave launch to “germany and other allies”"
+    "uk to leave launch to “germany and other allies”",
+    "vega-c flight vv30 with flex and sentinel-3c"
   ],
   "images": [
-    "https://apod.nasa.gov/apod/image/2607/LoopVolcanos_Laserna_5815.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/smoke-blankets-oregon/oregonfires_am",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/07/vertical_liftoff_as_ariane_6_takes_flight_for_t",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2025/11/SES-Press-Release_SES-Completes-Acquisition-of-Intelsat_image",
@@ -601,7 +600,8 @@
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/anak-krakatau-rumbles-again/krakatau",
     "https://www.nasa.gov/wp-content/uploads/2026/02/caradine-jaden.jpg",
     "https://www.nasa.gov/wp-content/uploads/2026/09/lunar-enabling-infrastructure-06292026-1.png",
-    "https://europeanspaceflight.com/wp-content/uploads/2026/09/UK-to-Leave-Launch-to-Germany-and-Other-Allies.webp"
+    "https://europeanspaceflight.com/wp-content/uploads/2026/09/UK-to-Leave-Launch-to-Germany-and-Other-Allies.webp",
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/vega-c_flight_vv30_with_flex_and_sentinel-3c/27"
   ],
-  "updated": "2026-09-09T14:05:55.172052"
+  "updated": "2026-09-09T15:26:22.641050"
 }
