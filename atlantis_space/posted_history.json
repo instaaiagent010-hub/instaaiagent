@@ -1,6 +1,5 @@
 {
   "titles": [
-    "psyche receives gravity assist from mars",
     "sizing up the sargassum belt",
     "swift reboost mission encounters attitude control problems",
     "boeing still working with nasa to schedule next starliner flight",
@@ -299,10 +298,10 @@
     "apod: 2026 september 10 – ldn 1295: the giraffe nebula",
     "live coverage: spacex to launch classified payload for the u.s. space force",
     "flight 15 pairing undergo testing at massey’s",
-    "cubesat for safer seas and cleaner orbits ready to launch"
+    "cubesat for safer seas and cleaner orbits ready to launch",
+    "the exploration company books ariane 6 flight for nyx demo mission"
   ],
   "images": [
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/sizing-up-the-sargassum-belt/sargass",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/07/link-solarpanel.jpeg?fit=1024%2C670&ssl=1",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/07/NHQ202406030004large.jpg?fit=1024%2C705&ssl=1",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/07/earth_and_proba-3_s_coronagraph_play_hide_and_s",
@@ -601,7 +600,8 @@
     "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/september/LDN1295_giraffe.jpg",
     "http://spaceflightnow.com/wp-content/uploads/2026/01/20260116_NROL-105_F9_pad.jpeg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/09/NSF-2026-09-09-21-05-05-614.jpg",
-    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/cubesat_for_safer_seas_and_cleaner_orbits_ready"
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/cubesat_for_safer_seas_and_cleaner_orbits_ready",
+    "https://europeanspaceflight.com/wp-content/uploads/2026/09/The-Exploration-Company-Books-Ariane-6-Flight-for-Nyx-Demo-Mi"
   ],
-  "updated": "2026-09-10T11:58:46.441664"
+  "updated": "2026-09-10T13:03:57.301954"
 }
