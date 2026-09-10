@@ -1,6 +1,5 @@
 {
   "titles": [
-    "vertical liftoff as ariane 6 takes flight for the first time",
     "upper c-band auction offers another lift for geo industry",
     "sphinx defense wins $287 million contract for strategic satellite communications software",
     "nasa selects successor to capstone lunar mission",
@@ -299,10 +298,10 @@
     "uk to leave launch to “germany and other allies”",
     "vega-c flight vv30 with flex and sentinel-3c",
     "artemis ii crew at nasa marshall",
-    "nasa’s chandra unveils mysterious x"
+    "nasa’s chandra unveils mysterious x",
+    "ldn 1295: the giraffe nebula"
   ],
   "images": [
-    "https://i0.wp.com/spacenews.com/wp-content/uploads/2025/11/SES-Press-Release_SES-Completes-Acquisition-of-Intelsat_image",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/07/MG_063025_ESS-Promo-Image_16_9_070125_300dpi.jpg?fit=1024%2C5",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/07/capstone02.jpeg?fit=1024%2C453&ssl=1",
     "https://spacepolicyonline.com/wp-content/uploads/2025/07/Sean-Duffy-200x300.jpg",
@@ -601,7 +600,8 @@
     "https://europeanspaceflight.com/wp-content/uploads/2026/09/UK-to-Leave-Launch-to-Germany-and-Other-Allies.webp",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/vega-c_flight_vv30_with_flex_and_sentinel-3c/27",
     "https://www.nasa.gov/wp-content/uploads/2026/09/msfc-09012026-artemis-ii-crew-visit-at-msfc-1orig.jpg",
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/chandra/2026/m101.jpg"
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/chandra/2026/m101.jpg",
+    "https://apod.nasa.gov/apod/image/2609/LDN1295_giraffe.jpg"
   ],
-  "updated": "2026-09-09T18:57:54.768058"
+  "updated": "2026-09-10T05:26:52.664474"
 }
