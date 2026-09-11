@@ -1,6 +1,5 @@
 {
   "titles": [
-    "boeing still working with nasa to schedule next starliner flight",
     "earth and proba-3’s coronagraph play hide and seek",
     "chinese startup raises funds for space situational awareness constellation, joining commercial ssa rush",
     "h3 to launch next ispace lunar lander mission",
@@ -299,10 +298,10 @@
     "cubesat for safer seas and cleaner orbits ready to launch",
     "the exploration company books ariane 6 flight for nyx demo mission",
     "name our dino – esa’s hera asteroid mission mascot!",
-    "nasa, nfl team up to showcase space, aeronautics innovation"
+    "nasa, nfl team up to showcase space, aeronautics innovation",
+    "apod: 2026 september 11 – m83: the southern pinwheel"
   ],
   "images": [
-    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/07/earth_and_proba-3_s_coronagraph_play_hide_and_s",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2023/09/space-situational-awareness-ESA-scaled.jpg?fit=1024%2C533&ssl",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/07/h3-202512.jpeg?fit=1024%2C808&ssl=1",
     "https://www.nasa.gov/wp-content/uploads/2026/07/pia22076.jpg",
@@ -601,7 +600,8 @@
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/cubesat_for_safer_seas_and_cleaner_orbits_ready",
     "https://europeanspaceflight.com/wp-content/uploads/2026/09/The-Exploration-Company-Books-Ariane-6-Flight-for-Nyx-Demo-Mi",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/hera_s_dino_mascot/27457094-1-eng-GB/Hera_s_din",
-    "https://www.nasa.gov/wp-content/uploads/2017/01/iss046e027528_nr.jpg"
+    "https://www.nasa.gov/wp-content/uploads/2017/01/iss046e027528_nr.jpg",
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/september/M83_Final2_1x.jpg"
   ],
-  "updated": "2026-09-10T18:48:47.486102"
+  "updated": "2026-09-11T05:24:25.673979"
 }
