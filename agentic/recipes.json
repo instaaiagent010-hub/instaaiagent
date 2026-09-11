@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18203832526367990",
-    "topic": "Can't PM be trusted on appointing CEC, government asks Supreme Court",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "reel",
-    "hour": 10,
-    "posted_at": 1785492798,
-    "scored": false
-  },
-  {
     "media_id": "18102282934913390",
     "topic": "Why's CJI not on panel to pick CEC, Supreme Court asks government",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 12,
     "posted_at": 1789129491,
+    "scored": false
+  },
+  {
+    "media_id": "18073726004440059",
+    "topic": "SIR is destroying the ethos of Indian citizenship",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 12,
+    "posted_at": 1789129578,
     "scored": false
   }
 ]
