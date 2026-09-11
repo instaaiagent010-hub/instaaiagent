@@ -1,6 +1,5 @@
 {
   "titles": [
-    "latconnect 60 accelerates swirsat constellation growth anchored in western australia with expansion into malaysia and ua",
     "red sun through wildfire smoke",
     "apod: july 30",
     "new zealand’s southern wilderness",
@@ -299,10 +298,10 @@
     "nasa invites governors to compete to be home to the new u.s. space academy",
     "nasa invites media to djibouti artemis accords signing ceremony",
     "avio completes integration of fd1 rocket demonstrator",
-    "m83: the southern pinwheel"
+    "m83: the southern pinwheel",
+    "rocket report: europe joins the commercial launch club; a ravn x sighting?"
   ],
   "images": [
-    "https://apod.nasa.gov/apod/image/2607/red_sun.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/july/red_sun.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/new-zealand's-southern-wilderness/nz",
     "https://www.nasa.gov/wp-content/uploads/2026/07/dsc03157.jpg",
@@ -601,7 +600,8 @@
     "https://spacepolicyonline.com/wp-content/uploads/2026/08/Trump-Space-Academy-EO-Aug-28-26-300x169.jpg",
     "https://www.nasa.gov/wp-content/uploads/2022/02/nasa_meatball_large.jpg",
     "https://europeanspaceflight.com/wp-content/uploads/2026/09/Avio-Completes-Integration-of-FD1-Rocket-Demonstrator-hero.we",
-    "https://apod.nasa.gov/apod/image/2609/M83_Final2_1x.jpg"
+    "https://apod.nasa.gov/apod/image/2609/M83_Final2_1x.jpg",
+    "https://cdn.arstechnica.net/wp-content/uploads/2026/09/c-Isar-Aerospace-Flight-2_2026-09-05-224332_ylbv.jpg"
   ],
-  "updated": "2026-09-11T11:56:31.020634"
+  "updated": "2026-09-11T13:18:41.684636"
 }
