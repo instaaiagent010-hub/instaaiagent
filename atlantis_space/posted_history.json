@@ -1,6 +1,5 @@
 {
   "titles": [
-    "red sun through wildfire smoke",
     "apod: july 30",
     "new zealand’s southern wilderness",
     "nasa johnson interns shaping the future of exploration",
@@ -299,10 +298,10 @@
     "nasa invites media to djibouti artemis accords signing ceremony",
     "avio completes integration of fd1 rocket demonstrator",
     "m83: the southern pinwheel",
-    "rocket report: europe joins the commercial launch club; a ravn x sighting?"
+    "rocket report: europe joins the commercial launch club; a ravn x sighting?",
+    "latconnect 60 expands india market presence for swirsat with nsil agreement and geosyze partnership"
   ],
   "images": [
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/july/red_sun.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/new-zealand's-southern-wilderness/nz",
     "https://www.nasa.gov/wp-content/uploads/2026/07/dsc03157.jpg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/07/student_team_and_advisors_during_retroreflector",
@@ -601,7 +600,8 @@
     "https://www.nasa.gov/wp-content/uploads/2022/02/nasa_meatball_large.jpg",
     "https://europeanspaceflight.com/wp-content/uploads/2026/09/Avio-Completes-Integration-of-FD1-Rocket-Demonstrator-hero.we",
     "https://apod.nasa.gov/apod/image/2609/M83_Final2_1x.jpg",
-    "https://cdn.arstechnica.net/wp-content/uploads/2026/09/c-Isar-Aerospace-Flight-2_2026-09-05-224332_ylbv.jpg"
+    "https://cdn.arstechnica.net/wp-content/uploads/2026/09/c-Isar-Aerospace-Flight-2_2026-09-05-224332_ylbv.jpg",
+    "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/07/latconnect-60-logo-square-scaled.png?fit=1024%2C1024&ssl=1"
   ],
-  "updated": "2026-09-11T13:18:41.684636"
+  "updated": "2026-09-11T13:57:20.672160"
 }
