@@ -1,6 +1,5 @@
 {
   "titles": [
-    "arianegroup completes themis wet dress rehearsal",
     "starburst galaxy centaurus a",
     "nasa assigns astronaut deniz burnham to first space station mission",
     "students take on airborne field research with nasa",
@@ -299,10 +298,10 @@
     "nasa’s chandra spots galactic gem",
     "nasa moving at warp speed to set up us space academy",
     "apollo 11: catching some sun",
-    "first hyprspace baguette one launch slips to 2027"
+    "first hyprspace baguette one launch slips to 2027",
+    "upcoming launch: vega-c | sentinel-3c & flex"
   ],
   "images": [
-    "https://www.nasa.gov/wp-content/uploads/2026/07/stsci-01kvt4gqmq5mxv6xdpfpzmxg65-30d932.png",
     "https://www.nasa.gov/wp-content/uploads/2026/07/burnham.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/articles/2026/balloon%20inflating%206.jpeg",
     "https://apod.nasa.gov/apod/image/2607/DARK-DOODAD_2048.jpg",
@@ -601,7 +600,8 @@
     "https://www.nasa.gov/wp-content/uploads/2026/09/galaxies-iizw096.jpg",
     "https://cdn.arstechnica.net/wp-content/uploads/2026/08/GettyImages-2291885998-1789141845.jpg",
     "https://apod.nasa.gov/apod/image/2609/AS11-40-5872HR.jpg",
-    "https://europeanspaceflight.com/wp-content/uploads/2026/09/First-HyPrSpace-Baguette-One-Launch-Slips-to-2027.webp"
+    "https://europeanspaceflight.com/wp-content/uploads/2026/09/First-HyPrSpace-Baguette-One-Launch-Slips-to-2027.webp",
+    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/vega-c_image_20220713154437.jpg"
   ],
-  "updated": "2026-09-12T07:18:39.010282"
+  "updated": "2026-09-12T08:14:22.576642"
 }
