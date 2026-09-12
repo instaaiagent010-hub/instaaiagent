@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18108882044324044",
-    "topic": "Breaking News Live Updates: PM Modi Launches 'Nasha Mukta Yuva' Campaign, Calls For Youth",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "reel",
-    "hour": 9,
-    "posted_at": 1785663547,
-    "scored": false
-  },
-  {
     "media_id": "18076990382704643",
     "topic": "India ends CWG boxing campaign with record-breaking seven gold medals",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 17,
     "posted_at": 1789235526,
+    "scored": false
+  },
+  {
+    "media_id": "18121281755295201",
+    "topic": "Black sheep, broken system: Decoding Justice Gupta's warning",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 17,
+    "posted_at": 1789235610,
     "scored": false
   }
 ]
