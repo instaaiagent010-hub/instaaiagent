@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18081145004312354",
-    "topic": "Government Likely To Introduce Foreign Funding Amendment Bill Next Week",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "reel",
-    "hour": 14,
-    "posted_at": 1785593482,
-    "scored": false
-  },
-  {
     "media_id": "18106093729891725",
     "topic": "2026 State of the Nation",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 11,
     "posted_at": 1789213577,
+    "scored": false
+  },
+  {
+    "media_id": "18393035482160882",
+    "topic": "The Supreme Balance",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 11,
+    "posted_at": 1789213663,
     "scored": false
   }
 ]
