@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18106093729891725",
-    "topic": "2026 State of the Nation",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 16,
-    "posted_at": 1785601863,
-    "scored": false
-  },
-  {
     "media_id": "18019769384704362",
     "topic": "CAPF officers move Supreme Court against new Act over promotion rules",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 11,
     "posted_at": 1789213663,
+    "scored": false
+  },
+  {
+    "media_id": "18081678908325651",
+    "topic": "Section 9D and the limits of undoing MADA: Can Parliament fetter the States' Entry 49 power?",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 11,
+    "posted_at": 1789213768,
     "scored": false
   }
 ]
