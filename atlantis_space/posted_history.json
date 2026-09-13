@@ -1,6 +1,5 @@
 {
   "titles": [
-    "students take on airborne field research with nasa",
     "ngc 4372 and the dark doodad",
     "destructive fires char western europe",
     "rules of the road needed for orbital data center constellations",
@@ -299,10 +298,10 @@
     "first hyprspace baguette one launch slips to 2027",
     "upcoming launch: vega-c | sentinel-3c & flex",
     "comet neowise rising over the adriatic sea",
-    "europe’s commercial launch sector picking up the pace"
+    "europe’s commercial launch sector picking up the pace",
+    "sirius space fires complete star-1 rocket engine for the first time"
   ],
   "images": [
-    "https://apod.nasa.gov/apod/image/2607/DARK-DOODAD_2048.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/destructive-fires-char-western-europ",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/03/starcloud.jpeg?fit=1024%2C566&ssl=1",
     "https://spacepolicyonline.com/wp-content/uploads/2024/06/Starliner-CFT-docked-over-Egypt-225x300.jpg",
@@ -601,7 +600,8 @@
     "https://europeanspaceflight.com/wp-content/uploads/2026/09/First-HyPrSpace-Baguette-One-Launch-Slips-to-2027.webp",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/vega-c_image_20220713154437.jpg",
     "https://apod.nasa.gov/apod/image/2609/NoctilucentNeowise_Girotti.mp4",
-    "https://www.nasaspaceflight.com/wp-content/uploads/2026/09/NSF-2026-09-12-23-46-42-740.jpg"
+    "https://www.nasaspaceflight.com/wp-content/uploads/2026/09/NSF-2026-09-12-23-46-42-740.jpg",
+    "https://europeanspaceflight.com/wp-content/uploads/2026/09/Sirius-Space-Fires-Complete-STAR-1-Rocket-Engine-for-the-Firs"
   ],
-  "updated": "2026-09-13T10:27:46.983784"
+  "updated": "2026-09-13T12:25:32.141142"
 }
