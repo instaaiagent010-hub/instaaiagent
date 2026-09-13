@@ -1,6 +1,5 @@
 {
   "titles": [
-    "nasa assigns astronaut deniz burnham to first space station mission",
     "students take on airborne field research with nasa",
     "ngc 4372 and the dark doodad",
     "destructive fires char western europe",
@@ -299,10 +298,10 @@
     "apollo 11: catching some sun",
     "first hyprspace baguette one launch slips to 2027",
     "upcoming launch: vega-c | sentinel-3c & flex",
-    "comet neowise rising over the adriatic sea"
+    "comet neowise rising over the adriatic sea",
+    "europe’s commercial launch sector picking up the pace"
   ],
   "images": [
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/articles/2026/balloon%20inflating%206.jpeg",
     "https://apod.nasa.gov/apod/image/2607/DARK-DOODAD_2048.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/destructive-fires-char-western-europ",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/03/starcloud.jpeg?fit=1024%2C566&ssl=1",
@@ -601,7 +600,8 @@
     "https://apod.nasa.gov/apod/image/2609/AS11-40-5872HR.jpg",
     "https://europeanspaceflight.com/wp-content/uploads/2026/09/First-HyPrSpace-Baguette-One-Launch-Slips-to-2027.webp",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/vega-c_image_20220713154437.jpg",
-    "https://apod.nasa.gov/apod/image/2609/NoctilucentNeowise_Girotti.mp4"
+    "https://apod.nasa.gov/apod/image/2609/NoctilucentNeowise_Girotti.mp4",
+    "https://www.nasaspaceflight.com/wp-content/uploads/2026/09/NSF-2026-09-12-23-46-42-740.jpg"
   ],
-  "updated": "2026-09-13T05:30:07.927446"
+  "updated": "2026-09-13T07:36:04.495666"
 }
