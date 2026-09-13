@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18102953918335207",
-    "topic": "Breaking news: Congress-SP alliance mystery deepens as Akhilesh-Rahul UP poll tie-up faces doubts",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 5,
-    "posted_at": 1785736796,
-    "scored": false
-  },
-  {
     "media_id": "17991980648823502",
     "topic": "Small fixes or full reform is the question",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 7,
     "posted_at": 1789285332,
+    "scored": false
+  },
+  {
+    "media_id": "18094895759103897",
+    "topic": "Breaking: Chinese Premier Xi Jinping departs India after attending BRICS summit in New Delhi",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 12,
+    "posted_at": 1789303996,
     "scored": false
   }
 ]
