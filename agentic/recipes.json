@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18100269356062173",
-    "topic": "CWG 2026: India Win Record 16 Medals In A Day; Boxers Deliver 7 Golds",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 16,
-    "posted_at": 1785688254,
-    "scored": false
-  },
-  {
     "media_id": "18102953918335207",
     "topic": "Breaking news: Congress-SP alliance mystery deepens as Akhilesh-Rahul UP poll tie-up faces doubts",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 7,
     "posted_at": 1789285246,
+    "scored": false
+  },
+  {
+    "media_id": "18131635756677498",
+    "topic": "The People We Ask to Enter Hell",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 7,
+    "posted_at": 1789285332,
     "scored": false
   }
 ]
