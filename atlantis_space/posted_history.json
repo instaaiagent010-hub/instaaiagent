@@ -1,6 +1,5 @@
 {
   "titles": [
-    "this month at esa: july 2026",
     "blue origin continues rebuilding lc-36, prepares testing alternatives for new glenn second stage",
     "space force picks 15 companies for $981 million training range contract",
     "inside the effort to show congress what war in space looks like",
@@ -299,10 +298,10 @@
     "where your elements came from",
     "an early look at fall color in canada",
     "esa’s flex mission reveals the secret glow of plants",
-    "vega c set to launch the esa sentinel-3c and flex missions from kourou"
+    "vega c set to launch the esa sentinel-3c and flex missions from kourou",
+    "summer training: catching up with nasa’s astronaut candidates"
   ],
   "images": [
-    "https://www.nasaspaceflight.com/wp-content/uploads/2026/06/MG_7150-scaled.jpg",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/07/9823511-scaled.jpg?fit=1024%2C683&ssl=1",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/07/National-Spacepower-Center-Pilot-Demo-July-21-2026-46-1-scale",
     "https://apod.nasa.gov/apod/image/2608/FullMoon28-7-2026BrankoNadj.jpg",
@@ -601,7 +600,8 @@
     "https://apod.nasa.gov/apod/image/2609/ElementOrigins2_svs_6000.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/an-early-look-at-fall-color-in-canad",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/videos/2026/09/esa_s_flex_mission_reveals_the_secret_glow_of_p",
-    "https://www.nasaspaceflight.com/wp-content/uploads/2026/09/AB9BC3AB-D87F-4E6B-96AE-9902C9A9F085-scaled.jpeg"
+    "https://www.nasaspaceflight.com/wp-content/uploads/2026/09/AB9BC3AB-D87F-4E6B-96AE-9902C9A9F085-scaled.jpeg",
+    "https://www.nasa.gov/wp-content/uploads/2026/09/jsc2026e045076.jpg"
   ],
-  "updated": "2026-09-14T13:30:55.725028"
+  "updated": "2026-09-14T15:10:04.256267"
 }
