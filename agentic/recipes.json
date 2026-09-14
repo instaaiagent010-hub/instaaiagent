@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18146191111548306",
-    "topic": "Daily Current Affairs 03 August 2026: Latest GK MCQs, One",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 5,
-    "posted_at": 1785821602,
-    "scored": false
-  },
-  {
     "media_id": "18117558704480608",
     "topic": "Breaking news live: PM Modi should not come under pressure from US, says Arvind Kejriwal",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 8,
     "posted_at": 1789373347,
+    "scored": false
+  },
+  {
+    "media_id": "18093792497438026",
+    "topic": "Iran To Give Up Now? Prez Pezeshkian Declares Opposition Against War With US!",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 8,
+    "posted_at": 1789373432,
     "scored": false
   }
 ]
