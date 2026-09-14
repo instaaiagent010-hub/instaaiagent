@@ -1,6 +1,5 @@
 {
   "titles": [
-    "still no date for starliner’s next flight",
     "rocket report: big deals for us launch firms, rfa one debut is delayed",
     "this month at esa: july 2026",
     "blue origin continues rebuilding lc-36, prepares testing alternatives for new glenn second stage",
@@ -299,10 +298,10 @@
     "sirius space fires complete star-1 rocket engine for the first time",
     "live coverage: spacex to launch final 3 o3b mpower satellites for ses",
     "where your elements came from",
-    "an early look at fall color in canada"
+    "an early look at fall color in canada",
+    "esa’s flex mission reveals the secret glow of plants"
   ],
   "images": [
-    "https://cdn.arstechnica.net/wp-content/uploads/2026/07/stoke-zenith.jpg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/videos/2026/07/this_month_at_esa_july_2026/27395315-1-eng-GB/T",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/06/MG_7150-scaled.jpg",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/07/9823511-scaled.jpg?fit=1024%2C683&ssl=1",
@@ -601,7 +600,8 @@
     "https://europeanspaceflight.com/wp-content/uploads/2026/09/Sirius-Space-Fires-Complete-STAR-1-Rocket-Engine-for-the-Firs",
     "http://spaceflightnow.com/wp-content/uploads/2026/09/20260913_O3b_mPOWER-F_delivery.jpeg",
     "https://apod.nasa.gov/apod/image/2609/ElementOrigins2_svs_6000.jpg",
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/an-early-look-at-fall-color-in-canad"
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/an-early-look-at-fall-color-in-canad",
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/videos/2026/09/esa_s_flex_mission_reveals_the_secret_glow_of_p"
   ],
-  "updated": "2026-09-14T08:02:43.212899"
+  "updated": "2026-09-14T09:22:36.807086"
 }
