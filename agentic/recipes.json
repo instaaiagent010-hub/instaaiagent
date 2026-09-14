@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "17917624047421612",
-    "topic": "The Gen Z is watching the Supreme Court",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "reel",
-    "hour": 17,
-    "posted_at": 1785778139,
-    "scored": false
-  },
-  {
     "media_id": "18146191111548306",
     "topic": "Daily Current Affairs 03 August 2026: Latest GK MCQs, One",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 8,
     "posted_at": 1789373257,
+    "scored": false
+  },
+  {
+    "media_id": "18110620271326757",
+    "topic": "Delhi News LIVE: Delhi MCD Survey Flags 4 Dangerous Buildings, 51 Needing Major Repairs Across City",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 8,
+    "posted_at": 1789373347,
     "scored": false
   }
 ]
