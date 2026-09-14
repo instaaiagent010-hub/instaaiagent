@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18117558704480608",
-    "topic": "Breaking news live: PM Modi should not come under pressure from US, says Arvind Kejriwal",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "reel",
-    "hour": 10,
-    "posted_at": 1785838661,
-    "scored": false
-  },
-  {
     "media_id": "17925024804162950",
     "topic": "'It was a rebirth for all of us': Passengers recall chaos after Air India flight hits turbulence",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 8,
     "posted_at": 1789373432,
+    "scored": false
+  },
+  {
+    "media_id": "18060595958546333",
+    "topic": "Letter to the Editor: Another wasted town hall from Eli Crane",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 8,
+    "posted_at": 1789373516,
     "scored": false
   }
 ]
