@@ -1,6 +1,5 @@
 {
   "titles": [
-    "boeing’s starliner set for potential 2026 cargo run to iss",
     "space force awards k2 space $22.9 million for orbital laser communications demonstration",
     "u.s. air force expands blue origin rocket cargo contract",
     "vaporizing meteor photobombs the lacerta nebula",
@@ -299,10 +298,10 @@
     "press event: crew-12 pre-departure on-orbit news conference",
     "flex and sentinel-3c launch highlights",
     "this is by far the most peaceful atlantic hurricane season we've ever seen",
-    "artemis iii crew visits nasa kennedy’s vehicle assembly building"
+    "artemis iii crew visits nasa kennedy’s vehicle assembly building",
+    "spacex sets launch date for first starship orbital flight"
   ],
   "images": [
-    "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/05/gallery-gallery_ng2-8615.jpg?fit=1024%2C683&ssl=1",
     "https://apod.nasa.gov/apod/image/2608/MeteorGecko_Burnett_4944.jpg",
     "https://epic.gsfc.nasa.gov/archive/natural/2026/08/01/png/epic_1b_20260801004554.png",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/08/spainsat-ng3.jpeg?fit=1024%2C745&ssl=1",
@@ -601,7 +600,8 @@
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/crew-12_spacex__image_20260126082450.png",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/videos/2026/09/flex_and_sentinel-3c_launch_highlights/27518045",
     "https://cdn.arstechnica.net/wp-content/uploads/2026/09/ccd69f88-1d4c-4310-b001-22083aa5625e.jpeg",
-    "https://www.nasa.gov/wp-content/uploads/2026/09/ksc-20260902-ph-kls01-0023orig-rotated.jpg"
+    "https://www.nasa.gov/wp-content/uploads/2026/09/ksc-20260902-ph-kls01-0023orig-rotated.jpg",
+    "https://cdn.arstechnica.net/wp-content/uploads/2026/05/HIu9mKcWAAAmrHQ.jpg"
   ],
-  "updated": "2026-09-15T17:54:05.575121"
+  "updated": "2026-09-15T19:24:42.430066"
 }
