@@ -1,6 +1,5 @@
 {
   "titles": [
-    "starbase pad 1 retrofits progress as block 3 flights start",
     "nasa to host florida event celebrating american air, space leadership",
     "asteroid (2018 pv7) aaj earth ke paas se guzrega — 36-81m",
     "a fire rainbow over west virginia",
@@ -299,10 +298,10 @@
     "sept. 21: what comes next for on-orbit servicing?",
     "a daytime eclipse: moon occults venus",
     "iceye’s global presence expands to address sovereign demand",
-    "avio launches second successful vega c flight of 2026"
+    "avio launches second successful vega c flight of 2026",
+    "press event: crew-12 pre-departure on-orbit news conference"
   ],
   "images": [
-    "https://www.nasa.gov/wp-content/uploads/2026/07/1america250.jpg",
     "https://apod.nasa.gov/apod/image/2608/FireRainbow_Harbig_4000.jpg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/08/NSF-2026-08-01-22-12-28-760.jpg",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2023/09/Screenshot-2023-09-19-at-8.07.27-AM.png?fit=1024%2C635&ssl=1",
@@ -601,7 +600,8 @@
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/09/on-orbit-servicing-virtual-event-spacenews-2000-1500-scaled.j",
     "https://apod.nasa.gov/apod/image/2609/MoonVenus_Mariat_1410.jpg",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/09/rsz_iceye_korea.jpg?fit=879%2C494&ssl=1",
-    "https://europeanspaceflight.com/wp-content/uploads/2026/09/Avio-Launches-Second-Successful-Vega-C-Flight-of-2026-.webp"
+    "https://europeanspaceflight.com/wp-content/uploads/2026/09/Avio-Launches-Second-Successful-Vega-C-Flight-of-2026-.webp",
+    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/crew-12_spacex__image_20260126082450.png"
   ],
-  "updated": "2026-09-15T09:06:26.117235"
+  "updated": "2026-09-15T10:17:08.669820"
 }
