@@ -1,6 +1,5 @@
 {
   "titles": [
-    "space force awards k2 space $22.9 million for orbital laser communications demonstration",
     "u.s. air force expands blue origin rocket cargo contract",
     "vaporizing meteor photobombs the lacerta nebula",
     "airbus and thales win order for spainsat replacement",
@@ -299,10 +298,10 @@
     "flex and sentinel-3c launch highlights",
     "this is by far the most peaceful atlantic hurricane season we've ever seen",
     "artemis iii crew visits nasa kennedy’s vehicle assembly building",
-    "spacex sets launch date for first starship orbital flight"
+    "spacex sets launch date for first starship orbital flight",
+    "webb's view of m64"
   ],
   "images": [
-    "https://apod.nasa.gov/apod/image/2608/MeteorGecko_Burnett_4944.jpg",
     "https://epic.gsfc.nasa.gov/archive/natural/2026/08/01/png/epic_1b_20260801004554.png",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/08/spainsat-ng3.jpeg?fit=1024%2C745&ssl=1",
     "https://www.nasa.gov/wp-content/uploads/2026/07/dsc-4954-copy.jpg",
@@ -601,7 +600,8 @@
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/videos/2026/09/flex_and_sentinel-3c_launch_highlights/27518045",
     "https://cdn.arstechnica.net/wp-content/uploads/2026/09/ccd69f88-1d4c-4310-b001-22083aa5625e.jpeg",
     "https://www.nasa.gov/wp-content/uploads/2026/09/ksc-20260902-ph-kls01-0023orig-rotated.jpg",
-    "https://cdn.arstechnica.net/wp-content/uploads/2026/05/HIu9mKcWAAAmrHQ.jpg"
+    "https://cdn.arstechnica.net/wp-content/uploads/2026/05/HIu9mKcWAAAmrHQ.jpg",
+    "https://apod.nasa.gov/apod/image/2609/M64_Webb.jpg"
   ],
-  "updated": "2026-09-15T19:24:42.430066"
+  "updated": "2026-09-16T05:27:11.228471"
 }
