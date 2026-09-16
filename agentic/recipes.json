@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18092282621333321",
-    "topic": "Supreme Court urges restraint during protests amidst rising tensions",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "reel",
-    "hour": 10,
-    "posted_at": 1785925040,
-    "scored": false
-  },
-  {
     "media_id": "17901908352514496",
     "topic": "\"Show Restraint, Pacify Youngsters\": Top Court To Cops Days After CJP Protest",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 7,
     "posted_at": 1789545572,
+    "scored": false
+  },
+  {
+    "media_id": "18105801805946995",
+    "topic": "Protecting patients from fake medicines",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 8,
+    "posted_at": 1789545660,
     "scored": false
   }
 ]
