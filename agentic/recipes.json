@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18209441977347412",
-    "topic": "RBI keeps repo rate unchanged at 5.25%",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "reel",
-    "hour": 10,
-    "posted_at": 1785924906,
-    "scored": false
-  },
-  {
     "media_id": "18092282621333321",
     "topic": "Supreme Court urges restraint during protests amidst rising tensions",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 12,
     "posted_at": 1789476938,
+    "scored": false
+  },
+  {
+    "media_id": "18116427103950813",
+    "topic": "Breaking: Trump eyes 100% tariff on India over Russian oil trade after BRICS summit",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 7,
+    "posted_at": 1789545572,
     "scored": false
   }
 ]
