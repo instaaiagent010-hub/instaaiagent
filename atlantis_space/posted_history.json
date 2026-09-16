@@ -1,6 +1,5 @@
 {
   "titles": [
-    "guinea",
     "curious cometary knots in the helix nebula",
     "kreios space to fly vleo demonstration in nanoavionics bus",
     "louisiana students loft payloads from nasa balloon facility in texas",
@@ -299,10 +298,10 @@
     "upcoming launch: gravity-1 | spacesail polar group #16",
     "asteroid (2007 qe3) aaj earth ke paas se guzrega — 267-597m",
     "avio ceo reports influx of customers turned away by spacex",
-    "nasa visits schools strengthening florida’s skilled workforce"
+    "nasa visits schools strengthening florida’s skilled workforce",
+    "nasa’s moon orbiter spots new, ‘once-in-century’ moon crater"
   ],
   "images": [
-    "https://apod.nasa.gov/apod/image/2608/HelixKnots_JWST_2000.jpg",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/08/rsz_kreios-sede.jpg?fit=879%2C495&ssl=1",
     "https://www.nasa.gov/wp-content/uploads/2026/08/balloons-la-students-summer-2026.jpg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/08/pokemon_x_esa_collaboration/27401892-1-eng-GB/P",
@@ -601,7 +600,8 @@
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/gravity-1_image_20240108105446.jpeg",
     "https://www.nasa.gov/wp-content/uploads/2023/03/bennu-osiris-rex-1041.jpg",
     "https://europeanspaceflight.com/wp-content/uploads/2026/09/Avio-CEO-Reports-Influx-of-Customers-Turned-Away-by-SpaceX.we",
-    "https://www.nasa.gov/wp-content/uploads/2026/09/ho-software-lyman.jpg"
+    "https://www.nasa.gov/wp-content/uploads/2026/09/ho-software-lyman.jpg",
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/lro/McGetchin_Discovery_Reenactment.png"
   ],
-  "updated": "2026-09-16T17:51:42.705847"
+  "updated": "2026-09-16T19:14:20.104257"
 }
