@@ -1,6 +1,5 @@
 {
   "titles": [
-    "ike theriot helps prepare astronauts to work on the moon",
     "nasa delivers navigation system for commercial lunar relay",
     "hughes files for bankruptcy after geo business loses ground to starlink",
     "guinea",
@@ -299,10 +298,10 @@
     "webb's view of m64",
     "progress ms-35 poised to launch cargo to iss from kazakhstan",
     "nasa ames stars of the month: september 2026",
-    "upcoming launch: gravity-1 | spacesail polar group #16"
+    "upcoming launch: gravity-1 | spacesail polar group #16",
+    "asteroid (2007 qe3) aaj earth ke paas se guzrega — 267-597m"
   ],
   "images": [
-    "https://www.nasa.gov/wp-content/uploads/2026/06/art002e024603orig.jpg",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2024/01/J-3-satellite--scaled.jpg?fit=1024%2C763&ssl=1",
     "https://www.nasa.gov/wp-content/uploads/2026/08/bijagosarchipelago-oli-20251128-lrg.jpg",
     "https://apod.nasa.gov/apod/image/2608/HelixKnots_JWST_2000.jpg",
@@ -601,7 +600,8 @@
     "https://apod.nasa.gov/apod/image/2609/M64_Webb.jpg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/04/IMG_9490.png",
     "https://www.nasa.gov/wp-content/uploads/2026/09/nasa-arc-s-stars-of-the-mont-sep-2026.jpg",
-    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/gravity-1_image_20240108105446.jpeg"
+    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/gravity-1_image_20240108105446.jpeg",
+    "https://www.nasa.gov/wp-content/uploads/2023/03/bennu-osiris-rex-1041.jpg"
   ],
-  "updated": "2026-09-16T10:10:00.034932"
+  "updated": "2026-09-16T12:18:09.579741"
 }
