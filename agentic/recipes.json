@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "17860265964674979",
-    "topic": "Indian equities end marginally higher following RBI monetary policy announcement",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "reel",
-    "hour": 5,
-    "posted_at": 1785994568,
-    "scored": false
-  },
-  {
     "media_id": "18617743075025167",
     "topic": "RBI keeps repo rate at 5.25%, raises India's growth projection",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 19,
     "posted_at": 1789672598,
+    "scored": false
+  },
+  {
+    "media_id": "17891227929439963",
+    "topic": "A republic’s travesty of justice",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 19,
+    "posted_at": 1789672686,
     "scored": false
   }
 ]
