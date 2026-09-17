@@ -1,6 +1,5 @@
 {
   "titles": [
-    "kreios space to fly vleo demonstration in nanoavionics bus",
     "louisiana students loft payloads from nasa balloon facility in texas",
     "esa and pokémon team up to celebrate world space week",
     "esa astronaut completes third test of eurosuit prototype aboard iss",
@@ -299,10 +298,10 @@
     "avio ceo reports influx of customers turned away by spacex",
     "nasa visits schools strengthening florida’s skilled workforce",
     "nasa’s moon orbiter spots new, ‘once-in-century’ moon crater",
-    "a treasure chest in the carina nebula"
+    "a treasure chest in the carina nebula",
+    "three space companies win esa awards for excellence and innovation"
   ],
   "images": [
-    "https://www.nasa.gov/wp-content/uploads/2026/08/balloons-la-students-summer-2026.jpg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/08/pokemon_x_esa_collaboration/27401892-1-eng-GB/P",
     "https://europeanspaceflight.com/wp-content/uploads/2026/08/ESA-Astronaut-Completes-Third-Test-of-EuroSuit-Prototype-Aboa",
     "https://spacenews.com/wp-content/uploads/2026/08/msl-accelerating-production-space-asset-additive-manufacturing-article-",
@@ -601,7 +600,8 @@
     "https://europeanspaceflight.com/wp-content/uploads/2026/09/Avio-CEO-Reports-Influx-of-Customers-Turned-Away-by-SpaceX.we",
     "https://www.nasa.gov/wp-content/uploads/2026/09/ho-software-lyman.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/lro/McGetchin_Discovery_Reenactment.png",
-    "https://apod.nasa.gov/apod/image/2609/JWST_Treasure_Chest.jpg"
+    "https://apod.nasa.gov/apod/image/2609/JWST_Treasure_Chest.jpg",
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/company_awards_at_industry_space_days_2026/2752"
   ],
-  "updated": "2026-09-17T05:36:10.023371"
+  "updated": "2026-09-17T07:52:03.848576"
 }
