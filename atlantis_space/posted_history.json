@@ -1,6 +1,5 @@
 {
   "titles": [
-    "live coverage: spacex to launch 24 starlink satellites on falcon 9 rocket from vandenberg sfb",
     "roman space telescope plaque install",
     "upcoming launch: smart dragon 3 | ose hs-01 & 02",
     "spokes on saturn's b ring",
@@ -299,10 +298,10 @@
     "mtg-i2 timelapse : from arrival at europe’s spaceport to launch",
     "icarus robotics tests joy in canada ahead of iss flight",
     "nasa unveils enterprise, the first space shuttle",
-    "nasa to order more starliner missions and help certify a new rocket to keep it flying"
+    "nasa to order more starliner missions and help certify a new rocket to keep it flying",
+    "nasa invites media to spacex’s 35th resupply launch to space station"
   ],
   "images": [
-    "https://www.nasa.gov/wp-content/uploads/2026/08/ksc-20260728-ph-jmt01-0003orig.jpg",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/smart_dragon_3__image_20240925074606.jpg",
     "https://apod.nasa.gov/apod/image/2608/saturn_spokes.gif",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/us2520eva-52_image_20190318200748.jpeg",
@@ -601,7 +600,8 @@
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/videos/2026/09/mtg-i2_timelapse_from_arrival_at_europe_s_space",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/09/rsz_1screenshot_2026-09-16_at_33640-pm.png?fit=879%2C688&ssl=",
     "https://www.nasa.gov/wp-content/uploads/2026/09/9467279838-faa6134db8-o.jpg",
-    "https://cdn.arstechnica.net/wp-content/uploads/2026/09/starliner-rise-from-your-grave.jpg"
+    "https://cdn.arstechnica.net/wp-content/uploads/2026/09/starliner-rise-from-your-grave.jpg",
+    "https://www.nasa.gov/wp-content/uploads/2026/09/spacex35.jpg"
   ],
-  "updated": "2026-09-17T17:51:42.023342"
+  "updated": "2026-09-17T19:26:31.192854"
 }
