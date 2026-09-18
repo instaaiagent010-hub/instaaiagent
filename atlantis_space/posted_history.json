@@ -1,6 +1,5 @@
 {
   "titles": [
-    "upcoming launch: smart dragon 3 | ose hs-01 & 02",
     "spokes on saturn's b ring",
     "eva: us eva-96",
     "spacex to begin starship orbital flights",
@@ -299,10 +298,10 @@
     "nasa unveils enterprise, the first space shuttle",
     "nasa to order more starliner missions and help certify a new rocket to keep it flying",
     "nasa invites media to spacex’s 35th resupply launch to space station",
-    "messier 33: the triangulum galaxy"
+    "messier 33: the triangulum galaxy",
+    "starship’s upcoming missions: waiting on orbit, building toward the cape"
   ],
   "images": [
-    "https://apod.nasa.gov/apod/image/2608/saturn_spokes.gif",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/us2520eva-52_image_20190318200748.jpeg",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/08/starship-flt13-liftoff2.jpeg?fit=1024%2C576&ssl=1",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/03/solar_eclipse_artist_impression/27150246-1-eng-",
@@ -601,7 +600,8 @@
     "https://www.nasa.gov/wp-content/uploads/2026/09/9467279838-faa6134db8-o.jpg",
     "https://cdn.arstechnica.net/wp-content/uploads/2026/09/starliner-rise-from-your-grave.jpg",
     "https://www.nasa.gov/wp-content/uploads/2026/09/spacex35.jpg",
-    "https://apod.nasa.gov/apod/image/2609/m33m14_rasa3NM.jpg"
+    "https://apod.nasa.gov/apod/image/2609/m33m14_rasa3NM.jpg",
+    "https://www.nasaspaceflight.com/wp-content/uploads/2026/09/NSF-2026-09-18-00-37-57-984.jpg"
   ],
-  "updated": "2026-09-18T05:22:31.134769"
+  "updated": "2026-09-18T07:34:41.080112"
 }
