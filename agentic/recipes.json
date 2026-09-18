@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18617743075025167",
-    "topic": "RBI keeps repo rate at 5.25%, raises India's growth projection",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "reel",
-    "hour": 5,
-    "posted_at": 1785994655,
-    "scored": false
-  },
-  {
     "media_id": "18131510053726452",
     "topic": "He earned $22,400 from Facebook content, bought a home without a loan — his biggest lesson for students wasn't about mon",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 19,
     "posted_at": 1789672686,
+    "scored": false
+  },
+  {
+    "media_id": "18126553693881663",
+    "topic": "Russia votes in wartime parliamentary election set to secure the Kremlin's power",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 7,
+    "posted_at": 1789717153,
     "scored": false
   }
 ]
