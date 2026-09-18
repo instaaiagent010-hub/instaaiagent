@@ -1,6 +1,5 @@
 {
   "titles": [
-    "eva: us eva-96",
     "spacex to begin starship orbital flights",
     "total solar eclipse: how to watch live from home",
     "think tank warns europe’s orbital compute gap is widening",
@@ -299,10 +298,10 @@
     "nasa invites media to spacex’s 35th resupply launch to space station",
     "messier 33: the triangulum galaxy",
     "starship’s upcoming missions: waiting on orbit, building toward the cape",
-    "a galaxy spinning out of sync"
+    "a galaxy spinning out of sync",
+    "earth from space: laguna colorada"
   ],
   "images": [
-    "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/08/starship-flt13-liftoff2.jpeg?fit=1024%2C576&ssl=1",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/03/solar_eclipse_artist_impression/27150246-1-eng-",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/06/Orbital.jpg?fit=1024%2C625&ssl=1",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/05/rsz_1neuraspace_def.jpg?fit=879%2C581&ssl=1",
@@ -601,7 +600,8 @@
     "https://www.nasa.gov/wp-content/uploads/2026/09/spacex35.jpg",
     "https://apod.nasa.gov/apod/image/2609/m33m14_rasa3NM.jpg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/09/NSF-2026-09-18-00-37-57-984.jpg",
-    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/a_galaxy_spinning_out_of_sync/27523332-1-eng-GB"
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/a_galaxy_spinning_out_of_sync/27523332-1-eng-GB",
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/earth_from_space_laguna_colorada/27528365-1-eng"
   ],
-  "updated": "2026-09-18T08:37:26.959468"
+  "updated": "2026-09-18T09:59:12.447990"
 }
