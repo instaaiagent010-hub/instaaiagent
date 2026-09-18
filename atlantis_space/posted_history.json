@@ -1,6 +1,5 @@
 {
   "titles": [
-    "europe’s forests losing more biomass since 2018",
     "nasa’s perseverance rover watches earth vanish behind martian moon",
     "upcoming launch: electron | the grain goddess provides (iqps launch 7)",
     "new sharpest image of the sun uncovers instability",
@@ -299,10 +298,10 @@
     "rocket report: ula flies into uncertain future; falcon 9 family hits 700 launches",
     "nasa’s hubble spots an out-of",
     "terran orbital promotes margherita cardi to vice president of european operations & head of strategic programs",
-    "nasa awards spacex three crew flights to space station"
+    "nasa awards spacex three crew flights to space station",
+    "nasa-jaxa xrism mission sees pulsar gathering companion’s ‘wind’"
   ],
   "images": [
-    "https://www.nasa.gov/wp-content/uploads/2026/08/1-pia26758-figure-a-inset-16x9-1.jpg",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/electron_image_20190705175640.jpeg",
     "https://apod.nasa.gov/apod/image/2608/SunFlowers_NSO_1901.jpg",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2021/08/BlueOrigin_BE4_EngineLineup.jpg?fit=1000%2C562&ssl=1",
@@ -601,7 +600,8 @@
     "https://cdn.arstechnica.net/wp-content/uploads/2026/09/Vega-C_takes_FLEX_and_Sentinel-3C_into_orbit_pillars.jpg",
     "https://science.nasa.gov/wp-content/uploads/2026/09/potm2609a.jpg",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/09/TOLM-Logo-Vertical_Color-square.png?fit=1024%2C1024&ssl=1",
-    "https://www.nasa.gov/wp-content/uploads/2026/01/54387592956-0d0c5c9258-o.jpg"
+    "https://www.nasa.gov/wp-content/uploads/2026/01/54387592956-0d0c5c9258-o.jpg",
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/xrism/News/2026/wind-accreting-pulsar/GX_301-2_spec"
   ],
-  "updated": "2026-09-18T17:23:28.811185"
+  "updated": "2026-09-18T18:47:34.108443"
 }
