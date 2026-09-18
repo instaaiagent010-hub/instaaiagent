@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18144479026530173",
-    "topic": "India's boxing stars shift focus to Asian Games after record-breaking Commonwealth campaign",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 14,
-    "posted_at": 1786028186,
-    "scored": false
-  },
-  {
     "media_id": "18124065001827874",
     "topic": "NEET paper leak case: Three subject experts sneaked questions out of NTA office, says CBI",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 12,
     "posted_at": 1789734482,
+    "scored": false
+  },
+  {
+    "media_id": "18120436805515268",
+    "topic": "Dr Reddy’s bags exclusive distribution rights of Takeda’s dengue vaccine QDENGA in India",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 12,
+    "posted_at": 1789734565,
     "scored": false
   }
 ]
