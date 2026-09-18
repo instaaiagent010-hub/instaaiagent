@@ -1,9 +1,9 @@
 {
-  "updated": 1789674483,
-  "posts_scored": 296,
+  "updated": 1789722388,
+  "posts_scored": 299,
   "hook_avg": {},
   "hour_avg": {
-    "5": 4.5,
+    "5": 5.0,
     "10": 4.0,
     "14": 4.0,
     "4": 4.0,
@@ -21,30 +21,30 @@
     "21": 4.0,
     "12": 4.348,
     "11": 4.0,
-    "17": 4.167,
+    "17": 4.125,
     "20": 4.0
   },
   "voice_avg": {},
   "topic_avg": {
+    "sarfaesi": 6.0,
     "depositor": 6.0,
     "protection": 6.0,
-    "sarfaesi": 6.0,
     "nsel": 6.0,
     "janmashtami": 6.0,
-    "different": 6.0,
-    "celebrated": 6.0,
     "krishna's": 6.0,
+    "celebrated": 6.0,
+    "different": 6.0,
     "birthday": 6.0,
     "facebook": 5.0,
-    "lesson": 5.0,
-    "without": 5.0,
-    "content,": 5.0,
-    "$22,400": 5.0,
-    "loan": 5.0,
     "earned": 5.0,
+    "loan": 5.0,
+    "without": 5.0,
     "students": 5.0,
+    "$22,400": 5.0,
+    "lesson": 5.0,
     "home": 5.0,
+    "content,": 5.0,
     "ruling": 5.0,
-    "'history": 5.0
+    "writes": 5.0
   }
 }
