@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18111102196790042",
-    "topic": "Breaking: Flood fury hits J&K, Delhi, MP and Assam as cloudburst, rains trigger widespread chaos",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 13,
-    "posted_at": 1786110781,
-    "scored": false
-  },
-  {
     "media_id": "18139484017496754",
     "topic": "Public hearing scheduled for Aqua Indiana's proposed sewer rate hikes",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "reel",
     "hour": 16,
     "posted_at": 1789750113,
+    "scored": false
+  },
+  {
+    "media_id": "18600600298067700",
+    "topic": "After EC freezes TMC name, 'Jora Phool', Mamata Banerjee takes fight to Supreme Court",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 7,
+    "posted_at": 1789803279,
     "scored": false
   }
 ]
