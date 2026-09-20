@@ -1,6 +1,5 @@
 {
   "titles": [
-    "nasa and roscosmos continue seat barter agreement",
     "webb opens a treasure chest filled with stars",
     "exomars stretches out its legs",
     "rocket lab launches 8th iqps satellite",
@@ -299,10 +298,10 @@
     "a zodiacal night",
     "esa x tpci",
     "upcoming launch: electron | owl by the dozen (strix launch 12)",
-    "pikachu in the cupola"
+    "pikachu in the cupola",
+    "analemma over the callanish stones"
   ],
   "images": [
-    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/08/webb_opens_a_treasure_chest_filled_with_stars/2",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/videos/2026/08/exomars_stretches_out_its_legs/27406507-1-eng-G",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/08/55446149624_ed5e7d02a7_k.jpg?fit=1024%2C768&ssl=1",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/08/a_match_made_in_cleanrooms/27406754-1-eng-GB/A_",
@@ -601,7 +600,8 @@
     "https://apod.nasa.gov/apod/image/2609/2026-09-09ZodiacalLightHSP.jpg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/esa_x_tpci_-_pikachu_in_the_cupola/27530034-1-e",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/electron_image_20190705175640.jpeg",
-    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/pikachu_in_the_cupola/27530034-1-eng-GB/Pikachu"
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/pikachu_in_the_cupola/27530034-1-eng-GB/Pikachu",
+    "https://apod.nasa.gov/apod/image/2609/CallanishAnalemma_Petricca_1280.jpg"
   ],
-  "updated": "2026-09-19T18:19:48.797678"
+  "updated": "2026-09-20T05:34:06.478655"
 }
