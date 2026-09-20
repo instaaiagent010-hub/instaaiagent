@@ -1,6 +1,5 @@
 {
   "titles": [
-    "rocket lab launches 8th iqps satellite",
     "a match made in cleanrooms",
     "blue origin identifies engine issue behind new glenn explosion",
     "blue origin narrowing in on root cause of catastrophic rocket accident",
@@ -299,10 +298,10 @@
     "pikachu in the cupola",
     "analemma over the callanish stones",
     "russian progress cargo ship arrives at international space station",
-    "upcoming launch: kinetica 1 | 9 satellites"
+    "upcoming launch: kinetica 1 | 9 satellites",
+    "docking: spacex crew-13 crew dragon docking"
   ],
   "images": [
-    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/08/a_match_made_in_cleanrooms/27406754-1-eng-GB/A_",
     "http://spaceflightnow.com/wp-content/uploads/2026/05/20260529_NG-4_static_fire_explosion.jpg",
     "https://cdn.arstechnica.net/wp-content/uploads/2026/06/ng4explosion.jpg",
     "https://apod.nasa.gov/apod/image/2608/noirlab2618b.jpg",
@@ -601,7 +600,8 @@
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/pikachu_in_the_cupola/27530034-1-eng-GB/Pikachu",
     "https://apod.nasa.gov/apod/image/2609/CallanishAnalemma_Petricca_1280.jpg",
     "http://spaceflightnow.com/wp-content/uploads/2026/09/20260919-Progress-Final-Approach.jpg",
-    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/zhongke-1a_image_20220912002218.png"
+    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/zhongke-1a_image_20220912002218.png",
+    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/spacex_dm-2_cre_image_20200504065311.jpeg"
   ],
-  "updated": "2026-09-20T09:58:14.230902"
+  "updated": "2026-09-20T11:58:04.222638"
 }
