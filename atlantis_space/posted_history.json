@@ -1,6 +1,5 @@
 {
   "titles": [
-    "exomars stretches out its legs",
     "rocket lab launches 8th iqps satellite",
     "a match made in cleanrooms",
     "blue origin identifies engine issue behind new glenn explosion",
@@ -299,10 +298,10 @@
     "upcoming launch: electron | owl by the dozen (strix launch 12)",
     "pikachu in the cupola",
     "analemma over the callanish stones",
-    "russian progress cargo ship arrives at international space station"
+    "russian progress cargo ship arrives at international space station",
+    "upcoming launch: kinetica 1 | 9 satellites"
   ],
   "images": [
-    "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/08/55446149624_ed5e7d02a7_k.jpg?fit=1024%2C768&ssl=1",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/08/a_match_made_in_cleanrooms/27406754-1-eng-GB/A_",
     "http://spaceflightnow.com/wp-content/uploads/2026/05/20260529_NG-4_static_fire_explosion.jpg",
     "https://cdn.arstechnica.net/wp-content/uploads/2026/06/ng4explosion.jpg",
@@ -601,7 +600,8 @@
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/electron_image_20190705175640.jpeg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/pikachu_in_the_cupola/27530034-1-eng-GB/Pikachu",
     "https://apod.nasa.gov/apod/image/2609/CallanishAnalemma_Petricca_1280.jpg",
-    "http://spaceflightnow.com/wp-content/uploads/2026/09/20260919-Progress-Final-Approach.jpg"
+    "http://spaceflightnow.com/wp-content/uploads/2026/09/20260919-Progress-Final-Approach.jpg",
+    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/zhongke-1a_image_20220912002218.png"
   ],
-  "updated": "2026-09-20T07:53:40.704687"
+  "updated": "2026-09-20T08:58:18.700344"
 }
