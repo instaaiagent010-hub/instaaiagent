@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18096815207368378",
-    "topic": "India counters China: 27 Arunachal places formally identified on official Survey of India maps",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 8,
-    "posted_at": 1786176664,
-    "scored": false
-  },
-  {
     "media_id": "17948393658038676",
     "topic": "'Don't underestimate us': CPI MLA warns Congress as cracks widen in INDIA bloc",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "reel",
     "hour": 12,
     "posted_at": 1789908014,
+    "scored": false
+  },
+  {
+    "media_id": "18369336871209041",
+    "topic": "Democracy Beyond Elections: The Real Test Begins After the Ballot",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 12,
+    "posted_at": 1789908118,
     "scored": false
   }
 ]
