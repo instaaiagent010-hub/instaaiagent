@@ -1,6 +1,5 @@
 {
   "titles": [
-    "blue origin narrowing in on root cause of catastrophic rocket accident",
     "rubin's cosmos field",
     "redwire to fly dedicated starfall mission for microgravity research",
     "how should europe’s militaries respond to space threats",
@@ -299,10 +298,10 @@
     "upcoming launch: kinetica 1 | 9 satellites",
     "docking: spacex crew-13 crew dragon docking",
     "cocoon nebula wide field",
-    "lro discovers large new lunar crater, finds interesting thermal emission phenomenon"
+    "lro discovers large new lunar crater, finds interesting thermal emission phenomenon",
+    "esa and isro extend and broaden cooperation agreement"
   ],
   "images": [
-    "https://apod.nasa.gov/apod/image/2608/noirlab2618b.jpg",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/06/starfall-reentry-scaled.jpeg?fit=1024%2C576&ssl=1",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/08/space-minds-podcast-sse-astroscale-2000-1500.jpg?fit=1024%2C7",
     "https://europeanspaceflight.com/wp-content/uploads/2026/08/ASI-Board-Resigns-to-Allow-for-the-Appointment-of-an-Extraord",
@@ -601,7 +600,8 @@
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/zhongke-1a_image_20220912002218.png",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/spacex_dm-2_cre_image_20200504065311.jpeg",
     "https://apod.nasa.gov/apod/image/2609/Cocoon_Czerski_3000.jpg",
-    "https://www.nasaspaceflight.com/wp-content/uploads/2026/09/McGetchinLRONAC-1-e1789935709592.jpeg"
+    "https://www.nasaspaceflight.com/wp-content/uploads/2026/09/McGetchinLRONAC-1-e1789935709592.jpeg",
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/esa-isro/27532710-2-eng-GB/ESA-ISRO_card_full.j"
   ],
-  "updated": "2026-09-21T09:26:21.530091"
+  "updated": "2026-09-21T10:56:15.766302"
 }
