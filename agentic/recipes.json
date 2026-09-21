@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "17943588822258086",
-    "topic": "Uddhav questions PM Modi’s assurance to rebel Sena MPs, says it pressures SC",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "reel",
-    "hour": 13,
-    "posted_at": 1786282406,
-    "scored": false
-  },
-  {
     "media_id": "18134502922622989",
     "topic": "Jairam Ramesh welcomes Tribunal Reforms Bill, 2026, cites SC ruling",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 8,
     "posted_at": 1789978425,
+    "scored": false
+  },
+  {
+    "media_id": "17971937115158144",
+    "topic": "Delhi High Court to Get Seven New Judges, Working Strength to Rise to 50",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 20,
+    "posted_at": 1790021542,
     "scored": false
   }
 ]
