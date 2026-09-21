@@ -1,6 +1,5 @@
 {
   "titles": [
-    "a match made in cleanrooms",
     "blue origin identifies engine issue behind new glenn explosion",
     "blue origin narrowing in on root cause of catastrophic rocket accident",
     "rubin's cosmos field",
@@ -299,10 +298,10 @@
     "analemma over the callanish stones",
     "russian progress cargo ship arrives at international space station",
     "upcoming launch: kinetica 1 | 9 satellites",
-    "docking: spacex crew-13 crew dragon docking"
+    "docking: spacex crew-13 crew dragon docking",
+    "cocoon nebula wide field"
   ],
   "images": [
-    "http://spaceflightnow.com/wp-content/uploads/2026/05/20260529_NG-4_static_fire_explosion.jpg",
     "https://cdn.arstechnica.net/wp-content/uploads/2026/06/ng4explosion.jpg",
     "https://apod.nasa.gov/apod/image/2608/noirlab2618b.jpg",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/06/starfall-reentry-scaled.jpeg?fit=1024%2C576&ssl=1",
@@ -601,7 +600,8 @@
     "https://apod.nasa.gov/apod/image/2609/CallanishAnalemma_Petricca_1280.jpg",
     "http://spaceflightnow.com/wp-content/uploads/2026/09/20260919-Progress-Final-Approach.jpg",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/zhongke-1a_image_20220912002218.png",
-    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/spacex_dm-2_cre_image_20200504065311.jpeg"
+    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/spacex_dm-2_cre_image_20200504065311.jpeg",
+    "https://apod.nasa.gov/apod/image/2609/Cocoon_Czerski_3000.jpg"
   ],
-  "updated": "2026-09-20T18:27:24.367009"
+  "updated": "2026-09-21T05:39:51.475781"
 }
