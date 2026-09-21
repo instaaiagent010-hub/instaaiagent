@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18104388086223924",
-    "topic": "Modi's meet with rebel MPs a signal to Supreme Court, alleges Uddhav",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "reel",
-    "hour": 15,
-    "posted_at": 1786291093,
-    "scored": false
-  },
-  {
     "media_id": "17959644624186908",
     "topic": "National Green Tribunal must make public report of panel that reviewed approvals for Nicobar project: Jairam Ramesh",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 20,
     "posted_at": 1790021628,
+    "scored": false
+  },
+  {
+    "media_id": "17911805925281763",
+    "topic": "Global rate hike cycle begins as oil shock raises risk of 75-100 bps RBI tightening: Report",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 20,
+    "posted_at": 1790021737,
     "scored": false
   }
 ]
