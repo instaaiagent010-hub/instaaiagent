@@ -1,6 +1,5 @@
 {
   "titles": [
-    "nasa’s ixpe studies magnetar",
     "relativity space engine integration milestone for terran",
     "a messier moment for tempel 2",
     "2026 igarss hyperwall schedule",
@@ -299,10 +298,10 @@
     "perseverance’s view of ‘turquoise bay’",
     "chance triple alignment: plane, space station, sun",
     "nasa kicks off nationwide effort to prepare tomorrow’s space workforce",
-    "launch preview: electron, falcon 9, and starship set for launches"
+    "launch preview: electron, falcon 9, and starship set for launches",
+    "saxavord scrapped launch rail plans, forcing hyimpulse to bring its own"
   ],
   "images": [
-    "https://www.nasaspaceflight.com/wp-content/uploads/2026/08/NSF-2026-08-07-21-46-19-317.jpg",
     "https://apod.nasa.gov/apod/image/2608/10P_Tempel2_Globular_M30_20260729_DEBartlett.jpg",
     "https://blogs.nasa.gov/spacestation/wp-content/uploads/sites/240/2023/01/nasa-logo-web-rgb.png",
     "https://europeanspaceflight.com/wp-content/uploads/2026/08/IRIS2-Service-Gets-Green-Light-With-More-Money-and-More-Satel",
@@ -601,7 +600,8 @@
     "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia26/pia26815/PIA26815.jpg",
     "https://apod.nasa.gov/apod/image/2609/PlaneIssSpots_Horalek_1500.jpg",
     "https://www.nasa.gov/wp-content/uploads/2026/09/state-hubs-kickoff2-jpg.jpeg",
-    "https://www.nasaspaceflight.com/wp-content/uploads/2023/11/Nov.-8-2023-Falcon-9-Starlink-6-27-Streak-Shot.jpg"
+    "https://www.nasaspaceflight.com/wp-content/uploads/2023/11/Nov.-8-2023-Falcon-9-Starlink-6-27-Streak-Shot.jpg",
+    "https://europeanspaceflight.com/wp-content/uploads/2026/09/SaxaVord-Scrapped-Launch-Rail-Plans-Forcing-HyImpulse-to-Brin"
   ],
-  "updated": "2026-09-22T12:19:45.493795"
+  "updated": "2026-09-22T13:36:12.323103"
 }
