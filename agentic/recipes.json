@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "17959644624186908",
-    "topic": "National Green Tribunal must make public report of panel that reviewed approvals for Nicobar project: Jairam Ramesh",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 4,
-    "posted_at": 1786335346,
-    "scored": false
-  },
-  {
     "media_id": "18152562289496824",
     "topic": "Congress urges NGT to release Great Nicobar panel report before reforms",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "reel",
     "hour": 20,
     "posted_at": 1790021737,
+    "scored": false
+  },
+  {
+    "media_id": "18132782146735426",
+    "topic": "Teachers say Indiana's 'bell-to-bell' phone ban makes enforcement easier",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 7,
+    "posted_at": 1790063973,
     "scored": false
   }
 ]
