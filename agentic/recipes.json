@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "17902089006334613",
-    "topic": "Jake Whisenant dies at 30: Record-breaking Yosemite El Capitan speed climber killed in California accident",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 16,
-    "posted_at": 1786378673,
-    "scored": false
-  },
-  {
     "media_id": "18079731770375557",
     "topic": "WATCH: Gautam Gambhir's Reaction As Siraj Blasts Three Sixes To Seal India's Victory",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 17,
     "posted_at": 1790097376,
+    "scored": false
+  },
+  {
+    "media_id": "18103679207360548",
+    "topic": "Trump backs India-Middle East Corridor to counter Iran's grip on oil routes",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 8,
+    "posted_at": 1790150538,
     "scored": false
   }
 ]
