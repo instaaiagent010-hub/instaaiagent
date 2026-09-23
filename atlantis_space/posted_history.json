@@ -1,6 +1,5 @@
 {
   "titles": [
-    "the first self-driving vehicle on mars has proven to be a smashing success",
     "live coverage: spacex west coast launch surge continues with starlink mission",
     "blue origin working engine resolutions and dual pad future",
     "northrop grumman, canadian space agency repurpose their gateway projects",
@@ -299,10 +298,10 @@
     "a call to boost european space exploration",
     "nasa-funded research finds complex life defying record heat",
     "a new lunar crater: mcgetchin",
-    "a hitchhiker’s guide to hera’s target asteroids"
+    "a hitchhiker’s guide to hera’s target asteroids",
+    "rocket factory augsburg ‘boost!’ extension in run-up to first launch"
   ],
   "images": [
-    "http://spaceflightnow.com/wp-content/uploads/2026/06/20260618_Falcon-9_NROL-179.jpeg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/08/NSF-2026-08-08-22-08-15-961.jpg",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/08/northrop-lid.jpeg?fit=1024%2C576&ssl=1",
     "https://epic.gsfc.nasa.gov/archive/natural/2026/08/06/png/epic_1b_20260806000830.png",
@@ -601,7 +600,8 @@
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/05/extended_reality_at_esa/27263586-1-eng-GB/Exten",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/astrobiology/research-images/SampleCollection.jpg",
     "https://apod.nasa.gov/apod/image/2609/mcgetchin_after.jpg",
-    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/an_imaginary_astronaut_s_view_of_the_didymos_an"
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/an_imaginary_astronaut_s_view_of_the_didymos_an",
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2023/11/rfa_one_rocket/25184937-1-eng-GB/RFA_One_rocket"
   ],
-  "updated": "2026-09-23T08:58:36.555382"
+  "updated": "2026-09-23T10:14:14.241923"
 }
