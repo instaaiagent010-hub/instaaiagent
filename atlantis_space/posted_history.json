@@ -1,6 +1,5 @@
 {
   "titles": [
-    "iris2 gets green light with more money and more satellites",
     "the first self-driving vehicle on mars has proven to be a smashing success",
     "live coverage: spacex west coast launch surge continues with starlink mission",
     "blue origin working engine resolutions and dual pad future",
@@ -299,10 +298,10 @@
     "saxavord scrapped launch rail plans, forcing hyimpulse to bring its own",
     "a call to boost european space exploration",
     "nasa-funded research finds complex life defying record heat",
-    "a new lunar crater: mcgetchin"
+    "a new lunar crater: mcgetchin",
+    "a hitchhiker’s guide to hera’s target asteroids"
   ],
   "images": [
-    "https://cdn.arstechnica.net/wp-content/uploads/2026/08/PIA26379-Sol-1295-Navcam-NLF_1295_0781909732_909RZS_N0603852NCAM0",
     "http://spaceflightnow.com/wp-content/uploads/2026/06/20260618_Falcon-9_NROL-179.jpeg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/08/NSF-2026-08-08-22-08-15-961.jpg",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/08/northrop-lid.jpeg?fit=1024%2C576&ssl=1",
@@ -601,7 +600,8 @@
     "https://europeanspaceflight.com/wp-content/uploads/2026/09/SaxaVord-Scrapped-Launch-Rail-Plans-Forcing-HyImpulse-to-Brin",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/05/extended_reality_at_esa/27263586-1-eng-GB/Exten",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/astrobiology/research-images/SampleCollection.jpg",
-    "https://apod.nasa.gov/apod/image/2609/mcgetchin_after.jpg"
+    "https://apod.nasa.gov/apod/image/2609/mcgetchin_after.jpg",
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/an_imaginary_astronaut_s_view_of_the_didymos_an"
   ],
-  "updated": "2026-09-23T05:21:57.814767"
+  "updated": "2026-09-23T08:58:36.555382"
 }
