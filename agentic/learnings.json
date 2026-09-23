@@ -1,9 +1,9 @@
 {
-  "updated": 1790106590,
+  "updated": 1790155512,
   "posts_scored": 299,
   "hook_avg": {},
   "hour_avg": {
-    "16": 4.128,
+    "16": 4.132,
     "4": 4.0,
     "8": 4.038,
     "14": 4.0,
@@ -19,30 +19,30 @@
     "21": 4.0,
     "12": 4.412,
     "11": 4.0,
-    "17": 4.125,
+    "17": 4.111,
     "20": 4.0
   },
   "voice_avg": {},
   "topic_avg": {
-    "nsel": 6.0,
-    "sarfaesi": 6.0,
     "depositor": 6.0,
     "ruling": 6.0,
+    "sarfaesi": 6.0,
+    "nsel": 6.0,
     "protection": 6.0,
-    "birthday": 6.0,
     "krishna's": 6.0,
+    "birthday": 6.0,
     "different": 6.0,
-    "janmashtami": 6.0,
     "celebrated": 6.0,
+    "janmashtami": 6.0,
+    "chit": 5.0,
     "'history": 5.0,
     "writes": 5.0,
-    "chit": 5.0,
     "kindly':": 5.0,
     "clean": 5.0,
-    "blast": 5.0,
     "bengal's": 5.0,
-    "firecracker": 5.0,
     "kolkata": 5.0,
-    "parganas": 5.0
+    "injured": 5.0,
+    "blast": 5.0,
+    "south": 5.0
   }
 }
