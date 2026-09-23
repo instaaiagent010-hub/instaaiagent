@@ -1,6 +1,5 @@
 {
   "titles": [
-    "contemplating the sun",
     "artemis progress building lunar return roadmap",
     "three galaxy pairs",
     "how esa mimics and models the 2026 total solar eclipse",
@@ -299,10 +298,10 @@
     "first switch on for esa",
     "there are now 17,000 satellites in orbit—and growing. should we be concerned?",
     "space explorers in the land of volcanoes",
-    "ethereal space awarded noaa sbem task order 1"
+    "ethereal space awarded noaa sbem task order 1",
+    "arctic sea ice reaches 2026 annual minimum extent"
   ],
   "images": [
-    "https://epic.gsfc.nasa.gov/archive/natural/2026/08/07/png/epic_1b_20260807002712.png",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/08/NSF-2026-08-09-15-21-11-686.jpg",
     "https://apod.nasa.gov/apod/image/2608/Three3GalaxyPairs_Sampaio_2784.jpg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/08/proba-3_mimics_the_2026_total_solar_eclipse/274",
@@ -601,7 +600,8 @@
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/first_switch-on_of_the_ramses_spacecraft/275372",
     "https://cdn.arstechnica.net/wp-content/uploads/2023/08/debris.jpg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/space_explorers_in_the_land_of_volcanoes/275385",
-    "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/09/ethereal-space.png?fit=800%2C800&ssl=1"
+    "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/09/ethereal-space.png?fit=800%2C800&ssl=1",
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/earth-observer/2025/NASA-meatball-blk.png"
   ],
-  "updated": "2026-09-23T15:43:22.409061"
+  "updated": "2026-09-23T18:07:48.143403"
 }
