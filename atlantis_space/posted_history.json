@@ -1,6 +1,5 @@
 {
   "titles": [
-    "northrop grumman, canadian space agency repurpose their gateway projects",
     "eva: us eva-97",
     "contemplating the sun",
     "artemis progress building lunar return roadmap",
@@ -299,10 +298,10 @@
     "a hitchhiker’s guide to hera’s target asteroids",
     "rocket factory augsburg ‘boost!’ extension in run-up to first launch",
     "first switch on for esa",
-    "there are now 17,000 satellites in orbit—and growing. should we be concerned?"
+    "there are now 17,000 satellites in orbit—and growing. should we be concerned?",
+    "space explorers in the land of volcanoes"
   ],
   "images": [
-    "https://epic.gsfc.nasa.gov/archive/natural/2026/08/06/png/epic_1b_20260806000830.png",
     "https://apod.nasa.gov/apod/image/2608/sunsilhouettes_gilbert_1024.jpg",
     "https://epic.gsfc.nasa.gov/archive/natural/2026/08/07/png/epic_1b_20260807002712.png",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/08/NSF-2026-08-09-15-21-11-686.jpg",
@@ -601,7 +600,8 @@
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/an_imaginary_astronaut_s_view_of_the_didymos_an",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2023/11/rfa_one_rocket/25184937-1-eng-GB/RFA_One_rocket",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/first_switch-on_of_the_ramses_spacecraft/275372",
-    "https://cdn.arstechnica.net/wp-content/uploads/2023/08/debris.jpg"
+    "https://cdn.arstechnica.net/wp-content/uploads/2023/08/debris.jpg",
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/space_explorers_in_the_land_of_volcanoes/275385"
   ],
-  "updated": "2026-09-23T13:49:39.375329"
+  "updated": "2026-09-23T14:35:56.689590"
 }
