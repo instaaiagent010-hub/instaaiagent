@@ -1,6 +1,5 @@
 {
   "titles": [
-    "chinese lm-7a rocket fails",
     "bountiful roebuck bay",
     "six moons of saturn",
     "curiosity blog, sols 4968-4974: rock climbing towards the discontinuity",
@@ -299,10 +298,10 @@
     "the ghosts of five supernovas",
     "record participation in esa’s industry space days 2026",
     "cloudy cloak over the northwest",
-    "starfish space’s first otter servicing vehicle slated for transporter-18"
+    "starfish space’s first otter servicing vehicle slated for transporter-18",
+    "european lunar rover secures spot aboard blue origin blue moon mission"
   ],
   "images": [
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/learn/science-activation-stories/2026/Community_College_",
     "https://pbs.twimg.com/profile_images/548027983/Website_logo_400x400.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/bountiful-roebuck-bay/broomewater_ol",
     "https://apod.nasa.gov/apod/image/2608/2026-08-05-0609_7-SaturnSystem_c.jpg",
@@ -601,7 +600,8 @@
     "https://apod.nasa.gov/apod/image/2609/5SNR_Auriga_2000.jpg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/industry_space_days_20263/27536066-2-eng-GB/Ind",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/cloudy-cloak-over-the-northwest/west",
-    "https://www.nasaspaceflight.com/wp-content/uploads/2026/09/NSF-2026-09-24-04-20-42-246.jpg"
+    "https://www.nasaspaceflight.com/wp-content/uploads/2026/09/NSF-2026-09-24-04-20-42-246.jpg",
+    "https://europeanspaceflight.com/wp-content/uploads/2026/09/European-Lunar-Rover-Secures-Spot-Aboard-Blue-Origin-Blue-Moo"
   ],
-  "updated": "2026-09-24T13:44:19.495677"
+  "updated": "2026-09-24T14:35:26.991204"
 }
