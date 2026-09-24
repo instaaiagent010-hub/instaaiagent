@@ -1,6 +1,5 @@
 {
   "titles": [
-    "curiosity blog, sols 4968-4974: rock climbing towards the discontinuity",
     "sophie adenot’s first spacewalk",
     "starbase production lining up future vehicles",
     "h3 launches navigation satellite",
@@ -299,10 +298,10 @@
     "starfish space’s first otter servicing vehicle slated for transporter-18",
     "european lunar rover secures spot aboard blue origin blue moon mission",
     "true or false on space industry trends with pacôme révillon",
-    "practicing for safe landings on the moon and beyond"
+    "practicing for safe landings on the moon and beyond",
+    "nasa unveils winning designs for mars space food systems challenge"
   ],
   "images": [
-    "https://apod.nasa.gov/apod/image/2608/2026-08-05-0609_7-SaturnSystem_c.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/msl/2026/curiosity-rover-updates/august/https___mar",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/videos/2026/08/sophie_adenot_s_first_spacewalk/27407635-1-eng-",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/08/NSF-2026-08-11-01-29-42-063.jpg",
@@ -601,7 +600,8 @@
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/09/NSF-2026-09-24-04-20-42-246.jpg",
     "https://europeanspaceflight.com/wp-content/uploads/2026/09/European-Lunar-Rover-Secures-Spot-Aboard-Blue-Origin-Blue-Moo",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/09/space-minds-podcast-novaspace-1920-1080.jpg.jpg?fit=1024%2C57",
-    "https://www.nasa.gov/wp-content/uploads/2026/09/afrc2026-0179-18orig.jpg"
+    "https://www.nasa.gov/wp-content/uploads/2026/09/afrc2026-0179-18orig.jpg",
+    "https://www.nasa.gov/wp-content/uploads/2024/07/mars-to-table.png"
   ],
-  "updated": "2026-09-24T18:12:55.865880"
+  "updated": "2026-09-24T19:39:36.745724"
 }
