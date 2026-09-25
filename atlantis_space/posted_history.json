@@ -1,6 +1,5 @@
 {
   "titles": [
-    "building the moon base: nasa stories at the ion",
     "nasa telescopes create colorful ‘craft’ from nearby nebula",
     "what is the nancy grace roman space telescope? (grades 5-8)",
     "firefly increases vehicle production even as launches lag",
@@ -299,10 +298,10 @@
     "nasa unveils winning designs for mars space food systems challenge",
     "globular cluster omega centauri",
     "mirror robot reflects future of in-orbit assembly",
-    "explosive intensification for hurricane polo"
+    "explosive intensification for hurricane polo",
+    "esa and the eu partner with museo galileo on new exhibition"
   ],
   "images": [
-    "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/08/h3f9.jpeg?fit=1024%2C582&ssl=1",
     "https://www.nasa.gov/wp-content/uploads/2026/08/dsc03215-e1786419412406.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/chandra/2026/30dor_crop.jpg",
     "https://www.nasa.gov/wp-content/uploads/2023/02/nancy-grace-roman-space-telescope-visualization.jpeg",
@@ -601,7 +600,8 @@
     "https://www.nasa.gov/wp-content/uploads/2024/07/mars-to-table.png",
     "https://apod.nasa.gov/apod/image/2609/NGC5139CadenasParra.jpg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/mirror_robot_reflects_future_of_in-orbit_assemb",
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/explosive-intensification-for-hurric"
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/explosive-intensification-for-hurric",
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/armillary_sphere_in_the_museo_galileo/27537430-"
   ],
-  "updated": "2026-09-25T09:15:35.419521"
+  "updated": "2026-09-25T10:25:31.713124"
 }
