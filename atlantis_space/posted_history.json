@@ -1,6 +1,5 @@
 {
   "titles": [
-    "one species, one planet: the moon is our ethical dress rehearsal for mars",
     "quality assessment report evaluates polar geospatial center earthdem elevation products",
     "pursuing a dream of working for nasa",
     "mike fincke, a 30-year astronaut with experience across four spacecraft, retires from nasa",
@@ -299,10 +298,10 @@
     "tb 26-07 aluminum alloy 2219 material guidance",
     "nasa tests dual mode propulsion cubesat ahead of launch",
     "flight 14 waits on approval as a near-term manifest sketches starship’s next steps",
-    "nasa, boeing to provide update on starliner development"
+    "nasa, boeing to provide update on starliner development",
+    "spacex falcon 9 to launch classified mission for u.s. space force from west coast"
   ],
   "images": [
-    "https://europeanspaceflight.com/wp-content/uploads/2026/08/Rocket-Lab-Establishes-German-Subsidiary.webp",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/08/mfc-thaad-sky-jpg-pc-adaptive-1280-medium-1116x627v1.jpeg?fit",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2025/12/moon-to-mars-scaled.png?fit=1024%2C576&ssl=1",
     "https://science.nasa.gov/wp-content/uploads/2026/08/side-by-side-graphic-polargeospatial.jpg",
@@ -601,7 +600,8 @@
     "https://www.nasa.gov/wp-content/uploads/2026/09/tb-26-07-figure-12.png",
     "https://images-assets.nasa.gov/image/933/933~large.jpg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/09/NSF-2026-09-26-04-55-29-205.jpg",
-    "https://www.nasa.gov/wp-content/uploads/2026/09/starliner.jpg"
+    "https://www.nasa.gov/wp-content/uploads/2026/09/starliner.jpg",
+    "http://spaceflightnow.com/wp-content/uploads/2026/09/20260925-Falcon-9-File.jpg"
   ],
-  "updated": "2026-09-26T07:56:30.782458"
+  "updated": "2026-09-26T08:57:39.088466"
 }
