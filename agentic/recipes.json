@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "17947861077249590",
-    "topic": "\"Quiet, Gentle But A Most Consequential Prime Minister,\" Sonia Gandhi Hails Manmohan Singh's Leadership",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 16,
-    "posted_at": 1786465730,
-    "scored": false
-  },
-  {
     "media_id": "17872051986566852",
     "topic": "Judge dismisses criminal case against Indian billionaire",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 19,
     "posted_at": 1790364584,
+    "scored": false
+  },
+  {
+    "media_id": "18102336884633502",
+    "topic": "Breaking News Live: Top India, World & Geopolitical Developments",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 8,
+    "posted_at": 1790409732,
     "scored": false
   }
 ]
