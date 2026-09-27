@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18109757855030674",
-    "topic": "Justice must not end with the verdict",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 14,
-    "posted_at": 1786716095,
-    "scored": false
-  },
-  {
     "media_id": "18103449587595521",
     "topic": "The coast pays, Delhi collects: What the Centre's mineral bill takes from states",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 8,
     "posted_at": 1790498298,
+    "scored": false
+  },
+  {
+    "media_id": "18394521433160187",
+    "topic": "PM Modi’s bhajan-clubbing moment: Gen Z outreach or stress-busting?",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 13,
+    "posted_at": 1790515277,
     "scored": false
   }
 ]
