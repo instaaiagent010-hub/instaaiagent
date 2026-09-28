@@ -1,6 +1,5 @@
 {
   "titles": [
-    "nasa’s 737 reveals new paint",
     "for west virginia engineer, home is where the heart is… and nasa, too",
     "a sunflower’s view of totality",
     "cesiumastro buys semiconductor specialist to boost constellation plans",
@@ -299,10 +298,10 @@
     "live coverage: spacex to launch first starlink v3 satellites to orbit on starship",
     "uk creates space effects squadron to protect its satellites",
     "nasa celebrates as artemis accords surpasses 75 signatories",
-    "meet nasa’s artemis ii crew during houston public event"
+    "meet nasa’s artemis ii crew during houston public event",
+    "starship achieves orbit for the first time"
   ],
   "images": [
-    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/08/hera_departing_earth/27414242-2-eng-GB/Hera_dep",
     "https://www.nasa.gov/wp-content/uploads/2026/08/perseidsorion.webp",
     "https://www.nasa.gov/wp-content/uploads/2026/08/20260813-nasa-737paint.jpg",
     "https://www.nasa.gov/wp-content/uploads/2026/08/dsc-0453-2.jpg",
@@ -601,7 +600,8 @@
     "http://spaceflightnow.com/wp-content/uploads/2026/09/20260927_Starship_Flight-14_sunrise.jpeg",
     "https://europeanspaceflight.com/wp-content/uploads/2026/09/UK-Creates-Space-Effects-Squadron-to-Protect-Its-Satellites.w",
     "https://www.nasa.gov/wp-content/uploads/2026/09/artemis-accords-san-marino-76-092526.jpg",
-    "https://www.nasa.gov/wp-content/uploads/2026/09/artemis-ii-crew.jpg"
+    "https://www.nasa.gov/wp-content/uploads/2026/09/artemis-ii-crew.jpg",
+    "https://spacepolicyonline.com/wp-content/uploads/2026/09/IFT14-liftoff-Sep-28-26-300x169.png"
   ],
-  "updated": "2026-09-28T17:59:02.783157"
+  "updated": "2026-09-28T18:56:47.558252"
 }
