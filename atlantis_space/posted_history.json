@@ -1,6 +1,5 @@
 {
   "titles": [
-    "astranis unveils geostationary surveillance satellite",
     "paragon lays off staff after gateway cancellation",
     "cruise control: the team guiding hera to its asteroid",
     "perseids meteor shower",
@@ -299,10 +298,10 @@
     "press event: international space station operations update media teleconference",
     "cosmic latte: the average color of the universe",
     "uncovering the valleys hidden below greenland’s ice",
-    "reliable robots: meet johnson’s dexterous robotics team"
+    "reliable robots: meet johnson’s dexterous robotics team",
+    "live coverage: spacex to launch first starlink v3 satellites to orbit on starship"
   ],
   "images": [
-    "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/08/Screenshot-2026-08-12-at-3.23.57-PM.png?fit=1024%2C500&ssl=1",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/videos/2026/08/mtg-i1_captures_eclipse_path_of_totality_over_e",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/08/Perceptor.jpg?fit=1024%2C576&ssl=1",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2021/07/halo-northrop.jpg?fit=879%2C495&ssl=1",
@@ -601,7 +600,8 @@
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/boeing_starline_image_20240723193124.jpg",
     "https://apod.nasa.gov/apod/image/2609/CosmicLatte_jhu_960.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/uncovering-the-valleys-hidden-below-",
-    "https://www.nasa.gov/wp-content/uploads/2026/09/sa-and-valkyrie.png"
+    "https://www.nasa.gov/wp-content/uploads/2026/09/sa-and-valkyrie.png",
+    "http://spaceflightnow.com/wp-content/uploads/2026/09/20260927_Starship_Flight-14_sunrise.jpeg"
   ],
-  "updated": "2026-09-28T10:19:33.407737"
+  "updated": "2026-09-28T11:58:26.528355"
 }
