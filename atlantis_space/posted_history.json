@@ -1,6 +1,5 @@
 {
   "titles": [
-    "space command identifies capabilities it needs for the next space war",
     "mtg-i1 captures eclipse path of totality over europe",
     "astranis unveils geostationary surveillance satellite",
     "paragon lays off staff after gateway cancellation",
@@ -299,10 +298,10 @@
     "andromeda before photoshop",
     "next crew bound for the space station arrive in florida",
     "press event: international space station operations update media teleconference",
-    "cosmic latte: the average color of the universe"
+    "cosmic latte: the average color of the universe",
+    "uncovering the valleys hidden below greenland’s ice"
   ],
   "images": [
-    "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/08/Impulse-Mira-Spacecraft-1-scaled.png?fit=1024%2C683&ssl=1",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/08/Machine-Image-2.jpg.jpeg?fit=1024%2C576&ssl=1",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/08/Screenshot-2026-08-12-at-3.23.57-PM.png?fit=1024%2C500&ssl=1",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/videos/2026/08/mtg-i1_captures_eclipse_path_of_totality_over_e",
@@ -601,7 +600,8 @@
     "https://apod.nasa.gov/apod/image/2609/M31Before_Scherer_4298.jpg",
     "http://spaceflightnow.com/wp-content/uploads/2026/09/20260926_NASA_crew-13_JP-1.jpeg",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/boeing_starline_image_20240723193124.jpg",
-    "https://apod.nasa.gov/apod/image/2609/CosmicLatte_jhu_960.jpg"
+    "https://apod.nasa.gov/apod/image/2609/CosmicLatte_jhu_960.jpg",
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/uncovering-the-valleys-hidden-below-"
   ],
-  "updated": "2026-09-28T06:04:26.781925"
+  "updated": "2026-09-28T08:54:39.369720"
 }
