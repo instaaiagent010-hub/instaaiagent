@@ -1,6 +1,5 @@
 {
   "titles": [
-    "a sunflower’s view of totality",
     "cesiumastro buys semiconductor specialist to boost constellation plans",
     "space force awards five companies $60 million for multi-vendor satellite network tests",
     "bulgaria advances project to launch new space, defense innovation hub",
@@ -299,10 +298,10 @@
     "nasa celebrates as artemis accords surpasses 75 signatories",
     "meet nasa’s artemis ii crew during houston public event",
     "starship achieves orbit for the first time",
-    "nasa highlights lessons learned from swift boost mission"
+    "nasa highlights lessons learned from swift boost mission",
+    "starship returns to earth; rocket splashes down north of hawaii after three-hour flight"
   ],
   "images": [
-    "https://www.nasa.gov/wp-content/uploads/2026/08/20260813-nasa-737paint.jpg",
     "https://www.nasa.gov/wp-content/uploads/2026/08/dsc-0453-2.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/a-sunflower's-view-of-totality/55460",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/02/rsz_1shey_2026.png?fit=879%2C494&ssl=1",
@@ -601,7 +600,8 @@
     "https://www.nasa.gov/wp-content/uploads/2026/09/artemis-accords-san-marino-76-092526.jpg",
     "https://www.nasa.gov/wp-content/uploads/2026/09/artemis-ii-crew.jpg",
     "https://spacepolicyonline.com/wp-content/uploads/2026/09/IFT14-liftoff-Sep-28-26-300x169.png",
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/swift-observatory/misc--spacecraft-art/Swift_in_spa"
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/swift-observatory/misc--spacecraft-art/Swift_in_spa",
+    "http://spaceflightnow.com/wp-content/uploads/2026/09/20260928_Starship_Flight-14.jpeg"
   ],
-  "updated": "2026-09-28T20:23:01.225307"
+  "updated": "2026-09-28T21:34:49.629011"
 }
