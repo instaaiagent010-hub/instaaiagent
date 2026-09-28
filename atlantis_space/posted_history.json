@@ -1,6 +1,5 @@
 {
   "titles": [
-    "cruise control: the team guiding hera to its asteroid",
     "perseids meteor shower",
     "nasa’s 737 reveals new paint",
     "for west virginia engineer, home is where the heart is… and nasa, too",
@@ -299,10 +298,10 @@
     "uncovering the valleys hidden below greenland’s ice",
     "reliable robots: meet johnson’s dexterous robotics team",
     "live coverage: spacex to launch first starlink v3 satellites to orbit on starship",
-    "uk creates space effects squadron to protect its satellites"
+    "uk creates space effects squadron to protect its satellites",
+    "nasa celebrates as artemis accords surpasses 75 signatories"
   ],
   "images": [
-    "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/08/Perceptor.jpg?fit=1024%2C576&ssl=1",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2021/07/halo-northrop.jpg?fit=879%2C495&ssl=1",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/08/hera_departing_earth/27414242-2-eng-GB/Hera_dep",
     "https://www.nasa.gov/wp-content/uploads/2026/08/perseidsorion.webp",
@@ -601,7 +600,8 @@
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/uncovering-the-valleys-hidden-below-",
     "https://www.nasa.gov/wp-content/uploads/2026/09/sa-and-valkyrie.png",
     "http://spaceflightnow.com/wp-content/uploads/2026/09/20260927_Starship_Flight-14_sunrise.jpeg",
-    "https://europeanspaceflight.com/wp-content/uploads/2026/09/UK-Creates-Space-Effects-Squadron-to-Protect-Its-Satellites.w"
+    "https://europeanspaceflight.com/wp-content/uploads/2026/09/UK-Creates-Space-Effects-Squadron-to-Protect-Its-Satellites.w",
+    "https://www.nasa.gov/wp-content/uploads/2026/09/artemis-accords-san-marino-76-092526.jpg"
   ],
-  "updated": "2026-09-28T14:43:53.988852"
+  "updated": "2026-09-28T16:59:10.555474"
 }
