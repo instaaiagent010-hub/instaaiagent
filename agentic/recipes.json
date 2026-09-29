@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18086336915202519",
-    "topic": "India's Modi says armed Maoists are fading, but warns threat remains from ideological supporters",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "reel",
-    "hour": 7,
-    "posted_at": 1786867136,
-    "scored": false
-  },
-  {
     "media_id": "18119271043885176",
     "topic": "SC to hear on Monday Rahul Gandhi's plea against HC order on petition alleging disproportionate assets",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 21,
     "posted_at": 1790630820,
+    "scored": false
+  },
+  {
+    "media_id": "17927022867182662",
+    "topic": "Little Italy News | The Feast, Galbani Bella Vita, and Trick or Treats",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 9,
+    "posted_at": 1790672600,
     "scored": false
   }
 ]
