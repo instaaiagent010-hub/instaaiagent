@@ -1,6 +1,5 @@
 {
   "titles": [
-    "nasa competition invites students to help imagine a future enabled by lunar technologies",
     "nasa administrator ‘extremely confident’ in artemis 3 mission in 2027",
     "bright perseids from sweden",
     "u.s. space force adds second surveillance sensor to japanese constellation",
@@ -299,10 +298,10 @@
     "if ai cannot be trusted in a classroom, why should it be trusted in orbit?",
     "nstgro 2026",
     "crew-13 rocket and spacecraft at launch pad",
-    "starship orbits earth, returns early"
+    "starship orbits earth, returns early",
+    "nasa sets crew-13 launch, docking coverage"
   ],
   "images": [
-    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/08/12_august_total_eclipse_imaged_by_miguel_claro/",
     "https://cdn.arstechnica.net/wp-content/uploads/2025/12/23802552292_6407c7a06f_k.jpg",
     "https://www.nasa.gov/wp-content/uploads/2026/05/liveenable-im3-sustainabilitylogistics-withastros-1.png",
     "http://spaceflightnow.com/wp-content/uploads/2026/08/20260814_max_power_jared_SFN_AB-1.jpeg",
@@ -601,7 +600,8 @@
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/09/Screenshot-2026-09-28-081521.png?fit=1024%2C576&ssl=1",
     "https://www.nasa.gov/wp-content/uploads/2022/12/stmd.jpg",
     "https://www.nasa.gov/wp-content/uploads/2026/09/55555912182-5c7a52ae0f-o.jpg",
-    "https://i0.wp.com/www.spacescout.info/wp-content/uploads/2026/09/cam-liftoff.jpg"
+    "https://i0.wp.com/www.spacescout.info/wp-content/uploads/2026/09/cam-liftoff.jpg",
+    "https://images-assets.nasa.gov/image/jsc2026e401203/jsc2026e401203~large.jpg"
   ],
-  "updated": "2026-09-29T17:21:24.132200"
+  "updated": "2026-09-29T19:02:28.158306"
 }
