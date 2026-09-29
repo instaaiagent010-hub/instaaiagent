@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18053439401559391",
-    "topic": "Delhi News LIVE: FIR Sought Against Sonia, Rahul Gandhi Over Alleged Vande Mataram Disruption At AICC Event",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 13,
-    "posted_at": 1786973119,
-    "scored": false
-  },
-  {
     "media_id": "17949203655262713",
     "topic": "Mamdani Skips New York's Main India Day Parade, Breaks Long",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 14,
     "posted_at": 1790691970,
+    "scored": false
+  },
+  {
+    "media_id": "18025740707699272",
+    "topic": "[The Opinionated Lawyer] Free and Fair: Elections and Election Commission",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 14,
+    "posted_at": 1790692075,
     "scored": false
   }
 ]
