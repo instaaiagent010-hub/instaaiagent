@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "17949203655262713",
-    "topic": "Mamdani Skips New York's Main India Day Parade, Breaks Long",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 13,
-    "posted_at": 1786973210,
-    "scored": false
-  },
-  {
     "media_id": "18191311009387729",
     "topic": "39 medals, one proud nation: India lights up CWG Glasgow 2026",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "reel",
     "hour": 14,
     "posted_at": 1790692075,
+    "scored": false
+  },
+  {
+    "media_id": "18129008362789653",
+    "topic": "Video: Amala Paul discusses breaking stereotypes and choosing the unfamiliar",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 20,
+    "posted_at": 1790712831,
     "scored": false
   }
 ]
