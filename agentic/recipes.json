@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18119271043885176",
-    "topic": "SC to hear on Monday Rahul Gandhi's plea against HC order on petition alleging disproportionate assets",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 8,
-    "posted_at": 1786867245,
-    "scored": false
-  },
-  {
     "media_id": "17901959373510771",
     "topic": "Breaking News Live Updates: Track Top News Headlines Of The Day",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 9,
     "posted_at": 1790672600,
+    "scored": false
+  },
+  {
+    "media_id": "17949665376294796",
+    "topic": "What’s Putin’s Secret Post-Election Strategy To Test NATO?",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 9,
+    "posted_at": 1790672713,
     "scored": false
   }
 ]
