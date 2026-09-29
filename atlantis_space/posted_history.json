@@ -1,6 +1,5 @@
 {
   "titles": [
-    "bulgaria advances project to launch new space, defense innovation hub",
     "in-orbit services market to generate $3 billion in revenue over the next decade",
     "proba-3’s eclipse hours before totality in europe",
     "week in images: 10-14 august 2026",
@@ -299,10 +298,10 @@
     "nasa highlights lessons learned from swift boost mission",
     "starship returns to earth; rocket splashes down north of hawaii after three-hour flight",
     "sh2-188: the shrimp nebula",
-    "galaxies in a cosmic house of mirrors"
+    "galaxies in a cosmic house of mirrors",
+    "mars has its charmes"
   ],
   "images": [
-    "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/02/rsz_1shey_2026.png?fit=879%2C494&ssl=1",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2024/06/photospace4-1.jpg.webp?fit=878%2C500&ssl=1",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/08/EnduroSat-Doboslavtsi-Starbase-Europe-1920-1920x1080-1.jpg?fi",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2025/04/novaspace-square-1-scaled.png?fit=1024%2C1024&ssl=1",
@@ -601,7 +600,8 @@
     "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/swift-observatory/misc--spacecraft-art/Swift_in_spa",
     "http://spaceflightnow.com/wp-content/uploads/2026/09/20260928_Starship_Flight-14.jpeg",
     "https://apod.nasa.gov/apod/image/2609/Shrimp_Pawel_2048.jpg",
-    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/galaxies_in_a_cosmic_house_of_mirrors/27538440-"
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/galaxies_in_a_cosmic_house_of_mirrors/27538440-",
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/mars2020/2026/perseverance-rover-updates/Mars_Perse"
   ],
-  "updated": "2026-09-29T08:49:21.986657"
+  "updated": "2026-09-29T10:17:47.500173"
 }
