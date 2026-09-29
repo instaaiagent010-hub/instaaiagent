@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18012485441938988",
-    "topic": "When anarchy imperils parliamentary democracy",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "reel",
-    "hour": 3,
-    "posted_at": 1786937506,
-    "scored": false
-  },
-  {
     "media_id": "18081183272688590",
     "topic": "City News LIVE: Delhi Auto Drivers To Protest At Jantar Mantar On August 17, Demand Welfare Board",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 9,
     "posted_at": 1790672810,
+    "scored": false
+  },
+  {
+    "media_id": "17937334689374507",
+    "topic": "Who is Divya Deshmukh? All about India's chess star named Best Female Player at 2026 FIDE Excellence Awards",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 9,
+    "posted_at": 1790672900,
     "scored": false
   }
 ]
