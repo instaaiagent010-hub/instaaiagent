@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18110793577818911",
-    "topic": "Digital Arrest: Breaking Down the Scam Everyone Is Talking About",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 3,
-    "posted_at": 1787111939,
-    "scored": false
-  },
-  {
     "media_id": "18100469108201290",
     "topic": "Hyderabad News LIVE: Massive Fire Breaks Out At Car Shop In Narasaraopeta, 4 Vehicles Gutted",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 14,
     "posted_at": 1790778132,
+    "scored": false
+  },
+  {
+    "media_id": "18070673918756948",
+    "topic": "Apple Pay is finally in India, but can it challenge UPI? Here's what you need to know",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 14,
+    "posted_at": 1790778221,
     "scored": false
   }
 ]
