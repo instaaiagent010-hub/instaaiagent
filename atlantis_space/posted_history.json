@@ -1,6 +1,5 @@
 {
   "titles": [
-    "bright perseids from sweden",
     "u.s. space force adds second surveillance sensor to japanese constellation",
     "wallops gears up for an increase in launches",
     "live coverage: spacex to launch satellite replenishment mission for globalstar from cape canaveral",
@@ -299,10 +298,10 @@
     "crew-13 rocket and spacecraft at launch pad",
     "starship orbits earth, returns early",
     "nasa sets crew-13 launch, docking coverage",
-    "flyby: solar orbiter venus flyby"
+    "flyby: solar orbiter venus flyby",
+    "apod: 2026 september 30 – arp 78: peculiar galaxy in aries"
   ],
   "images": [
-    "https://www.nasa.gov/wp-content/uploads/2026/05/liveenable-im3-sustainabilitylogistics-withastros-1.png",
     "http://spaceflightnow.com/wp-content/uploads/2026/08/20260814_max_power_jared_SFN_AB-1.jpeg",
     "https://apod.nasa.gov/apod/image/2608/PerseidsAPOD_P-MHeden.jpg",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/08/260814-X-X0813-1001.png?fit=768%2C1024&ssl=1",
@@ -601,7 +600,8 @@
     "https://www.nasa.gov/wp-content/uploads/2026/09/55555912182-5c7a52ae0f-o.jpg",
     "https://i0.wp.com/www.spacescout.info/wp-content/uploads/2026/09/cam-liftoff.jpg",
     "https://images-assets.nasa.gov/image/jsc2026e401203/jsc2026e401203~large.jpg",
-    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/solar_orbiter_v_image_20210930071353.png"
+    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/solar_orbiter_v_image_20210930071353.png",
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/october/NGC772_Robert_Eder.jpg"
   ],
-  "updated": "2026-09-29T20:42:23.229979"
+  "updated": "2026-09-30T06:09:55.532101"
 }
