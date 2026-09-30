@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18247010395309228",
-    "topic": "Ecostani: Centre’s mines amendment bill a blow to federal consultation",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 8,
-    "posted_at": 1787040497,
-    "scored": false
-  },
-  {
     "media_id": "18072469193435222",
     "topic": "LIVE | India & World News: Trump cites India on voter ID, Iran deal tensions",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 9,
     "posted_at": 1790759039,
+    "scored": false
+  },
+  {
+    "media_id": "18137611780529578",
+    "topic": "Is Centre planning social media curbs for minors?",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 9,
+    "posted_at": 1790759124,
     "scored": false
   }
 ]
