@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18100469108201290",
-    "topic": "Hyderabad News LIVE: Massive Fire Breaks Out At Car Shop In Narasaraopeta, 4 Vehicles Gutted",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 13,
-    "posted_at": 1787146203,
-    "scored": false
-  },
-  {
     "media_id": "18108052694127116",
     "topic": "SL envoy seeks stronger India partnership while safeguarding sovereignty",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 14,
     "posted_at": 1790778221,
+    "scored": false
+  },
+  {
+    "media_id": "18000430595808221",
+    "topic": "Tejashwi attacks ECI, alleges conspiracy to rig Bihar, Bengal polls",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 14,
+    "posted_at": 1790778309,
     "scored": false
   }
 ]
