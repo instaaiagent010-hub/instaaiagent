@@ -1,6 +1,5 @@
 {
   "titles": [
-    "milky way over yellowstone",
     "blue origin overviews plan for dual pad ops at cape canaveral",
     "u.s. defense agencies tap three companies for satellite disposal study",
     "firefly promote next block of alpha amid eclipse progress",
@@ -299,10 +298,10 @@
     "science begins for smile",
     "esa selects airbus and ohb to lead european space station studies",
     "quantum space executes launch processing agreement with all points logistics for prime mission",
-    "shaping europe’s future in low earth orbit"
+    "shaping europe’s future in low earth orbit",
+    "press event: spacex crew-13 pre-launch news conference"
   ],
   "images": [
-    "http://spaceflightnow.com/wp-content/uploads/2026/08/20260815_CC_Globalstar_2_R_1_vertical.jpg",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/08/lro-illus.jpeg?fit=1024%2C576&ssl=1",
     "https://apod.nasa.gov/apod/image/2608/mwyellowstone_lane_1800.jpg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/08/NSF-2026-08-15-23-52-07-432.jpg",
@@ -601,7 +600,8 @@
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/smile_s_first_ultraviolet_image_shows_auroral_s",
     "https://europeanspaceflight.com/wp-content/uploads/2026/09/ESA-Selects-Airbus-and-OHB-to-Lead-European-Space-Station-Stu",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/09/quantum-space-logo-square.png?fit=1024%2C1024&ssl=1",
-    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/08/esa_astronaut_sophie_adenot_during_eva-986/2743"
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/08/esa_astronaut_sophie_adenot_during_eva-986/2743",
+    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_on_slc_image_20240926072512.jpg"
   ],
-  "updated": "2026-09-30T15:10:56.595112"
+  "updated": "2026-09-30T16:16:06.339873"
 }
