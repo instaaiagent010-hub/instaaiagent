@@ -1,6 +1,5 @@
 {
   "titles": [
-    "satellite operators emphasize launch deals in a constrained market",
     "a golden corona eclipse",
     "lynk and omnispace form elveo mobile to advance d2d services",
     "how digital twins can strengthen the resilience of position, navigation and timing capabilities",
@@ -299,10 +298,10 @@
     "press event: spacex crew-13 pre-launch news conference",
     "so what's happening with russia's new, long-delayed crewed spacecraft?",
     "star trails",
-    "nasa science"
+    "nasa science",
+    "apod: 2026 october 1"
   ],
   "images": [
-    "https://i0.wp.com/spacenews.com/wp-content/uploads/2024/03/Firefly_ElytraDawn_EarthOrbit.jpg?fit=1024%2C383&ssl=1",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/08/NSF-2026-08-16-17-19-57-271.jpg",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/08/f9-bluebird-aug26.jpeg?fit=1024%2C683&ssl=1",
     "https://apod.nasa.gov/apod/image/2608/GoldCorona_Santos_1751.jpg",
@@ -601,7 +600,8 @@
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_on_slc_image_20240926072512.jpg",
     "https://cdn.arstechnica.net/wp-content/uploads/2026/09/GettyImages-1242530931.jpg",
     "https://www.nasa.gov/wp-content/uploads/2026/09/iss075e0144232orig.jpg",
-    "https://science.nasa.gov/wp-content/themes/nasa-child/assets/images/nasa-logo@2x.png"
+    "https://science.nasa.gov/wp-content/themes/nasa-child/assets/images/nasa-logo@2x.png",
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/october/Harvest%20Moon%20Trail%20With%20V"
   ],
-  "updated": "2026-09-30T20:30:50.676726"
+  "updated": "2026-10-01T06:45:15.769869"
 }
