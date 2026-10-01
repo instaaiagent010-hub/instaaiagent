@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18134277643547563",
-    "topic": "India mulls 'green channel' to facilitate European, UK investments",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 8,
-    "posted_at": 1787299995,
-    "scored": false
-  },
-  {
     "media_id": "18122596792640318",
     "topic": "Lack of spirit of democracy: Opposition MPs reflect on how Parliament changed under Modi govt",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 18,
     "posted_at": 1790879915,
+    "scored": false
+  },
+  {
+    "media_id": "18116718058967133",
+    "topic": "'If allowed, 500 MPs will approach SC for MPLAD implementation': SG Mehta on Mahua Moitra's plea",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 20,
+    "posted_at": 1790886563,
     "scored": false
   }
 ]
