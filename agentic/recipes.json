@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18105124421588715",
-    "topic": "Democratic transmission of street-to-statute is breaking",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 3,
-    "posted_at": 1787369199,
-    "scored": false
-  },
-  {
     "media_id": "17953877697080107",
     "topic": "Focus: AI reshapes India's IT services sector contracts as clients demand more...",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "reel",
     "hour": 18,
     "posted_at": 1790964145,
+    "scored": false
+  },
+  {
+    "media_id": "18127466620833267",
+    "topic": "EC Dysfunctional Or Fit For A Fractured Polity?",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 18,
+    "posted_at": 1790964232,
     "scored": false
   }
 ]
