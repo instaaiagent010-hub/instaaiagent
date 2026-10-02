@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "17974768860088728",
-    "topic": "Rahul Gandhi tossing toffees: Smriti Irani to NDTV on 'pellet protest' at Delhi police station",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 13,
-    "posted_at": 1787319492,
-    "scored": false
-  },
-  {
     "media_id": "17883907038475961",
     "topic": "Tamil Nadu Assembly Erupts: Vijay, Udhayanidhi Stalin Trade Barbs Over '3 DMK Files'",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 14,
     "posted_at": 1790949927,
+    "scored": false
+  },
+  {
+    "media_id": "17904269991571439",
+    "topic": "Why The Supreme Court Refused A Meeting With Parliament's One Nation, One Election Panel",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 14,
+    "posted_at": 1790950033,
     "scored": false
   }
 ]
