@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18098449400021833",
-    "topic": "Colgate Palmolive (India) breaking: Meet Manish Anandani; set to replace Prabha Narasimhan as MD",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 13,
-    "posted_at": 1787319313,
-    "scored": false
-  },
-  {
     "media_id": "18334911649256357",
     "topic": "JP Nadda slams Rahul Gandhi's 'camera-centric drama' at protest",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 8,
     "posted_at": 1790931286,
+    "scored": false
+  },
+  {
+    "media_id": "17912533626525624",
+    "topic": "Indian Factories Pull Back on New Investments in FY25, Prioritising Employment Growth",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 8,
+    "posted_at": 1790931370,
     "scored": false
   }
 ]
