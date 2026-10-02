@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "17953877697080107",
-    "topic": "Focus: AI reshapes India's IT services sector contracts as clients demand more...",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 8,
-    "posted_at": 1787385659,
-    "scored": false
-  },
-  {
     "media_id": "18103519132905227",
     "topic": "Modi’s ‘Dimagi Naxal’ remark is an attempt to frame the next wave of youth dissent as anti-national",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 18,
     "posted_at": 1790964232,
+    "scored": false
+  },
+  {
+    "media_id": "18496223062099721",
+    "topic": "Sanjeev Ahluwalia | EC Dysfunctional Or Fit For A Fractured Polity?",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 18,
+    "posted_at": 1790964318,
     "scored": false
   }
 ]
