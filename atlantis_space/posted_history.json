@@ -1,6 +1,5 @@
 {
   "titles": [
-    "new report takes closer look at the space force spending surge",
     "nasa glenn’s legacy forged through decades of flight research",
     "nasa’s b777 gets new coat of paint",
     "space nuclear programs face near- and long-term challenges",
@@ -299,10 +298,10 @@
     "falcon heavy set to launch classified nrol-97 to high-energy orbit",
     "apod: 2026 october 2 – the complete sharpless catalog: 313 nebulas",
     "jammertest pumps up the jam in norway",
-    "rains swamp the gandak river"
+    "rains swamp the gandak river",
+    "beyond the airlock - sophie adenot's three spacewalks"
   ],
   "images": [
-    "https://apod.nasa.gov/apod/image/2608/Perseids_karuk_3000.jpg",
     "https://europeanspaceflight.com/wp-content/uploads/2026/08/SpaceX-Reverses-Starlink-Roaming-Decision-for-Polish-Customer",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/08/HPDYEsnWcAAM16m-scaled-e1787001268860.jpeg?fit=1024%2C596&ssl",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/08/MissileWarningCenter-scaled.jpg?fit=1024%2C664&ssl=1",
@@ -601,7 +600,8 @@
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/10/20260930_CC_NROL_97_sunset_DSC_0504_desktop_32cdaaf193-scaled",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/october/sharpless_catalog.png",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/esa_team_at_jammertest_2026/27542153-1-eng-GB/E",
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/torrential-rains-swamp-the-gandaki-r"
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/torrential-rains-swamp-the-gandaki-r",
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/videos/2026/10/beyond_the_airlock_-_sophie_adenot_s_three_spac"
   ],
-  "updated": "2026-10-02T10:08:07.865324"
+  "updated": "2026-10-02T11:14:53.746422"
 }
