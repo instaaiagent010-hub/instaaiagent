@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18139925923583494",
-    "topic": "Today in sports history, September 9",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 13,
-    "posted_at": 1787404631,
-    "scored": false
-  },
-  {
     "media_id": "17894879370668802",
     "topic": "BREAKING: U.S. Army Secretary REBELS Against Trump & Hegseth Over Iran War; Set To Resign?",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 8,
     "posted_at": 1791016367,
+    "scored": false
+  },
+  {
+    "media_id": "18101923262198467",
+    "topic": "India is asking, ‘what next?’",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 8,
+    "posted_at": 1791016459,
     "scored": false
   }
 ]
