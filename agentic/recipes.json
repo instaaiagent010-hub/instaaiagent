@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18102371318256104",
-    "topic": "India vs Sri Lanka weather: Rain threat looms large in Colombo",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 3,
-    "posted_at": 1787456121,
-    "scored": false
-  },
-  {
     "media_id": "18107993444517394",
     "topic": "Delhi weather today: Rain lashes city, IMD forecasts widespread showers across India",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 16,
     "posted_at": 1791045497,
+    "scored": false
+  },
+  {
+    "media_id": "18149361502543870",
+    "topic": "Punjabi Influencer Mad Sandhu Shot Dead In Amritsar, Police Launch Probe",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 16,
+    "posted_at": 1791045585,
     "scored": false
   }
 ]
