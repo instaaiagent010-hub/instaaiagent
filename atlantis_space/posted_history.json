@@ -1,6 +1,5 @@
 {
   "titles": [
-    "career spotlight: mechanic (ages 14-18)",
     "nasa establishes state hubs to grow technical aerospace workforce",
     "hypersonic missile startup castelion raises $1 billion",
     "eartheye space forges strategic partnership with in2",
@@ -299,10 +298,10 @@
     "spacecraft undocking: spacex crew-12 crew dragon undocking",
     "nasa epic camera ne space se earth ki tasveer li",
     "change of command: spacex crew-12 farewell and change of command ceremony",
-    "asteroid (2006 hz5) aaj earth ke paas se guzrega — 33-75m"
+    "asteroid (2006 hz5) aaj earth ke paas se guzrega — 33-75m",
+    "esa to pursue crew transport and space stations as european launchers come online"
   ],
   "images": [
-    "https://www.nasa.gov/wp-content/uploads/2026/08/jsc2026e407303.jpg",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/03/sr-1-freedom.jpeg?fit=1024%2C552&ssl=1",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/08/Zhuque-3-Y2-liftoff-18aug2026-Landspace.jpg?fit=1024%2C573&ss",
     "https://apod.nasa.gov/apod/image/2608/perseids_eclipse_mystery.mp4",
@@ -601,7 +600,8 @@
     "https://www.nasa.gov/wp-content/uploads/2026/10/flight-directors.jpg",
     "https://science.nasa.gov/wp-content/uploads/2026/09/20260826-175244.jpg",
     "https://www.nasa.gov/wp-content/uploads/2026/10/nhq20260828-admin-0031large.jpg",
-    "https://epic.gsfc.nasa.gov/archive/natural/2026/09/28/png/epic_1b_20260928005515.png"
+    "https://epic.gsfc.nasa.gov/archive/natural/2026/09/28/png/epic_1b_20260928005515.png",
+    "https://www.nasaspaceflight.com/wp-content/uploads/2026/10/Artist_s_impression_of_a_potential_European-led_orbital_stati"
   ],
-  "updated": "2026-10-03T18:56:06.224543"
+  "updated": "2026-10-04T06:28:28.700705"
 }
