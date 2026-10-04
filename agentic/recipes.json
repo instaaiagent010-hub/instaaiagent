@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "17890455525427314",
-    "topic": "India-US trade deal 'almost done', final legal language being worked out: US envoy",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 15,
-    "posted_at": 1787500179,
-    "scored": false
-  },
-  {
     "media_id": "17974645646917755",
     "topic": "Padikkal hits second ton to leave India in control",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 16,
     "posted_at": 1791133186,
+    "scored": false
+  },
+  {
+    "media_id": "18108325016595094",
+    "topic": "Appointing the Election Commission: An Expert Explains why perception matters",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 17,
+    "posted_at": 1791133297,
     "scored": false
   }
 ]
