@@ -1,6 +1,5 @@
 {
   "titles": [
-    "eartheye space forges strategic partnership with in2",
     "the elephant's trunk in cepheus",
     "apod: 2026 august 20 – the elephant’s trunk in cepheus",
     "esa’s photosynthesis satellite fuelled",
@@ -299,10 +298,10 @@
     "asteroid (2006 hz5) aaj earth ke paas se guzrega — 33-75m",
     "esa to pursue crew transport and space stations as european launchers come online",
     "spacecraft release: ng-24 cygnus release",
-    "apod: 2026 october 5 – m104: the sombrero galaxy’s tidal streams"
+    "apod: 2026 october 5 – m104: the sombrero galaxy’s tidal streams",
+    "moon"
   ],
   "images": [
-    "https://apod.nasa.gov/apod/image/2608/perseids_eclipse_mystery.mp4",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/08/NSF-2026-08-19-04-15-16-283.jpg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/videos/2026/08/fly_around_schiaparelli_crater_with_mars_expres",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/bepicolombo_at__image_20240306080108.jpeg",
@@ -601,7 +600,8 @@
     "https://epic.gsfc.nasa.gov/archive/natural/2026/09/28/png/epic_1b_20260928005515.png",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/10/Artist_s_impression_of_a_potential_European-led_orbital_stati",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/ng-112520cygnus2520release2520and2520reentry_image_20",
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/october/M104_Vollmer_4222.jpg"
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/october/M104_Vollmer_4222.jpg",
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/moon-like-madagascar/ISS075-E-85249."
   ],
-  "updated": "2026-10-05T06:22:04.327141"
+  "updated": "2026-10-05T09:17:10.113316"
 }
