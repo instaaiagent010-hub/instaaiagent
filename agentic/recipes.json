@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18438689254120183",
-    "topic": "Allahabad High Court strikes down key provisions of UP tenancy law",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 8,
-    "posted_at": 1787559501,
-    "scored": false
-  },
-  {
     "media_id": "17873637390562318",
     "topic": "India news: Police used 'excessive force' on CJP protesters",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 9,
     "posted_at": 1791193002,
+    "scored": false
+  },
+  {
+    "media_id": "18127202527841553",
+    "topic": "Breaking News LIVE: Protesters Detained From Parliament Street Police Station",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 16,
+    "posted_at": 1791217446,
     "scored": false
   }
 ]
