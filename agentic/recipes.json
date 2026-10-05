@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18332026051275294",
-    "topic": "India can become a global ship-building hub, Rajnath says at GRSE event",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 3,
-    "posted_at": 1787542599,
-    "scored": false
-  },
-  {
     "media_id": "18096092198371553",
     "topic": "AP cuts US video production staff and moves jobs to India",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 9,
     "posted_at": 1791192810,
+    "scored": false
+  },
+  {
+    "media_id": "17908647687559937",
+    "topic": "'No whataboutery can justify act of taking away voting rights': Supreme Court judge amid SIR row",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 9,
+    "posted_at": 1791192916,
     "scored": false
   }
 ]
