@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18108319450862585",
-    "topic": "UN welcomes Sri Lanka's efforts to bring back refugees from India",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 13,
-    "posted_at": 1787578633,
-    "scored": false
-  },
-  {
     "media_id": "17903578986484945",
     "topic": "Indian startup's 'music party' in hospital sparks backlash",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 22,
     "posted_at": 1791238218,
+    "scored": false
+  },
+  {
+    "media_id": "18116807168283516",
+    "topic": "Tariffs were trade tool, now are weaponised: FM Sitharaman amid US",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 22,
+    "posted_at": 1791238304,
     "scored": false
   }
 ]
