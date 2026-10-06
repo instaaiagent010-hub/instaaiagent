@@ -1,6 +1,5 @@
 {
   "titles": [
-    "chinese radio-frequency intelligence startup starrf closes new funding round",
     "live coverage: spacex to launch 100th orbital mission of 2026",
     "mostly perseids",
     "ship 41 completes engine testing ahead of flight 14",
@@ -299,10 +298,10 @@
     "curiosity blog, sols 5029-5035: back in the lab",
     "european rover trains for mars in the desert",
     "spacecraft event: spacex crew-12 crew dragon hatch closure",
-    "webb captures commotion from nebula’s stellar jets"
+    "webb captures commotion from nebula’s stellar jets",
+    "the eu extends salto deadline again as themis hop test slips"
   ],
   "images": [
-    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/08/map_of_europe_s_spaceport/27424823-1-eng-GB/Map",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/04/portal-supernova-starburst.jpeg?fit=1024%2C576&ssl=1",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2024/12/Moog_logo_maroon-1.png?fit=1024%2C1024&ssl=1",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/07/HNZKBrTWYAAvWKc-scaled.jpeg?fit=1024%2C653&ssl=1",
@@ -601,7 +600,8 @@
     "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/msl/2026/curiosity-rover-updates/september/https___",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/mars_rover_meets_desert/27555911-1-eng-GB/Mars_",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/crew-10_crew_in_image_20250306075802.jpg",
-    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/webb_captures_commotion_from_nebula_s_stellar_j"
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/webb_captures_commotion_from_nebula_s_stellar_j",
+    "https://europeanspaceflight.com/wp-content/uploads/2026/10/The-EU-Extends-SALTO-Deadline-Again-as-Themis-Hop-Test-Slips."
   ],
-  "updated": "2026-10-06T13:46:01.813197"
+  "updated": "2026-10-06T15:23:19.857223"
 }
