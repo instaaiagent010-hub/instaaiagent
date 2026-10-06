@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18173986306443916",
-    "topic": "Rebel TMC MPs face SC notice on Abhishek Banerjee's plea for speedy disqualification",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 8,
-    "posted_at": 1787645850,
-    "scored": false
-  },
-  {
     "media_id": "18446187049125076",
     "topic": "20 rebel MPs and a speaker's delay: SC steps in",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 14,
     "posted_at": 1791297156,
+    "scored": false
+  },
+  {
+    "media_id": "17912960553471355",
+    "topic": "How the Modi government could have avoided the opposition protest",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 14,
+    "posted_at": 1791297260,
     "scored": false
   }
 ]
