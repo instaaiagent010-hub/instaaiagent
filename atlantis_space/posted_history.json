@@ -1,6 +1,5 @@
 {
   "titles": [
-    "time-lapse of the star s301 orbiting the black hole in the center of the galaxy",
     "europe’s scorching summer",
     "white house releases new space transportation policy",
     "landspace aims to refly recovered zhuque-3 booster within six months",
@@ -299,10 +298,10 @@
     "nasa astronaut christina koch at eagles vs. rams",
     "launch preview: flights from south korea, china, usa planned for this week",
     "asteroid (2001 sh276) aaj earth ke paas se guzrega — 307-686m",
-    "the beaver brown waters of rupert bay"
+    "the beaver brown waters of rupert bay",
+    "curiosity blog, sols 5029-5035: back in the lab"
   ],
   "images": [
-    "https://apod.nasa.gov/apod/image/2608/IMG_5201_sgarbossa.jpeg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/august/IMG_5201_sgarbossa.jpeg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/08/safey_is_paramount_when_fuelling_a_satellite/27",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/08/latconnect60-logo.png?fit=388%2C388&ssl=1",
@@ -601,7 +600,8 @@
     "https://images-assets.nasa.gov/image/GRC-2026-C-02774/GRC-2026-C-02774~large.jpg",
     "https://www.nasa.gov/wp-content/uploads/2026/10/nhq202610040010orig.jpg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2023/04/julia-streak-scaled.jpg",
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/the-beaver-brown-waters-of-rupert-ba"
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/the-beaver-brown-waters-of-rupert-ba",
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/msl/2026/curiosity-rover-updates/september/https___"
   ],
-  "updated": "2026-10-06T06:58:41.453251"
+  "updated": "2026-10-06T09:09:10.107325"
 }
