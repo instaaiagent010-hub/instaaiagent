@@ -1,6 +1,5 @@
 {
   "titles": [
-    "europe’s scorching summer",
     "white house releases new space transportation policy",
     "landspace aims to refly recovered zhuque-3 booster within six months",
     "chinese radio-frequency intelligence startup starrf closes new funding round",
@@ -299,10 +298,10 @@
     "launch preview: flights from south korea, china, usa planned for this week",
     "asteroid (2001 sh276) aaj earth ke paas se guzrega — 307-686m",
     "the beaver brown waters of rupert bay",
-    "curiosity blog, sols 5029-5035: back in the lab"
+    "curiosity blog, sols 5029-5035: back in the lab",
+    "european rover trains for mars in the desert"
   ],
   "images": [
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/august/IMG_5201_sgarbossa.jpeg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/08/safey_is_paramount_when_fuelling_a_satellite/27",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/08/latconnect60-logo.png?fit=388%2C388&ssl=1",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/08/map_of_europe_s_spaceport/27424823-1-eng-GB/Map",
@@ -601,7 +600,8 @@
     "https://www.nasa.gov/wp-content/uploads/2026/10/nhq202610040010orig.jpg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2023/04/julia-streak-scaled.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/the-beaver-brown-waters-of-rupert-ba",
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/msl/2026/curiosity-rover-updates/september/https___"
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/msl/2026/curiosity-rover-updates/september/https___",
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/mars_rover_meets_desert/27555911-1-eng-GB/Mars_"
   ],
-  "updated": "2026-10-06T09:09:10.107325"
+  "updated": "2026-10-06T10:53:34.178811"
 }
