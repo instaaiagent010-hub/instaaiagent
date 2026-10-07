@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18102978260339536",
-    "topic": "Lok Sabha Secretariat notice to 20 rebel TMC MPs on disqualification petition",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 8,
-    "posted_at": 1787732228,
-    "scored": false
-  },
-  {
     "media_id": "17876349093546132",
     "topic": "Women warriors: Breaking menstruation taboos, challenging leadership perceptions",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 9,
     "posted_at": 1791364436,
+    "scored": false
+  },
+  {
+    "media_id": "17891446299614804",
+    "topic": "INDIA Bloc Delhi Protest: Rahul, Priyanka Gandhi Released After Detention; SIR Showdown Intensifies",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 19,
+    "posted_at": 1791400737,
     "scored": false
   }
 ]
