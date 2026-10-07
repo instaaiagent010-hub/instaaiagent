@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18096480575148332",
-    "topic": "India rejects 'politically motivated, malicious references' in UN panel's rights report",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 8,
-    "posted_at": 1787732054,
-    "scored": false
-  },
-  {
     "media_id": "18090707510650732",
     "topic": "Dolly Parton's final message to Travis Kelce is breaking hearts after her death",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 9,
     "posted_at": 1791364244,
+    "scored": false
+  },
+  {
+    "media_id": "18061391639629274",
+    "topic": "Supreme Court Reserves Verdict on Delhi HC Ruling Over Mandatory Attendance Rules for Law Students",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 9,
+    "posted_at": 1791364350,
     "scored": false
   }
 ]
