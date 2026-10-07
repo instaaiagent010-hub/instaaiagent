@@ -1,6 +1,5 @@
 {
   "titles": [
-    "nasa’s roman telescope nears launch, reaches final integration and rehearsal milestones",
     "landspace’s zhuque-3 topples following milestone landing",
     "comet 220p in outburst",
     "what lake bonneville left behind",
@@ -299,10 +298,10 @@
     "lunar grounding challenge",
     "it looks like the atlantic storm season may finally produce a hurricane",
     "crew-12 set to depart the iss after eighth months in orbit",
-    "arianegroup completes second themis wet dress rehearsal"
+    "arianegroup completes second themis wet dress rehearsal",
+    "brake! time for esa’s hera asteroid mission to go slow"
   ],
   "images": [
-    "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/08/Zhuque-3-Y2-land-burn.jpg?fit=1024%2C596&ssl=1",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2023/09/Yaogan39-02-CZ2D-XSLC-17sept2023-ourspace1.jpg?fit=1024%2C681",
     "http://spaceflightnow.com/wp-content/uploads/2026/04/20260414-Falcon-9-File.jpg",
     "https://apod.nasa.gov/apod/image/2608/allsky_CEMeNt_Aug12-13final_pretty_8bit.jpg",
@@ -601,7 +600,8 @@
     "https://www.nasa.gov/wp-content/uploads/2026/06/feature-moonbase-img-2f4057.png",
     "https://cdn.arstechnica.net/wp-content/uploads/2026/10/google-deepmind.jpg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/10/55490081853_fc3faab619_5k-scaled.jpg",
-    "https://europeanspaceflight.com/wp-content/uploads/2026/10/ArianeGroup-Completes-Second-Themis-Wet-Dress-Rehearsal.webp"
+    "https://europeanspaceflight.com/wp-content/uploads/2026/10/ArianeGroup-Completes-Second-Themis-Wet-Dress-Rehearsal.webp",
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/hera_braking/27560778-2-eng-GB/Hera_braking_car"
   ],
-  "updated": "2026-10-07T11:56:13.029386"
+  "updated": "2026-10-07T14:06:06.593239"
 }
