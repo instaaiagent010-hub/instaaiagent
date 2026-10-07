@@ -1,6 +1,5 @@
 {
   "titles": [
-    "comet 220p in outburst",
     "what lake bonneville left behind",
     "tory bruno named honorary chair of world space week 2027",
     "the fuel for the next generation of cislunar exploration? technology and talent.",
@@ -299,10 +298,10 @@
     "crew-12 set to depart the iss after eighth months in orbit",
     "arianegroup completes second themis wet dress rehearsal",
     "brake! time for esa’s hera asteroid mission to go slow",
-    "mars’s oddest cloud may be even odder than we thought"
+    "mars’s oddest cloud may be even odder than we thought",
+    "nasa’s curiosity looks back after reaching elevation milestone"
   ],
   "images": [
-    "http://spaceflightnow.com/wp-content/uploads/2026/04/20260414-Falcon-9-File.jpg",
     "https://apod.nasa.gov/apod/image/2608/allsky_CEMeNt_Aug12-13final_pretty_8bit.jpg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/08/Ship-41-Six-Engine-Static-Fire-scaled.jpg",
     "https://i.vimeocdn.com/video/62374077-15e3fbe97d70f73b4903d5cace93470fe5e57bff5f54b6936b8a9d2b74dcf61f-d_640?region=us",
@@ -601,7 +600,8 @@
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/10/55490081853_fc3faab619_5k-scaled.jpg",
     "https://europeanspaceflight.com/wp-content/uploads/2026/10/ArianeGroup-Completes-Second-Themis-Wet-Dress-Rehearsal.webp",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/hera_braking/27560778-2-eng-GB/Hera_braking_car",
-    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/the_arsia_mons_elongated_cloud_as_seen_by_mars_"
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/the_arsia_mons_elongated_cloud_as_seen_by_mars_",
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia26/pia26781/PIA26781.png"
   ],
-  "updated": "2026-10-07T17:10:01.240740"
+  "updated": "2026-10-07T18:12:36.575384"
 }
