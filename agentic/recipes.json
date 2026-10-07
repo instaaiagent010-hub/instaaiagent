@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18222821185334592",
-    "topic": "Gold Price Predictions: Why Morgan Stanley Sees Gold Prices Breaking Above...",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 13,
-    "posted_at": 1787751493,
-    "scored": false
-  },
-  {
     "media_id": "17903614815329842",
     "topic": "‘Embarrassing Defeat!’ Washington Post Being Forced to Rehire Karen Attiah Spark...",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 19,
     "posted_at": 1791400828,
+    "scored": false
+  },
+  {
+    "media_id": "18116947727044474",
+    "topic": "Elon Musk Accuses Unnamed 'Oligarchs' Of Blocking Starlink's India Launch",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 19,
+    "posted_at": 1791400913,
     "scored": false
   }
 ]
