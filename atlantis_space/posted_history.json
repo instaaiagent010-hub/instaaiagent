@@ -1,6 +1,5 @@
 {
   "titles": [
-    "earth's shadow visualized with lunar eclipses",
     "live coverage: spacex to launch starlink mission on a falcon booster’s record-breaking 37th flight",
     "no signal left behind: new ways to detect jamming and spoofing",
     "esa’s draco reentry mission clears its critical design review",
@@ -299,10 +298,10 @@
     "solar orbiter tracks origin of mysterious magnetic switchbacks",
     "nasa sets coverage for spacex 35th station resupply launch, arrival",
     "the director’s take: telling galileo’s story through film",
-    "what will it take to build a moon base?"
+    "what will it take to build a moon base?",
+    "the exploration company to test lunar hopper demonstrator in 2027"
   ],
   "images": [
-    "https://www.nasaspaceflight.com/wp-content/uploads/2026/08/NSF-2026-08-23-19-39-25-057.jpg",
     "https://apod.nasa.gov/apod/image/2608/Comet220P_SA_4104.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/what-lake-bonneville-left-behind/cra",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2025/10/Copy-of-Copy-of-World-Space-Week-Association-01-1-scaled.png?",
@@ -601,7 +600,8 @@
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2022/05/solar_orbiter_at_perihelion_26_march_2022/24071",
     "https://www.nasa.gov/wp-content/uploads/2026/10/spacex-35.jpg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/navigation_documentary_filming_at_estec/2755394",
-    "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/10/space-minds-podcast-jhu-moon-2000-1500.jpg?fit=1024%2C768&ssl"
+    "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/10/space-minds-podcast-jhu-moon-2000-1500.jpg?fit=1024%2C768&ssl",
+    "https://europeanspaceflight.com/wp-content/uploads/2026/10/The-Exploration-Company-to-Test-Lunar-Hopper-Demonstrator-in-"
   ],
-  "updated": "2026-10-08T14:10:48.829576"
+  "updated": "2026-10-08T15:47:29.478330"
 }
