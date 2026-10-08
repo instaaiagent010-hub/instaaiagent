@@ -1,6 +1,5 @@
 {
   "titles": [
-    "spirit electronics adds texas instruments and microchip technology space grade components to online store ahead of small",
     "robotics and the future of on-orbit labor",
     "launch preview: falcon heavy to launch roman telescope, falcon 9 to launch starlink satellites",
     "earth's shadow visualized with lunar eclipses",
@@ -299,10 +298,10 @@
     "nasa’s curiosity looks back after reaching elevation milestone",
     "nasa’s curiosity captures dawn breaking on wind",
     "apod: 2026 october 8 – the saturn system smörgåsbord",
-    "solar orbiter tracks origin of mysterious magnetic switchbacks"
+    "solar orbiter tracks origin of mysterious magnetic switchbacks",
+    "nasa sets coverage for spacex 35th station resupply launch, arrival"
   ],
   "images": [
-    "https://europeanspaceflight.com/wp-content/uploads/2026/08/CNES-Seeks-Partners-to-Mass-Produce-Compact-Optical-Telescope",
     "https://cdn.arstechnica.net/wp-content/uploads/2012/06/shackleton_center_cropped.jpg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/08/KSC-20260709-PH-JMT01_0001large.jpg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/08/NSF-2026-08-23-19-39-25-057.jpg",
@@ -601,7 +600,8 @@
     "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia26/pia26781/PIA26781.png",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia25/pia25629/PIA25629.png",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/october/2026-09-21-2349_3-TW-RGB-Sat2_1.5",
-    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2022/05/solar_orbiter_at_perihelion_26_march_2022/24071"
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2022/05/solar_orbiter_at_perihelion_26_march_2022/24071",
+    "https://www.nasa.gov/wp-content/uploads/2026/10/spacex-35.jpg"
   ],
-  "updated": "2026-10-08T09:12:27.253569"
+  "updated": "2026-10-08T11:04:07.783741"
 }
