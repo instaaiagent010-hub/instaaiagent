@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18026953001892436",
-    "topic": "Jhooth Ki Goonj Fact Checks Rahul Gandhi’s 40 Claims, Says 29 False And 11 Misleading",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 0,
-    "posted_at": 1787877097,
-    "scored": false
-  },
-  {
     "media_id": "18156260041450870",
     "topic": "When A Giant Goes Away..: Harsha Bhogle Claims R Ashwin's Absence Behind India's Achilles' Heel VS Sri Lanka",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 20,
     "posted_at": 1791492621,
+    "scored": false
+  },
+  {
+    "media_id": "18138690655537394",
+    "topic": "Virgo Horoscope Today, October 8, 2026",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 20,
+    "posted_at": 1791492710,
     "scored": false
   }
 ]
