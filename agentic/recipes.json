@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18114476366072848",
-    "topic": "Kiren Rijiju targets Rahul Gandhi, Pawan Khera over 'false' allegations against Himanta, wife",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 13,
-    "posted_at": 1787835937,
-    "scored": false
-  },
-  {
     "media_id": "18065939081583274",
     "topic": "The Four Pillars Stand or Fall Together",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "reel",
     "hour": 14,
     "posted_at": 1791471362,
+    "scored": false
+  },
+  {
+    "media_id": "17922052293223380",
+    "topic": "Supreme Court petition challenges appointments of CEC and election commissioners",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 14,
+    "posted_at": 1791471469,
     "scored": false
   }
 ]
