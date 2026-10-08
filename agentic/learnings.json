@@ -1,6 +1,6 @@
 {
-  "updated": 1791408091,
-  "posts_scored": 294,
+  "updated": 1791458799,
+  "posts_scored": 300,
   "hook_avg": {},
   "hour_avg": {
     "13": 4.267,
@@ -18,29 +18,29 @@
     "16": 4.138,
     "11": 4.0,
     "17": 4.231,
-    "20": 4.091
+    "20": 4.077
   },
   "voice_avg": {},
   "topic_avg": {
     "nsel": 6.0,
-    "sarfaesi": 6.0,
     "depositor": 6.0,
-    "krishna's": 6.0,
-    "states": 6.0,
-    "janmashtami": 6.0,
+    "sarfaesi": 6.0,
     "birthday": 6.0,
     "different": 6.0,
     "celebrated": 6.0,
-    "clarke": 6.0,
-    "love": 6.0,
-    "williams": 6.0,
+    "krishna's": 6.0,
+    "states": 6.0,
+    "janmashtami": 6.0,
+    "reason": 6.0,
     "split": 6.0,
     "island": 6.0,
-    "taylor": 6.0,
+    "love": 6.0,
     "carraway": 6.0,
-    "reason": 6.0,
+    "williams": 6.0,
+    "clarke": 6.0,
+    "taylor": 6.0,
     "reveals": 5.5,
-    "most-viewed": 5.0,
-    "raina's": 5.0
+    "latent": 5.0,
+    "episodes:": 5.0
   }
 }
