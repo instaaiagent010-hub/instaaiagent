@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18069290582724681",
-    "topic": "Breaking news: Nepal disaster death toll rises to 579, nearly 2,000 still missing as rescue mission continues",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 18,
-    "posted_at": 1788029154,
-    "scored": false
-  },
-  {
     "media_id": "18163558366487941",
     "topic": "BREAKING: Former WWE Champion Involved In A Car Accident",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 14,
     "posted_at": 1791557012,
+    "scored": false
+  },
+  {
+    "media_id": "18198497713386960",
+    "topic": "Breaking News Live: 'I Expected President To Deny Vote Chori, But She Accepted,' Says Rahul Gandhi",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 18,
+    "posted_at": 1791570766,
     "scored": false
   }
 ]
