@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18165088885470927",
-    "topic": "Lokpal must act, not just wait",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 14,
-    "posted_at": 1787927780,
-    "scored": false
-  },
-  {
     "media_id": "18112287628959062",
     "topic": "Rahul's performative feminism vs Modi's grassroots transformation",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 9,
     "posted_at": 1791538400,
+    "scored": false
+  },
+  {
+    "media_id": "17907409821585890",
+    "topic": "SC rejects plea seeking independent probe into CJP's July protest",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 9,
+    "posted_at": 1791538487,
     "scored": false
   }
 ]
