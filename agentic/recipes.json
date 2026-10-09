@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18123983986832108",
-    "topic": "India's 'Cockroaches' Are Fighting Back",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 8,
-    "posted_at": 1788078715,
-    "scored": false
-  },
-  {
     "media_id": "18625064362017182",
     "topic": "India's Gen Z Cockroach Movement Was a Joke — Until It Wasn't",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "reel",
     "hour": 18,
     "posted_at": 1791570879,
+    "scored": false
+  },
+  {
+    "media_id": "18168888322484173",
+    "topic": "'DEEPLY OFFENSIVE': INDIA DELIVERS Sharp Message to JD Vance Over Indian Workers",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 20,
+    "posted_at": 1791577909,
     "scored": false
   }
 ]
