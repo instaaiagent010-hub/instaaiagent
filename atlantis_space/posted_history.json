@@ -1,6 +1,5 @@
 {
   "titles": [
-    "the threat environment and processing at the edge",
     "rtx’s blue canyon technologies introduces new spacecraft mission enabler",
     "colorful aurora over icelandic waterfall",
     "first contracts kick off european launcher challenge",
@@ -299,10 +298,10 @@
     "rocket report: a rare falcon 9 scrub; is it just about vulcan's time to shine?",
     "italy explores building an artificial gravity research platform in orbit",
     "ship 40 returns home as ship 42 gets more cryo proof testing",
-    "press event: iss crew-12 return & spacex crs-35 briefing"
+    "press event: iss crew-12 return & spacex crs-35 briefing",
+    "nasa demonstrates next"
   ],
   "images": [
-    "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/08/space-angel-scaled.png?fit=1024%2C1024&ssl=1",
     "https://www.nasa.gov/wp-content/uploads/2026/08/55474999794-5b0f1a2c92-o.jpg",
     "https://www.nasa.gov/wp-content/uploads/2026/08/1-pia26777-d2026-0824-rl0031661-pano-med.jpg",
     "https://apod.nasa.gov/apod/image/2608/lions_head_nebula.jpg",
@@ -601,7 +600,8 @@
     "https://cdn.arstechnica.net/wp-content/uploads/2026/04/55092272338_83965929d0_o-1776275319.jpg",
     "https://europeanspaceflight.com/wp-content/uploads/2026/10/Italy-Explores-Building-Artificial-Gravity-Research-Platform-",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/10/Ship40-4-2-wmarked-scaled.jpg",
-    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/crs-28_dragon_d_image_20230530191602.jpeg"
+    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/crs-28_dragon_d_image_20230530191602.jpeg",
+    "https://www.nasa.gov/wp-content/uploads/2026/10/iss075e0185943.jpg"
   ],
-  "updated": "2026-10-09T16:44:04.827474"
+  "updated": "2026-10-09T17:40:01.322917"
 }
