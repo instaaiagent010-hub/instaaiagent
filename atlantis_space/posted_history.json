@@ -1,6 +1,5 @@
 {
   "titles": [
-    "upcoming launch: falcon heavy | nancy grace roman space telescope",
     "mtg",
     "the threat environment and processing at the edge",
     "rtx’s blue canyon technologies introduces new spacecraft mission enabler",
@@ -299,10 +298,10 @@
     "earth from space: namibia’s biggest salt pan",
     "crew-12 back on earth as iss keeps busy",
     "rocket report: a rare falcon 9 scrub; is it just about vulcan's time to shine?",
-    "italy explores building an artificial gravity research platform in orbit"
+    "italy explores building an artificial gravity research platform in orbit",
+    "ship 40 returns home as ship 42 gets more cryo proof testing"
   ],
   "images": [
-    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2025/11/navisp/26978927-1-eng-GB/NAVISP_card_full.jpg",
     "https://europeanspaceflight.com/wp-content/uploads/2026/08/ESAs-Draco-Reentry-Mission-Clears-its-Critical-Design-Review-",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/08/space-angel-scaled.png?fit=1024%2C1024&ssl=1",
     "https://www.nasa.gov/wp-content/uploads/2026/08/55474999794-5b0f1a2c92-o.jpg",
@@ -601,7 +600,8 @@
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/earth_from_space_namibia_s_biggest_salt_pan/275",
     "https://spacepolicyonline.com/wp-content/uploads/2026/10/Crew12-splashdown-Keegan-300x200.jpg",
     "https://cdn.arstechnica.net/wp-content/uploads/2026/04/55092272338_83965929d0_o-1776275319.jpg",
-    "https://europeanspaceflight.com/wp-content/uploads/2026/10/Italy-Explores-Building-Artificial-Gravity-Research-Platform-"
+    "https://europeanspaceflight.com/wp-content/uploads/2026/10/Italy-Explores-Building-Artificial-Gravity-Research-Platform-",
+    "https://www.nasaspaceflight.com/wp-content/uploads/2026/10/Ship40-4-2-wmarked-scaled.jpg"
   ],
-  "updated": "2026-10-09T13:57:55.429108"
+  "updated": "2026-10-09T16:36:26.132061"
 }
