@@ -1,6 +1,5 @@
 {
   "titles": [
-    "astronauts anil menon and sophie adenot on spacewalk",
     "new next-gen dish adds muscle to nasa’s deep space network",
     "jwst images the lion's head nebula",
     "starbase, louisiana: the largest private spaceport in the world",
@@ -299,10 +298,10 @@
     "amazon builds 1,000th satellite, is weeks away from space internet rollout",
     "nasa’s spacex crew‑12 splashes down, sets briefing to discuss mission",
     "nasa’s sspicy mission to demonstrate in",
-    "nasa briefing to highlight contributions to martian moons mission"
+    "nasa briefing to highlight contributions to martian moons mission",
+    "floodwaters overwhelm thailand"
   ],
   "images": [
-    "https://i0.wp.com/spacenews.com/wp-content/uploads/2025/02/Spirit-Electronics-logo.png?fit=860%2C860&ssl=1",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/08/1500-1000-space-minds-icarus-robotics-smallsat26-scaled.jpg?f",
     "https://www.nasaspaceflight.com/wp-content/uploads/2025/08/Gy7aFPMXMAAkg8X.jpeg",
     "https://apod.nasa.gov/apod/image/2608/EarthShadow_Martin_4000.jpg",
@@ -601,7 +600,8 @@
     "https://cdn.arstechnica.net/wp-content/uploads/2026/10/Satellite-1000.png",
     "https://www.nasa.gov/wp-content/uploads/2026/10/crew12splashdown1.jpg",
     "https://www.nasa.gov/wp-content/uploads/2026/10/otter-2.png",
-    "https://www.nasa.gov/wp-content/uploads/2023/04/mmx-mars-mission.jpg"
+    "https://www.nasa.gov/wp-content/uploads/2023/04/mmx-mars-mission.jpg",
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/floodwaters-overwhelm-thailand/thail"
   ],
-  "updated": "2026-10-08T20:58:48.740659"
+  "updated": "2026-10-09T06:53:26.392888"
 }
