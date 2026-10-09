@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "17997569534806461",
-    "topic": "Too much assistance? Why Nepal declined help but agreed for aid from India, China & others",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 22,
-    "posted_at": 1787956499,
-    "scored": false
-  },
-  {
     "media_id": "17914302180445310",
     "topic": "'Toxic' box office collection day 3 [LIVE]: Yash, Nayanthara and Kiara Advani film crosses 160 crore India net milestone",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 9,
     "posted_at": 1791538573,
+    "scored": false
+  },
+  {
+    "media_id": "18177954181435448",
+    "topic": "School Assembly News Headlines, October 9, 2026: Check national, international, business, sports updates and thought of ",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 9,
+    "posted_at": 1791538664,
     "scored": false
   }
 ]
