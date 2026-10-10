@@ -1,6 +1,5 @@
 {
   "titles": [
-    "colorful aurora over icelandic waterfall",
     "first contracts kick off european launcher challenge",
     "rare, widespread snow in the atacama desert",
     "upcoming launch: angara 1.2 | kosmos (unknown payload)",
@@ -299,10 +298,10 @@
     "ship 40 returns home as ship 42 gets more cryo proof testing",
     "press event: iss crew-12 return & spacex crs-35 briefing",
     "nasa demonstrates next",
-    "spacex to make another attempt to launch 21 data satellites for space development agency"
+    "spacex to make another attempt to launch 21 data satellites for space development agency",
+    "nasa issues long-awaited call to industry for private space stations"
   ],
   "images": [
-    "https://www.nasa.gov/wp-content/uploads/2026/08/1-pia26777-d2026-0824-rl0031661-pano-med.jpg",
     "https://apod.nasa.gov/apod/image/2608/lions_head_nebula.jpg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/08/NSF-2026-08-26-04-42-39-997.jpg",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_heavy_image_20220129192819.jpeg",
@@ -601,7 +600,8 @@
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/10/Ship40-4-2-wmarked-scaled.jpg",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/crs-28_dragon_d_image_20230530191602.jpeg",
     "https://www.nasa.gov/wp-content/uploads/2026/10/iss075e0185943.jpg",
-    "http://spaceflightnow.com/wp-content/uploads/2026/10/20261009-SDA-Fairing.jpg"
+    "http://spaceflightnow.com/wp-content/uploads/2026/10/20261009-SDA-Fairing.jpg",
+    "https://cdn.arstechnica.net/wp-content/uploads/2012/11/323069main_s119e009662.jpg"
   ],
-  "updated": "2026-10-10T07:10:20.897109"
+  "updated": "2026-10-10T08:48:42.286921"
 }
