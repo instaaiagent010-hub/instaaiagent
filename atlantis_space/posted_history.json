@@ -1,6 +1,5 @@
 {
   "titles": [
-    "rare, widespread snow in the atacama desert",
     "upcoming launch: angara 1.2 | kosmos (unknown payload)",
     "spacecraft undocking: progress ms-33 undocking",
     "civil servants sworn in at nasa ames",
@@ -299,10 +298,10 @@
     "nasa demonstrates next",
     "spacex to make another attempt to launch 21 data satellites for space development agency",
     "nasa issues long-awaited call to industry for private space stations",
-    "esa astronaut sophie adenot returns from her first mission to the international space station"
+    "esa astronaut sophie adenot returns from her first mission to the international space station",
+    "nasa to conduct flyover, engage nfl fans at metlife stadium"
   ],
   "images": [
-    "https://www.nasaspaceflight.com/wp-content/uploads/2026/08/NSF-2026-08-26-04-42-39-997.jpg",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_heavy_image_20220129192819.jpeg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/videos/2026/08/mtg-i2_ready_for_launch/27433458-1-eng-GB/MTG-I",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/08/1500-1000-space-minds-frontgrade-smallsat26-scaled.jpg?fit=10",
@@ -601,7 +600,8 @@
     "https://www.nasa.gov/wp-content/uploads/2026/10/iss075e0185943.jpg",
     "http://spaceflightnow.com/wp-content/uploads/2026/10/20261009-SDA-Fairing.jpg",
     "https://cdn.arstechnica.net/wp-content/uploads/2012/11/323069main_s119e009662.jpg",
-    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/sophie_is_back_in_europe2/27568712-2-eng-GB/Sop"
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/sophie_is_back_in_europe2/27568712-2-eng-GB/Sop",
+    "https://www.nasa.gov/wp-content/uploads/2026/10/grc-2026-c-06389large.jpg"
   ],
-  "updated": "2026-10-10T13:11:24.807733"
+  "updated": "2026-10-10T14:36:40.193808"
 }
