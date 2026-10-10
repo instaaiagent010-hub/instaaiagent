@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "17961303819191655",
-    "topic": "Líderes de China, Rusia e India se reúnen para contrarrestar la influencia de EEUU",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 8,
-    "posted_at": 1788166338,
-    "scored": false
-  },
-  {
     "media_id": "17943497772072580",
     "topic": "Becomes World's Most Successful T20I Bowler in Her 150th Match as India Crushes Thailand by 94 Runs",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 8,
     "posted_at": 1791622499,
+    "scored": false
+  },
+  {
+    "media_id": "18110059772521408",
+    "topic": "India’s Voter Purge: Democracy Under Fire",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 8,
+    "posted_at": 1791622584,
     "scored": false
   }
 ]
