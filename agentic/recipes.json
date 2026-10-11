@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18189751093396213",
-    "topic": "Breaking news: PM Modi highlights 7.8% GDP growth, calls for self-reliance and takes aim at opposition",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "reel",
-    "hour": 8,
-    "posted_at": 1788249684,
-    "scored": false
-  },
-  {
     "media_id": "17978084952097088",
     "topic": "India faces below-normal September rainfall after record-breaking warm August",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "reel",
     "hour": 14,
     "posted_at": 1791728866,
+    "scored": false
+  },
+  {
+    "media_id": "18132857125707961",
+    "topic": "124 former IAS, IFS, IRS officers write open letter to citizens; defend Election Commission, SIR",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 14,
+    "posted_at": 1791728972,
     "scored": false
   }
 ]
