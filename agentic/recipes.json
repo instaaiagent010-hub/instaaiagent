@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "17900141574578305",
-    "topic": "Breaking News Live: Top News Updates From India And Around The World",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 7,
-    "posted_at": 1788249578,
-    "scored": false
-  },
-  {
     "media_id": "18189751093396213",
     "topic": "Breaking news: PM Modi highlights 7.8% GDP growth, calls for self-reliance and takes aim at opposition",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 14,
     "posted_at": 1791728728,
+    "scored": false
+  },
+  {
+    "media_id": "18379591894235011",
+    "topic": "You have solutions the world needs: PM Modi's outreach to Gen Z in Chennai",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 14,
+    "posted_at": 1791728866,
     "scored": false
   }
 ]
