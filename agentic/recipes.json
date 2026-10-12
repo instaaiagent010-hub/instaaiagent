@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18139304788599896",
-    "topic": "RBI backstop keeps Indian rupee stable, blunting importer dollar demand impact",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "reel",
-    "hour": 12,
-    "posted_at": 1788351695,
-    "scored": false
-  },
-  {
     "media_id": "18110196467172611",
     "topic": "Supreme Court quashes all FIRs across the country against NEET paper leak protesters",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 9,
     "posted_at": 1791798249,
+    "scored": false
+  },
+  {
+    "media_id": "17960987730079757",
+    "topic": "India news Live Updates, 12 October 2026: Supreme Court questions Centre on capping margins beyond anti-cancer drugs",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 17,
+    "posted_at": 1791824534,
     "scored": false
   }
 ]
