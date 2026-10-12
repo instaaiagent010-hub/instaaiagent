@@ -1,6 +1,5 @@
 {
   "titles": [
-    "trump calls for creation of a \"space academy\" to train future nasa leaders",
     "astronaut spotlight: ravish malhotra — indian space hero",
     "nasa awards first prize in phase 2 of agency’s lunarecycle challenge",
     "trump honors artemis ii crew, signs executive order to establish a u.s. space academy",
@@ -299,10 +298,10 @@
     "exomars rover twin rehearses first drive",
     "jena-optronik is proud to partner with mda space for its first astro hp mission.",
     "welcome home, sophie adenot",
-    "asteroid 164207 cardea (2004 gu9) aaj earth ke paas se guzrega — 154-344m"
+    "asteroid 164207 cardea (2004 gu9) aaj earth ke paas se guzrega — 154-344m",
+    "spacex falcon 9 rocket to launch 27 starlink satellites into orbit from california"
   ],
   "images": [
-    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/angara25201.2_image_20190224012254.jpeg",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/progress2520ms-112520docking_image_20190318202147.jpe",
     "https://www.nasa.gov/wp-content/uploads/2026/08/acd26-0108-042orig.jpg",
     "https://science.nasa.gov/wp-content/uploads/2026/08/encap.jpg",
@@ -601,7 +600,8 @@
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/10/webbhubble1026-scaled.jpg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/mars_rover_rolls_down_the_ramp/27567393-1-eng-G",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/10/jenaoptronik.png?fit=719%2C719&ssl=1",
-    "https://www.esa.int/var/esa/storage/images/esa_multimedia/videos/2026/10/welcome_home_sophie_adenot/27571908-1-eng-GB/We"
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/videos/2026/10/welcome_home_sophie_adenot/27571908-1-eng-GB/We",
+    "http://spaceflightnow.com/wp-content/uploads/2026/10/20261001-Vandenberg-File-Feature-Image.jpg"
   ],
-  "updated": "2026-10-12T21:59:25.331762"
+  "updated": "2026-10-12T22:43:51.095313"
 }
