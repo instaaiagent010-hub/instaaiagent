@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18627151762054399",
-    "topic": "Taxi, autorickshaw fares rise in Mumbai from today",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 7,
-    "posted_at": 1788333664,
-    "scored": false
-  },
-  {
     "media_id": "18146158414545731",
     "topic": "Janmashtami 2026: How Krishna's birthday is celebrated across different Indian states",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 19,
     "posted_at": 1791747898,
+    "scored": false
+  },
+  {
+    "media_id": "17972682285137868",
+    "topic": "India news Live Updates, 12 October 2026: BJP MPs put into buses by police during BJP Mahila Morcha protest",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 9,
+    "posted_at": 1791798071,
     "scored": false
   }
 ]
