@@ -1,6 +1,5 @@
 {
   "titles": [
-    "12 astronauts space mein hain — iss update 28 aug 2026",
     "the sky turns above paranal",
     "ariane 6 launch with mtg-i2 – highlights",
     "sophie adenot's third spacewalk (u.s. spacewalk 99)",
@@ -299,10 +298,10 @@
     "asteroid (2021 je4) aaj earth ke paas se guzrega — 237-530m",
     "blue origin advances lc-36 rebuild for year",
     "what’s happening in space policy october 11-17, 2026",
-    "antarctic sea ice grows to its 2026 maximum"
+    "antarctic sea ice grows to its 2026 maximum",
+    "webb and hubble observe stellar nurseries, galaxies, and gravitational lensing in new images"
   ],
   "images": [
-    "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/08/blue-canyon-technologies-logo-square.png?fit=962%2C964&ssl=1",
     "https://apod.nasa.gov/apod/image/2608/Aurora_over_Fall.jpg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2024/06/european_launcher_challenge_visual/26128354-4-e",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/rare,-widespread-snow-in-the-atacama",
@@ -601,7 +600,8 @@
     "https://www.nasa.gov/wp-content/uploads/2026/10/grc-2026-c-06389large.jpg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/10/NSF-2026-10-11-15-28-41-818.jpg",
     "https://spacepolicyonline.com/wp-content/uploads/2026/10/Meir-Adenot-day-before-EVA-300x200.jpg",
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/antarctic-sea-ice-grows-to-its-2026-"
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/antarctic-sea-ice-grows-to-its-2026-",
+    "https://www.nasaspaceflight.com/wp-content/uploads/2026/10/webbhubble1026-scaled.jpg"
   ],
-  "updated": "2026-10-12T06:42:39.947134"
+  "updated": "2026-10-12T09:28:15.390817"
 }
