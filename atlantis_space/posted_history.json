@@ -1,6 +1,5 @@
 {
   "titles": [
-    "nasa’s artemis ii crew receives congressional space medal of honor",
     "eclipse pair",
     "nasa’s roman space telescope go for launch, five years of discovery",
     "m74: a grand design spiral",
@@ -299,7 +298,8 @@
     "spacex falcon 9 rocket to launch 27 starlink satellites into orbit from california",
     "norway details funding allocation for second andøya launch pad",
     "an impact structure with legs",
-    "mars moon lander set to launch on 19 october"
+    "mars moon lander set to launch on 19 october",
+    "asteroid 339714 (2005 st1) aaj earth ke paas se guzrega — 226-506m"
   ],
   "images": [
     "https://epic.gsfc.nasa.gov/epic-galleries/2022/high_cadence/thumbs/epic_1b_20220613185138.jpg",
@@ -603,5 +603,5 @@
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/an-impact-structure-with-legs/aus_sp",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/mmx_from_launch_to_phobos/27573728-1-eng-GB/MMX"
   ],
-  "updated": "2026-10-13T12:53:05.913110"
+  "updated": "2026-10-13T14:48:14.191771"
 }
