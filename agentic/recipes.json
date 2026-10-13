@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "17904671499325214",
-    "topic": "CJP protest news live: Team CJP reaches Parliament Street, urges immediate action over Hindutva influencer's claims",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "reel",
-    "hour": 7,
-    "posted_at": 1788506881,
-    "scored": false
-  },
-  {
     "media_id": "18131685655709721",
     "topic": "The unfulfilled promise of Nishad reservation haunts BJP ahead of 2027 UP polls",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 19,
     "posted_at": 1791920198,
+    "scored": false
+  },
+  {
+    "media_id": "17950222359055420",
+    "topic": "'We grow with the world, not at anyone's cost': PM Modi on India's economic growth",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 19,
+    "posted_at": 1791920311,
     "scored": false
   }
 ]
