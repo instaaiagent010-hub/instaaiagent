@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18333199633256858",
-    "topic": "Breaking News Live Updates: One terrorist killed in joint operation in Budgam",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 12,
-    "posted_at": 1788524232,
-    "scored": false
-  },
-  {
     "media_id": "18086839637688138",
     "topic": "India vs Hong Kong LIVE Score, Women's Asia Cup 2026: Smriti Mandhana Breaks Mithali Raj's All-Time World Record, Hong K",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 19,
     "posted_at": 1791920400,
+    "scored": false
+  },
+  {
+    "media_id": "18107622305628224",
+    "topic": "Allahabad HC warns UP Police: Misbehaving with government advocates is contempt",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 19,
+    "posted_at": 1791920512,
     "scored": false
   }
 ]
