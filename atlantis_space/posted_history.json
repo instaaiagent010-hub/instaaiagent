@@ -1,6 +1,5 @@
 {
   "titles": [
-    "nasa awards first prize in phase 2 of agency’s lunarecycle challenge",
     "trump honors artemis ii crew, signs executive order to establish a u.s. space academy",
     "nasa’s artemis ii crew receives congressional space medal of honor",
     "eclipse pair",
@@ -299,10 +298,10 @@
     "welcome home, sophie adenot",
     "asteroid 164207 cardea (2004 gu9) aaj earth ke paas se guzrega — 154-344m",
     "spacex falcon 9 rocket to launch 27 starlink satellites into orbit from california",
-    "norway details funding allocation for second andøya launch pad"
+    "norway details funding allocation for second andøya launch pad",
+    "an impact structure with legs"
   ],
   "images": [
-    "https://www.nasa.gov/wp-content/uploads/2026/08/acd26-0108-042orig.jpg",
     "https://science.nasa.gov/wp-content/uploads/2026/08/encap.jpg",
     "https://epic.gsfc.nasa.gov/epic-galleries/2022/high_cadence/thumbs/epic_1b_20220613185138.jpg",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/soyuz_ms_in_orb_image_20240313130407.jpeg",
@@ -601,7 +600,8 @@
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/10/jenaoptronik.png?fit=719%2C719&ssl=1",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/videos/2026/10/welcome_home_sophie_adenot/27571908-1-eng-GB/We",
     "http://spaceflightnow.com/wp-content/uploads/2026/10/20261001-Vandenberg-File-Feature-Image.jpg",
-    "https://europeanspaceflight.com/wp-content/uploads/2026/10/Norway-Details-Funding-Allocation-for-Second-Andoya-Launch-Pa"
+    "https://europeanspaceflight.com/wp-content/uploads/2026/10/Norway-Details-Funding-Allocation-for-Second-Andoya-Launch-Pa",
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/an-impact-structure-with-legs/aus_sp"
   ],
-  "updated": "2026-10-13T07:14:27.138707"
+  "updated": "2026-10-13T09:39:20.689046"
 }
