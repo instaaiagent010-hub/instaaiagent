@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18096612476532422",
-    "topic": "Miss Grand International 2026 moves competition from India to Thailand",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 7,
-    "posted_at": 1788420230,
-    "scored": false
-  },
-  {
     "media_id": "18045150938809914",
     "topic": "Mining revenue must be the means, not end",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 9,
     "posted_at": 1791884707,
+    "scored": false
+  },
+  {
+    "media_id": "18054057620651074",
+    "topic": "'No permission, barricades broken': FIRs filed against INDIA bloc over protest march till SC",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 9,
+    "posted_at": 1791884794,
     "scored": false
   }
 ]
