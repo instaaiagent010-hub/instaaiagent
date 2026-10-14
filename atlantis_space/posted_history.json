@@ -1,6 +1,5 @@
 {
   "titles": [
-    "nancy grace roman space telescope lifts off to open new insights into the universe",
     "ses awards ohb €1 billion for iris2 meo satellites",
     "upcoming launch: falcon 9 block 5 | starlink group 15-23",
     "commercial space federation (csf) welcomes two new associate members",
@@ -299,10 +298,10 @@
     "new science, supplies head to iss on crs-35",
     "spain approves early release of €65.8 million in paz 2 spy satellite funding",
     "earth today, jupiter tomorrow: an insight into juice’s recent earth flyby",
-    "nasa’s space x crs-35 launch jellyfish"
+    "nasa’s space x crs-35 launch jellyfish",
+    "nasa’s chandra breaks down ‘treble clef’s’ galaxy cluster collision"
   ],
   "images": [
-    "https://www.nasa.gov/wp-content/uploads/2026/08/cerberuz-lunarecycle-winners.jpg",
     "https://spacepolicyonline.com/wp-content/uploads/2026/05/Isaacman-official-Ingalls-240x300.webp",
     "https://www.nasa.gov/wp-content/uploads/2026/08/20260828-120552-jk1-3999-1.jpg",
     "https://apod.nasa.gov/apod/image/2608/2026-08_12and28-EclipsePair.jpg",
@@ -601,7 +600,8 @@
     "https://i0.wp.com/www.spacescout.info/wp-content/uploads/2026/10/david-streaks.jpg",
     "https://europeanspaceflight.com/wp-content/uploads/2026/10/Spain-Approves-Early-Release-of-65.8-Million-Euros-in-PAZ-2-S",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/juice_navigation_camera_images_of_the_moon/2757",
-    "https://www.nasa.gov/wp-content/uploads/2026/10/nhq20261013-admin-0005orig.jpg"
+    "https://www.nasa.gov/wp-content/uploads/2026/10/nhq20261013-admin-0005orig.jpg",
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/chandra/2026/trebleclef.jpg"
   ],
-  "updated": "2026-10-14T16:06:18.031432"
+  "updated": "2026-10-14T18:19:17.909569"
 }
