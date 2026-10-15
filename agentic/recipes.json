@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18085653056286067",
-    "topic": "Supreme Court Seeks Explanation From Union For Deputing IPS Officers In CAPFs Despite 2025 Judgment",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "reel",
-    "hour": 7,
-    "posted_at": 1788679212,
-    "scored": false
-  },
-  {
     "media_id": "18620632774005086",
     "topic": "Saharanpur mosque demolished after court upholds govt land claim",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 13,
     "posted_at": 1792069253,
+    "scored": false
+  },
+  {
+    "media_id": "17995181112019965",
+    "topic": "Opinion: Gandhi Siblings, And INDIA Bloc's Political Theatrics",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 13,
+    "posted_at": 1792069343,
     "scored": false
   }
 ]
