@@ -1,6 +1,5 @@
 {
   "titles": [
-    "commercial space federation (csf) welcomes two new associate members",
     "speed to field starts below the prime",
     "launch of the roman space telescope",
     "september 2026 satellite puzzler",
@@ -299,10 +298,10 @@
     "nasa’s space x crs-35 launch jellyfish",
     "nasa’s chandra breaks down ‘treble clef’s’ galaxy cluster collision",
     "nasa astronauts to answer questions from florida students",
-    "fires arrive in the amazon rainforest"
+    "fires arrive in the amazon rainforest",
+    "artemis iii sls teams prepare short stack for pad tanking test"
   ],
   "images": [
-    "https://apod.nasa.gov/apod/image/2608/2026-08_12and28-EclipsePair.jpg",
     "https://i0.wp.com/www.spacescout.info/wp-content/uploads/2026/08/image-19.png",
     "https://apod.nasa.gov/apod/image/2608/m74_hst_1280.jpg",
     "http://spaceflightnow.com/wp-content/uploads/2022/07/20220719roman.jpg",
@@ -601,7 +600,8 @@
     "https://www.nasa.gov/wp-content/uploads/2026/10/nhq20261013-admin-0005orig.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/chandra/2026/trebleclef.jpg",
     "https://www.nasa.gov/wp-content/uploads/2026/10/florida-student-downlink-oct-14.jpg",
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/fires-arrive-in-the-amazon-rainfores"
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/fires-arrive-in-the-amazon-rainfores",
+    "https://www.nasaspaceflight.com/wp-content/uploads/2026/10/NSF-2026-10-14-23-01-17-060.jpg"
   ],
-  "updated": "2026-10-15T05:25:02.460036"
+  "updated": "2026-10-15T07:40:23.796772"
 }
