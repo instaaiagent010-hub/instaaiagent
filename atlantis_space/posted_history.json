@@ -1,6 +1,5 @@
 {
   "titles": [
-    "upcoming launch: falcon 9 block 5 | starlink group 15-23",
     "commercial space federation (csf) welcomes two new associate members",
     "speed to field starts below the prime",
     "launch of the roman space telescope",
@@ -299,10 +298,10 @@
     "earth today, jupiter tomorrow: an insight into juice’s recent earth flyby",
     "nasa’s space x crs-35 launch jellyfish",
     "nasa’s chandra breaks down ‘treble clef’s’ galaxy cluster collision",
-    "nasa astronauts to answer questions from florida students"
+    "nasa astronauts to answer questions from florida students",
+    "fires arrive in the amazon rainforest"
   ],
   "images": [
-    "https://www.nasa.gov/wp-content/uploads/2026/08/20260828-120552-jk1-3999-1.jpg",
     "https://apod.nasa.gov/apod/image/2608/2026-08_12and28-EclipsePair.jpg",
     "https://i0.wp.com/www.spacescout.info/wp-content/uploads/2026/08/image-19.png",
     "https://apod.nasa.gov/apod/image/2608/m74_hst_1280.jpg",
@@ -601,7 +600,8 @@
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/juice_navigation_camera_images_of_the_moon/2757",
     "https://www.nasa.gov/wp-content/uploads/2026/10/nhq20261013-admin-0005orig.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/chandra/2026/trebleclef.jpg",
-    "https://www.nasa.gov/wp-content/uploads/2026/10/florida-student-downlink-oct-14.jpg"
+    "https://www.nasa.gov/wp-content/uploads/2026/10/florida-student-downlink-oct-14.jpg",
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/fires-arrive-in-the-amazon-rainfores"
   ],
-  "updated": "2026-10-14T19:53:05.113293"
+  "updated": "2026-10-15T05:25:02.460036"
 }
