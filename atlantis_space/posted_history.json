@@ -1,6 +1,5 @@
 {
   "titles": [
-    "upcoming launch: pallas-1 | demo flight",
     "pld space adds €108 million to series c funding round",
     "it turns out that orion's much-maligned heat shield performed really well",
     "hubble's superbubble scene",
@@ -299,10 +298,10 @@
     "upcoming launch: falcon 9 block 5 | bandwagon 5 (dedicated mid-inclination rideshare)",
     "chandra finds possible origin of ‘treble clef’ waves",
     "how nasa is thinking about a moon base",
-    "upcoming launch: h3-24 | martian moons exploration (mmx)"
+    "upcoming launch: h3-24 | martian moons exploration (mmx)",
+    "nasa satellites observe historic 2026 el niño"
   ],
   "images": [
-    "https://www.nasaspaceflight.com/wp-content/uploads/2026/08/NSF-2026-08-31-01-01-10-310.jpg",
     "https://spacepolicyonline.com/wp-content/uploads/2026/08/Roman-liftoff-Kraus-300x198.jpg",
     "https://europeanspaceflight.com/wp-content/uploads/2026/08/SES-Awards-OHB-1-billion-Euros-for-IRIS2-MEO-Satellites.webp",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon2520925_image_20221009234147.png",
@@ -601,7 +600,8 @@
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_liftof_image_20251102082912.jpg",
     "https://www.nasa.gov/wp-content/uploads/2026/10/trebleclef-lg.jpg",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/10/space-minds-podcast-NASA-moon-2000-1500.jpg?fit=1024%2C768&ss",
-    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/h3-24_liftoff__image_20251028184029.jpeg"
+    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/h3-24_liftoff__image_20251028184029.jpeg",
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/el-ni%C3%B1o-is-underway/elnino_sen6"
   ],
-  "updated": "2026-10-15T18:02:51.885592"
+  "updated": "2026-10-15T19:35:37.978113"
 }
