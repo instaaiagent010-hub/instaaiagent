@@ -1,6 +1,5 @@
 {
   "titles": [
-    "speed to field starts below the prime",
     "launch of the roman space telescope",
     "september 2026 satellite puzzler",
     "launch preview: array of international launches planned this week",
@@ -299,10 +298,10 @@
     "nasa’s chandra breaks down ‘treble clef’s’ galaxy cluster collision",
     "nasa astronauts to answer questions from florida students",
     "fires arrive in the amazon rainforest",
-    "artemis iii sls teams prepare short stack for pad tanking test"
+    "artemis iii sls teams prepare short stack for pad tanking test",
+    "swarming robots to tackle space debris"
   ],
   "images": [
-    "https://i0.wp.com/www.spacescout.info/wp-content/uploads/2026/08/image-19.png",
     "https://apod.nasa.gov/apod/image/2608/m74_hst_1280.jpg",
     "http://spaceflightnow.com/wp-content/uploads/2022/07/20220719roman.jpg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/08/IMG_0596.jpeg",
@@ -601,7 +600,8 @@
     "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/chandra/2026/trebleclef.jpg",
     "https://www.nasa.gov/wp-content/uploads/2026/10/florida-student-downlink-oct-14.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/fires-arrive-in-the-amazon-rainfores",
-    "https://www.nasaspaceflight.com/wp-content/uploads/2026/10/NSF-2026-10-14-23-01-17-060.jpg"
+    "https://www.nasaspaceflight.com/wp-content/uploads/2026/10/NSF-2026-10-14-23-01-17-060.jpg",
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/swarming_robots_to_tackle_space_debris/27577419"
   ],
-  "updated": "2026-10-15T07:40:23.796772"
+  "updated": "2026-10-15T08:44:25.752602"
 }
