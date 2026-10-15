@@ -1,6 +1,5 @@
 {
   "titles": [
-    "launch preview: array of international launches planned this week",
     "a plane lunar eclipse",
     "ice island survives run",
     "nasa welcomes türkiye as newest artemis accords signatory",
@@ -299,10 +298,10 @@
     "artemis iii sls teams prepare short stack for pad tanking test",
     "swarming robots to tackle space debris",
     "drilling down for the moon",
-    "arianespace targets 23 nov ariane 6 return following reported turbopump fix"
+    "arianespace targets 23 nov ariane 6 return following reported turbopump fix",
+    "upcoming launch: falcon 9 block 5 | bandwagon 5 (dedicated mid-inclination rideshare)"
   ],
   "images": [
-    "https://www.nasaspaceflight.com/wp-content/uploads/2026/08/IMG_0596.jpeg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia26/pia26778/PIA26778.jpg",
     "https://cdn.arstechnica.net/wp-content/uploads/2026/08/NHQ20260828_admin_0045large.jpg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/08/roman_lifts_off_on_a_mission_to_survey_the_infr",
@@ -601,7 +600,8 @@
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/10/NSF-2026-10-14-23-01-17-060.jpg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/swarming_robots_to_tackle_space_debris/27577419",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/drilling_down_for_the_moon/27577973-1-eng-GB/Dr",
-    "https://europeanspaceflight.com/wp-content/uploads/2026/10/Arianespace-Targets-23-Nov-Ariane-6-Return-Following-Reported"
+    "https://europeanspaceflight.com/wp-content/uploads/2026/10/Arianespace-Targets-23-Nov-Ariane-6-Return-Following-Reported",
+    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_liftof_image_20251102082912.jpg"
   ],
-  "updated": "2026-10-15T12:17:34.279578"
+  "updated": "2026-10-15T13:37:49.213359"
 }
