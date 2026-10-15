@@ -1,6 +1,5 @@
 {
   "titles": [
-    "nasa welcomes türkiye as newest artemis accords signatory",
     "upcoming launch: pallas-1 | demo flight",
     "pld space adds €108 million to series c funding round",
     "it turns out that orion's much-maligned heat shield performed really well",
@@ -299,10 +298,10 @@
     "arianespace targets 23 nov ariane 6 return following reported turbopump fix",
     "upcoming launch: falcon 9 block 5 | bandwagon 5 (dedicated mid-inclination rideshare)",
     "chandra finds possible origin of ‘treble clef’ waves",
-    "how nasa is thinking about a moon base"
+    "how nasa is thinking about a moon base",
+    "upcoming launch: h3-24 | martian moons exploration (mmx)"
   ],
   "images": [
-    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/08/roman_lifts_off_on_a_mission_to_survey_the_infr",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/08/NSF-2026-08-31-01-01-10-310.jpg",
     "https://spacepolicyonline.com/wp-content/uploads/2026/08/Roman-liftoff-Kraus-300x198.jpg",
     "https://europeanspaceflight.com/wp-content/uploads/2026/08/SES-Awards-OHB-1-billion-Euros-for-IRIS2-MEO-Satellites.webp",
@@ -601,7 +600,8 @@
     "https://europeanspaceflight.com/wp-content/uploads/2026/10/Arianespace-Targets-23-Nov-Ariane-6-Return-Following-Reported",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_liftof_image_20251102082912.jpg",
     "https://www.nasa.gov/wp-content/uploads/2026/10/trebleclef-lg.jpg",
-    "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/10/space-minds-podcast-NASA-moon-2000-1500.jpg?fit=1024%2C768&ss"
+    "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/10/space-minds-podcast-NASA-moon-2000-1500.jpg?fit=1024%2C768&ss",
+    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/h3-24_liftoff__image_20251028184029.jpeg"
   ],
-  "updated": "2026-10-15T15:53:58.834144"
+  "updated": "2026-10-15T18:02:51.885592"
 }
