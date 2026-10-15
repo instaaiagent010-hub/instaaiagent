@@ -1,6 +1,5 @@
 {
   "titles": [
-    "launch of the roman space telescope",
     "september 2026 satellite puzzler",
     "launch preview: array of international launches planned this week",
     "a plane lunar eclipse",
@@ -299,10 +298,10 @@
     "nasa astronauts to answer questions from florida students",
     "fires arrive in the amazon rainforest",
     "artemis iii sls teams prepare short stack for pad tanking test",
-    "swarming robots to tackle space debris"
+    "swarming robots to tackle space debris",
+    "drilling down for the moon"
   ],
   "images": [
-    "https://apod.nasa.gov/apod/image/2608/m74_hst_1280.jpg",
     "http://spaceflightnow.com/wp-content/uploads/2022/07/20220719roman.jpg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/08/IMG_0596.jpeg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia26/pia26778/PIA26778.jpg",
@@ -601,7 +600,8 @@
     "https://www.nasa.gov/wp-content/uploads/2026/10/florida-student-downlink-oct-14.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/fires-arrive-in-the-amazon-rainfores",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/10/NSF-2026-10-14-23-01-17-060.jpg",
-    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/swarming_robots_to_tackle_space_debris/27577419"
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/swarming_robots_to_tackle_space_debris/27577419",
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/drilling_down_for_the_moon/27577973-1-eng-GB/Dr"
   ],
-  "updated": "2026-10-15T08:44:25.752602"
+  "updated": "2026-10-15T10:11:05.229144"
 }
