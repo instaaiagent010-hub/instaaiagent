@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18481788793108768",
-    "topic": "Bigoted Policies",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 7,
-    "posted_at": 1788766486,
-    "scored": false
-  },
-  {
     "media_id": "18064287911777422",
     "topic": "Opinion: A ‘Dead Economy’ Growing At 7.8%",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "reel",
     "hour": 7,
     "posted_at": 1792136123,
+    "scored": false
+  },
+  {
+    "media_id": "18631951270016452",
+    "topic": "Global AI, tech selloff: Can India win back FIIs?",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 7,
+    "posted_at": 1792136208,
     "scored": false
   }
 ]
