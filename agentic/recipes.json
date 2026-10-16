@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "17913504123265605",
-    "topic": "RBI announces overnight cash withdrawal after 'technical glitch' at 30-day auction",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "reel",
-    "hour": 13,
-    "posted_at": 1788788725,
-    "scored": false
-  },
-  {
     "media_id": "17993039886035902",
     "topic": "India increases coal rail supplies as 58 power plants face low inventories",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "reel",
     "hour": 12,
     "posted_at": 1792155073,
+    "scored": false
+  },
+  {
+    "media_id": "18161148346506679",
+    "topic": "Breaking news: CJP founder Abhijeet Dipke detained ahead of 'Lehra Do Tiranga' protest march",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 16,
+    "posted_at": 1792169900,
     "scored": false
   }
 ]
