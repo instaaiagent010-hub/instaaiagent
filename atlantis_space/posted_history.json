@@ -1,6 +1,5 @@
 {
   "titles": [
-    "hubble's superbubble scene",
     "upcoming launch: gslv mk ii | gisat-1a (eos-05)",
     "nasa to cover progress 96 spacecraft launch, docking",
     "nā ʻuhane māhoe huki pū i ke ola",
@@ -299,10 +298,10 @@
     "upcoming launch: h3-24 | martian moons exploration (mmx)",
     "nasa satellites observe historic 2026 el niño",
     "isaias dims the gulf coast",
-    "carbon fibre troubles force rocket lab to delay neutron debut to no earlier than 2027"
+    "carbon fibre troubles force rocket lab to delay neutron debut to no earlier than 2027",
+    "jaxa’s mmx mars mission readies for launch with two nasa instruments"
   ],
   "images": [
-    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon2520925_image_20221009234147.png",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/05/Anniversary-Logo.jpg?fit=1024%2C883&ssl=1",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2024/08/Astronaut001-headerImage-1200x930-1.webp?fit=1024%2C519&ssl=1",
     "https://apod.nasa.gov/apod/image/2608/RomanLaunch_NASA.mp4",
@@ -601,7 +600,8 @@
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/h3-24_liftoff__image_20251028184029.jpeg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/el-ni%C3%B1o-is-underway/elnino_sen6",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/isaias-dims-the-gulf-coast/isaias_bm",
-    "https://www.nasaspaceflight.com/wp-content/uploads/2026/10/NSF-2026-10-16-04-46-59-168.jpg"
+    "https://www.nasaspaceflight.com/wp-content/uploads/2026/10/NSF-2026-10-16-04-46-59-168.jpg",
+    "https://spacepolicyonline.com/wp-content/uploads/2026/10/Mars-Phobos-Deimos-NASA-300x154.jpg"
   ],
-  "updated": "2026-10-16T07:25:39.106949"
+  "updated": "2026-10-16T08:38:31.981259"
 }
