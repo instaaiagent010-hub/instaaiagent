@@ -1,6 +1,5 @@
 {
   "titles": [
-    "it turns out that orion's much-maligned heat shield performed really well",
     "hubble's superbubble scene",
     "upcoming launch: gslv mk ii | gisat-1a (eos-05)",
     "nasa to cover progress 96 spacecraft launch, docking",
@@ -299,10 +298,10 @@
     "how nasa is thinking about a moon base",
     "upcoming launch: h3-24 | martian moons exploration (mmx)",
     "nasa satellites observe historic 2026 el niño",
-    "isaias dims the gulf coast"
+    "isaias dims the gulf coast",
+    "carbon fibre troubles force rocket lab to delay neutron debut to no earlier than 2027"
   ],
   "images": [
-    "https://europeanspaceflight.com/wp-content/uploads/2026/08/SES-Awards-OHB-1-billion-Euros-for-IRIS2-MEO-Satellites.webp",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon2520925_image_20221009234147.png",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/05/Anniversary-Logo.jpg?fit=1024%2C883&ssl=1",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2024/08/Astronaut001-headerImage-1200x930-1.webp?fit=1024%2C519&ssl=1",
@@ -601,7 +600,8 @@
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/10/space-minds-podcast-NASA-moon-2000-1500.jpg?fit=1024%2C768&ss",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/h3-24_liftoff__image_20251028184029.jpeg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/el-ni%C3%B1o-is-underway/elnino_sen6",
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/isaias-dims-the-gulf-coast/isaias_bm"
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/isaias-dims-the-gulf-coast/isaias_bm",
+    "https://www.nasaspaceflight.com/wp-content/uploads/2026/10/NSF-2026-10-16-04-46-59-168.jpg"
   ],
-  "updated": "2026-10-16T05:14:35.201365"
+  "updated": "2026-10-16T07:25:39.106949"
 }
