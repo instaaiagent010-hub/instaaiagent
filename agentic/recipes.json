@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18126425281834774",
-    "topic": "13 arrested after allegedly attempting to travel to India",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 7,
-    "posted_at": 1788766401,
-    "scored": false
-  },
-  {
     "media_id": "18481788793108768",
     "topic": "Bigoted Policies",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 7,
     "posted_at": 1792136024,
+    "scored": false
+  },
+  {
+    "media_id": "18150079639558026",
+    "topic": "FBI returns 'Most Wanted' fraudster to US after India arrest in alleged $600K SNAP food stamp scheme",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 7,
+    "posted_at": 1792136123,
     "scored": false
   }
 ]
