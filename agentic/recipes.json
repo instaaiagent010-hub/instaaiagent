@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18093659438533219",
-    "topic": "Bombay High Court refuses to quash defamation case against Rahul Gandhi",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 16,
-    "posted_at": 1788886437,
-    "scored": false
-  },
-  {
     "media_id": "17901649311573369",
     "topic": "Indian Defence Minister Rajnath Singh arrives in Sri Lanka",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 15,
     "posted_at": 1792252423,
+    "scored": false
+  },
+  {
+    "media_id": "18341178046287661",
+    "topic": "'Not Just Bad, But Breaking Bad': MK Stalin's Sharp Jibe At Vijay's TVK Over Drug Case",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 15,
+    "posted_at": 1792252509,
     "scored": false
   }
 ]
