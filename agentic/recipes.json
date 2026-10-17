@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18096097391640128",
-    "topic": "Rupee Falls 10 Paise To 94.66 Against US Dollar As Crude Nears USD 97",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 7,
-    "posted_at": 1788852628,
-    "scored": false
-  },
-  {
     "media_id": "18099970214616416",
     "topic": "India’s GDP print is still not predictable",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 7,
     "posted_at": 1792221331,
+    "scored": false
+  },
+  {
+    "media_id": "18106427086981784",
+    "topic": "Pawan Khera defends 'regime change' demand, says democratic replacement of government is neither sedition nor coup",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 11,
+    "posted_at": 1792237781,
     "scored": false
   }
 ]
