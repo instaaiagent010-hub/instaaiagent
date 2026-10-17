@@ -1,6 +1,5 @@
 {
   "titles": [
-    "blue origin expands test and launch sites across the cape",
     "flyby: juice earth flyby",
     "upcoming launch: long march 2d/yz-3 | unknown payload",
     "isar aerospace attempts launch of spectrum rocket after months of delays",
@@ -299,7 +298,8 @@
     "press event: spacex crew-12 post-flight news conference",
     "nasa names stephen cash marshall space flight center director",
     "press event: artemis acceleration press conference",
-    "press event: us eva-100/101 preview news conference"
+    "press event: us eva-100/101 preview news conference",
+    "asteroid 144900 (2004 vg64) aaj earth ke paas se guzrega — 590-1318m"
   ],
   "images": [
     "https://www.nasa.gov/wp-content/uploads/2026/08/nhq202608310009large.jpg",
@@ -603,5 +603,5 @@
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/orion_image_20231118102035.jpeg",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/us2520eva-52_image_20190318200748.jpeg"
   ],
-  "updated": "2026-10-17T16:47:39.418999"
+  "updated": "2026-10-17T18:02:54.373650"
 }
