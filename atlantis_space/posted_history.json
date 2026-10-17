@@ -1,6 +1,5 @@
 {
   "titles": [
-    "nasa hosts virtual artemis webinar for blind, low",
     "blue origin nets nasa mars orbiter contract",
     "chasing the moon's shadow",
     "blue origin expands test and launch sites across the cape",
@@ -299,10 +298,10 @@
     "blue origin to add new florida launch pads, seeks aggressive increase in new glenn flight rate",
     "i am artemis: allison mjoen",
     "astronaut spotlight: ravish malhotra — indian space hero",
-    "press event: spacex crew-12 post-flight news conference"
+    "press event: spacex crew-12 post-flight news conference",
+    "nasa names stephen cash marshall space flight center director"
   ],
   "images": [
-    "https://www.nasaspaceflight.com/wp-content/uploads/2025/05/julia-streak-3.jpg",
     "https://apod.nasa.gov/apod/image/2608/PlaneEclipse_Ferreira_1059.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/greenland-sheds-its-largest-berg-of-",
     "https://www.nasa.gov/wp-content/uploads/2026/08/nhq202608310009large.jpg",
@@ -601,7 +600,8 @@
     "https://cdn.arstechnica.net/wp-content/uploads/2026/10/Blue-Origin-Upper-Stage-Facility-Still-Render.png",
     "http://spaceflightnow.com/wp-content/uploads/2026/10/20261016-Blue-Origin-Map-of-Key-Facilities.png",
     "https://www.nasa.gov/wp-content/uploads/2026/10/ksc-20261013-ph-ajn01-0029.jpg",
-    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/ravish2520malhotra_image_20181201174749.jpg"
+    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/ravish2520malhotra_image_20181201174749.jpg",
+    "https://www.nasa.gov/wp-content/uploads/2026/10/steve-cash-photo.jpg"
   ],
-  "updated": "2026-10-16T19:11:16.405628"
+  "updated": "2026-10-17T05:09:11.338099"
 }
