@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18150190795528097",
-    "topic": "The ocean’s fury: A ‘super El Niño’ may shatter records — and reshape the weathe...",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 16,
-    "posted_at": 1788886351,
-    "scored": false
-  },
-  {
     "media_id": "18093659438533219",
     "topic": "Bombay High Court refuses to quash defamation case against Rahul Gandhi",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 15,
     "posted_at": 1792252333,
+    "scored": false
+  },
+  {
+    "media_id": "18078724901417437",
+    "topic": "Breaking news live: CJP founder Abhijeet Dipke granted conditional bail following detention in Delhi",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 15,
+    "posted_at": 1792252423,
     "scored": false
   }
 ]
