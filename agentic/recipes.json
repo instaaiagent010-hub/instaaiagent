@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18116933623745737",
-    "topic": "Museum to return remains of 39 people taken during colonial rule in India",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 7,
-    "posted_at": 1788852454,
-    "scored": false
-  },
-  {
     "media_id": "18125638255699909",
     "topic": "Delimiting Bengal, limiting choices",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 19,
     "posted_at": 1792177339,
+    "scored": false
+  },
+  {
+    "media_id": "18220494043355789",
+    "topic": "New England’s having an ‘elite’ year, but there’s fall foliage elsewhere, too",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 7,
+    "posted_at": 1792221244,
     "scored": false
   }
 ]
