@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18041665700816569",
-    "topic": "Criminalising marital rape falls under Parliament's domain, Centre tells Supreme Court",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "reel",
-    "hour": 12,
-    "posted_at": 1788957317,
-    "scored": false
-  },
-  {
     "media_id": "18474224638112500",
     "topic": "Nancy Guthrie update: Man wearing 'same style gloves' as kidnapping suspect wanted for breaking in; sparks copycat fears",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 16,
     "posted_at": 1792339869,
+    "scored": false
+  },
+  {
+    "media_id": "18653874766061087",
+    "topic": "John J. Kennedy |With Another Bill On Anvil, Should Education Return To The State List?",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 16,
+    "posted_at": 1792339956,
     "scored": false
   }
 ]
