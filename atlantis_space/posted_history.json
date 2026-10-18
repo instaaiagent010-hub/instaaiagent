@@ -1,6 +1,5 @@
 {
   "titles": [
-    "isar aerospace attempts launch of spectrum rocket after months of delays",
     "pluto in enhanced color",
     "isar aerospace achieves first launch to orbit from continental europe",
     "cape neighbors stoke and relativity advance lc-14 and lc-16 toward first flights",
@@ -299,10 +298,10 @@
     "press event: us eva-100/101 preview news conference",
     "asteroid 144900 (2004 vg64) aaj earth ke paas se guzrega — 590-1318m",
     "apod: 2026 october 18 – sonified: eagle nebula pillars",
-    "artemis ii heat shield after splashdown"
+    "artemis ii heat shield after splashdown",
+    "live coverage: spacex to launch starfall reentry capsule, 31 customer payloads on bandwagon-5 rideshare mission"
   ],
   "images": [
-    "https://europeanspaceflight.com/wp-content/uploads/2026/09/PLD-Space-Adds-E108-million-to-Series-C-Funding-Round-.webp",
     "https://cdn.arstechnica.net/wp-content/uploads/2026/09/heat-shield-nasa.jpg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/hubble_s_superbubble_scene/27445597-2-eng-GB/Hu",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/gslv2520mk2520ii_image_20190825171642.jpg",
@@ -601,7 +600,8 @@
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/orion_image_20231118102035.jpeg",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/us2520eva-52_image_20190318200748.jpeg",
     "https://blogs.nasa.gov/spacestation/wp-content/uploads/sites/240/2023/01/nasa-logo-web-rgb.png",
-    "https://www.nasa.gov/wp-content/uploads/2026/10/ksc-20260411-navy01-0045orig-rotated.jpg"
+    "https://www.nasa.gov/wp-content/uploads/2026/10/ksc-20260411-navy01-0045orig-rotated.jpg",
+    "http://spaceflightnow.com/wp-content/uploads/2026/10/20261017_Bandwagon-5_payloads.jpeg"
   ],
-  "updated": "2026-10-18T15:00:22.291824"
+  "updated": "2026-10-18T17:04:57.045415"
 }
