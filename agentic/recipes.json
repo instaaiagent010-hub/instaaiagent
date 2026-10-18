@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18474224638112500",
-    "topic": "Nancy Guthrie update: Man wearing 'same style gloves' as kidnapping suspect wanted for breaking in; sparks copycat fears",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 16,
-    "posted_at": 1788972890,
-    "scored": false
-  },
-  {
     "media_id": "18351773767223107",
     "topic": "Ministry by ministry, India’s forest rights regime is fraying",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 16,
     "posted_at": 1792339956,
+    "scored": false
+  },
+  {
+    "media_id": "17998526957826617",
+    "topic": "AISA accuses Karnataka government of breaking promises on protest rights in Bengaluru",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 18,
+    "posted_at": 1792347608,
     "scored": false
   }
 ]
