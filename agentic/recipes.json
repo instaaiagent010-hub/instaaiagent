@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18049564910802663",
-    "topic": "Why The Iran War Hasn't Triggered A Full-Blown Oil Crisis Yet; How Is India Cushioning The Impact?",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 7,
-    "posted_at": 1789025601,
-    "scored": false
-  },
-  {
     "media_id": "18088698533212234",
     "topic": "Fort Worth Zoo welcomes baby gharial crocodiles for 4th consecutive year",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 18,
     "posted_at": 1792347693,
+    "scored": false
+  },
+  {
+    "media_id": "18411106162083672",
+    "topic": "India clamps price caps on 137 more cancer drugs, aiming for cuts up to 70%",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 18,
+    "posted_at": 1792347781,
     "scored": false
   }
 ]
