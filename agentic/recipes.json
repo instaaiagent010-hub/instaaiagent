@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18095204909544671",
-    "topic": "Why the GST council needs a disability policy, not just rate cuts",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "reel",
-    "hour": 7,
-    "posted_at": 1788939425,
-    "scored": false
-  },
-  {
     "media_id": "17920980852427555",
     "topic": "COVID-19 protests: Supreme Court allows Himachal Pradesh to withdraw cases against MLAs/MPs",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 7,
     "posted_at": 1792308581,
+    "scored": false
+  },
+  {
+    "media_id": "18343598287283256",
+    "topic": "We've matched the defending champions: Sammy after 2-2 India T20I draw",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 12,
+    "posted_at": 1792325754,
     "scored": false
   }
 ]
