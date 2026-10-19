@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18085811582466462",
-    "topic": "Breaking: PM Modi-Putin bilateral meeting scheduled in Delhi",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "reel",
-    "hour": 7,
-    "posted_at": 1789112059,
-    "scored": false
-  },
-  {
     "media_id": "18118805821927606",
     "topic": "Big breaking: Modi-Putin mega meet begins, global power equation in focus",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 18,
     "posted_at": 1792436181,
+    "scored": false
+  },
+  {
+    "media_id": "18010418469003477",
+    "topic": "‘Winds of change are blowing”: Dr Farooq",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 20,
+    "posted_at": 1792442822,
     "scored": false
   }
 ]
