@@ -1,6 +1,5 @@
 {
   "titles": [
-    "upcoming launch: soyuz 2.1b | progress ms-35 (96p)",
     "bepicolombo begins mercury arrival with mtm separation success",
     "europe's space future in focus at the international space summit",
     "isar aerospace soars to orbit on historic second launch",
@@ -299,10 +298,10 @@
     "apod: 2026 october 19 – treble clef: unusual x-ray hot radio source",
     "autumn paints poland’s bieszczady mountains",
     "falcon 9 set to launch bandwagon-5 rideshare mission from florida",
-    "space materials lab marks 10 years of innovation"
+    "space materials lab marks 10 years of innovation",
+    "nasa’s simulated mars crew marks one year inside habitat"
   ],
   "images": [
-    "https://europeanspaceflight.com/wp-content/uploads/2026/09/German-Space-Situation-Awareness-Startup-Project-S-Emerges-fr",
     "https://europeanspaceflight.com/wp-content/uploads/2026/09/Isar-Aerospace-Calls-Off-4-September-Spectrum-Launch-Attempt.",
     "https://images-assets.nasa.gov/image/NHQ202606170001/NHQ202606170001~large.jpg",
     "https://www.nasa.gov/wp-content/uploads/2026/09/blindlowvision.jpg",
@@ -601,7 +600,8 @@
     "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/october/trebleclef.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/autumn-paints-poland's-bieszczady-mo",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/10/8194EC01-F52C-4218-BDD9-A460FAF2AB63.jpeg",
-    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/the_esa-ral_advanced_manufacturing_lab_marks_10"
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/the_esa-ral_advanced_manufacturing_lab_marks_10",
+    "https://www.nasa.gov/wp-content/uploads/2026/10/chapea-one-year.jpeg"
   ],
-  "updated": "2026-10-19T17:56:48.837059"
+  "updated": "2026-10-19T19:38:30.100173"
 }
