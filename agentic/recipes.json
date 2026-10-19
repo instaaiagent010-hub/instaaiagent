@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18144657556562948",
-    "topic": "iPhone 17, iPhone Air, iPhone 16 Prices in India Rise After iPhone 18 Pro Models Launch",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 16,
-    "posted_at": 1789058492,
-    "scored": false
-  },
-  {
     "media_id": "17906794572551260",
     "topic": "Tanya sets national hammer mark: 68.35m throw lifts India before Asian Games; record fuels medal hopes",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 8,
     "posted_at": 1792397423,
+    "scored": false
+  },
+  {
+    "media_id": "18227288071328108",
+    "topic": "Protests against Modi government’s purge of voter rolls continue despite mass repression",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 8,
+    "posted_at": 1792397530,
     "scored": false
   }
 ]
