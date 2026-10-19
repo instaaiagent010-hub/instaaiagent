@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18014511953944770",
-    "topic": "Latest News Today Live Updates",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 18,
-    "posted_at": 1789065651,
-    "scored": false
-  },
-  {
     "media_id": "18024126575879561",
     "topic": "Delhi News LIVE: After Satya Niketan Tragedy, MCD Continues Demolition Of Dangerous Buildings Across Delhi",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 15,
     "posted_at": 1792422100,
+    "scored": false
+  },
+  {
+    "media_id": "18106392689346953",
+    "topic": "DT Next News Recap: What are the top headlines of today, October 19, 2026?",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 15,
+    "posted_at": 1792422190,
     "scored": false
   }
 ]
