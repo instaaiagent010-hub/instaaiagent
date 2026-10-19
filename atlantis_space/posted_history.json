@@ -1,6 +1,5 @@
 {
   "titles": [
-    "bepicolombo begins mercury arrival with mtm separation success",
     "europe's space future in focus at the international space summit",
     "isar aerospace soars to orbit on historic second launch",
     "artemis iii sls stacking advances as orion results confirm trajectory fix",
@@ -299,10 +298,10 @@
     "autumn paints poland’s bieszczady mountains",
     "falcon 9 set to launch bandwagon-5 rideshare mission from florida",
     "space materials lab marks 10 years of innovation",
-    "nasa’s simulated mars crew marks one year inside habitat"
+    "nasa’s simulated mars crew marks one year inside habitat",
+    "nasa improves shock, vibration analysis"
   ],
   "images": [
-    "https://europeanspaceflight.com/wp-content/uploads/2026/09/Isar-Aerospace-Calls-Off-4-September-Spectrum-Launch-Attempt.",
     "https://images-assets.nasa.gov/image/NHQ202606170001/NHQ202606170001~large.jpg",
     "https://www.nasa.gov/wp-content/uploads/2026/09/blindlowvision.jpg",
     "https://i0.wp.com/www.spacescout.info/wp-content/uploads/2026/09/RingMTO.webp",
@@ -601,7 +600,8 @@
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/autumn-paints-poland's-bieszczady-mo",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/10/8194EC01-F52C-4218-BDD9-A460FAF2AB63.jpeg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/the_esa-ral_advanced_manufacturing_lab_marks_10",
-    "https://www.nasa.gov/wp-content/uploads/2026/10/chapea-one-year.jpeg"
+    "https://www.nasa.gov/wp-content/uploads/2026/10/chapea-one-year.jpeg",
+    "https://www.nasa.gov/wp-content/uploads/2026/10/ksc-20260924-ph-rcr01-0036.jpg"
   ],
-  "updated": "2026-10-19T19:38:30.100173"
+  "updated": "2026-10-19T20:52:50.849622"
 }
