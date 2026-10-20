@@ -1,6 +1,5 @@
 {
   "titles": [
-    "isar aerospace soars to orbit on historic second launch",
     "artemis iii sls stacking advances as orion results confirm trajectory fix",
     "hubble: decagon around saturn's south pole",
     "apod: 2026 september 8 – hubble: decagon around saturn’s south pole",
@@ -299,10 +298,10 @@
     "space materials lab marks 10 years of innovation",
     "nasa’s simulated mars crew marks one year inside habitat",
     "nasa improves shock, vibration analysis",
-    "the human fingerprint on earth’s water cycle"
+    "the human fingerprint on earth’s water cycle",
+    "mmx lifts off to mars’s moon phobos"
   ],
   "images": [
-    "https://www.nasa.gov/wp-content/uploads/2026/09/blindlowvision.jpg",
     "https://i0.wp.com/www.spacescout.info/wp-content/uploads/2026/09/RingMTO.webp",
     "https://apod.nasa.gov/apod/image/2609/2026Eclipse_WB57GoPro_Totality_H264_Abridged.jpg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/09/NSF-2026-09-04-20-18-03-569.jpg",
@@ -601,7 +600,8 @@
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/the_esa-ral_advanced_manufacturing_lab_marks_10",
     "https://www.nasa.gov/wp-content/uploads/2026/10/chapea-one-year.jpeg",
     "https://www.nasa.gov/wp-content/uploads/2026/10/ksc-20260924-ph-rcr01-0036.jpg",
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/the-human-fingerprint-on-earth%E2%80"
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/the-human-fingerprint-on-earth%E2%80",
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/mmx_lifts_off_to_mars_s_moon_phobos/27583877-2-"
   ],
-  "updated": "2026-10-20T05:31:22.438672"
+  "updated": "2026-10-20T07:50:32.270432"
 }
