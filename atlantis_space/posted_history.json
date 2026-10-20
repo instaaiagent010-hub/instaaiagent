@@ -1,6 +1,5 @@
 {
   "titles": [
-    "artemis iii sls stacking advances as orion results confirm trajectory fix",
     "hubble: decagon around saturn's south pole",
     "apod: 2026 september 8 – hubble: decagon around saturn’s south pole",
     "anak krakatau eruption by sentinel-3",
@@ -299,10 +298,10 @@
     "nasa’s simulated mars crew marks one year inside habitat",
     "nasa improves shock, vibration analysis",
     "the human fingerprint on earth’s water cycle",
-    "mmx lifts off to mars’s moon phobos"
+    "mmx lifts off to mars’s moon phobos",
+    "new brain for galileo"
   ],
   "images": [
-    "https://i0.wp.com/www.spacescout.info/wp-content/uploads/2026/09/RingMTO.webp",
     "https://apod.nasa.gov/apod/image/2609/2026Eclipse_WB57GoPro_Totality_H264_Abridged.jpg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/09/NSF-2026-09-04-20-18-03-569.jpg",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/255bauto255d__image_20240307192047.jpeg",
@@ -601,7 +600,8 @@
     "https://www.nasa.gov/wp-content/uploads/2026/10/chapea-one-year.jpeg",
     "https://www.nasa.gov/wp-content/uploads/2026/10/ksc-20260924-ph-rcr01-0036.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/the-human-fingerprint-on-earth%E2%80",
-    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/mmx_lifts_off_to_mars_s_moon_phobos/27583877-2-"
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/mmx_lifts_off_to_mars_s_moon_phobos/27583877-2-",
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/galileo_second_generation_radiofrequency_output"
   ],
-  "updated": "2026-10-20T09:00:27.468596"
+  "updated": "2026-10-20T10:18:09.411443"
 }
