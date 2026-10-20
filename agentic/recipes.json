@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18366316792244226",
-    "topic": "Saharanpur mosque demolition: A state siege on minority rights",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 16,
-    "posted_at": 1789145149,
-    "scored": false
-  },
-  {
     "media_id": "18020141540876442",
     "topic": "FBI Busts 'Breaking Bad'-Style Meth Operation At Dinuba Pizza Restaurant",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "reel",
     "hour": 13,
     "posted_at": 1792501411,
+    "scored": false
+  },
+  {
+    "media_id": "18096754196445754",
+    "topic": "Why has Shafali Verma been reprimanded by the ICC after India's win over Zimbabwe?",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 13,
+    "posted_at": 1792501500,
     "scored": false
   }
 ]
