@@ -1,6 +1,5 @@
 {
   "titles": [
-    "apod: 2026 september 8 – hubble: decagon around saturn’s south pole",
     "anak krakatau eruption by sentinel-3",
     "stoke space sets debut launch target, reveals plans for larger rocket",
     "nasa technique for manipulating satellite photos now reveals ancient images",
@@ -299,10 +298,10 @@
     "the human fingerprint on earth’s water cycle",
     "mmx lifts off to mars’s moon phobos",
     "new brain for galileo",
-    "anysignal to deliver space-to-earth communications for three reflect orbital missions"
+    "anysignal to deliver space-to-earth communications for three reflect orbital missions",
+    "nasa provides progress update on moon base rovers"
   ],
   "images": [
-    "https://www.nasaspaceflight.com/wp-content/uploads/2026/09/NSF-2026-09-04-20-18-03-569.jpg",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/255bauto255d__image_20240307192047.jpeg",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/long_march_2d2_image_20231123203521.jpeg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/01/IMG_6221-scaled.jpeg",
@@ -601,7 +600,8 @@
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/the-human-fingerprint-on-earth%E2%80",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/mmx_lifts_off_to_mars_s_moon_phobos/27583877-2-",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/galileo_second_generation_radiofrequency_output",
-    "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/10/AnySignal_GoogleBusinessProfile.png?fit=720%2C720&ssl=1"
+    "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/10/AnySignal_GoogleBusinessProfile.png?fit=720%2C720&ssl=1",
+    "https://www.nasa.gov/wp-content/uploads/2026/10/moon-base-update-oct-1.jpg"
   ],
-  "updated": "2026-10-20T14:39:13.647137"
+  "updated": "2026-10-20T15:59:44.537879"
 }
