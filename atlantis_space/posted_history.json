@@ -1,6 +1,5 @@
 {
   "titles": [
-    "nasa technique for manipulating satellite photos now reveals ancient images",
     "superbubble in the large magellanic cloud",
     "nasa’s hubble, webb find far-out solar system objects ‘remember’ past",
     "witness xz andromedae wink",
@@ -299,10 +298,10 @@
     "anysignal to deliver space-to-earth communications for three reflect orbital missions",
     "nasa provides progress update on moon base rovers",
     "space rider test model lost following failed drop test",
-    "upcoming launch: ceres-1s | unknown payload"
+    "upcoming launch: ceres-1s | unknown payload",
+    "extratropical cyclone whips past iceland"
   ],
   "images": [
-    "https://www.nasaspaceflight.com/wp-content/uploads/2026/01/IMG_6221-scaled.jpeg",
     "https://apod.nasa.gov/apod/image/2609/PlutoEnhancedHiRes_NewHorizons_5000.jpg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/spectrum_launches_to_orbit/27452129-2-eng-GB/Sp",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/09/NSF-2026-09-06-06-08-48-181.jpg",
@@ -601,7 +600,8 @@
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/10/AnySignal_GoogleBusinessProfile.png?fit=720%2C720&ssl=1",
     "https://www.nasa.gov/wp-content/uploads/2026/10/moon-base-update-oct-1.jpg",
     "https://europeanspaceflight.com/wp-content/uploads/2026/10/Space-Rider-Test-Model-Lost-Following-Failed-Drop-Test.webp",
-    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/ceres-1s_image_20230905114324.jpeg"
+    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/ceres-1s_image_20230905114324.jpeg",
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/extratropical-cyclone-whips-past-ice"
   ],
-  "updated": "2026-10-20T19:49:34.589693"
+  "updated": "2026-10-21T05:25:09.865378"
 }
