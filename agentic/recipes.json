@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18068941808775582",
-    "topic": "For the US news industry, a tough summer draws to a close with McClatchy chain's cuts",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 17,
-    "posted_at": 1789235440,
-    "scored": false
-  },
-  {
     "media_id": "18036664301835661",
     "topic": "Delhi News LIVE: IMD Issues Red Alert, Rain and Thunderstorms To Lash City",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "reel",
     "hour": 8,
     "posted_at": 1792569759,
+    "scored": false
+  },
+  {
+    "media_id": "18132204437508958",
+    "topic": "Su-30 fighter jet crashes in Russia's Kaliningrad region, reports news agency Reuters",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 13,
+    "posted_at": 1792588257,
     "scored": false
   }
 ]
