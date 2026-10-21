@@ -1,6 +1,5 @@
 {
   "titles": [
-    "from the corps to the cosmos, featuring jaden caradine",
     "nasa calls for proposals to accelerate lunar surface technologies",
     "uk to leave launch to “germany and other allies”",
     "vega-c flight vv30 with flex and sentinel-3c",
@@ -299,10 +298,10 @@
     "making spacex and tesla a single company has \"a lot of merit,\" musk says",
     "finding our way: inside the galileo project: 1",
     "asteroid (2016 ln1) aaj earth ke paas se guzrega — 281-628m",
-    "solstar provides wi-fi connectivity for nasa proximity operations demonstration"
+    "solstar provides wi-fi connectivity for nasa proximity operations demonstration",
+    "nasa’s casals instrument bridges gaps in 3d maps of earth’s surface"
   ],
   "images": [
-    "https://apod.nasa.gov/apod/image/2609/Pelican_Killion_4800.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/a-bright-spot-at-mount-michael/mount",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/soyuz_2.1b_image_20230802085331.jpg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/mtm_separation_signal_confirmation/27452584-1-e",
@@ -601,7 +600,8 @@
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/extratropical-cyclone-whips-past-ice",
     "https://cdn.arstechnica.net/wp-content/uploads/2026/10/tesla-in-space.jpg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/videos/2026/10/finding_our_way_inside_the_galileo_project_1_a_",
-    "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/10/rsz_nasa_solstar_momentus_iridium_proximity_operation_render_"
+    "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/10/rsz_nasa_solstar_momentus_iridium_proximity_operation_render_",
+    "https://assets.science.nasa.gov/content/dam/science/esd/eo/images/iotd/2026/extratropical-cyclone-whips-past-iceland/ice"
   ],
-  "updated": "2026-10-21T12:33:31.787637"
+  "updated": "2026-10-21T13:59:00.163123"
 }
