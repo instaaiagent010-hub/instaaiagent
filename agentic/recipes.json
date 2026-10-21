@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18094895759103897",
-    "topic": "Breaking: Chinese Premier Xi Jinping departs India after attending BRICS summit in New Delhi",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 12,
-    "posted_at": 1789303996,
-    "scored": false
-  },
-  {
     "media_id": "17945753388289755",
     "topic": "India bought the 9/11 War on Terror franchise. Kashmir is still paying for it",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 17,
     "posted_at": 1792604096,
+    "scored": false
+  },
+  {
+    "media_id": "17907620709657967",
+    "topic": "Asian Para Games 2026: Simran's sprint double, record-breaking golds propel India to 62 medals",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 19,
+    "posted_at": 1792610953,
     "scored": false
   }
 ]
