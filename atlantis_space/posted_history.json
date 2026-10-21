@@ -1,6 +1,5 @@
 {
   "titles": [
-    "nasa calls for proposals to accelerate lunar surface technologies",
     "uk to leave launch to “germany and other allies”",
     "vega-c flight vv30 with flex and sentinel-3c",
     "artemis ii crew at nasa marshall",
@@ -299,10 +298,10 @@
     "finding our way: inside the galileo project: 1",
     "asteroid (2016 ln1) aaj earth ke paas se guzrega — 281-628m",
     "solstar provides wi-fi connectivity for nasa proximity operations demonstration",
-    "nasa’s casals instrument bridges gaps in 3d maps of earth’s surface"
+    "nasa’s casals instrument bridges gaps in 3d maps of earth’s surface",
+    "static fire: rs-25 engine test"
   ],
   "images": [
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/a-bright-spot-at-mount-michael/mount",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/soyuz_2.1b_image_20230802085331.jpg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/mtm_separation_signal_confirmation/27452584-1-e",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/08/esa_astronaut_sophie_adenot_during_eva-975/2742",
@@ -601,7 +600,8 @@
     "https://cdn.arstechnica.net/wp-content/uploads/2026/10/tesla-in-space.jpg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/videos/2026/10/finding_our_way_inside_the_galileo_project_1_a_",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/10/rsz_nasa_solstar_momentus_iridium_proximity_operation_render_",
-    "https://assets.science.nasa.gov/content/dam/science/esd/eo/images/iotd/2026/extratropical-cyclone-whips-past-iceland/ice"
+    "https://assets.science.nasa.gov/content/dam/science/esd/eo/images/iotd/2026/extratropical-cyclone-whips-past-iceland/ice",
+    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/rs-25_engine_te_image_20240111163044.jpeg"
   ],
-  "updated": "2026-10-21T13:59:00.163123"
+  "updated": "2026-10-21T14:46:33.159675"
 }
