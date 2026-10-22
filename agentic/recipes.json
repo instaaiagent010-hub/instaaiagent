@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18094422140534267",
-    "topic": "India builds BRICS without breaking up with US",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 12,
-    "posted_at": 1789476938,
-    "scored": false
-  },
-  {
     "media_id": "18116427103950813",
     "topic": "Breaking: Trump eyes 100% tariff on India over Russian oil trade after BRICS summit",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "reel",
     "hour": 19,
     "posted_at": 1792697171,
+    "scored": false
+  },
+  {
+    "media_id": "18120810605065779",
+    "topic": "Koffee With Karan 9: Rashmika Mandanna Breaks Silence On Trolling Over South Indian Accent In Hindi Films",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 19,
+    "posted_at": 1792697257,
     "scored": false
   }
 ]
