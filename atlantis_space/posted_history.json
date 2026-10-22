@@ -1,6 +1,5 @@
 {
   "titles": [
-    "flight 15 pairing undergo testing at massey’s",
     "cubesat for safer seas and cleaner orbits ready to launch",
     "the exploration company books ariane 6 flight for nyx demo mission",
     "name our dino – esa’s hera asteroid mission mascot!",
@@ -299,10 +298,10 @@
     "apod: 2026 october 22 – the first green star, wd j1330+6435",
     "fires char new guinea",
     "stars brewing in a nebulous cauldron",
-    "moon crane to take a load off lunar landers"
+    "moon crane to take a load off lunar landers",
+    "help a lost lunar rover find its way in new esa competition"
   ],
   "images": [
-    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/anak_krakatau_eruption_by_sentinel-3/27456765-1",
     "https://cdn.arstechnica.net/wp-content/uploads/2026/09/Stage2.jpg",
     "https://www.nasa.gov/wp-content/uploads/2026/08/dstretch-4b.jpeg",
     "https://www.nasa.gov/wp-content/uploads/2026/09/hubble-n44-wfc3-large.jpg",
@@ -601,7 +600,8 @@
     "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/october/green_wd_mark-garlick_annotated2.",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/new-guinea-on-fire/papuanewguinea_vi",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/stars_brewing_in_a_nebulous_cauldron/27584043-1",
-    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/moon_crane_to_take_a_load_off_lunar_landers/275"
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/moon_crane_to_take_a_load_off_lunar_landers/275",
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/panorama_of_the_moon_for_lunar_x-view_competiti"
   ],
-  "updated": "2026-10-22T10:23:00.879427"
+  "updated": "2026-10-22T12:35:20.605566"
 }
