@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18195380230350233",
-    "topic": "India completes its 2,843 km dedicated freight corridor network; why it's a game-changer for railways",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 16,
-    "posted_at": 1789317494,
-    "scored": false
-  },
-  {
     "media_id": "17936526450363579",
     "topic": "India vs Sri Lanka, Women's Asia Cup 2026 Final: When, where and how to watch IND vs SL match live for free in India",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 19,
     "posted_at": 1792611043,
+    "scored": false
+  },
+  {
+    "media_id": "18026881955864625",
+    "topic": "India news Live Updates, 22 October 2026: BJP supporter shot dead in West Bengal's Malda, six injured",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 7,
+    "posted_at": 1792655861,
     "scored": false
   }
 ]
