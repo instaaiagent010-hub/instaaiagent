@@ -1,6 +1,5 @@
 {
   "titles": [
-    "name our dino – esa’s hera asteroid mission mascot!",
     "nasa, nfl team up to showcase space, aeronautics innovation",
     "apod: 2026 september 11 – m83: the southern pinwheel",
     "nasa invites governors to compete to be home to the new u.s. space academy",
@@ -299,10 +298,10 @@
     "moon crane to take a load off lunar landers",
     "help a lost lunar rover find its way in new esa competition",
     "resilience takes centre stage at the navisp industry days",
-    "asteroid (2014 qs295) aaj earth ke paas se guzrega — 103-231m"
+    "asteroid (2014 qs295) aaj earth ke paas se guzrega — 103-231m",
+    "350th esa council: media information session"
   ],
   "images": [
-    "https://www.nasa.gov/wp-content/uploads/2026/08/dstretch-4b.jpeg",
     "https://www.nasa.gov/wp-content/uploads/2026/09/hubble-n44-wfc3-large.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/2026/09/STScI-01KZC81GGE6DAJKS1C8KA",
     "https://apod.nasa.gov/apod/image/2609/xz_and.mp4",
@@ -601,7 +600,8 @@
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/stars_brewing_in_a_nebulous_cauldron/27584043-1",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/moon_crane_to_take_a_load_off_lunar_landers/275",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/panorama_of_the_moon_for_lunar_x-view_competiti",
-    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/panel_on_pnt_for_ports_during_the_navisp_indust"
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/panel_on_pnt_for_ports_during_the_navisp_indust",
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/videos/2026/10/350th_esa_council_media_information_session/275"
   ],
-  "updated": "2026-10-22T16:09:22.185844"
+  "updated": "2026-10-22T19:37:48.529970"
 }
