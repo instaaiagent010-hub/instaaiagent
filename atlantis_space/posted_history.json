@@ -1,6 +1,5 @@
 {
   "titles": [
-    "apod: 2026 september 10 – ldn 1295: the giraffe nebula",
     "live coverage: spacex to launch classified payload for the u.s. space force",
     "flight 15 pairing undergo testing at massey’s",
     "cubesat for safer seas and cleaner orbits ready to launch",
@@ -299,10 +298,10 @@
     "science on the space station with nasa astronaut jessica watkins",
     "nasa jpl looks to next 90 years of innovation, exploration",
     "apod: 2026 october 22 – the first green star, wd j1330+6435",
-    "fires char new guinea"
+    "fires char new guinea",
+    "stars brewing in a nebulous cauldron"
   ],
   "images": [
-    "https://apod.nasa.gov/apod/image/2609/SaturnDecagon_Hubble_960.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/september/SaturnDecagon_Hubble_960.jpg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/anak_krakatau_eruption_by_sentinel-3/27456765-1",
     "https://cdn.arstechnica.net/wp-content/uploads/2026/09/Stage2.jpg",
@@ -601,7 +600,8 @@
     "https://www.nasa.gov/wp-content/uploads/2026/10/iss075e0190239orig.jpg",
     "https://www.nasa.gov/wp-content/uploads/2026/10/jpl90collage-v3-jpg-16x9-1.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/october/green_wd_mark-garlick_annotated2.",
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/new-guinea-on-fire/papuanewguinea_vi"
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/new-guinea-on-fire/papuanewguinea_vi",
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/stars_brewing_in_a_nebulous_cauldron/27584043-1"
   ],
-  "updated": "2026-10-22T08:03:22.609595"
+  "updated": "2026-10-22T09:14:35.264075"
 }
