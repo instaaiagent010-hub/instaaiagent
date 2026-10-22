@@ -1,6 +1,5 @@
 {
   "titles": [
-    "nasa’s chandra unveils mysterious x",
     "ldn 1295: the giraffe nebula",
     "apod: 2026 september 10 – ldn 1295: the giraffe nebula",
     "live coverage: spacex to launch classified payload for the u.s. space force",
@@ -299,10 +298,10 @@
     "static fire: rs-25 engine test",
     "technomile recognized as a 2026 inc. power partner award winner",
     "science on the space station with nasa astronaut jessica watkins",
-    "nasa jpl looks to next 90 years of innovation, exploration"
+    "nasa jpl looks to next 90 years of innovation, exploration",
+    "apod: 2026 october 22 – the first green star, wd j1330+6435"
   ],
   "images": [
-    "https://i0.wp.com/www.spacescout.info/wp-content/uploads/2026/09/Spectrum_mission_Onwards_and_upwards_liftoff-scaled.png",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/09/NSF-2026-09-07-19-28-25-151.jpg",
     "https://apod.nasa.gov/apod/image/2609/SaturnDecagon_Hubble_960.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/september/SaturnDecagon_Hubble_960.jpg",
@@ -601,7 +600,8 @@
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/rs-25_engine_te_image_20240111163044.jpeg",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/10/TechnoMile-Horizontal-Logo-scaled.png?fit=1024%2C153&ssl=1",
     "https://www.nasa.gov/wp-content/uploads/2026/10/iss075e0190239orig.jpg",
-    "https://www.nasa.gov/wp-content/uploads/2026/10/jpl90collage-v3-jpg-16x9-1.jpg"
+    "https://www.nasa.gov/wp-content/uploads/2026/10/jpl90collage-v3-jpg-16x9-1.jpg",
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/october/green_wd_mark-garlick_annotated2."
   ],
-  "updated": "2026-10-21T19:45:51.593775"
+  "updated": "2026-10-22T05:29:41.866871"
 }
