@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18060595958546333",
-    "topic": "Letter to the Editor: Another wasted town hall from Eli Crane",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 8,
-    "posted_at": 1789373516,
-    "scored": false
-  },
-  {
     "media_id": "18133317406644400",
     "topic": "School assembly news headlines (September 15, 2026): India wins Asia Cup, RBI cyber rules, US Open victory and other new",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "reel",
     "hour": 14,
     "posted_at": 1792679865,
+    "scored": false
+  },
+  {
+    "media_id": "18567249553079848",
+    "topic": "India bloc defers 'vote chori' strategy meet, November 1 rally on agenda",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 18,
+    "posted_at": 1792694658,
     "scored": false
   }
 ]
