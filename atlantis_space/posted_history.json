@@ -1,6 +1,5 @@
 {
   "titles": [
-    "cubesat for safer seas and cleaner orbits ready to launch",
     "the exploration company books ariane 6 flight for nyx demo mission",
     "name our dino – esa’s hera asteroid mission mascot!",
     "nasa, nfl team up to showcase space, aeronautics innovation",
@@ -299,10 +298,10 @@
     "fires char new guinea",
     "stars brewing in a nebulous cauldron",
     "moon crane to take a load off lunar landers",
-    "help a lost lunar rover find its way in new esa competition"
+    "help a lost lunar rover find its way in new esa competition",
+    "resilience takes centre stage at the navisp industry days"
   ],
   "images": [
-    "https://cdn.arstechnica.net/wp-content/uploads/2026/09/Stage2.jpg",
     "https://www.nasa.gov/wp-content/uploads/2026/08/dstretch-4b.jpeg",
     "https://www.nasa.gov/wp-content/uploads/2026/09/hubble-n44-wfc3-large.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/2026/09/STScI-01KZC81GGE6DAJKS1C8KA",
@@ -601,7 +600,8 @@
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/new-guinea-on-fire/papuanewguinea_vi",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/stars_brewing_in_a_nebulous_cauldron/27584043-1",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/moon_crane_to_take_a_load_off_lunar_landers/275",
-    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/panorama_of_the_moon_for_lunar_x-view_competiti"
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/panorama_of_the_moon_for_lunar_x-view_competiti",
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/panel_on_pnt_for_ports_during_the_navisp_indust"
   ],
-  "updated": "2026-10-22T12:35:20.605566"
+  "updated": "2026-10-22T13:57:32.951586"
 }
