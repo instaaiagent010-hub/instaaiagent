@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18126553693881663",
-    "topic": "Russia votes in wartime parliamentary election set to secure the Kremlin's power",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "reel",
-    "hour": 7,
-    "posted_at": 1789717153,
-    "scored": false
-  },
-  {
     "media_id": "17893796253415519",
     "topic": "Breaking: India women's cricket team storms into Asian Games semifinals after beating Japan",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 17,
     "posted_at": 1792776397,
+    "scored": false
+  },
+  {
+    "media_id": "17952186177050302",
+    "topic": "Pendency and punishment: Why India needs a Sentencing Council",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 17,
+    "posted_at": 1792776488,
     "scored": false
   }
 ]
