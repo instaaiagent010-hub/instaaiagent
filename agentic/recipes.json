@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18116427103950813",
-    "topic": "Breaking: Trump eyes 100% tariff on India over Russian oil trade after BRICS summit",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 7,
-    "posted_at": 1789545572,
-    "scored": false
-  },
-  {
     "media_id": "18105801805946995",
     "topic": "Protecting patients from fake medicines",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 19,
     "posted_at": 1792697257,
+    "scored": false
+  },
+  {
+    "media_id": "18652556812002851",
+    "topic": "Navratri auto sales hit a record-breaking pace! Over 10 lakh vehicles sold in just 9 days across India",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 8,
+    "posted_at": 1792745951,
     "scored": false
   }
 ]
