@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "17891227929439963",
-    "topic": "A republic’s travesty of justice",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 19,
-    "posted_at": 1789672686,
-    "scored": false
-  },
-  {
     "media_id": "18126553693881663",
     "topic": "Russia votes in wartime parliamentary election set to secure the Kremlin's power",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 17,
     "posted_at": 1792776296,
+    "scored": false
+  },
+  {
+    "media_id": "17895615456680845",
+    "topic": "India sets historic medal record at the 2026 Asian Para Games in Japan",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 17,
+    "posted_at": 1792776397,
     "scored": false
   }
 ]
