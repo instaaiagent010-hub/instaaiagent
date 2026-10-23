@@ -1,6 +1,5 @@
 {
   "titles": [
-    "nasa invites governors to compete to be home to the new u.s. space academy",
     "nasa invites media to djibouti artemis accords signing ceremony",
     "avio completes integration of fd1 rocket demonstrator",
     "m83: the southern pinwheel",
@@ -299,10 +298,10 @@
     "asteroid (2014 qs295) aaj earth ke paas se guzrega — 103-231m",
     "350th esa council: media information session",
     "nasa safety panel concerned about artemis iv, future access to leo",
-    "iss receives new cargo from dragon as crew-12 hands over to crew-13"
+    "iss receives new cargo from dragon as crew-12 hands over to crew-13",
+    "upcoming launch: long march 6a | yaogan 50-03"
   ],
   "images": [
-    "https://apod.nasa.gov/apod/image/2609/xz_and.mp4",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/anak-krakatau-rumbles-again/krakatau",
     "https://www.nasa.gov/wp-content/uploads/2026/02/caradine-jaden.jpg",
     "https://www.nasa.gov/wp-content/uploads/2026/09/lunar-enabling-infrastructure-06292026-1.png",
@@ -601,7 +600,8 @@
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/panel_on_pnt_for_ports_during_the_navisp_indust",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/videos/2026/10/350th_esa_council_media_information_session/275",
     "https://spacepolicyonline.com/wp-content/uploads/2026/04/A2-Earthset-Apr-6-26-1-300x200.jpg",
-    "https://www.nasaspaceflight.com/wp-content/uploads/2026/10/iss075e0226575orig-scaled.jpg"
+    "https://www.nasaspaceflight.com/wp-content/uploads/2026/10/iss075e0226575orig-scaled.jpg",
+    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/long_march_6a__image_20251209050223.jpeg"
   ],
-  "updated": "2026-10-23T10:26:45.828612"
+  "updated": "2026-10-23T12:19:01.494180"
 }
