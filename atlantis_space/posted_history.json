@@ -1,6 +1,5 @@
 {
   "titles": [
-    "avio completes integration of fd1 rocket demonstrator",
     "m83: the southern pinwheel",
     "rocket report: europe joins the commercial launch club; a ravn x sighting?",
     "latconnect 60 expands india market presence for swirsat with nsil agreement and geosyze partnership",
@@ -299,10 +298,10 @@
     "nasa safety panel concerned about artemis iv, future access to leo",
     "iss receives new cargo from dragon as crew-12 hands over to crew-13",
     "upcoming launch: long march 6a | yaogan 50-03",
-    "esa director “not sure” themis will make its first flight in 2026"
+    "esa director “not sure” themis will make its first flight in 2026",
+    "spot the craters"
   ],
   "images": [
-    "https://www.nasa.gov/wp-content/uploads/2026/02/caradine-jaden.jpg",
     "https://www.nasa.gov/wp-content/uploads/2026/09/lunar-enabling-infrastructure-06292026-1.png",
     "https://europeanspaceflight.com/wp-content/uploads/2026/09/UK-to-Leave-Launch-to-Germany-and-Other-Allies.webp",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/vega-c_flight_vv30_with_flex_and_sentinel-3c/27",
@@ -601,7 +600,8 @@
     "https://spacepolicyonline.com/wp-content/uploads/2026/04/A2-Earthset-Apr-6-26-1-300x200.jpg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/10/iss075e0226575orig-scaled.jpg",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/long_march_6a__image_20251209050223.jpeg",
-    "https://europeanspaceflight.com/wp-content/uploads/2026/10/ESA-Director-22Not-Sure22-Themis-Will-Make-Its-First-Flight-i"
+    "https://europeanspaceflight.com/wp-content/uploads/2026/10/ESA-Director-22Not-Sure22-Themis-Will-Make-Its-First-Flight-i",
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/spot_the_craters/27589258-1-eng-GB/Spot_the_cra"
   ],
-  "updated": "2026-10-23T13:38:23.719902"
+  "updated": "2026-10-23T15:54:26.356776"
 }
