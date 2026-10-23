@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18101279294613359",
-    "topic": "Takeda’s Qdenga dengue vaccine to be distributed in India by Dr Reddy’s in 2027",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 12,
-    "posted_at": 1789734482,
-    "scored": false
-  },
-  {
     "media_id": "18120436805515268",
     "topic": "Dr Reddy’s bags exclusive distribution rights of Takeda’s dengue vaccine QDENGA in India",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 19,
     "posted_at": 1792783690,
+    "scored": false
+  },
+  {
+    "media_id": "18100175435556062",
+    "topic": "India's recurve para-archers also won first-ever medals in doubles events",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 19,
+    "posted_at": 1792783787,
     "scored": false
   }
 ]
