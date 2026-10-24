@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18600600298067700",
-    "topic": "After EC freezes TMC name, 'Jora Phool', Mamata Banerjee takes fight to Supreme Court",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "reel",
-    "hour": 7,
-    "posted_at": 1789803279,
-    "scored": false
-  },
-  {
     "media_id": "18093132179138796",
     "topic": "Mamata Banerjee moves Supreme Court against EC freeze on TMC name, symbol",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 7,
     "posted_at": 1792827438,
+    "scored": false
+  },
+  {
+    "media_id": "17886820299622901",
+    "topic": "Opinion | India's GDP Upgrades",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 7,
+    "posted_at": 1792827524,
     "scored": false
   }
 ]
