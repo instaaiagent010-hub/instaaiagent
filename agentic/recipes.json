@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18093132179138796",
-    "topic": "Mamata Banerjee moves Supreme Court against EC freeze on TMC name, symbol",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "reel",
-    "hour": 7,
-    "posted_at": 1789803388,
-    "scored": false
-  },
-  {
     "media_id": "18620997109019138",
     "topic": "Tamil Nadu bypolls: Being the most cornered suits Vijay just fine",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 7,
     "posted_at": 1792827524,
+    "scored": false
+  },
+  {
+    "media_id": "18106703534201561",
+    "topic": "US contractor accused of leaking classified defence info to journalist girlfriend who runs Substack newsletter",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 12,
+    "posted_at": 1792843995,
     "scored": false
   }
 ]
