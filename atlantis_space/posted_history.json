@@ -1,6 +1,5 @@
 {
   "titles": [
-    "nasa’s spacex crew-12 to discuss station mission, upcoming return",
     "nasa’s chandra spots galactic gem",
     "nasa moving at warp speed to set up us space academy",
     "apollo 11: catching some sun",
@@ -299,7 +298,8 @@
     "spot the craters",
     "asteroid (2007 us12) aaj earth ke paas se guzrega — 100-223m",
     "nasa artemis update: sls stacking, sortie suit, dual 2028 paths",
-    "nasa updates lander plans for moon landings, finally solves long-festering orion issue"
+    "nasa updates lander plans for moon landings, finally solves long-festering orion issue",
+    "asteroid 529819 (2010 pm58) aaj earth ke paas se guzrega — 179-400m"
   ],
   "images": [
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/vega-c_flight_vv30_with_flex_and_sentinel-3c/27",
@@ -603,5 +603,5 @@
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/10/NSF-2026-10-24-03-48-44-239.jpg",
     "https://cdn.arstechnica.net/wp-content/uploads/2026/10/centaur.jpg"
   ],
-  "updated": "2026-10-24T09:42:39.052397"
+  "updated": "2026-10-24T11:44:14.996785"
 }
