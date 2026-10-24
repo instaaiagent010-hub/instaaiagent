@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18083768972315757",
-    "topic": "Supreme Court considers NTA visit to review upgraded NEET exam system",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "reel",
-    "hour": 16,
-    "posted_at": 1789750113,
-    "scored": false
-  },
-  {
     "media_id": "18600600298067700",
     "topic": "After EC freezes TMC name, 'Jora Phool', Mamata Banerjee takes fight to Supreme Court",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 7,
     "posted_at": 1792827352,
+    "scored": false
+  },
+  {
+    "media_id": "17923538175438984",
+    "topic": "Is the current lull in Indian politics the calm before a storm?",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 7,
+    "posted_at": 1792827438,
     "scored": false
   }
 ]
