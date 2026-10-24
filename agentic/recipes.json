@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18137032861545313",
-    "topic": "NEET PG 2026 result date: Check when results may be announced, cutoff and download steps",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 12,
-    "posted_at": 1789908289,
-    "scored": false
-  },
-  {
     "media_id": "18048540524659491",
     "topic": "Russia wraps up first wartime parliamentary election with Kremlin dominance all but assured",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 16,
     "posted_at": 1792858452,
+    "scored": false
+  },
+  {
+    "media_id": "18075431708760384",
+    "topic": "Breaking news: 7.1-magnitude earthquake strikes Vanuatu Islands region",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 18,
+    "posted_at": 1792866040,
     "scored": false
   }
 ]
