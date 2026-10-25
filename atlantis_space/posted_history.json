@@ -1,6 +1,5 @@
 {
   "titles": [
-    "nasa moving at warp speed to set up us space academy",
     "apollo 11: catching some sun",
     "first hyprspace baguette one launch slips to 2027",
     "upcoming launch: vega-c | sentinel-3c & flex",
@@ -299,7 +298,8 @@
     "nasa artemis update: sls stacking, sortie suit, dual 2028 paths",
     "nasa updates lander plans for moon landings, finally solves long-festering orion issue",
     "asteroid 529819 (2010 pm58) aaj earth ke paas se guzrega — 179-400m",
-    "orbital insertion: bepicolombo mercury orbit insertion"
+    "orbital insertion: bepicolombo mercury orbit insertion",
+    "asteroid (1998 wl4) aaj earth ke paas se guzrega — 336-752m"
   ],
   "images": [
     "https://www.nasa.gov/wp-content/uploads/2026/09/msfc-09012026-artemis-ii-crew-visit-at-msfc-1orig.jpg",
@@ -603,5 +603,5 @@
     "https://cdn.arstechnica.net/wp-content/uploads/2026/10/centaur.jpg",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/bepicolombo_at__image_20240306080108.jpeg"
   ],
-  "updated": "2026-10-24T18:27:47.570848"
+  "updated": "2026-10-25T05:26:49.819671"
 }
