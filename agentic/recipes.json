@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "17911805925281763",
-    "topic": "Global rate hike cycle begins as oil shock raises risk of 75-100 bps RBI tightening: Report",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "reel",
-    "hour": 20,
-    "posted_at": 1790021737,
-    "scored": false
-  },
-  {
     "media_id": "18132782146735426",
     "topic": "Teachers say Indiana's 'bell-to-bell' phone ban makes enforcement easier",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "reel",
     "hour": 12,
     "posted_at": 1792932442,
+    "scored": false
+  },
+  {
+    "media_id": "18022319717933336",
+    "topic": "Peace bonds: The colonial tool rearing its head amid protests in 2026",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 12,
+    "posted_at": 1792932530,
     "scored": false
   }
 ]
