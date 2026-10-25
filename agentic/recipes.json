@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "17907309045480685",
-    "topic": "Breaking News Live: Chinese President Xi Jinping to visit US from September 23 to 25",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 8,
-    "posted_at": 1789978425,
-    "scored": false
-  },
-  {
     "media_id": "17971937115158144",
     "topic": "Delhi High Court to Get Seven New Judges, Working Strength to Rise to 50",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "reel",
     "hour": 7,
     "posted_at": 1792914774,
+    "scored": false
+  },
+  {
+    "media_id": "18142017190618315",
+    "topic": "ELECTION COMMISSION’S 16 LAKH APPEALS AGAINST JUDGE-CLEARED BENGAL VOTERS QUESTIONED: KBS SIDHU SEEKS PUBLIC ANSWERS, IN",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 7,
+    "posted_at": 1792914883,
     "scored": false
   }
 ]
