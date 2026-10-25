@@ -1,6 +1,5 @@
 {
   "titles": [
-    "upcoming launch: vega-c | sentinel-3c & flex",
     "comet neowise rising over the adriatic sea",
     "europe’s commercial launch sector picking up the pace",
     "sirius space fires complete star-1 rocket engine for the first time",
@@ -299,10 +298,10 @@
     "orbital insertion: bepicolombo mercury orbit insertion",
     "asteroid (1998 wl4) aaj earth ke paas se guzrega — 336-752m",
     "eva: us eva-100",
-    "nasa is full steam ahead on artemis iii, iv and v"
+    "nasa is full steam ahead on artemis iii, iv and v",
+    "possible roberts road expansion as spacex pushes for flight 16"
   ],
   "images": [
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/chandra/2026/m101.jpg",
     "https://apod.nasa.gov/apod/image/2609/LDN1295_giraffe.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/september/LDN1295_giraffe.jpg",
     "http://spaceflightnow.com/wp-content/uploads/2026/01/20260116_NROL-105_F9_pad.jpeg",
@@ -601,7 +600,8 @@
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/10/NSF-2026-10-24-03-48-44-239.jpg",
     "https://cdn.arstechnica.net/wp-content/uploads/2026/10/centaur.jpg",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/bepicolombo_at__image_20240306080108.jpeg",
-    "https://spacepolicyonline.com/wp-content/uploads/2026/10/group-300x167.jpg"
+    "https://spacepolicyonline.com/wp-content/uploads/2026/10/group-300x167.jpg",
+    "https://www.nasaspaceflight.com/wp-content/uploads/2026/10/Gigabay-and-the-VAB-Julia-2-scaled.jpg"
   ],
-  "updated": "2026-10-25T17:26:12.780717"
+  "updated": "2026-10-25T18:40:11.460521"
 }
