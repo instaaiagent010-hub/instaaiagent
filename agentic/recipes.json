@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18120314833936374",
-    "topic": "Section 147A Struck Down: JAO",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 20,
-    "posted_at": 1790021628,
-    "scored": false
-  },
-  {
     "media_id": "17911805925281763",
     "topic": "Global rate hike cycle begins as oil shock raises risk of 75-100 bps RBI tightening: Report",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 7,
     "posted_at": 1792914976,
+    "scored": false
+  },
+  {
+    "media_id": "18152216875554008",
+    "topic": "Varanasi breaking: PM Modi witnesses 'Wings Over Ganga' as 100 aircraft showcase India's air power",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 12,
+    "posted_at": 1792932442,
     "scored": false
   }
 ]
