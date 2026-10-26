@@ -1,6 +1,5 @@
 {
   "titles": [
-    "europe’s commercial launch sector picking up the pace",
     "sirius space fires complete star-1 rocket engine for the first time",
     "live coverage: spacex to launch final 3 o3b mpower satellites for ses",
     "where your elements came from",
@@ -299,10 +298,10 @@
     "eva: us eva-100",
     "nasa is full steam ahead on artemis iii, iv and v",
     "possible roberts road expansion as spacex pushes for flight 16",
-    "upcoming launch: gslv mk ii | irnss-1l (nvs-03)"
+    "upcoming launch: gslv mk ii | irnss-1l (nvs-03)",
+    "2026 october 26 – m42: the great nebula in orion"
   ],
   "images": [
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/september/LDN1295_giraffe.jpg",
     "http://spaceflightnow.com/wp-content/uploads/2026/01/20260116_NROL-105_F9_pad.jpeg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/09/NSF-2026-09-09-21-05-05-614.jpg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/cubesat_for_safer_seas_and_cleaner_orbits_ready",
@@ -601,7 +600,8 @@
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/bepicolombo_at__image_20240306080108.jpeg",
     "https://spacepolicyonline.com/wp-content/uploads/2026/10/group-300x167.jpg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/10/Gigabay-and-the-VAB-Julia-2-scaled.jpg",
-    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/gslv2520mk252_image_20240101090337.jpg"
+    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/gslv2520mk252_image_20240101090337.jpg",
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/october/OrionSword_Palaia_2000.jpg"
   ],
-  "updated": "2026-10-26T05:30:07.101605"
+  "updated": "2026-10-26T07:59:12.330088"
 }
