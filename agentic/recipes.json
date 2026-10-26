@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18115283030284761",
-    "topic": "India's transgender amendment leaves many in limbo",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 13,
-    "posted_at": 1790168660,
-    "scored": false
-  },
-  {
     "media_id": "17976620270920806",
     "topic": "India confirmed as host of 2032 Cycling Road World Championships",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 19,
     "posted_at": 1793044716,
+    "scored": false
+  },
+  {
+    "media_id": "18075844808477573",
+    "topic": "Anthropic S-1 Confronts Doomsday: AI-Led Extinction To Weaponisation — Five Key Risks Explained",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 20,
+    "posted_at": 1793047481,
     "scored": false
   }
 ]
