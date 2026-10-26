@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18092299148389656",
-    "topic": "India-Japan T20I wide controversy: What MCC laws say about umpire's reversal of decision",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 17,
-    "posted_at": 1790097376,
-    "scored": false
-  },
-  {
     "media_id": "18103679207360548",
     "topic": "Trump backs India-Middle East Corridor to counter Iran's grip on oil routes",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 16,
     "posted_at": 1792946808,
+    "scored": false
+  },
+  {
+    "media_id": "18137323807733348",
+    "topic": "Don’t bank on RBI alone: The investor protection gap in India’s banking system",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 8,
+    "posted_at": 1793001900,
     "scored": false
   }
 ]
