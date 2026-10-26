@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18103679207360548",
-    "topic": "Trump backs India-Middle East Corridor to counter Iran's grip on oil routes",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 8,
-    "posted_at": 1790150538,
-    "scored": false
-  },
-  {
     "media_id": "18136049473631107",
     "topic": "Loise Kim breaks down in prayer as son continues treatment in India",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "reel",
     "hour": 8,
     "posted_at": 1793001900,
+    "scored": false
+  },
+  {
+    "media_id": "18109751795614604",
+    "topic": "No. 28 | Who to Investigate, Who to Protect: Reading India's Police, Investigative Agencies, and Politics",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 14,
+    "posted_at": 1793025242,
     "scored": false
   }
 ]
