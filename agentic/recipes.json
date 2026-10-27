@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "17976620270920806",
-    "topic": "India confirmed as host of 2032 Cycling Road World Championships",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 7,
-    "posted_at": 1790236253,
-    "scored": false
-  },
-  {
     "media_id": "18092335853453901",
     "topic": "India secures gold in mixed doubles shooting at Asian Games",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 20,
     "posted_at": 1793047481,
+    "scored": false
+  },
+  {
+    "media_id": "17899309329395095",
+    "topic": "SC Notice to Centre on News Publishers' Plea Challenging Data Protection Law",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 8,
+    "posted_at": 1793089145,
     "scored": false
   }
 ]
