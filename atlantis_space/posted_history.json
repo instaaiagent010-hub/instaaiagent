@@ -1,6 +1,5 @@
 {
   "titles": [
-    "sept. 21: what comes next for on-orbit servicing?",
     "a daytime eclipse: moon occults venus",
     "iceye’s global presence expands to address sovereign demand",
     "avio launches second successful vega c flight of 2026",
@@ -299,10 +298,10 @@
     "flexell space establishes french subsidiary to strengthen european presence",
     "a-81 reaches south georgia",
     "how a johnson mentor shapes the next generation of nasa talent",
-    "esa procures four new galileo second generation satellites"
+    "esa procures four new galileo second generation satellites",
+    "first light: hera resolves two asteroids instead of one"
   ],
   "images": [
-    "https://www.nasa.gov/wp-content/uploads/2022/02/nasa_meatball_large.jpg",
     "https://europeanspaceflight.com/wp-content/uploads/2026/09/Avio-Completes-Integration-of-FD1-Rocket-Demonstrator-hero.we",
     "https://apod.nasa.gov/apod/image/2609/M83_Final2_1x.jpg",
     "https://cdn.arstechnica.net/wp-content/uploads/2026/09/c-Isar-Aerospace-Flight-2_2026-09-05-224332_ylbv.jpg",
@@ -601,7 +600,8 @@
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/10/LOGO_FLEXELLBlack.png?fit=1024%2C1024&ssl=1",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/a-81-reaches-south-georgia/iceberga8",
     "https://www.nasa.gov/wp-content/uploads/2026/10/image.jpg",
-    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/galileo_satellite_navigation_constellation/2753"
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/galileo_satellite_navigation_constellation/2753",
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/hera_s_first_view_of_the_separate_didymos_and_d"
   ],
-  "updated": "2026-10-27T10:46:17.906334"
+  "updated": "2026-10-27T14:40:53.024738"
 }
