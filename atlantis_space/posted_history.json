@@ -1,6 +1,5 @@
 {
   "titles": [
-    "nasa ames stars of the month: september 2026",
     "upcoming launch: gravity-1 | spacesail polar group #16",
     "asteroid (2007 qe3) aaj earth ke paas se guzrega — 267-597m",
     "avio ceo reports influx of customers turned away by spacex",
@@ -299,10 +298,10 @@
     "asteroid (2003 rl10) aaj earth ke paas se guzrega — 323-721m",
     "new contracts to modernise galileo ground segment for next generation",
     "nasa selects 19 new citizen science proposals in 2026",
-    "artemis iii sls core stage joins boosters at kennedy"
+    "artemis iii sls core stage joins boosters at kennedy",
+    "nasa university challenge ignites trajectory of drone entrepreneur"
   ],
   "images": [
-    "https://europeanspaceflight.com/wp-content/uploads/2026/09/First-HyPrSpace-Baguette-One-Launch-Slips-to-2027.webp",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/vega-c_image_20220713154437.jpg",
     "https://apod.nasa.gov/apod/image/2609/NoctilucentNeowise_Girotti.mp4",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/09/NSF-2026-09-12-23-46-42-740.jpg",
@@ -601,7 +600,8 @@
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/the-land-of-the-standing-up-rocks/ch",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/galileo_ground_segment_to_be_modernised_for_nex",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/citizen-science/highlights/2026/NASA_citizen_science_pro",
-    "https://images-assets.nasa.gov/image/KSC-20261022-PH-SNC01_0001/KSC-20261022-PH-SNC01_0001~large.jpg"
+    "https://images-assets.nasa.gov/image/KSC-20261022-PH-SNC01_0001/KSC-20261022-PH-SNC01_0001~large.jpg",
+    "https://www.nasa.gov/wp-content/uploads/2026/10/usrc-gardner-ag3-team.jpg"
   ],
-  "updated": "2026-10-28T19:22:31.041339"
+  "updated": "2026-10-28T20:58:07.525039"
 }
