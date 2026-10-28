@@ -1,6 +1,5 @@
 {
   "titles": [
-    "webb's view of m64",
     "progress ms-35 poised to launch cargo to iss from kazakhstan",
     "nasa ames stars of the month: september 2026",
     "upcoming launch: gravity-1 | spacesail polar group #16",
@@ -299,10 +298,10 @@
     "curiosity blog, sols 5043-5049: preparing to drill at ‘nazca’",
     "the land of the standing",
     "asteroid (2003 rl10) aaj earth ke paas se guzrega — 323-721m",
-    "new contracts to modernise galileo ground segment for next generation"
+    "new contracts to modernise galileo ground segment for next generation",
+    "nasa selects 19 new citizen science proposals in 2026"
   ],
   "images": [
-    "https://cdn.arstechnica.net/wp-content/uploads/2026/08/GettyImages-2291885998-1789141845.jpg",
     "https://apod.nasa.gov/apod/image/2609/AS11-40-5872HR.jpg",
     "https://europeanspaceflight.com/wp-content/uploads/2026/09/First-HyPrSpace-Baguette-One-Launch-Slips-to-2027.webp",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/vega-c_image_20220713154437.jpg",
@@ -601,7 +600,8 @@
     "https://www.nasa.gov/wp-content/uploads/2026/10/chapeamission2.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/msl/2026/curiosity-rover-updates/october/https___ma",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/the-land-of-the-standing-up-rocks/ch",
-    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/galileo_ground_segment_to_be_modernised_for_nex"
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/galileo_ground_segment_to_be_modernised_for_nex",
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/citizen-science/highlights/2026/NASA_citizen_science_pro"
   ],
-  "updated": "2026-10-28T16:37:12.708536"
+  "updated": "2026-10-28T17:34:20.715280"
 }
