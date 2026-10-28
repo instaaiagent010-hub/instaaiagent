@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18640134937044051",
-    "topic": "Paying The Piper",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 16,
-    "posted_at": 1790440916,
-    "scored": false
-  },
-  {
     "media_id": "18128089426692254",
     "topic": "Jadeja On The Verge Of History! Just 1 Wicket Away From Breaking Courtney Walsh's Record",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 8,
     "posted_at": 1793177828,
+    "scored": false
+  },
+  {
+    "media_id": "18099202031106204",
+    "topic": "Council Poll Defeat, Apology To Supreme Court And Opposition Agitation Plans Under Fire",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 8,
+    "posted_at": 1793177930,
     "scored": false
   }
 ]
