@@ -1,6 +1,5 @@
 {
   "titles": [
-    "a treasure chest in the carina nebula",
     "three space companies win esa awards for excellence and innovation",
     "endurosat raise pushes european newspace funding above €1 billion for september",
     "mtg-i2 timelapse : from arrival at europe’s spaceport to launch",
@@ -299,10 +298,10 @@
     "uk mod awards £15 million orbital warfare project to astroscale",
     "asteroid (2016 xb2) aaj earth ke paas se guzrega — 131-292m",
     "spacex no longer needs nasa, and that's a problem for america's space agency",
-    "ghostly cat’s head nebula lurks within sight of nasa’s hubble, webb"
+    "ghostly cat’s head nebula lurks within sight of nasa’s hubble, webb",
+    "send your name to titan aboard nasa’s dragonfly mission"
   ],
   "images": [
-    "https://apod.nasa.gov/apod/image/2609/ElementOrigins2_svs_6000.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/an-early-look-at-fall-color-in-canad",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/videos/2026/09/esa_s_flex_mission_reveals_the_secret_glow_of_p",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/09/AB9BC3AB-D87F-4E6B-96AE-9902C9A9F085-scaled.jpeg",
@@ -601,7 +600,8 @@
     "https://europeanspaceflight.com/wp-content/uploads/2026/10/UK-MOD-Awards-15-million-Orbital-Warfare-Project-to-Astroscal",
     "https://cdn.arstechnica.net/wp-content/uploads/2026/10/spacex-nasa-slots.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/2026/10/STScI-01M4BZ6G5147CKYXY9C9S",
-    "https://epic.gsfc.nasa.gov/archive/natural/2026/10/26/png/epic_1b_20261026005516.png"
+    "https://epic.gsfc.nasa.gov/archive/natural/2026/10/26/png/epic_1b_20261026005516.png",
+    "https://www.nasa.gov/wp-content/uploads/2026/10/27-10097-01a-hero-image-16-9-v02.jpg"
   ],
-  "updated": "2026-10-29T15:22:54.079739"
+  "updated": "2026-10-29T16:31:47.285091"
 }
