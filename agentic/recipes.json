@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "17949665376294796",
-    "topic": "What’s Putin’s Secret Post-Election Strategy To Test NATO?",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "reel",
-    "hour": 9,
-    "posted_at": 1790672713,
-    "scored": false
-  },
-  {
     "media_id": "18110912467894191",
     "topic": "SC Declines Plea Seeking Central Law, Uniform Anti-Bullying, Ragging Rules in Schools, Pre",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 8,
     "posted_at": 1793264127,
+    "scored": false
+  },
+  {
+    "media_id": "18055951652811069",
+    "topic": "DPDP Act: Why news publishers want a journalistic exemption in India's data protection law",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 14,
+    "posted_at": 1793285462,
     "scored": false
   }
 ]
