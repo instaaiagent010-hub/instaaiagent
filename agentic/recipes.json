@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18633570838041937",
-    "topic": "Opinion",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 21,
-    "posted_at": 1790630820,
-    "scored": false
-  },
-  {
     "media_id": "17927022867182662",
     "topic": "Little Italy News | The Feast, Galbani Bella Vita, and Trick or Treats",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 8,
     "posted_at": 1793263953,
+    "scored": false
+  },
+  {
+    "media_id": "18043987628842640",
+    "topic": "Stop Blackmailing Judiciary & Democracy: Bharatiya Vichara Kendram Slams Opposition’s ‘Mob Rule’ and Radical Nexus",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 8,
+    "posted_at": 1793264041,
     "scored": false
   }
 ]
