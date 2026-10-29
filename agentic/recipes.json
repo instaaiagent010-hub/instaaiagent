@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "17927022867182662",
-    "topic": "Little Italy News | The Feast, Galbani Bella Vita, and Trick or Treats",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 9,
-    "posted_at": 1790672600,
-    "scored": false
-  },
-  {
     "media_id": "17949665376294796",
     "topic": "What’s Putin’s Secret Post-Election Strategy To Test NATO?",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 8,
     "posted_at": 1793264041,
+    "scored": false
+  },
+  {
+    "media_id": "18145359349606199",
+    "topic": "Appeal To All Students To Join Nov 1 March If You Feel Your Idea Is Under Attack: Rahul Gandhi",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 8,
+    "posted_at": 1793264127,
     "scored": false
   }
 ]
