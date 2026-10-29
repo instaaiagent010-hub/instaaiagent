@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18025740707699272",
-    "topic": "[The Opinionated Lawyer] Free and Fair: Elections and Election Commission",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "reel",
-    "hour": 14,
-    "posted_at": 1790692075,
-    "scored": false
-  },
-  {
     "media_id": "18129008362789653",
     "topic": "Video: Amala Paul discusses breaking stereotypes and choosing the unfamiliar",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "reel",
     "hour": 18,
     "posted_at": 1793299576,
+    "scored": false
+  },
+  {
+    "media_id": "18112596649887974",
+    "topic": "Leaders across India celebrate Karwa Chauth with tradition and devotion",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 20,
+    "posted_at": 1793306452,
     "scored": false
   }
 ]
