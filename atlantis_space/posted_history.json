@@ -1,6 +1,5 @@
 {
   "titles": [
-    "icarus robotics tests joy in canada ahead of iss flight",
     "nasa unveils enterprise, the first space shuttle",
     "nasa to order more starliner missions and help certify a new rocket to keep it flying",
     "nasa invites media to spacex’s 35th resupply launch to space station",
@@ -299,10 +298,10 @@
     "send your name to titan aboard nasa’s dragonfly mission",
     "nasa’s isam state of play: the industry standard for space servicing, assembly, and manufacturing",
     "nih",
-    "vega island frozen in fright"
+    "vega island frozen in fright",
+    "map showing potential origins of martian meteorite teghaza 001"
   ],
   "images": [
-    "https://www.nasa.gov/wp-content/uploads/2026/09/jsc2026e045076.jpg",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/09/unicorns-spacenews-intelligence-1500-1000-scaled.jpg?fit=1024",
     "https://www.nasa.gov/wp-content/uploads/2026/09/55527488950-2ce6740658-o.jpg",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/09/on-orbit-servicing-virtual-event-spacenews-2000-1500-scaled.j",
@@ -601,7 +600,8 @@
     "https://www.nasa.gov/wp-content/uploads/2026/10/27-10097-01a-hero-image-16-9-v02.jpg",
     "https://www.nasa.gov/wp-content/uploads/2026/03/isam-state-of-play.jpg",
     "https://www.nasa.gov/wp-content/uploads/2026/07/bps-goals-landscape-ppt-no-text.jpg",
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/vega-island-frozen-in-fright/vegaisl"
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/vega-island-frozen-in-fright/vegaisl",
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia26/pia26802/PIA26802.jpg"
   ],
-  "updated": "2026-10-30T06:36:59.892803"
+  "updated": "2026-10-30T08:50:36.517729"
 }
