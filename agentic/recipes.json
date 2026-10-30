@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "17970865446161017",
-    "topic": "The criminal court that answers to no one",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 9,
-    "posted_at": 1790759039,
-    "scored": false
-  },
-  {
     "media_id": "18137611780529578",
     "topic": "Is Centre planning social media curbs for minors?",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 9,
     "posted_at": 1793351303,
+    "scored": false
+  },
+  {
+    "media_id": "17912906037556734",
+    "topic": "Supreme Court justices, top officials drawn into Inam's growing nexus",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 9,
+    "posted_at": 1793351410,
     "scored": false
   }
 ]
