@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18000430595808221",
-    "topic": "Tejashwi attacks ECI, alleges conspiracy to rig Bihar, Bengal polls",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 14,
-    "posted_at": 1790778309,
-    "scored": false
-  },
-  {
     "media_id": "18117217051974345",
     "topic": "India Captain Shubman Gill Smashes Fastest Double Century In ODI History During IND Vs WI 2nd ODI; VIDEO",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 14,
     "posted_at": 1793371104,
+    "scored": false
+  },
+  {
+    "media_id": "18274247230305585",
+    "topic": "Swiss capacity strain in India: CEO adds Zurich-Bengaluru flights; India becomes No. 2 market",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 18,
+    "posted_at": 1793384041,
     "scored": false
   }
 ]
