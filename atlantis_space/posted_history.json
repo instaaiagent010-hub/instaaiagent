@@ -1,6 +1,5 @@
 {
   "titles": [
-    "nasa invites media to spacex’s 35th resupply launch to space station",
     "messier 33: the triangulum galaxy",
     "starship’s upcoming missions: waiting on orbit, building toward the cape",
     "a galaxy spinning out of sync",
@@ -299,10 +298,10 @@
     "vega island frozen in fright",
     "map showing potential origins of martian meteorite teghaza 001",
     "ground qualification testing begins for callisto reusable rocket demonstrator",
-    "eva: us eva-101"
+    "eva: us eva-101",
+    "what happened this month at the european space agency? (october 2026)"
   ],
   "images": [
-    "https://www.nasa.gov/wp-content/uploads/2026/09/55527488950-2ce6740658-o.jpg",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/09/on-orbit-servicing-virtual-event-spacenews-2000-1500-scaled.j",
     "https://apod.nasa.gov/apod/image/2609/MoonVenus_Mariat_1410.jpg",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/09/rsz_iceye_korea.jpg?fit=879%2C494&ssl=1",
@@ -601,7 +600,8 @@
     "https://www.nasa.gov/wp-content/uploads/2026/07/bps-goals-landscape-ppt-no-text.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/vega-island-frozen-in-fright/vegaisl",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia26/pia26802/PIA26802.jpg",
-    "https://europeanspaceflight.com/wp-content/uploads/2026/10/Callisto-Ground-Qualification-Begins-at-Old-Diamant-Launch-Fa"
+    "https://europeanspaceflight.com/wp-content/uploads/2026/10/Callisto-Ground-Qualification-Begins-at-Old-Diamant-Launch-Fa",
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/videos/2026/10/what_happened_this_month_at_the_european_space_"
   ],
-  "updated": "2026-10-30T13:46:15.325393"
+  "updated": "2026-10-30T15:12:17.374140"
 }
