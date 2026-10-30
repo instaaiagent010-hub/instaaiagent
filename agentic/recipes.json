@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18070673918756948",
-    "topic": "Apple Pay is finally in India, but can it challenge UPI? Here's what you need to know",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 14,
-    "posted_at": 1790778221,
-    "scored": false
-  },
-  {
     "media_id": "18000430595808221",
     "topic": "Tejashwi attacks ECI, alleges conspiracy to rig Bihar, Bengal polls",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 14,
     "posted_at": 1793371016,
+    "scored": false
+  },
+  {
+    "media_id": "18146472283583440",
+    "topic": "Like Hema Malini in Mathura, a dummy candidate has emerged in Alaska but it’s not a joke for Trump",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 14,
+    "posted_at": 1793371104,
     "scored": false
   }
 ]
