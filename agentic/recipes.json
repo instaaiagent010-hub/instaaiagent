@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18078792941405904",
-    "topic": "SC seeks Bengal response on Mahua Moitra’s plea seeking protection during visit to her constituency",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 14,
-    "posted_at": 1790866149,
-    "scored": false
-  },
-  {
     "media_id": "17969187876172560",
     "topic": "India has yet to decide on dropping pre-shipment inspections of scrap metal...",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 17,
     "posted_at": 1793467624,
+    "scored": false
+  },
+  {
+    "media_id": "18075878201735352",
+    "topic": "Anti-SIR protest live: 'Not going to let Gyanesh Kumar escape,' says Rahul Gandhi at mock Parliament impeachment event",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 17,
+    "posted_at": 1793467730,
     "scored": false
   }
 ]
