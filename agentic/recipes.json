@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "17882471982529623",
-    "topic": "Will a Return to Ballot Papers Restore Trust, Transparency and Accountability",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 18,
-    "posted_at": 1790879748,
-    "scored": false
-  },
-  {
     "media_id": "17999845379813155",
     "topic": "HDFC Bank ADR: Shares rally over 5% after Anup Bagchi appointed MD & CEO; stock in focus for Monday in domestic markets",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 19,
     "posted_at": 1793475057,
+    "scored": false
+  },
+  {
+    "media_id": "18148449796538123",
+    "topic": "Finnable Appoints Shrimohan Yadav, Former RBI Chief General Manager, as Independent Director on its Board",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 19,
+    "posted_at": 1793475162,
     "scored": false
   }
 ]
