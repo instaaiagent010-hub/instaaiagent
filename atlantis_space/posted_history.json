@@ -1,6 +1,5 @@
 {
   "titles": [
-    "esa x tpci",
     "upcoming launch: electron | owl by the dozen (strix launch 12)",
     "pikachu in the cupola",
     "analemma over the callanish stones",
@@ -299,7 +298,8 @@
     "asteroid (2007 rv9) aaj earth ke paas se guzrega — 227-508m",
     "upcoming launch: kinetica 2 | spacesail polar group tbd?",
     "isaacman outlines artemis iii multi-launch checkout sequence and blue origin priority",
-    "canadian mda space secures €64 million iris2 antenna agreement"
+    "canadian mda space secures €64 million iris2 antenna agreement",
+    "asteroid 307493 (2002 xp90) aaj earth ke paas se guzrega — 514-1148m"
   ],
   "images": [
     "https://apod.nasa.gov/apod/image/2609/M64_Webb.jpg",
@@ -603,5 +603,5 @@
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/10/NSF-2026-11-01-03-15-37-109-wmarked.jpg",
     "https://europeanspaceflight.com/wp-content/uploads/2026/11/Canadian-MDA-Space-Secures-64-Million-Euros-IRIS2-Antenna-Agr"
   ],
-  "updated": "2026-11-01T12:00:29.623285"
+  "updated": "2026-11-01T13:57:43.393293"
 }
