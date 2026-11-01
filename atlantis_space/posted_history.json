@@ -1,6 +1,5 @@
 {
   "titles": [
-    "nasa-jaxa xrism mission sees pulsar gathering companion’s ‘wind’",
     "a zodiacal night",
     "esa x tpci",
     "upcoming launch: electron | owl by the dozen (strix launch 12)",
@@ -299,10 +298,10 @@
     "live coverage: spacex to close out october with halloween eve falcon 9 launch",
     "spacex completes three static fires in three days for flight 15",
     "asteroid (2007 rv9) aaj earth ke paas se guzrega — 227-508m",
-    "upcoming launch: kinetica 2 | spacesail polar group tbd?"
+    "upcoming launch: kinetica 2 | spacesail polar group tbd?",
+    "isaacman outlines artemis iii multi-launch checkout sequence and blue origin priority"
   ],
   "images": [
-    "https://www.nasa.gov/wp-content/uploads/2026/09/ksc-20260902-ph-kls01-0023orig-rotated.jpg",
     "https://cdn.arstechnica.net/wp-content/uploads/2026/05/HIu9mKcWAAAmrHQ.jpg",
     "https://apod.nasa.gov/apod/image/2609/M64_Webb.jpg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/04/IMG_9490.png",
@@ -601,7 +600,8 @@
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/10/ESI-Motion-Square-Logo-Blue-PNG.png?fit=969%2C1024&ssl=1",
     "https://spaceflightnow.com/wp-content/uploads/2026/03/20260326-Vandy-Starlink-File-Photo.jpg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/10/Booster-22-Static-fire-scaled.jpg",
-    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/kinetica_2_firs_image_20260330153456.jpg"
+    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/kinetica_2_firs_image_20260330153456.jpg",
+    "https://www.nasaspaceflight.com/wp-content/uploads/2026/10/NSF-2026-11-01-03-15-37-109-wmarked.jpg"
   ],
-  "updated": "2026-10-31T19:41:49.739804"
+  "updated": "2026-11-01T06:59:18.805998"
 }
