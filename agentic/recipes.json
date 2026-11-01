@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "17912533626525624",
-    "topic": "Indian Factories Pull Back on New Investments in FY25, Prioritising Employment Growth",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 8,
-    "posted_at": 1790931370,
-    "scored": false
-  },
-  {
     "media_id": "18114659411042797",
     "topic": "Kansas City Royals news: Wrapping up the Season that Was",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 14,
     "posted_at": 1793543842,
+    "scored": false
+  },
+  {
+    "media_id": "18218230657363157",
+    "topic": "India's October coal-fired power output jumps most in 3 years as hydro generation slumps",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 14,
+    "posted_at": 1793543933,
     "scored": false
   }
 ]
