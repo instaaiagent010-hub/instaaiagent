@@ -1,6 +1,5 @@
 {
   "titles": [
-    "upcoming launch: electron | owl by the dozen (strix launch 12)",
     "pikachu in the cupola",
     "analemma over the callanish stones",
     "russian progress cargo ship arrives at international space station",
@@ -299,10 +298,10 @@
     "upcoming launch: kinetica 2 | spacesail polar group tbd?",
     "isaacman outlines artemis iii multi-launch checkout sequence and blue origin priority",
     "canadian mda space secures €64 million iris2 antenna agreement",
-    "asteroid 307493 (2002 xp90) aaj earth ke paas se guzrega — 514-1148m"
+    "asteroid 307493 (2002 xp90) aaj earth ke paas se guzrega — 514-1148m",
+    "pennsylvania’s grand canyon"
   ],
   "images": [
-    "https://www.nasaspaceflight.com/wp-content/uploads/2026/04/IMG_9490.png",
     "https://www.nasa.gov/wp-content/uploads/2026/09/nasa-arc-s-stars-of-the-mont-sep-2026.jpg",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/gravity-1_image_20240108105446.jpeg",
     "https://www.nasa.gov/wp-content/uploads/2023/03/bennu-osiris-rex-1041.jpg",
@@ -601,7 +600,8 @@
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/kinetica_2_firs_image_20260330153456.jpg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/10/NSF-2026-11-01-03-15-37-109-wmarked.jpg",
     "https://europeanspaceflight.com/wp-content/uploads/2026/11/Canadian-MDA-Space-Secures-64-Million-Euros-IRIS2-Antenna-Agr",
-    "https://epic.gsfc.nasa.gov/archive/natural/2026/10/29/png/epic_1b_20261029000830.png"
+    "https://epic.gsfc.nasa.gov/archive/natural/2026/10/29/png/epic_1b_20261029000830.png",
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/pennsylvania%E2%80%99s-grand-canyon/"
   ],
-  "updated": "2026-11-01T20:02:06.745862"
+  "updated": "2026-11-02T07:00:33.370599"
 }
