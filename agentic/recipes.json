@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "17977713842924973",
-    "topic": "Can India Trust Its Election Commission?",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "reel",
-    "hour": 18,
-    "posted_at": 1790964145,
-    "scored": false
-  },
-  {
     "media_id": "18127466620833267",
     "topic": "EC Dysfunctional Or Fit For A Fractured Polity?",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 19,
     "posted_at": 1793563036,
+    "scored": false
+  },
+  {
+    "media_id": "17973873948158121",
+    "topic": "US midterm elections: What a change in Congress could mean for India",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 9,
+    "posted_at": 1793613270,
     "scored": false
   }
 ]
