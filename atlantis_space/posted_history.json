@@ -1,6 +1,5 @@
 {
   "titles": [
-    "cocoon nebula wide field",
     "lro discovers large new lunar crater, finds interesting thermal emission phenomenon",
     "esa and isro extend and broaden cooperation agreement",
     "esa brings public and private capital together to accelerate europe’s space economy",
@@ -299,10 +298,10 @@
     "cubesat achieves challenging laser link to ground",
     "nasa’s hubble uncovers case of missing oxygen in nearby dwarf galaxies",
     "nasa invites media to northrop grumman crs-25 station resupply launch",
-    "china releases timeline for lunar landing on the moon, targeting \"before 2030\""
+    "china releases timeline for lunar landing on the moon, targeting \"before 2030\"",
+    "tb 26-09 measured hammer"
   ],
   "images": [
-    "https://www.nasa.gov/wp-content/uploads/2026/09/ho-software-lyman.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/lro/McGetchin_Discovery_Reenactment.png",
     "https://apod.nasa.gov/apod/image/2609/JWST_Treasure_Chest.jpg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/company_awards_at_industry_space_days_2026/2752",
@@ -601,7 +600,8 @@
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/11/illustration_of_three_ermis_technology_demonstr",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/2026/11/STScI-01M4RST3TGWT2T53FVXQB",
     "https://images-assets.nasa.gov/image/iss075e0189493/iss075e0189493~large.jpg",
-    "https://cdn.arstechnica.net/wp-content/uploads/2026/11/china-1.jpg"
+    "https://cdn.arstechnica.net/wp-content/uploads/2026/11/china-1.jpg",
+    "https://www.nasa.gov/wp-content/uploads/2015/04/tb-26-09-1-illustrative-hammer-force-time-histories.png"
   ],
-  "updated": "2026-11-02T19:56:59.245846"
+  "updated": "2026-11-02T21:01:15.404654"
 }
