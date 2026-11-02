@@ -1,6 +1,5 @@
 {
   "titles": [
-    "upcoming launch: kinetica 1 | 9 satellites",
     "docking: spacex crew-13 crew dragon docking",
     "cocoon nebula wide field",
     "lro discovers large new lunar crater, finds interesting thermal emission phenomenon",
@@ -299,10 +298,10 @@
     "pennsylvania’s grand canyon",
     "asteroid (2005 gu) aaj earth ke paas se guzrega — 262-586m",
     "cubesat achieves challenging laser link to ground",
-    "nasa’s hubble uncovers case of missing oxygen in nearby dwarf galaxies"
+    "nasa’s hubble uncovers case of missing oxygen in nearby dwarf galaxies",
+    "nasa invites media to northrop grumman crs-25 station resupply launch"
   ],
   "images": [
-    "https://www.nasa.gov/wp-content/uploads/2023/03/bennu-osiris-rex-1041.jpg",
     "https://europeanspaceflight.com/wp-content/uploads/2026/09/Avio-CEO-Reports-Influx-of-Customers-Turned-Away-by-SpaceX.we",
     "https://www.nasa.gov/wp-content/uploads/2026/09/ho-software-lyman.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/lro/McGetchin_Discovery_Reenactment.png",
@@ -601,7 +600,8 @@
     "https://epic.gsfc.nasa.gov/archive/natural/2026/10/29/png/epic_1b_20261029000830.png",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/pennsylvania%E2%80%99s-grand-canyon/",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/11/illustration_of_three_ermis_technology_demonstr",
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/2026/11/STScI-01M4RST3TGWT2T53FVXQB"
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/2026/11/STScI-01M4RST3TGWT2T53FVXQB",
+    "https://images-assets.nasa.gov/image/iss075e0189493/iss075e0189493~large.jpg"
   ],
-  "updated": "2026-11-02T16:53:32.468239"
+  "updated": "2026-11-02T18:38:55.881241"
 }
