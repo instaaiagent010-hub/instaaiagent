@@ -1,6 +1,5 @@
 {
   "titles": [
-    "pikachu in the cupola",
     "analemma over the callanish stones",
     "russian progress cargo ship arrives at international space station",
     "upcoming launch: kinetica 1 | 9 satellites",
@@ -299,7 +298,8 @@
     "isaacman outlines artemis iii multi-launch checkout sequence and blue origin priority",
     "canadian mda space secures €64 million iris2 antenna agreement",
     "asteroid 307493 (2002 xp90) aaj earth ke paas se guzrega — 514-1148m",
-    "pennsylvania’s grand canyon"
+    "pennsylvania’s grand canyon",
+    "asteroid (2005 gu) aaj earth ke paas se guzrega — 262-586m"
   ],
   "images": [
     "https://www.nasa.gov/wp-content/uploads/2026/09/nasa-arc-s-stars-of-the-mont-sep-2026.jpg",
@@ -603,5 +603,5 @@
     "https://epic.gsfc.nasa.gov/archive/natural/2026/10/29/png/epic_1b_20261029000830.png",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/pennsylvania%E2%80%99s-grand-canyon/"
   ],
-  "updated": "2026-11-02T09:43:55.245913"
+  "updated": "2026-11-02T11:52:10.859996"
 }
