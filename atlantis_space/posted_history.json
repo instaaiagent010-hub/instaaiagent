@@ -1,6 +1,5 @@
 {
   "titles": [
-    "russian progress cargo ship arrives at international space station",
     "upcoming launch: kinetica 1 | 9 satellites",
     "docking: spacex crew-13 crew dragon docking",
     "cocoon nebula wide field",
@@ -299,10 +298,10 @@
     "asteroid 307493 (2002 xp90) aaj earth ke paas se guzrega — 514-1148m",
     "pennsylvania’s grand canyon",
     "asteroid (2005 gu) aaj earth ke paas se guzrega — 262-586m",
-    "cubesat achieves challenging laser link to ground"
+    "cubesat achieves challenging laser link to ground",
+    "nasa’s hubble uncovers case of missing oxygen in nearby dwarf galaxies"
   ],
   "images": [
-    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/gravity-1_image_20240108105446.jpeg",
     "https://www.nasa.gov/wp-content/uploads/2023/03/bennu-osiris-rex-1041.jpg",
     "https://europeanspaceflight.com/wp-content/uploads/2026/09/Avio-CEO-Reports-Influx-of-Customers-Turned-Away-by-SpaceX.we",
     "https://www.nasa.gov/wp-content/uploads/2026/09/ho-software-lyman.jpg",
@@ -601,7 +600,8 @@
     "https://europeanspaceflight.com/wp-content/uploads/2026/11/Canadian-MDA-Space-Secures-64-Million-Euros-IRIS2-Antenna-Agr",
     "https://epic.gsfc.nasa.gov/archive/natural/2026/10/29/png/epic_1b_20261029000830.png",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/pennsylvania%E2%80%99s-grand-canyon/",
-    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/11/illustration_of_three_ermis_technology_demonstr"
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/11/illustration_of_three_ermis_technology_demonstr",
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/2026/11/STScI-01M4RST3TGWT2T53FVXQB"
   ],
-  "updated": "2026-11-02T13:53:05.552815"
+  "updated": "2026-11-02T16:53:32.468239"
 }
