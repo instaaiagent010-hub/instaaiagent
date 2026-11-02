@@ -1,6 +1,5 @@
 {
   "titles": [
-    "docking: spacex crew-13 crew dragon docking",
     "cocoon nebula wide field",
     "lro discovers large new lunar crater, finds interesting thermal emission phenomenon",
     "esa and isro extend and broaden cooperation agreement",
@@ -299,10 +298,10 @@
     "asteroid (2005 gu) aaj earth ke paas se guzrega — 262-586m",
     "cubesat achieves challenging laser link to ground",
     "nasa’s hubble uncovers case of missing oxygen in nearby dwarf galaxies",
-    "nasa invites media to northrop grumman crs-25 station resupply launch"
+    "nasa invites media to northrop grumman crs-25 station resupply launch",
+    "china releases timeline for lunar landing on the moon, targeting \"before 2030\""
   ],
   "images": [
-    "https://europeanspaceflight.com/wp-content/uploads/2026/09/Avio-CEO-Reports-Influx-of-Customers-Turned-Away-by-SpaceX.we",
     "https://www.nasa.gov/wp-content/uploads/2026/09/ho-software-lyman.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/lro/McGetchin_Discovery_Reenactment.png",
     "https://apod.nasa.gov/apod/image/2609/JWST_Treasure_Chest.jpg",
@@ -601,7 +600,8 @@
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/pennsylvania%E2%80%99s-grand-canyon/",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/11/illustration_of_three_ermis_technology_demonstr",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/releases/2026/11/STScI-01M4RST3TGWT2T53FVXQB",
-    "https://images-assets.nasa.gov/image/iss075e0189493/iss075e0189493~large.jpg"
+    "https://images-assets.nasa.gov/image/iss075e0189493/iss075e0189493~large.jpg",
+    "https://cdn.arstechnica.net/wp-content/uploads/2026/11/china-1.jpg"
   ],
-  "updated": "2026-11-02T18:38:55.881241"
+  "updated": "2026-11-02T19:56:59.245846"
 }
