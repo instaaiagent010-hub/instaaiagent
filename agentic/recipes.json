@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "17937247476388910",
-    "topic": "India vs Pakistan Live: Men In Blue Continue Domination Over Pakistan To Retain Gold Medal",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 8,
-    "posted_at": 1791016276,
-    "scored": false
-  },
-  {
     "media_id": "18112498544600602",
     "topic": "India's women hockey champions dedicate 44-year-wait-breaking gold at Asian Games to fans",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 17,
     "posted_at": 1793640777,
+    "scored": false
+  },
+  {
+    "media_id": "17929863693186241",
+    "topic": "Maharashtra to launch new maritime development policy",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 17,
+    "posted_at": 1793640883,
     "scored": false
   }
 ]
