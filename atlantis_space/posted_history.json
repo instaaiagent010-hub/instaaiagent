@@ -1,6 +1,5 @@
 {
   "titles": [
-    "esa brings public and private capital together to accelerate europe’s space economy",
     "juice to fly past earth for third gravity assist",
     "exolaunch, space cargo book starship starfall missions",
     "nasa astronaut reid wiseman attends ravens vs. saints game",
@@ -299,10 +298,10 @@
     "china releases timeline for lunar landing on the moon, targeting \"before 2030\"",
     "tb 26-09 measured hammer",
     "launch preview: falcon 9 to launch ussf missions, china to launch internet satellites",
-    "the pacific’s busy storm season"
+    "the pacific’s busy storm season",
+    "press event: nasa moon base: november 2026 update (nov. 7, 2026)"
   ],
   "images": [
-    "https://europeanspaceflight.com/wp-content/uploads/2026/09/EnduroSat-Raise-Pushes-European-NewSpace-Funding-Above-1-Bill",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/videos/2026/09/mtg-i2_timelapse_from_arrival_at_europe_s_space",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/09/rsz_1screenshot_2026-09-16_at_33640-pm.png?fit=879%2C688&ssl=",
     "https://www.nasa.gov/wp-content/uploads/2026/09/9467279838-faa6134db8-o.jpg",
@@ -601,7 +600,8 @@
     "https://www.nasa.gov/wp-content/uploads/2015/04/tb-26-09-1-illustrative-hammer-force-time-histories.png",
     "https://www.nasaspaceflight.com/wp-content/uploads/2024/11/Booster-1062-became-the-first-booster-to-complete-a-21st-laun",
     "https://www.nasa.gov/wp-content/uploads/2023/03/bennu-osiris-rex-1041.jpg",
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/the-pacific's-busy-storm-season/stor"
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/the-pacific's-busy-storm-season/stor",
+    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/artemis_moon_mi_image_20240106103748.png"
   ],
-  "updated": "2026-11-03T07:31:47.213392"
+  "updated": "2026-11-03T09:47:58.918542"
 }
