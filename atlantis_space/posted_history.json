@@ -1,6 +1,5 @@
 {
   "titles": [
-    "exolaunch, space cargo book starship starfall missions",
     "nasa astronaut reid wiseman attends ravens vs. saints game",
     "perseverance’s view of ‘turquoise bay’",
     "chance triple alignment: plane, space station, sun",
@@ -299,10 +298,10 @@
     "launch preview: falcon 9 to launch ussf missions, china to launch internet satellites",
     "the pacific’s busy storm season",
     "press event: nasa moon base: november 2026 update (nov. 7, 2026)",
-    "asteroid (2013 fy13) aaj earth ke paas se guzrega — 205-459m"
+    "asteroid (2013 fy13) aaj earth ke paas se guzrega — 205-459m",
+    "nasa’s neil gehrels swift observatory to burn up this week after more than two decades in space"
   ],
   "images": [
-    "https://www.esa.int/var/esa/storage/images/esa_multimedia/videos/2026/09/mtg-i2_timelapse_from_arrival_at_europe_s_space",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/09/rsz_1screenshot_2026-09-16_at_33640-pm.png?fit=879%2C688&ssl=",
     "https://www.nasa.gov/wp-content/uploads/2026/09/9467279838-faa6134db8-o.jpg",
     "https://cdn.arstechnica.net/wp-content/uploads/2026/09/starliner-rise-from-your-grave.jpg",
@@ -601,7 +600,8 @@
     "https://www.nasaspaceflight.com/wp-content/uploads/2024/11/Booster-1062-became-the-first-booster-to-complete-a-21st-laun",
     "https://www.nasa.gov/wp-content/uploads/2023/03/bennu-osiris-rex-1041.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/the-pacific's-busy-storm-season/stor",
-    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/artemis_moon_mi_image_20240106103748.png"
+    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/artemis_moon_mi_image_20240106103748.png",
+    "https://spaceflightnow.com/wp-content/uploads/2026/11/Swift_in_space_11.jpg"
   ],
-  "updated": "2026-11-03T12:59:45.705700"
+  "updated": "2026-11-03T14:50:18.249279"
 }
