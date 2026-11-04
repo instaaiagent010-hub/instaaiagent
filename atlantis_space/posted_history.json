@@ -1,6 +1,5 @@
 {
   "titles": [
-    "a new lunar crater: mcgetchin",
     "a hitchhiker’s guide to hera’s target asteroids",
     "rocket factory augsburg ‘boost!’ extension in run-up to first launch",
     "first switch on for esa",
@@ -299,10 +298,10 @@
     "time to wake up metop-sg",
     "nasa, noaa track 2026 antarctic ozone hole",
     "“blue tsunami” puts democrats in control of house and senate next year",
-    "nasa announces ka-band satellite relay awards for space communications"
+    "nasa announces ka-band satellite relay awards for space communications",
+    "trace gas orbiter discovers potential evidence of volcanic activity on mars via atmospheric observations"
   ],
   "images": [
-    "https://cdn.arstechnica.net/wp-content/uploads/2026/09/Vega-C_takes_FLEX_and_Sentinel-3C_into_orbit_pillars.jpg",
     "https://science.nasa.gov/wp-content/uploads/2026/09/potm2609a.jpg",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/09/TOLM-Logo-Vertical_Color-square.png?fit=1024%2C1024&ssl=1",
     "https://www.nasa.gov/wp-content/uploads/2026/01/54387592956-0d0c5c9258-o.jpg",
@@ -601,7 +600,8 @@
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/11/removing_metop-sg-b1_from_its_transport_contain",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/articles/2026/ozone_geos5_20260918_hires.jpg",
     "https://spacepolicyonline.com/wp-content/uploads/2026/11/Jeffries-Nov-3-2026-CSPAN-300x168.jpg",
-    "https://www.nasa.gov/wp-content/uploads/2022/02/nasa_meatball_large.jpg"
+    "https://www.nasa.gov/wp-content/uploads/2022/02/nasa_meatball_large.jpg",
+    "https://www.nasaspaceflight.com/wp-content/uploads/2026/11/exomars-trace-gas-orbiter-1-scaled.webp"
   ],
-  "updated": "2026-11-04T19:01:48.489631"
+  "updated": "2026-11-04T20:08:26.970302"
 }
