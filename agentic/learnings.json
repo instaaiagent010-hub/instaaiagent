@@ -1,11 +1,11 @@
 {
-  "updated": 1793745069,
+  "updated": 1793794681,
   "posts_scored": 299,
   "hook_avg": {},
   "hour_avg": {
-    "8": 4.074,
     "12": 4.133,
     "16": 4.071,
+    "8": 4.077,
     "13": 4.182,
     "17": 4.03,
     "9": 4.0,
@@ -16,29 +16,30 @@
     "19": 4.029,
     "15": 4.111,
     "7": 4.0,
-    "11": 4.0
+    "11": 4.0,
+    "21": 4.0
   },
   "voice_avg": {},
   "topic_avg": {
     "creates": 5.0,
     "57kg": 5.0,
-    "history,": 5.0,
     "men's": 5.0,
-    "amritsar,": 5.0,
+    "history,": 5.0,
     "sandhu": 5.0,
-    "rights:": 5.0,
+    "amritsar,": 5.0,
     "revisit": 5.0,
+    "evolution": 5.0,
+    "rights:": 5.0,
     "debates": 5.0,
     "founding": 5.0,
-    "evolution": 5.0,
-    "inverted": 5.0,
-    "oceanic": 5.0,
-    "circle,": 5.0,
     "gandhiji's": 5.0,
-    "honda": 5.0,
-    "elevate": 5.0,
+    "inverted": 5.0,
+    "circle,": 5.0,
+    "oceanic": 5.0,
+    "today:": 5.0,
+    "features,": 5.0,
     "facelift": 5.0,
-    "price,": 5.0,
-    "features,": 5.0
+    "honda": 5.0,
+    "price,": 5.0
   }
 }
