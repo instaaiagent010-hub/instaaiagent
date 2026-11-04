@@ -1,6 +1,5 @@
 {
   "titles": [
-    "saxavord scrapped launch rail plans, forcing hyimpulse to bring its own",
     "a call to boost european space exploration",
     "nasa-funded research finds complex life defying record heat",
     "a new lunar crater: mcgetchin",
@@ -299,10 +298,10 @@
     "simera sense and spacemanic to collaborate on a new complete dual",
     "apod: 2026 november 4 – the not-so-hidden galaxy, ic 342",
     "before the dawn in america’s heartland",
-    "time to wake up metop-sg"
+    "time to wake up metop-sg",
+    "nasa, noaa track 2026 antarctic ozone hole"
   ],
   "images": [
-    "https://www.nasaspaceflight.com/wp-content/uploads/2026/09/NSF-2026-09-18-00-37-57-984.jpg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/a_galaxy_spinning_out_of_sync/27523332-1-eng-GB",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/earth_from_space_laguna_colorada/27528365-1-eng",
     "https://cdn.arstechnica.net/wp-content/uploads/2026/09/Vega-C_takes_FLEX_and_Sentinel-3C_into_orbit_pillars.jpg",
@@ -601,7 +600,8 @@
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/11/simera-space.png?fit=1024%2C1024&ssl=1",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/november/ic342.png",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/before-the-dawn-in-america%E2%80%99s",
-    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/11/removing_metop-sg-b1_from_its_transport_contain"
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/11/removing_metop-sg-b1_from_its_transport_contain",
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/articles/2026/ozone_geos5_20260918_hires.jpg"
   ],
-  "updated": "2026-11-04T13:14:29.816226"
+  "updated": "2026-11-04T15:56:14.888409"
 }
