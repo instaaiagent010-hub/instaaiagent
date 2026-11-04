@@ -1,6 +1,5 @@
 {
   "titles": [
-    "a hitchhiker’s guide to hera’s target asteroids",
     "rocket factory augsburg ‘boost!’ extension in run-up to first launch",
     "first switch on for esa",
     "there are now 17,000 satellites in orbit—and growing. should we be concerned?",
@@ -299,10 +298,10 @@
     "nasa, noaa track 2026 antarctic ozone hole",
     "“blue tsunami” puts democrats in control of house and senate next year",
     "nasa announces ka-band satellite relay awards for space communications",
-    "trace gas orbiter discovers potential evidence of volcanic activity on mars via atmospheric observations"
+    "trace gas orbiter discovers potential evidence of volcanic activity on mars via atmospheric observations",
+    "elon musk moved spacex to red texas. now it's blue. what happens next?"
   ],
   "images": [
-    "https://science.nasa.gov/wp-content/uploads/2026/09/potm2609a.jpg",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/09/TOLM-Logo-Vertical_Color-square.png?fit=1024%2C1024&ssl=1",
     "https://www.nasa.gov/wp-content/uploads/2026/01/54387592956-0d0c5c9258-o.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/xrism/News/2026/wind-accreting-pulsar/GX_301-2_spec",
@@ -601,7 +600,8 @@
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/articles/2026/ozone_geos5_20260918_hires.jpg",
     "https://spacepolicyonline.com/wp-content/uploads/2026/11/Jeffries-Nov-3-2026-CSPAN-300x168.jpg",
     "https://www.nasa.gov/wp-content/uploads/2022/02/nasa_meatball_large.jpg",
-    "https://www.nasaspaceflight.com/wp-content/uploads/2026/11/exomars-trace-gas-orbiter-1-scaled.webp"
+    "https://www.nasaspaceflight.com/wp-content/uploads/2026/11/exomars-trace-gas-orbiter-1-scaled.webp",
+    "https://cdn.arstechnica.net/wp-content/uploads/2026/11/elon-how-do-you-do-fellow-democrats.jpg"
   ],
-  "updated": "2026-11-04T20:08:26.970302"
+  "updated": "2026-11-04T21:48:19.953516"
 }
