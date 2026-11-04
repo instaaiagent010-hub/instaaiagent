@@ -1,6 +1,5 @@
 {
   "titles": [
-    "launch preview: electron, falcon 9, and starship set for launches",
     "saxavord scrapped launch rail plans, forcing hyimpulse to bring its own",
     "a call to boost european space exploration",
     "nasa-funded research finds complex life defying record heat",
@@ -299,10 +298,10 @@
     "tb 26-10 printed circuit board assembly chip resistor body cracking",
     "simera sense and spacemanic to collaborate on a new complete dual",
     "apod: 2026 november 4 – the not-so-hidden galaxy, ic 342",
-    "before the dawn in america’s heartland"
+    "before the dawn in america’s heartland",
+    "time to wake up metop-sg"
   ],
   "images": [
-    "https://apod.nasa.gov/apod/image/2609/m33m14_rasa3NM.jpg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/09/NSF-2026-09-18-00-37-57-984.jpg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/a_galaxy_spinning_out_of_sync/27523332-1-eng-GB",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/earth_from_space_laguna_colorada/27528365-1-eng",
@@ -601,7 +600,8 @@
     "https://www.nasa.gov/wp-content/uploads/2015/04/tb-26-10-fig-1.png",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/11/simera-space.png?fit=1024%2C1024&ssl=1",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/november/ic342.png",
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/before-the-dawn-in-america%E2%80%99s"
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/before-the-dawn-in-america%E2%80%99s",
+    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/11/removing_metop-sg-b1_from_its_transport_contain"
   ],
-  "updated": "2026-11-04T09:34:16.271509"
+  "updated": "2026-11-04T11:45:54.182515"
 }
