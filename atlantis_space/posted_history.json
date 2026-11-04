@@ -1,6 +1,5 @@
 {
   "titles": [
-    "chance triple alignment: plane, space station, sun",
     "nasa kicks off nationwide effort to prepare tomorrow’s space workforce",
     "launch preview: electron, falcon 9, and starship set for launches",
     "saxavord scrapped launch rail plans, forcing hyimpulse to bring its own",
@@ -299,10 +298,10 @@
     "asteroid (2013 fy13) aaj earth ke paas se guzrega — 205-459m",
     "nasa’s neil gehrels swift observatory to burn up this week after more than two decades in space",
     "tb 26-10 printed circuit board assembly chip resistor body cracking",
-    "simera sense and spacemanic to collaborate on a new complete dual"
+    "simera sense and spacemanic to collaborate on a new complete dual",
+    "apod: 2026 november 4 – the not-so-hidden galaxy, ic 342"
   ],
   "images": [
-    "https://cdn.arstechnica.net/wp-content/uploads/2026/09/starliner-rise-from-your-grave.jpg",
     "https://www.nasa.gov/wp-content/uploads/2026/09/spacex35.jpg",
     "https://apod.nasa.gov/apod/image/2609/m33m14_rasa3NM.jpg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/09/NSF-2026-09-18-00-37-57-984.jpg",
@@ -601,7 +600,8 @@
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/artemis_moon_mi_image_20240106103748.png",
     "https://spaceflightnow.com/wp-content/uploads/2026/11/Swift_in_space_11.jpg",
     "https://www.nasa.gov/wp-content/uploads/2015/04/tb-26-10-fig-1.png",
-    "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/11/simera-space.png?fit=1024%2C1024&ssl=1"
+    "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/11/simera-space.png?fit=1024%2C1024&ssl=1",
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/november/ic342.png"
   ],
-  "updated": "2026-11-03T22:10:24.090605"
+  "updated": "2026-11-04T07:09:22.978490"
 }
