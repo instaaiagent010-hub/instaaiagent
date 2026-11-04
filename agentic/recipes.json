@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18116061538791618",
-    "topic": "City with open hand turns 75: Can Chandigarh grow without losing itself?",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 8,
-    "posted_at": 1791016550,
-    "scored": false
-  },
-  {
     "media_id": "17932919664144681",
     "topic": "Asian Games 2026: Aman Sehrawat creates history, wins India's first Asian Games gold in men's 57kg wrestling",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 21,
     "posted_at": 1793742217,
+    "scored": false
+  },
+  {
+    "media_id": "17956255722035608",
+    "topic": "Flop political agenda of Congress leads to one more flop show at Ramlila Maidan, Delhi",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 9,
+    "posted_at": 1793785947,
     "scored": false
   }
 ]
