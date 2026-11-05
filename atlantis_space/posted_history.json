@@ -1,6 +1,5 @@
 {
   "titles": [
-    "first switch on for esa",
     "there are now 17,000 satellites in orbit—and growing. should we be concerned?",
     "space explorers in the land of volcanoes",
     "ethereal space awarded noaa sbem task order 1",
@@ -299,10 +298,10 @@
     "nasa announces ka-band satellite relay awards for space communications",
     "trace gas orbiter discovers potential evidence of volcanic activity on mars via atmospheric observations",
     "elon musk moved spacex to red texas. now it's blue. what happens next?",
-    "cyprus: island of snakes, cats, and ophiolites"
+    "cyprus: island of snakes, cats, and ophiolites",
+    "former nasa chief economist is new head of canadian space agency"
   ],
   "images": [
-    "https://www.nasa.gov/wp-content/uploads/2026/01/54387592956-0d0c5c9258-o.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/xrism/News/2026/wind-accreting-pulsar/GX_301-2_spec",
     "https://apod.nasa.gov/apod/image/2609/2026-09-09ZodiacalLightHSP.jpg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/esa_x_tpci_-_pikachu_in_the_cupola/27530034-1-e",
@@ -601,7 +600,8 @@
     "https://www.nasa.gov/wp-content/uploads/2022/02/nasa_meatball_large.jpg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/11/exomars-trace-gas-orbiter-1-scaled.webp",
     "https://cdn.arstechnica.net/wp-content/uploads/2026/11/elon-how-do-you-do-fellow-democrats.jpg",
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/island-of-snakes,-cats,-and-ophiolit"
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/island-of-snakes,-cats,-and-ophiolit",
+    "https://spacepolicyonline.com/wp-content/uploads/2026/11/Alex-MacDonald-300x300.jpg"
   ],
-  "updated": "2026-11-05T07:38:54.907394"
+  "updated": "2026-11-05T09:43:34.186550"
 }
