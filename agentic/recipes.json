@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18029019275906802",
-    "topic": "India Asian Games 2026 medal tally: Sport-wise breakdown; Archery leads gold charge",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 8,
-    "posted_at": 1791103548,
-    "scored": false
-  },
-  {
     "media_id": "18110169515270664",
     "topic": "Thackeray cousins lead Mumbai protest against CEC, demand resignation",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "reel",
     "hour": 9,
     "posted_at": 1793872614,
+    "scored": false
+  },
+  {
+    "media_id": "18157650214524049",
+    "topic": "PM Modi meets India's Asian Para Games 2026 heroes after record 114-medal haul",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 15,
+    "posted_at": 1793893950,
     "scored": false
   }
 ]
