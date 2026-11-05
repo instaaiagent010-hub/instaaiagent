@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18636574390022720",
-    "topic": "₹77.84 crore for two Asian Games golds and Olympic berths: Breaking down India's hockey investment",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 16,
-    "posted_at": 1791045497,
-    "scored": false
-  },
-  {
     "media_id": "18149361502543870",
     "topic": "Punjabi Influencer Mad Sandhu Shot Dead In Amritsar, Police Launch Probe",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 15,
     "posted_at": 1793807395,
+    "scored": false
+  },
+  {
+    "media_id": "18116702399039065",
+    "topic": "PM Modi to meet India's record-breaking Asian Para Games contingent on November 5",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 9,
+    "posted_at": 1793872340,
     "scored": false
   }
 ]
