@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "17908090407485690",
-    "topic": "India sign off Asian Games 2026 with 85 medals, fourth-place finish",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 8,
-    "posted_at": 1791103373,
-    "scored": false
-  },
-  {
     "media_id": "18126127724488652",
     "topic": "Inside incredible 85,000-seater stadium that hosted India vs Brazil including helipad and wall for ROCK CLIMBING",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 9,
     "posted_at": 1793872427,
+    "scored": false
+  },
+  {
+    "media_id": "18462768502193358",
+    "topic": "India taps two domestic shipbuilders for $5.7B corvette program",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 9,
+    "posted_at": 1793872512,
     "scored": false
   }
 ]
