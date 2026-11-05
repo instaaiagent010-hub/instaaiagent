@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18149361502543870",
-    "topic": "Punjabi Influencer Mad Sandhu Shot Dead In Amritsar, Police Launch Probe",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 16,
-    "posted_at": 1791045585,
-    "scored": false
-  },
-  {
     "media_id": "17908090407485690",
     "topic": "India sign off Asian Games 2026 with 85 medals, fourth-place finish",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "reel",
     "hour": 9,
     "posted_at": 1793872340,
+    "scored": false
+  },
+  {
+    "media_id": "17992264959096685",
+    "topic": "India's passenger vehicle sales hit historic high of 5 lakh units in October",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 9,
+    "posted_at": 1793872427,
     "scored": false
   }
 ]
