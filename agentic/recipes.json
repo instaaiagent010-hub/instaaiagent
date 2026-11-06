@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18110838745891770",
-    "topic": "Bhuvneshwar Kumar named India captain for Hong Kong Sixes amid comeback debate",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 22,
-    "posted_at": 1791238218,
-    "scored": false
-  },
-  {
     "media_id": "18116807168283516",
     "topic": "Tariffs were trade tool, now are weaponised: FM Sitharaman amid US",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 19,
     "posted_at": 1793994508,
+    "scored": false
+  },
+  {
+    "media_id": "18003949350039980",
+    "topic": "India amends visa rules for Pakistan, Sri Lanka",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 23,
+    "posted_at": 1794006797,
     "scored": false
   }
 ]
