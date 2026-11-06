@@ -1,6 +1,5 @@
 {
   "titles": [
-    "cloudy cloak over the northwest",
     "starfish space’s first otter servicing vehicle slated for transporter-18",
     "european lunar rover secures spot aboard blue origin blue moon mission",
     "true or false on space industry trends with pacôme révillon",
@@ -299,7 +298,8 @@
     "hubble learns galactic history from stars",
     "blue origin unveils new glenn gs3 third stage and northstar booster engine",
     "taking a gander at utah’s goosenecks",
-    "avio scales back demonstrator programme amid technical challenges"
+    "avio scales back demonstrator programme amid technical challenges",
+    "asteroid (2001 kf54) aaj earth ke paas se guzrega — 290-649m"
   ],
   "images": [
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/zhongke-1a_image_20220912002218.png",
@@ -603,5 +603,5 @@
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/taking-a-gander-at-utah%E2%80%99s-go",
     "https://europeanspaceflight.com/wp-content/uploads/2026/11/Avio-Scales-Back-Demonstrator-Programme-Amid-Technical-Challe"
   ],
-  "updated": "2026-11-06T09:38:43.087048"
+  "updated": "2026-11-06T11:43:10.130127"
 }
