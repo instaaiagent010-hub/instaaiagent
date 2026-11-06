@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "17950846194278462",
-    "topic": "India News | “Chandrababu’s SC Move on 34% BC Quota Political Drama”: Venugopalakrishna",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 16,
-    "posted_at": 1791217537,
-    "scored": false
-  },
-  {
     "media_id": "17951418258277676",
     "topic": "Trust in the German Constitutional Court is eroding — how can this be stopped?",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 15,
     "posted_at": 1793979436,
+    "scored": false
+  },
+  {
+    "media_id": "17871184179659116",
+    "topic": "‘Let Parliament Reconvene’: Shashi Tharoor Backs Rahul Gandhi's Debate Offer, Targets EC Over SIR",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 15,
+    "posted_at": 1793979544,
     "scored": false
   }
 ]
