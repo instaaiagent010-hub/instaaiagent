@@ -1,6 +1,5 @@
 {
   "titles": [
-    "the ghosts of five supernovas",
     "record participation in esa’s industry space days 2026",
     "cloudy cloak over the northwest",
     "starfish space’s first otter servicing vehicle slated for transporter-18",
@@ -299,10 +298,10 @@
     "building a ‘highway to the moon and back’ with winnie lai",
     "ohb awarded €554 million contract for next-gen sentinel-3 satellite",
     "hubble learns galactic history from stars",
-    "blue origin unveils new glenn gs3 third stage and northstar booster engine"
+    "blue origin unveils new glenn gs3 third stage and northstar booster engine",
+    "taking a gander at utah’s goosenecks"
   ],
   "images": [
-    "https://apod.nasa.gov/apod/image/2609/CallanishAnalemma_Petricca_1280.jpg",
     "http://spaceflightnow.com/wp-content/uploads/2026/09/20260919-Progress-Final-Approach.jpg",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/zhongke-1a_image_20220912002218.png",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/spacex_dm-2_cre_image_20200504065311.jpeg",
@@ -601,7 +600,8 @@
     "https://europeanspaceflight.com/wp-content/uploads/2026/11/OHB-Wins-554-Million-Euros-ESA-Contract-for-Next-Gen-Sentinel",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/stars/globular-clusters/Hubble_M30_potm2610a",
     "https://epic.gsfc.nasa.gov/archive/natural/2026/11/03/png/epic_1b_20261103003634.png",
-    "https://www.nasaspaceflight.com/wp-content/uploads/2026/11/NSF-2026-11-05-18-57-11-406.jpg"
+    "https://www.nasaspaceflight.com/wp-content/uploads/2026/11/NSF-2026-11-05-18-57-11-406.jpg",
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/taking-a-gander-at-utah%E2%80%99s-go"
   ],
-  "updated": "2026-11-05T21:44:43.042053"
+  "updated": "2026-11-06T07:35:32.085665"
 }
