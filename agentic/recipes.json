@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18127202527841553",
-    "topic": "Breaking News LIVE: Protesters Detained From Parliament Street Police Station",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "reel",
-    "hour": 16,
-    "posted_at": 1791217446,
-    "scored": false
-  },
-  {
     "media_id": "17950846194278462",
     "topic": "India News | “Chandrababu’s SC Move on 34% BC Quota Political Drama”: Venugopalakrishna",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 15,
     "posted_at": 1793979348,
+    "scored": false
+  },
+  {
+    "media_id": "17890522977478473",
+    "topic": "Stock recommendations for 6 November from MarketSmith India",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 15,
+    "posted_at": 1793979436,
     "scored": false
   }
 ]
