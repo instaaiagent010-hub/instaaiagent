@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18022947467713134",
-    "topic": "India vs Uruguay live score and updates: (1-0), Nunez converts penalty, India trail despite promise",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 14,
-    "posted_at": 1791297068,
-    "scored": false
-  },
-  {
     "media_id": "18139336171615762",
     "topic": "Will India ban social media for under-18s? Govt says not yet; talks ongoing with experts",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 14,
     "posted_at": 1794061459,
+    "scored": false
+  },
+  {
+    "media_id": "17946194310087201",
+    "topic": "India News Live Updates, 6 November 2026: PM Narendra Modi extends Diwali greetings",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 14,
+    "posted_at": 1794061561,
     "scored": false
   }
 ]
