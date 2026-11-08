@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "17891446299614804",
-    "topic": "INDIA Bloc Delhi Protest: Rahul, Priyanka Gandhi Released After Detention; SIR Showdown Intensifies",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 19,
-    "posted_at": 1791400737,
-    "scored": false
-  },
-  {
     "media_id": "17952653814269428",
     "topic": "A record-breaking debut, 14 wickets vs Australia: Meet Tanmay Baloda, India's new U-19 spin sensation",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 9,
     "posted_at": 1794130355,
+    "scored": false
+  },
+  {
+    "media_id": "17977309227170650",
+    "topic": "India news Live Updates, 8 November 2026: Karnataka tests petrol samples at 67 locations amid ethanol-blending row",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 14,
+    "posted_at": 1794148465,
     "scored": false
   }
 ]
