@@ -1,6 +1,5 @@
 {
   "titles": [
-    "explosive intensification for hurricane polo",
     "esa and the eu partner with museo galileo on new exhibition",
     "rocket report: era of cheap launch is over? astra sets early 2027. target for return",
     "three earth explorer candidates go forward",
@@ -299,10 +298,10 @@
     "ast spacemobile unveils $1.3 billion engine deal with firefly aerospace to power new heavy-lift rocket",
     "upcoming launch: soyuz 2.1b/fregat | glonass-k1? (kosmos 2621?)",
     "nasa announces search for new astronauts",
-    "nasa seeks next generation of explorers to join astronaut corps"
+    "nasa seeks next generation of explorers to join astronaut corps",
+    "nasa’s moon base plan gains a promise"
   ],
   "images": [
-    "https://www.nasaspaceflight.com/wp-content/uploads/2026/09/NSF-2026-09-21-17-46-39-798.jpg",
     "https://www.nasa.gov/wp-content/uploads/2026/09/55540215826-eb77fe7409-o.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia26/pia26815/PIA26815.jpg",
     "https://apod.nasa.gov/apod/image/2609/PlaneIssSpots_Horalek_1500.jpg",
@@ -601,7 +600,8 @@
     "https://spaceflightnow.com/wp-content/uploads/2026/11/20261106_AST_rocket_rendering.jpg",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/soyuz_2.1b_image_20230802085331.jpg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/01/jsc2025e075919_altlarge.jpg",
-    "https://www.nasa.gov/wp-content/uploads/2026/11/jsc2025e076292large.jpg"
+    "https://www.nasa.gov/wp-content/uploads/2026/11/jsc2025e076292large.jpg",
+    "https://www.nasaspaceflight.com/wp-content/uploads/2026/11/00-36-55_promise-lunar-surface-render.png"
   ],
-  "updated": "2026-11-07T19:50:55.653761"
+  "updated": "2026-11-08T06:52:37.604346"
 }
