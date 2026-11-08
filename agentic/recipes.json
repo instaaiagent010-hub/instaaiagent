@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "17892646467654617",
-    "topic": "Column",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 20,
-    "posted_at": 1791406318,
-    "scored": false
-  },
-  {
     "media_id": "18117884954087655",
     "topic": "India Love Says Seeing Photos of Herself at ComplexCon Was Her Wake Up Call to S...",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "reel",
     "hour": 18,
     "posted_at": 1794161280,
+    "scored": false
+  },
+  {
+    "media_id": "18116079917275484",
+    "topic": "Just Like That | The Smokescreen of Tradition: The Diwali Cracker Dilemma",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 18,
+    "posted_at": 1794161366,
     "scored": false
   }
 ]
