@@ -1,6 +1,5 @@
 {
   "titles": [
-    "nasa, boeing to provide update on starliner development",
     "spacex falcon 9 to launch classified mission for u.s. space force from west coast",
     "nasa welcomes san marino signing the artemis accords",
     "mirrored meteor and milky way",
@@ -299,10 +298,10 @@
     "chapea mission 2 crew reflects after 378 days on simulated mars",
     "ccia report highlights satellite connectivity’s potential to expand internet access and drive economic growth",
     "astronauts across generations share the stage",
-    "nasa advanced mid"
+    "nasa advanced mid",
+    "flyby: europa clipper earth flyby"
   ],
   "images": [
-    "https://apod.nasa.gov/apod/image/2609/mcgetchin_after.jpg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/an_imaginary_astronaut_s_view_of_the_didymos_an",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2023/11/rfa_one_rocket/25184937-1-eng-GB/RFA_One_rocket",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/first_switch-on_of_the_ramses_spacecraft/275372",
@@ -601,7 +600,8 @@
     "https://www.nasa.gov/wp-content/uploads/2026/11/jsc2026e424286.jpg",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/11/ccia-logo-square.png?fit=929%2C927&ssl=1",
     "https://www.nasa.gov/wp-content/uploads/2026/11/20261106-artemiscelebrationgala-sl1-4202.jpg",
-    "https://www.nasa.gov/wp-content/uploads/2024/05/image-1ee21e.jpeg"
+    "https://www.nasa.gov/wp-content/uploads/2024/05/image-1ee21e.jpeg",
+    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/europa_clipper__image_20250228203626.jpg"
   ],
-  "updated": "2026-11-09T19:04:33.356511"
+  "updated": "2026-11-09T20:21:20.787941"
 }
