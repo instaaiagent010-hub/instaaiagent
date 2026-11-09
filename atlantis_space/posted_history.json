@@ -1,6 +1,5 @@
 {
   "titles": [
-    "after seven years, a spacecraft company is releasing its otters into the wild",
     "tb 26-07 aluminum alloy 2219 material guidance",
     "nasa tests dual mode propulsion cubesat ahead of launch",
     "flight 14 waits on approval as a near-term manifest sketches starship’s next steps",
@@ -299,10 +298,10 @@
     "nasa awards moon base transportation, technology, science projects",
     "asteroid (2016 lc11) aaj earth ke paas se guzrega — 330-738m",
     "rfa confirms inaugural rfa one launch has slipped to 2027",
-    "ozone hole reaches its 2026 maximum"
+    "ozone hole reaches its 2026 maximum",
+    "chapea mission 2 crew reflects after 378 days on simulated mars"
   ],
   "images": [
-    "https://www.nasaspaceflight.com/wp-content/uploads/2023/11/Nov.-8-2023-Falcon-9-Starlink-6-27-Streak-Shot.jpg",
     "https://europeanspaceflight.com/wp-content/uploads/2026/09/SaxaVord-Scrapped-Launch-Rail-Plans-Forcing-HyImpulse-to-Brin",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/05/extended_reality_at_esa/27263586-1-eng-GB/Exten",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/astrobiology/research-images/SampleCollection.jpg",
@@ -601,7 +600,8 @@
     "https://www.nasa.gov/wp-content/uploads/2026/11/moon-base-artists-concept.jpg",
     "https://epic.gsfc.nasa.gov/archive/natural/2026/11/06/png/epic_1b_20261106002712.png",
     "https://europeanspaceflight.com/wp-content/uploads/2026/11/RFA-Confirms-Inaugural-RFA-ONE-Launch-Has-Slipped-to-2027.web",
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/ozone-hole-reaches-its-2026-maximum/"
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/ozone-hole-reaches-its-2026-maximum/",
+    "https://www.nasa.gov/wp-content/uploads/2026/11/jsc2026e424286.jpg"
   ],
-  "updated": "2026-11-09T10:04:02.822721"
+  "updated": "2026-11-09T12:21:08.177271"
 }
