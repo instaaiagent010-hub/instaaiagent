@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18150995104554136",
-    "topic": "Delhi protest live: Jantar Mantar fortified, Central Delhi under tight vigil ahead of CJP's protest",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 9,
-    "posted_at": 1791538573,
-    "scored": false
-  },
-  {
     "media_id": "18177954181435448",
     "topic": "School Assembly News Headlines, October 9, 2026: Check national, international, business, sports updates and thought of ",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "reel",
     "hour": 10,
     "posted_at": 1794306878,
+    "scored": false
+  },
+  {
+    "media_id": "18091396826265441",
+    "topic": "Workers’ struggles escalate across India amid youth-led protests over Modi government’s purging of electoral rolls",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 10,
+    "posted_at": 1794306981,
     "scored": false
   }
 ]
