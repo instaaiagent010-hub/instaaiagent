@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "17907409821585890",
-    "topic": "SC rejects plea seeking independent probe into CJP's July protest",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 9,
-    "posted_at": 1791538487,
-    "scored": false
-  },
-  {
     "media_id": "18150995104554136",
     "topic": "Delhi protest live: Jantar Mantar fortified, Central Delhi under tight vigil ahead of CJP's protest",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 10,
     "posted_at": 1794306773,
+    "scored": false
+  },
+  {
+    "media_id": "18093281267239490",
+    "topic": "Cabinet approves MoU with India for 100 new Suwa Seriya ambulances",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 10,
+    "posted_at": 1794306878,
     "scored": false
   }
 ]
