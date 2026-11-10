@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18177954181435448",
-    "topic": "School Assembly News Headlines, October 9, 2026: Check national, international, business, sports updates and thought of ",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 9,
-    "posted_at": 1791538664,
-    "scored": false
-  },
-  {
     "media_id": "18126982442497705",
     "topic": "Breaking News Live: INDIA Bloc Leaders Stage Sit-In At Vijay Chowk After Being Stopped By Police, Delegation Moves Forwa",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "reel",
     "hour": 10,
     "posted_at": 1794306981,
+    "scored": false
+  },
+  {
+    "media_id": "18013778711991037",
+    "topic": "India's $200 Million Fantasy Epic Is Off to a Troubling Box Office Start",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 15,
+    "posted_at": 1794326015,
     "scored": false
   }
 ]
