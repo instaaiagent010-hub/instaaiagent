@@ -1,6 +1,5 @@
 {
   "titles": [
-    "uncovering the valleys hidden below greenland’s ice",
     "reliable robots: meet johnson’s dexterous robotics team",
     "live coverage: spacex to launch first starlink v3 satellites to orbit on starship",
     "uk creates space effects squadron to protect its satellites",
@@ -299,10 +298,10 @@
     "escapade on its way to mars after earth flybys",
     "nasa shares moon base progress, contract awards",
     "chapea crew leaves a mark",
-    "one space station company sues another for copying its work"
+    "one space station company sues another for copying its work",
+    "nasa to welcome expedition 74 astronauts home at space center houston"
   ],
   "images": [
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/earth-observer/2025/NASA-meatball-blk.png",
     "https://www.nasa.gov/wp-content/uploads/2026/09/a200-king-air-da.jpg",
     "https://apod.nasa.gov/apod/image/2609/5SNR_Auriga_2000.jpg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/industry_space_days_20263/27536066-2-eng-GB/Ind",
@@ -601,7 +600,8 @@
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2025/11/escapade_twins_Mars.jpg?fit=1024%2C482&ssl=1",
     "https://spacepolicyonline.com/wp-content/uploads/2026/11/Isaacman-skydive-Nov-7-26-Jonathan-Shaban-300x168.jpg",
     "https://www.nasa.gov/wp-content/uploads/2026/11/jsc2026e425219orig.jpg",
-    "https://cdn.arstechnica.net/wp-content/uploads/2026/11/KSC-20230521-PH-CSH01_0001large.jpg"
+    "https://cdn.arstechnica.net/wp-content/uploads/2026/11/KSC-20230521-PH-CSH01_0001large.jpg",
+    "https://www.nasa.gov/wp-content/uploads/2026/11/expedition-74-picture.jpg"
   ],
-  "updated": "2026-11-10T17:29:31.621702"
+  "updated": "2026-11-10T19:03:10.107003"
 }
