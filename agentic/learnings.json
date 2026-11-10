@@ -1,12 +1,12 @@
 {
-  "updated": 1794270274,
-  "posts_scored": 299,
+  "updated": 1794315100,
+  "posts_scored": 296,
   "hook_avg": {},
   "hour_avg": {
-    "20": 4.25,
     "9": 4.0,
     "14": 4.222,
     "18": 4.107,
+    "20": 4.267,
     "8": 4.091,
     "17": 4.0,
     "19": 4.03,
@@ -18,29 +18,30 @@
     "11": 4.25,
     "21": 4.5,
     "23": 4.0,
-    "10": 4.0
+    "10": 4.0,
+    "22": 4.0
   },
   "voice_avg": {},
   "topic_avg": {
-    "uddhav": 5.0,
-    "skips": 5.0,
-    "thackeray": 5.0,
-    "reportedly": 5.0,
     "upset": 5.0,
+    "thackeray": 5.0,
+    "skips": 5.0,
+    "uddhav": 5.0,
+    "reportedly": 5.0,
+    "total": 5.0,
+    "metro": 5.0,
+    "shutdown": 5.0,
     "protest:": 5.0,
     "trains": 5.0,
-    "total": 5.0,
-    "shutdown": 5.0,
     "property": 5.0,
-    "weighs": 5.0,
     "higher": 5.0,
-    "deny": 5.0,
-    "chori,": 5.0,
+    "weighs": 5.0,
     "vote": 5.0,
     "accepted,'": 5.0,
+    "chori,": 5.0,
+    "deny": 5.0,
     "feisty": 5.0,
     "protester": 5.0,
-    "taking": 5.0,
-    "vance": 5.0
+    "taking": 5.0
   }
 }
