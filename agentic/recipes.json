@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18198497713386960",
-    "topic": "Breaking News Live: 'I Expected President To Deny Vote Chori, But She Accepted,' Says Rahul Gandhi",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 18,
-    "posted_at": 1791570766,
-    "scored": false
-  },
-  {
     "media_id": "18030604517853982",
     "topic": "Meet India's feisty Gen Z protester who is taking on Modi",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 20,
     "posted_at": 1794341064,
+    "scored": false
+  },
+  {
+    "media_id": "17904966390398894",
+    "topic": "BREAKING: Star India players swap franchises as MI and PBKS complete stunning trade ahead of IPL 2027 Auction",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 9,
+    "posted_at": 1794390899,
     "scored": false
   }
 ]
