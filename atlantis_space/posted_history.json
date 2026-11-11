@@ -1,6 +1,5 @@
 {
   "titles": [
-    "live coverage: spacex to launch first starlink v3 satellites to orbit on starship",
     "uk creates space effects squadron to protect its satellites",
     "nasa celebrates as artemis accords surpasses 75 signatories",
     "meet nasa’s artemis ii crew during houston public event",
@@ -299,10 +298,10 @@
     "chapea crew leaves a mark",
     "one space station company sues another for copying its work",
     "nasa to welcome expedition 74 astronauts home at space center houston",
-    "fire damage delays installation of simulated lunar greenhouse in germany"
+    "fire damage delays installation of simulated lunar greenhouse in germany",
+    "apod: 2026 november 11 – ngc 4449: small galaxy, big impact"
   ],
   "images": [
-    "https://apod.nasa.gov/apod/image/2609/5SNR_Auriga_2000.jpg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/industry_space_days_20263/27536066-2-eng-GB/Ind",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/cloudy-cloak-over-the-northwest/west",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/09/NSF-2026-09-24-04-20-42-246.jpg",
@@ -601,7 +600,8 @@
     "https://www.nasa.gov/wp-content/uploads/2026/11/jsc2026e425219orig.jpg",
     "https://cdn.arstechnica.net/wp-content/uploads/2026/11/KSC-20230521-PH-CSH01_0001large.jpg",
     "https://www.nasa.gov/wp-content/uploads/2026/11/expedition-74-picture.jpg",
-    "https://europeanspaceflight.com/wp-content/uploads/2026/11/Fire-Damage-Delays-Installation-of-Simulated-Lunar-Greenhouse"
+    "https://europeanspaceflight.com/wp-content/uploads/2026/11/Fire-Damage-Delays-Installation-of-Simulated-Lunar-Greenhouse",
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/galaxies/irregular/NGC%204449.jpg"
   ],
-  "updated": "2026-11-11T07:27:24.599471"
+  "updated": "2026-11-11T09:43:05.288874"
 }
