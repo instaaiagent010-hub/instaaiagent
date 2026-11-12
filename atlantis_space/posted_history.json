@@ -1,6 +1,5 @@
 {
   "titles": [
-    "starship achieves orbit for the first time",
     "nasa highlights lessons learned from swift boost mission",
     "starship returns to earth; rocket splashes down north of hawaii after three-hour flight",
     "sh2-188: the shrimp nebula",
@@ -299,10 +298,10 @@
     "apod: 2026 november 11 – ngc 4449: small galaxy, big impact",
     "moog marks 25 years since espa design milestone: innovating space rideshare",
     "asteroid 138852 (2000 wn10) aaj earth ke paas se guzrega — 233-520m",
-    "nasa takes an all-hands-on-deck approach in its return to the moon"
+    "nasa takes an all-hands-on-deck approach in its return to the moon",
+    "apod: 2026 november 12 – moon, venus and spica meet"
   ],
   "images": [
-    "https://www.nasaspaceflight.com/wp-content/uploads/2026/09/NSF-2026-09-24-04-20-42-246.jpg",
     "https://europeanspaceflight.com/wp-content/uploads/2026/09/European-Lunar-Rover-Secures-Spot-Aboard-Blue-Origin-Blue-Moo",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/09/space-minds-podcast-novaspace-1920-1080.jpg.jpg?fit=1024%2C57",
     "https://www.nasa.gov/wp-content/uploads/2026/09/afrc2026-0179-18orig.jpg",
@@ -601,7 +600,8 @@
     "https://europeanspaceflight.com/wp-content/uploads/2026/11/Fire-Damage-Delays-Installation-of-Simulated-Lunar-Greenhouse",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/galaxies/irregular/NGC%204449.jpg",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2025/03/moog-square.png?fit=1024%2C1024&ssl=1",
-    "https://cdn.arstechnica.net/wp-content/uploads/2026/11/moon-base-artists-concept.webp"
+    "https://cdn.arstechnica.net/wp-content/uploads/2026/11/moon-base-artists-concept.webp",
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/november/conjunction-bubak.jpg"
   ],
-  "updated": "2026-11-11T22:28:12.371886"
+  "updated": "2026-11-12T07:55:37.141581"
 }
