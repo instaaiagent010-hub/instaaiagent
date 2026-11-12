@@ -1,6 +1,5 @@
 {
   "titles": [
-    "nasa highlights lessons learned from swift boost mission",
     "starship returns to earth; rocket splashes down north of hawaii after three-hour flight",
     "sh2-188: the shrimp nebula",
     "galaxies in a cosmic house of mirrors",
@@ -299,10 +298,10 @@
     "moog marks 25 years since espa design milestone: innovating space rideshare",
     "asteroid 138852 (2000 wn10) aaj earth ke paas se guzrega — 233-520m",
     "nasa takes an all-hands-on-deck approach in its return to the moon",
-    "apod: 2026 november 12 – moon, venus and spica meet"
+    "apod: 2026 november 12 – moon, venus and spica meet",
+    "scotland’s flow country"
   ],
   "images": [
-    "https://europeanspaceflight.com/wp-content/uploads/2026/09/European-Lunar-Rover-Secures-Spot-Aboard-Blue-Origin-Blue-Moo",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/09/space-minds-podcast-novaspace-1920-1080.jpg.jpg?fit=1024%2C57",
     "https://www.nasa.gov/wp-content/uploads/2026/09/afrc2026-0179-18orig.jpg",
     "https://www.nasa.gov/wp-content/uploads/2024/07/mars-to-table.png",
@@ -601,7 +600,8 @@
     "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/galaxies/irregular/NGC%204449.jpg",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2025/03/moog-square.png?fit=1024%2C1024&ssl=1",
     "https://cdn.arstechnica.net/wp-content/uploads/2026/11/moon-base-artists-concept.webp",
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/november/conjunction-bubak.jpg"
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/november/conjunction-bubak.jpg",
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/scotland%E2%80%99s-flow-country-/sco"
   ],
-  "updated": "2026-11-12T07:55:37.141581"
+  "updated": "2026-11-12T10:08:22.901745"
 }
