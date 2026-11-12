@@ -1,6 +1,5 @@
 {
   "titles": [
-    "sh2-188: the shrimp nebula",
     "galaxies in a cosmic house of mirrors",
     "mars has its charmes",
     "if ai cannot be trusted in a classroom, why should it be trusted in orbit?",
@@ -299,10 +298,10 @@
     "nasa takes an all-hands-on-deck approach in its return to the moon",
     "apod: 2026 november 12 – moon, venus and spica meet",
     "scotland’s flow country",
-    "esa explains delay in signing maiaspace launcher challenge contract"
+    "esa explains delay in signing maiaspace launcher challenge contract",
+    "upcoming launch: vulcan vc6l | amazon leo (lv-01)"
   ],
   "images": [
-    "https://www.nasa.gov/wp-content/uploads/2026/09/afrc2026-0179-18orig.jpg",
     "https://www.nasa.gov/wp-content/uploads/2024/07/mars-to-table.png",
     "https://apod.nasa.gov/apod/image/2609/NGC5139CadenasParra.jpg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/mirror_robot_reflects_future_of_in-orbit_assemb",
@@ -601,7 +600,8 @@
     "https://cdn.arstechnica.net/wp-content/uploads/2026/11/moon-base-artists-concept.webp",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/november/conjunction-bubak.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/scotland%E2%80%99s-flow-country-/sco",
-    "https://europeanspaceflight.com/wp-content/uploads/2026/11/ESA-Explains-Delay-in-Signing-MaiaSpace-Launcher-Challenge-Co"
+    "https://europeanspaceflight.com/wp-content/uploads/2026/11/ESA-Explains-Delay-in-Signing-MaiaSpace-Launcher-Challenge-Co",
+    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/vulcan_vc6l_image_20220406123130.jpg"
   ],
-  "updated": "2026-11-12T12:03:24.465934"
+  "updated": "2026-11-12T14:01:36.000140"
 }
