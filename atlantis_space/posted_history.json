@@ -1,6 +1,5 @@
 {
   "titles": [
-    "if ai cannot be trusted in a classroom, why should it be trusted in orbit?",
     "nstgro 2026",
     "crew-13 rocket and spacecraft at launch pad",
     "starship orbits earth, returns early",
@@ -299,10 +298,10 @@
     "esa explains delay in signing maiaspace launcher challenge contract",
     "upcoming launch: vulcan vc6l | amazon leo (lv-01)",
     "nasa’s hubble offers cosmic sampler of targets for roman",
-    "upcoming launch: starship | starlink group 31-2 (starship flight 15)"
+    "upcoming launch: starship | starlink group 31-2 (starship flight 15)",
+    "ula’s vulcan set to return to flight with first amazon leo payload"
   ],
   "images": [
-    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/mirror_robot_reflects_future_of_in-orbit_assemb",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/explosive-intensification-for-hurric",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/armillary_sphere_in_the_museo_galileo/27537430-",
     "https://cdn.arstechnica.net/wp-content/uploads/2026/09/HS7_82eXsAAa-Hx.jpeg",
@@ -601,7 +600,8 @@
     "https://europeanspaceflight.com/wp-content/uploads/2026/11/ESA-Explains-Delay-in-Signing-MaiaSpace-Launcher-Challenge-Co",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/vulcan_vc6l_image_20220406123130.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/gravitational-lens/Hubble_lenscollage_P18085",
-    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/starship_on_the_image_20260724044615.jpg"
+    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/starship_on_the_image_20260724044615.jpg",
+    "https://www.nasaspaceflight.com/wp-content/uploads/2026/11/IMG_0204-scaled.jpeg"
   ],
-  "updated": "2026-11-12T17:02:10.697445"
+  "updated": "2026-11-12T17:56:00.897623"
 }
