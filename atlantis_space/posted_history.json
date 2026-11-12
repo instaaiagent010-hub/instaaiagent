@@ -1,6 +1,5 @@
 {
   "titles": [
-    "starship orbits earth, returns early",
     "nasa sets crew-13 launch, docking coverage",
     "flyby: solar orbiter venus flyby",
     "apod: 2026 september 30 – arp 78: peculiar galaxy in aries",
@@ -299,10 +298,10 @@
     "upcoming launch: starship | starlink group 31-2 (starship flight 15)",
     "ula’s vulcan set to return to flight with first amazon leo payload",
     "heart in the sky at nasa kennedy",
-    "i am artemis katie spicer"
+    "i am artemis katie spicer",
+    "building a rocket is hard. ast spacemobile thinks it's \"simple.\""
   ],
   "images": [
-    "https://cdn.arstechnica.net/wp-content/uploads/2026/09/HS7_82eXsAAa-Hx.jpeg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2024/03/advancing_earth_science/26001430-2-eng-GB/Advan",
     "https://cdn.arstechnica.net/wp-content/uploads/2026/09/Otter_Celebration_Trevor_Bennett.png",
     "https://www.nasa.gov/wp-content/uploads/2026/09/tb-26-07-figure-12.png",
@@ -601,7 +600,8 @@
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/starship_on_the_image_20260724044615.jpg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/11/IMG_0204-scaled.jpeg",
     "https://www.nasa.gov/wp-content/uploads/2026/11/55640210122-dae9d5e6b9-o.jpg",
-    "https://www.nasa.gov/wp-content/uploads/2026/11/jsc2026e402724-i-am-artemis-katie.jpeg"
+    "https://www.nasa.gov/wp-content/uploads/2026/11/jsc2026e402724-i-am-artemis-katie.jpeg",
+    "https://cdn.arstechnica.net/wp-content/uploads/2026/11/black-lift.webp"
   ],
-  "updated": "2026-11-12T21:18:32.063036"
+  "updated": "2026-11-12T22:08:23.221434"
 }
