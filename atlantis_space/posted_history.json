@@ -1,6 +1,5 @@
 {
   "titles": [
-    "flyby: solar orbiter venus flyby",
     "apod: 2026 september 30 – arp 78: peculiar galaxy in aries",
     "science begins for smile",
     "esa selects airbus and ohb to lead european space station studies",
@@ -299,10 +298,10 @@
     "heart in the sky at nasa kennedy",
     "i am artemis katie spicer",
     "building a rocket is hard. ast spacemobile thinks it's \"simple.\"",
-    "a global rebound for mangroves"
+    "a global rebound for mangroves",
+    "esa confirms latest prometheus tests not connected to themis hop preparations"
   ],
   "images": [
-    "https://cdn.arstechnica.net/wp-content/uploads/2026/09/Otter_Celebration_Trevor_Bennett.png",
     "https://www.nasa.gov/wp-content/uploads/2026/09/tb-26-07-figure-12.png",
     "https://images-assets.nasa.gov/image/933/933~large.jpg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/09/NSF-2026-09-26-04-55-29-205.jpg",
@@ -601,7 +600,8 @@
     "https://www.nasa.gov/wp-content/uploads/2026/11/55640210122-dae9d5e6b9-o.jpg",
     "https://www.nasa.gov/wp-content/uploads/2026/11/jsc2026e402724-i-am-artemis-katie.jpeg",
     "https://cdn.arstechnica.net/wp-content/uploads/2026/11/black-lift.webp",
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/a-global-rebound-for-mangroves/burma"
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/a-global-rebound-for-mangroves/burma",
+    "https://europeanspaceflight.com/wp-content/uploads/2026/11/ESA-Confirms-Latest-Prometheus-Tests-Not-Connected-to-Themis-"
   ],
-  "updated": "2026-11-13T07:32:25.695086"
+  "updated": "2026-11-13T09:51:13.129019"
 }
