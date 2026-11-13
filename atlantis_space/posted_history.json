@@ -1,6 +1,5 @@
 {
   "titles": [
-    "quantum space executes launch processing agreement with all points logistics for prime mission",
     "shaping europe’s future in low earth orbit",
     "press event: spacex crew-13 pre-launch news conference",
     "so what's happening with russia's new, long-delayed crewed spacecraft?",
@@ -299,10 +298,10 @@
     "esa confirms latest prometheus tests not connected to themis hop preparations",
     "starship flight 15 to attempt first catch of both stages",
     "rocket report: starship set for historic test flight; a century of electron",
-    "upcoming launch: electron | the mountain god rises (iqps launch 10)"
+    "upcoming launch: electron | the mountain god rises (iqps launch 10)",
+    "gemini astronaut photos inspired early earth observation program"
   ],
   "images": [
-    "https://www.nasa.gov/wp-content/uploads/2026/09/starliner.jpg",
     "http://spaceflightnow.com/wp-content/uploads/2026/09/20260925-Falcon-9-File.jpg",
     "https://www.nasa.gov/wp-content/uploads/2026/09/san-marino.jpeg",
     "https://apod.nasa.gov/apod/image/2609/MilkyWayMeteorLSTJeffDai.jpg",
@@ -601,7 +600,8 @@
     "https://europeanspaceflight.com/wp-content/uploads/2026/11/ESA-Confirms-Latest-Prometheus-Tests-Not-Connected-to-Themis-",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/11/NSF-2026-11-13-03-14-56-684.jpg",
     "https://cdn.arstechnica.net/wp-content/uploads/2026/11/electron-livery.jpeg",
-    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/electron_image_20190705175640.jpeg"
+    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/electron_image_20190705175640.jpeg",
+    "https://www.nasa.gov/wp-content/uploads/2026/11/s66-63535-f.png"
   ],
-  "updated": "2026-11-13T15:09:39.950688"
+  "updated": "2026-11-13T16:43:19.772424"
 }
