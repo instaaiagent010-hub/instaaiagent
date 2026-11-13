@@ -1,6 +1,5 @@
 {
   "titles": [
-    "shaping europe’s future in low earth orbit",
     "press event: spacex crew-13 pre-launch news conference",
     "so what's happening with russia's new, long-delayed crewed spacecraft?",
     "star trails",
@@ -299,10 +298,10 @@
     "starship flight 15 to attempt first catch of both stages",
     "rocket report: starship set for historic test flight; a century of electron",
     "upcoming launch: electron | the mountain god rises (iqps launch 10)",
-    "gemini astronaut photos inspired early earth observation program"
+    "gemini astronaut photos inspired early earth observation program",
+    "commercial space federation welcomes cesiumastro as a new associate member"
   ],
   "images": [
-    "http://spaceflightnow.com/wp-content/uploads/2026/09/20260925-Falcon-9-File.jpg",
     "https://www.nasa.gov/wp-content/uploads/2026/09/san-marino.jpeg",
     "https://apod.nasa.gov/apod/image/2609/MilkyWayMeteorLSTJeffDai.jpg",
     "https://apod.nasa.gov/apod/image/2609/M31Before_Scherer_4298.jpg",
@@ -601,7 +600,8 @@
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/11/NSF-2026-11-13-03-14-56-684.jpg",
     "https://cdn.arstechnica.net/wp-content/uploads/2026/11/electron-livery.jpeg",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/electron_image_20190705175640.jpeg",
-    "https://www.nasa.gov/wp-content/uploads/2026/11/s66-63535-f.png"
+    "https://www.nasa.gov/wp-content/uploads/2026/11/s66-63535-f.png",
+    "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/05/Anniversary-Logo.jpg?fit=1024%2C883&ssl=1"
   ],
-  "updated": "2026-11-13T17:34:49.884056"
+  "updated": "2026-11-13T18:58:42.495941"
 }
