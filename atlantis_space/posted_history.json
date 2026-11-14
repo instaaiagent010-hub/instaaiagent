@@ -1,6 +1,5 @@
 {
   "titles": [
-    "nasa science",
     "apod: 2026 october 1",
     "an agricultural “island” in the saskatchewan river delta",
     "asteroid 499496 (2010 mr87) aaj earth ke paas se guzrega — 338-755m",
@@ -299,10 +298,10 @@
     "commercial space federation welcomes cesiumastro as a new associate member",
     "asteroid 363790 (2005 je46) aaj earth ke paas se guzrega — 715-1600m",
     "next vega c launch edges closer to christmas day as satellites arrive late",
-    "starship flight 15 powers to orbit—setting up a possible catch on saturday"
+    "starship flight 15 powers to orbit—setting up a possible catch on saturday",
+    "spacecraft landing: starship orbital catch attempt"
   ],
   "images": [
-    "https://apod.nasa.gov/apod/image/2609/M31Before_Scherer_4298.jpg",
     "http://spaceflightnow.com/wp-content/uploads/2026/09/20260926_NASA_crew-13_JP-1.jpeg",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/boeing_starline_image_20240723193124.jpg",
     "https://apod.nasa.gov/apod/image/2609/CosmicLatte_jhu_960.jpg",
@@ -601,7 +600,8 @@
     "https://www.nasa.gov/wp-content/uploads/2026/11/s66-63535-f.png",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/05/Anniversary-Logo.jpg?fit=1024%2C883&ssl=1",
     "https://europeanspaceflight.com/wp-content/uploads/2026/11/Next-Vega-C-Launch-Edges-Closer-to-Christmas-Day-as-Satellite",
-    "https://cdn.arstechnica.net/wp-content/uploads/2026/11/GettyImages-2305018954.jpg"
+    "https://cdn.arstechnica.net/wp-content/uploads/2026/11/GettyImages-2305018954.jpg",
+    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/starship_42_dur_image_20261114103136.png"
   ],
-  "updated": "2026-11-14T09:14:12.486739"
+  "updated": "2026-11-14T11:09:39.792459"
 }
