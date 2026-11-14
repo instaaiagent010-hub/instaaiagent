@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18287281003293701",
-    "topic": "RJ Mitte dies at 34: A look at his role in Breaking Bad and life as a disability rights activist",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 9,
-    "posted_at": 1791884707,
-    "scored": false
-  },
-  {
     "media_id": "18054057620651074",
     "topic": "'No permission, barricades broken': FIRs filed against INDIA bloc over protest march till SC",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 18,
     "posted_at": 1794681149,
+    "scored": false
+  },
+  {
+    "media_id": "17966662089223631",
+    "topic": "India strongly rejects US commission's comments on jailed activist Sharjeel Imam",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 18,
+    "posted_at": 1794681260,
     "scored": false
   }
 ]
