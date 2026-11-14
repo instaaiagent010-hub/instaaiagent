@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "17879533476554689",
-    "topic": "CJI refuses to meet Rahul over 'vote chori' allegations",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 19,
-    "posted_at": 1791747898,
-    "scored": false
-  },
-  {
     "media_id": "17972682285137868",
     "topic": "India news Live Updates, 12 October 2026: BJP MPs put into buses by police during BJP Mahila Morcha protest",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 21,
     "posted_at": 1794605835,
+    "scored": false
+  },
+  {
+    "media_id": "17994964482058218",
+    "topic": "Arsenal vs London City Lionesses: WSL preview, predictions, team news and TV...",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 9,
+    "posted_at": 1794648238,
     "scored": false
   }
 ]
