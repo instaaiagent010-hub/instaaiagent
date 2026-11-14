@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18047159369820057",
-    "topic": "India’s crackdown on youth protesters: What next?",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 9,
-    "posted_at": 1791798249,
-    "scored": false
-  },
-  {
     "media_id": "17960987730079757",
     "topic": "India news Live Updates, 12 October 2026: Supreme Court questions Centre on capping margins beyond anti-cancer drugs",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 9,
     "posted_at": 1794648407,
+    "scored": false
+  },
+  {
+    "media_id": "17922963606459252",
+    "topic": "Noida Authority approves maps for five sports facilities in Sector 150 Sports City project",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 9,
+    "posted_at": 1794648491,
     "scored": false
   }
 ]
