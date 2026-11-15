@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "17991934590050488",
-    "topic": "How protests have shaped India: From anti",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 15,
-    "posted_at": 1791905116,
-    "scored": false
-  },
-  {
     "media_id": "18070252982765558",
     "topic": "The \"Algorithm Breaking\" 'Hunkkaar' Has Challenged Indian Audiences On The Limits Of Procedural TV",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 9,
     "posted_at": 1794736618,
+    "scored": false
+  },
+  {
+    "media_id": "17889737382491674",
+    "topic": "'US must respect India's right to defend itself': Former US Secretary Blinken backs India's self-defence rights",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 15,
+    "posted_at": 1794755126,
     "scored": false
   }
 ]
