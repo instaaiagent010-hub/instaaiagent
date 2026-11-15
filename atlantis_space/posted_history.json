@@ -1,6 +1,5 @@
 {
   "titles": [
-    "live coverage: nasa, spacex to launch next crewed mission to the international space station",
     "starfish otter, other payloads set to launch on transporter 18",
     "rethinking risk with electronics for space",
     "nasa’s spacex crew-13 launches to international space station",
@@ -299,10 +298,10 @@
     "spacecraft landing: starship orbital catch attempt",
     "nasa science",
     "asteroid 274138 (2008 fu6) aaj earth ke paas se guzrega — 742-1660m",
-    "apod: 2026 november 15"
+    "apod: 2026 november 15",
+    "with starship catch, spacex still shows it can dazzle the world"
   ],
   "images": [
-    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/boeing_starline_image_20240723193124.jpg",
     "https://apod.nasa.gov/apod/image/2609/CosmicLatte_jhu_960.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/uncovering-the-valleys-hidden-below-",
     "https://www.nasa.gov/wp-content/uploads/2026/09/sa-and-valkyrie.png",
@@ -601,7 +600,8 @@
     "https://europeanspaceflight.com/wp-content/uploads/2026/11/Next-Vega-C-Launch-Edges-Closer-to-Christmas-Day-as-Satellite",
     "https://cdn.arstechnica.net/wp-content/uploads/2026/11/GettyImages-2305018954.jpg",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/starship_42_dur_image_20261114103136.png",
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/november/Leonids2022_Hongyang_2880.jpg"
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/november/Leonids2022_Hongyang_2880.jpg",
+    "https://cdn.arstechnica.net/wp-content/uploads/2026/11/GettyImages-2304631389.jpg"
   ],
-  "updated": "2026-11-15T07:23:25.673755"
+  "updated": "2026-11-15T09:44:27.142652"
 }
