@@ -1,6 +1,5 @@
 {
   "titles": [
-    "asteroid 499496 (2010 mr87) aaj earth ke paas se guzrega — 338-755m",
     "live coverage: nasa, spacex to launch next crewed mission to the international space station",
     "starfish otter, other payloads set to launch on transporter 18",
     "rethinking risk with electronics for space",
@@ -299,10 +298,10 @@
     "starship flight 15 powers to orbit—setting up a possible catch on saturday",
     "spacecraft landing: starship orbital catch attempt",
     "nasa science",
-    "asteroid 274138 (2008 fu6) aaj earth ke paas se guzrega — 742-1660m"
+    "asteroid 274138 (2008 fu6) aaj earth ke paas se guzrega — 742-1660m",
+    "apod: 2026 november 15"
   ],
   "images": [
-    "http://spaceflightnow.com/wp-content/uploads/2026/09/20260926_NASA_crew-13_JP-1.jpeg",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/boeing_starline_image_20240723193124.jpg",
     "https://apod.nasa.gov/apod/image/2609/CosmicLatte_jhu_960.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/uncovering-the-valleys-hidden-below-",
@@ -601,7 +600,8 @@
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/05/Anniversary-Logo.jpg?fit=1024%2C883&ssl=1",
     "https://europeanspaceflight.com/wp-content/uploads/2026/11/Next-Vega-C-Launch-Edges-Closer-to-Christmas-Day-as-Satellite",
     "https://cdn.arstechnica.net/wp-content/uploads/2026/11/GettyImages-2305018954.jpg",
-    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/starship_42_dur_image_20261114103136.png"
+    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/starship_42_dur_image_20261114103136.png",
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/november/Leonids2022_Hongyang_2880.jpg"
   ],
-  "updated": "2026-11-14T20:18:35.178433"
+  "updated": "2026-11-15T07:23:25.673755"
 }
