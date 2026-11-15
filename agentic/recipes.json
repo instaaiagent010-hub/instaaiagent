@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18118788556750913",
-    "topic": "‘Not backing down’: What next after India’s crackdown on youth protesters?",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 19,
-    "posted_at": 1791920400,
-    "scored": false
-  },
-  {
     "media_id": "18107622305628224",
     "topic": "Allahabad HC warns UP Police: Misbehaving with government advocates is contempt",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "reel",
     "hour": 19,
     "posted_at": 1794769872,
+    "scored": false
+  },
+  {
+    "media_id": "18140013580650710",
+    "topic": "Pakistan gets GI tag for its basmati from Türkiye, but India stands to gain too",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 19,
+    "posted_at": 1794769963,
     "scored": false
   }
 ]
