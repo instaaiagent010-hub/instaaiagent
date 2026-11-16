@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18134947159657996",
-    "topic": "A split verdict, faltering remedies and people’s power",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 19,
-    "posted_at": 1792006805,
-    "scored": false
-  },
-  {
     "media_id": "18095934860535420",
     "topic": "Breaking News Live Updates: Delhi Police commissioner tenders unconditional, unqualified apology to SC in contempt case",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 23,
     "posted_at": 1794873385,
+    "scored": false
+  },
+  {
+    "media_id": "18124706612062637",
+    "topic": "Aaditya Thackeray Slams BJP Over Delimitation, Calls it 'Final Conspiracy' to Win Elections",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 23,
+    "posted_at": 1794873491,
     "scored": false
   }
 ]
