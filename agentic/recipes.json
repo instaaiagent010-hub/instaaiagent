@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18095934860535420",
-    "topic": "Breaking News Live Updates: Delhi Police commissioner tenders unconditional, unqualified apology to SC in contempt case",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "reel",
-    "hour": 7,
-    "posted_at": 1792050363,
-    "scored": false
-  },
-  {
     "media_id": "17912733897468158",
     "topic": "Delhi News LIVE: Delhi Schools Receive Bomb Threat Emails, Police Teams Deployed For Checks",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "reel",
     "hour": 23,
     "posted_at": 1794873491,
+    "scored": false
+  },
+  {
+    "media_id": "18646970515060971",
+    "topic": "News Updates 16 11 2026 : SC orders CPCB to monitor Yamuna water quality, warns authorities of penalties",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 23,
+    "posted_at": 1794873577,
     "scored": false
   }
 ]
