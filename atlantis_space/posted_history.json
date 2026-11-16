@@ -1,6 +1,5 @@
 {
   "titles": [
-    "apod: 2026 october 2 – the complete sharpless catalog: 313 nebulas",
     "jammertest pumps up the jam in norway",
     "rains swamp the gandak river",
     "beyond the airlock - sophie adenot's three spacewalks",
@@ -299,10 +298,10 @@
     "ula suffers first total mission failure with loss of vulcan rocket carrying 40 amazon leo satellites",
     "apod: 2026 november 16 – ngc 7129: star formation with jets from webb",
     "the last ice on puncak jaya",
-    "starship returns to its launch pad from orbit"
+    "starship returns to its launch pad from orbit",
+    "contractor to civil servant: nasa welcomes jim mirandy"
   ],
   "images": [
-    "https://www.nasa.gov/wp-content/uploads/2026/09/artemis-accords-san-marino-76-092526.jpg",
     "https://www.nasa.gov/wp-content/uploads/2026/09/artemis-ii-crew.jpg",
     "https://spacepolicyonline.com/wp-content/uploads/2026/09/IFT14-liftoff-Sep-28-26-300x169.png",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/swift-observatory/misc--spacecraft-art/Swift_in_spa",
@@ -601,7 +600,8 @@
     "https://spaceflightnow.com/wp-content/uploads/2026/11/20261114-Vulcan-LV-01-launch.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/webb/science/2026/10/weic2620a.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/the-last-ice-on-puncak-jaya/puncakja",
-    "https://i0.wp.com/www.spacescout.info/wp-content/uploads/2026/11/Remotes_Logo-7-scaled.jpg"
+    "https://i0.wp.com/www.spacescout.info/wp-content/uploads/2026/11/Remotes_Logo-7-scaled.jpg",
+    "https://www.nasa.gov/wp-content/uploads/2026/11/s26-013-jim-mirandy.jpg"
   ],
-  "updated": "2026-11-16T13:57:29.032440"
+  "updated": "2026-11-16T16:44:00.042066"
 }
