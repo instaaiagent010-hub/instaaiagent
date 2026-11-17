@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18060835208796395",
-    "topic": "Beyond metros: India's tier-2 cities eye AI development boom",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 17,
-    "posted_at": 1792084938,
-    "scored": false
-  },
-  {
     "media_id": "17990295651106550",
     "topic": "India’s angry autumn of discontent and the jobs numbers",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "reel",
     "hour": 17,
     "posted_at": 1794935699,
+    "scored": false
+  },
+  {
+    "media_id": "18095465483494692",
+    "topic": "Gold loan NBFCs seek RBI relief on capital norms as new rules raise NPA concerns",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 17,
+    "posted_at": 1794935807,
     "scored": false
   }
 ]
