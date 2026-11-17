@@ -1,6 +1,5 @@
 {
   "titles": [
-    "spacecraft release: ng-24 cygnus release",
     "apod: 2026 october 5 – m104: the sombrero galaxy’s tidal streams",
     "moon",
     "esa, cas release first images from smile; officially begin science operations",
@@ -299,7 +298,8 @@
     "asteroid (2020 dr2) aaj earth ke paas se guzrega — 462-1033m",
     "perseverance update: the ghostly rocks of ‘idubi’ — bright remnants of aqueous systems from long ago",
     "how ai is pushing satellites to evolve",
-    "nasa invites media, public to view roman telescope’s first images"
+    "nasa invites media, public to view roman telescope’s first images",
+    "spacecraft undocking: spacex crs-35 dragon undocking"
   ],
   "images": [
     "https://images-assets.nasa.gov/image/jsc2026e401203/jsc2026e401203~large.jpg",
@@ -603,5 +603,5 @@
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/11/2000-1500-spacenews-space-tech-expo-europe-van-Duijn-scaled.j",
     "https://www.nasa.gov/wp-content/uploads/2026/11/54963457618-23b91802ea-k-1.jpg"
   ],
-  "updated": "2026-11-17T19:03:41.710146"
+  "updated": "2026-11-17T20:20:13.687979"
 }
