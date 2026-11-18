@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18125269594906422",
-    "topic": "BIG BREAKING! Houthi Attack Rocks Saudi Arabia Aramco Headquarters, CEO's Office Affected",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 19,
-    "posted_at": 1792177252,
-    "scored": false
-  },
-  {
     "media_id": "18117574688010602",
     "topic": "In India, “Cockroaches” Are Leading the Fight for Democracy",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 20,
     "posted_at": 1795035456,
+    "scored": false
+  },
+  {
+    "media_id": "18039601961852073",
+    "topic": "Fact Check: Real AND AI-Generated Details In Trump Post About Markwayne Mullin's...",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 20,
+    "posted_at": 1795035542,
     "scored": false
   }
 ]
