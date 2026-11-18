@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "17989901154117051",
-    "topic": "Delhi Protest Live Updates: CJP Protest At Connaught Place Today, Delhi Police Assures High Court Of Legal Action",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 7,
-    "posted_at": 1792136024,
-    "scored": false
-  },
-  {
     "media_id": "18150079639558026",
     "topic": "FBI returns 'Most Wanted' fraudster to US after India arrest in alleged $600K SNAP food stamp scheme",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 10,
     "posted_at": 1794998464,
+    "scored": false
+  },
+  {
+    "media_id": "18388435708237153",
+    "topic": "Italian politician's remark: SC to hear plea for removal of videos from social media on Friday",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 10,
+    "posted_at": 1794998553,
     "scored": false
   }
 ]
