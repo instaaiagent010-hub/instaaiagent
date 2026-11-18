@@ -1,6 +1,5 @@
 {
   "titles": [
-    "asteroid (2001 sh276) aaj earth ke paas se guzrega — 307-686m",
     "the beaver brown waters of rupert bay",
     "curiosity blog, sols 5029-5035: back in the lab",
     "european rover trains for mars in the desert",
@@ -299,10 +298,10 @@
     "press event: voyager 1 light-day mission update",
     "asteroid (2019 un14) aaj earth ke paas se guzrega — 184-411m",
     "vulcan failure caused by inadequate fuel supply to engines, ula says",
-    "nasa announces mid-power electric rocket challenge for us companies"
+    "nasa announces mid-power electric rocket challenge for us companies",
+    "insufficient fuel flow may have doomed vulcan"
   ],
   "images": [
-    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_on_slc_image_20240926072512.jpg",
     "https://cdn.arstechnica.net/wp-content/uploads/2026/09/GettyImages-1242530931.jpg",
     "https://www.nasa.gov/wp-content/uploads/2026/09/iss075e0144232orig.jpg",
     "https://science.nasa.gov/wp-content/themes/nasa-child/assets/images/nasa-logo@2x.png",
@@ -601,7 +600,8 @@
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/sierra-snow-season-spins-up/sierrane",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/voyager_1_rende_image_20261118081941.jpg",
     "https://cdn.arstechnica.net/wp-content/uploads/2026/11/GettyImages-2304790934.jpg",
-    "https://www.nasa.gov/wp-content/uploads/2023/03/hall-thruster.jpg"
+    "https://www.nasa.gov/wp-content/uploads/2023/03/hall-thruster.jpg",
+    "https://spacepolicyonline.com/wp-content/uploads/2026/03/Vulcan-schematic-300x161.jpg"
   ],
-  "updated": "2026-11-18T18:36:48.636647"
+  "updated": "2026-11-18T19:49:06.444994"
 }
