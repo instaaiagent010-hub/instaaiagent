@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18216716728348845",
-    "topic": "Air India Cancels Saudi Flights Till October 20, Offers Full Refunds To Affected Passengers",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 12,
-    "posted_at": 1792154959,
-    "scored": false
-  },
-  {
     "media_id": "18015497534973539",
     "topic": "You CJI!’: Supreme Court Issues Contempt Notices To Nikhil Wagle, Sanjay Raut Over Remarks Against CJI Surya Kant",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 17,
     "posted_at": 1795023335,
+    "scored": false
+  },
+  {
+    "media_id": "18199404994401708",
+    "topic": "Breaking down all the outfits Kate Middleton wore during her 2026 India trip",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 17,
+    "posted_at": 1795023421,
     "scored": false
   }
 ]
