@@ -1,6 +1,5 @@
 {
   "titles": [
-    "moon",
     "esa, cas release first images from smile; officially begin science operations",
     "agile space industries strengthens board and corporate development to support continued growth",
     "contacting nasa’s langley research center",
@@ -299,10 +298,10 @@
     "how ai is pushing satellites to evolve",
     "nasa invites media, public to view roman telescope’s first images",
     "spacecraft undocking: spacex crs-35 dragon undocking",
-    "new album of baby star sounds shared by nasa’s chandra"
+    "new album of baby star sounds shared by nasa’s chandra",
+    "nasa space apps challenge breaks global hackathon records"
   ],
   "images": [
-    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/solar_orbiter_v_image_20210930071353.png",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/october/NGC772_Robert_Eder.jpg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/smile_s_first_ultraviolet_image_shows_auroral_s",
     "https://europeanspaceflight.com/wp-content/uploads/2026/09/ESA-Selects-Airbus-and-OHB-to-Lead-European-Space-Station-Stu",
@@ -601,7 +600,8 @@
     "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/mars2020/2026/perseverance-rover-updates/Mars_Perse",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/11/2000-1500-spacenews-space-tech-expo-europe-van-Duijn-scaled.j",
     "https://www.nasa.gov/wp-content/uploads/2026/11/54963457618-23b91802ea-k-1.jpg",
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/chandra/2026/sonify12_rho.jpg"
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/chandra/2026/sonify12_rho.jpg",
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/open-science/Space%20Apps%20Challenge%202026%20Brazil.jp"
   ],
-  "updated": "2026-11-17T22:14:00.181400"
+  "updated": "2026-11-18T00:08:04.977325"
 }
