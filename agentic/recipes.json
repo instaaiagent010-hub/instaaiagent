@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18150079639558026",
-    "topic": "FBI returns 'Most Wanted' fraudster to US after India arrest in alleged $600K SNAP food stamp scheme",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "reel",
-    "hour": 7,
-    "posted_at": 1792136123,
-    "scored": false
-  },
-  {
     "media_id": "18631951270016452",
     "topic": "Global AI, tech selloff: Can India win back FIIs?",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 10,
     "posted_at": 1794998553,
+    "scored": false
+  },
+  {
+    "media_id": "17924312721509274",
+    "topic": "SC to hear plea seeking removal of Italian politician Giacomo Filibeck's 'vote chor, gaddi chhod' videos on Friday",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 10,
+    "posted_at": 1794998641,
     "scored": false
   }
 ]
