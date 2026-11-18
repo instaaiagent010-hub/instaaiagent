@@ -1,6 +1,5 @@
 {
   "titles": [
-    "contacting nasa’s langley research center",
     "nasa testing aims at supercooled large droplet aviation safety",
     "nasa astronaut christina koch at eagles vs. rams",
     "launch preview: flights from south korea, china, usa planned for this week",
@@ -299,10 +298,10 @@
     "new album of baby star sounds shared by nasa’s chandra",
     "nasa space apps challenge breaks global hackathon records",
     "pld space investor selects miura 5 to launch demo mission",
-    "sierra snow season spins up"
+    "sierra snow season spins up",
+    "press event: voyager 1 light-day mission update"
   ],
   "images": [
-    "https://europeanspaceflight.com/wp-content/uploads/2026/09/ESA-Selects-Airbus-and-OHB-to-Lead-European-Space-Station-Stu",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/09/quantum-space-logo-square.png?fit=1024%2C1024&ssl=1",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/08/esa_astronaut_sophie_adenot_during_eva-986/2743",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/falcon_9_on_slc_image_20240926072512.jpg",
@@ -601,7 +600,8 @@
     "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/chandra/2026/sonify12_rho.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/open-science/Space%20Apps%20Challenge%202026%20Brazil.jp",
     "https://europeanspaceflight.com/wp-content/uploads/2026/11/PLD-Space-Investor-Selects-MIURA-5-to-Launch-Demo-Mission.web",
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/sierra-snow-season-spins-up/sierrane"
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/sierra-snow-season-spins-up/sierrane",
+    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/voyager_1_rende_image_20261118081941.jpg"
   ],
-  "updated": "2026-11-18T10:33:33.043072"
+  "updated": "2026-11-18T12:30:53.423633"
 }
