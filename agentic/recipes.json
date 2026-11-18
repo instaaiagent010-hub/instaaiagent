@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18220494043355789",
-    "topic": "New England’s having an ‘elite’ year, but there’s fall foliage elsewhere, too",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 7,
-    "posted_at": 1792221244,
-    "scored": false
-  },
-  {
     "media_id": "18110815745188093",
     "topic": "International Insider: Surfing To MIPCOM Cannes; Russell Brand Trial Begins;...",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "reel",
     "hour": 21,
     "posted_at": 1795035648,
+    "scored": false
+  },
+  {
+    "media_id": "17889377208501454",
+    "topic": "Decoding The Green Pitches Of New Zealand: Is The Thick Grass Cover A Real Concern For India At Basin Reserve?",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 22,
+    "posted_at": 1795042158,
     "scored": false
   }
 ]
