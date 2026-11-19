@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18110815745188093",
-    "topic": "International Insider: Surfing To MIPCOM Cannes; Russell Brand Trial Begins;...",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 7,
-    "posted_at": 1792221331,
-    "scored": false
-  },
-  {
     "media_id": "18106427086981784",
     "topic": "Pawan Khera defends 'regime change' demand, says democratic replacement of government is neither sedition nor coup",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 22,
     "posted_at": 1795042158,
+    "scored": false
+  },
+  {
+    "media_id": "18123557695941736",
+    "topic": "Anthropic IPO: A look at its Indian-origin leaders and expanding India footprint",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 16,
+    "posted_at": 1795107340,
     "scored": false
   }
 ]
