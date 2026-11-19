@@ -1,6 +1,5 @@
 {
   "titles": [
-    "european rover trains for mars in the desert",
     "spacecraft event: spacex crew-12 crew dragon hatch closure",
     "webb captures commotion from nebula’s stellar jets",
     "the eu extends salto deadline again as themis hop test slips",
@@ -299,10 +298,10 @@
     "nasa announces mid-power electric rocket challenge for us companies",
     "insufficient fuel flow may have doomed vulcan",
     "vulcan failure investigation focuses on ‘inadequate fuel supply’ to booster engines",
-    "nasa sets coverage for northrop grumman crs-25 launch, prelaunch"
+    "nasa sets coverage for northrop grumman crs-25 launch, prelaunch",
+    "esa awards ohb €102m contract for clearspace-1 debris removal mission"
   ],
   "images": [
-    "https://science.nasa.gov/wp-content/themes/nasa-child/assets/images/nasa-logo@2x.png",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/october/Harvest%20Moon%20Trail%20With%20V",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/an-agricultural-%E2%80%9Cisland%E2%8",
     "http://spaceflightnow.com/wp-content/uploads/2026/09/20260930_Crew-13_Dragon_MC-1.jpeg",
@@ -601,7 +600,8 @@
     "https://www.nasa.gov/wp-content/uploads/2023/03/hall-thruster.jpg",
     "https://spacepolicyonline.com/wp-content/uploads/2026/03/Vulcan-schematic-300x161.jpg",
     "https://spaceflightnow.com/wp-content/uploads/2026/11/20261118-Vulcan-Wide.jpg",
-    "https://www.nasa.gov/wp-content/uploads/2026/11/ksc-20260411-ph-nrg01-0009large.jpg"
+    "https://www.nasa.gov/wp-content/uploads/2026/11/ksc-20260411-ph-nrg01-0009large.jpg",
+    "https://europeanspaceflight.com/wp-content/uploads/2026/11/ESA-Awards-OHB-102M-Euro-Contract-for-ClearSpace-1-Debris-Rem"
   ],
-  "updated": "2026-11-18T22:54:34.745370"
+  "updated": "2026-11-19T08:10:19.018225"
 }
