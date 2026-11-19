@@ -1,6 +1,5 @@
 {
   "titles": [
-    "webb captures commotion from nebula’s stellar jets",
     "the eu extends salto deadline again as themis hop test slips",
     "astronomers solve cosmic cold case with nasa hubble data",
     "esa at iac 2026",
@@ -299,10 +298,10 @@
     "vulcan failure investigation focuses on ‘inadequate fuel supply’ to booster engines",
     "nasa sets coverage for northrop grumman crs-25 launch, prelaunch",
     "esa awards ohb €102m contract for clearspace-1 debris removal mission",
-    "el niño rains paint the atacama"
+    "el niño rains paint the atacama",
+    "voyager 1 reaches new milestone: one light"
   ],
   "images": [
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/an-agricultural-%E2%80%9Cisland%E2%8",
     "http://spaceflightnow.com/wp-content/uploads/2026/09/20260930_Crew-13_Dragon_MC-1.jpeg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/09/0C67D3BF-9038-495A-A53F-3E356705001C-scaled.jpeg",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/10/space-minds-podcast-arrow-2000-1500.jpg?fit=1024%2C768&ssl=1",
@@ -601,7 +600,8 @@
     "https://spaceflightnow.com/wp-content/uploads/2026/11/20261118-Vulcan-Wide.jpg",
     "https://www.nasa.gov/wp-content/uploads/2026/11/ksc-20260411-ph-nrg01-0009large.jpg",
     "https://europeanspaceflight.com/wp-content/uploads/2026/11/ESA-Awards-OHB-102M-Euro-Contract-for-ClearSpace-1-Debris-Rem",
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/el-ni%C3%B1o-rains-paint-the-atacama"
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/el-ni%C3%B1o-rains-paint-the-atacama",
+    "https://spacepolicyonline.com/wp-content/uploads/2026/11/pale-blue-dot-300x161.jpg"
   ],
-  "updated": "2026-11-19T10:41:28.492635"
+  "updated": "2026-11-19T12:24:48.881688"
 }
