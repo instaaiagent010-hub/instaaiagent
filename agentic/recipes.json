@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18227288071328108",
-    "topic": "Protests against Modi government’s purge of voter rolls continue despite mass repression",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "reel",
-    "hour": 8,
-    "posted_at": 1792397530,
-    "scored": false
-  },
-  {
     "media_id": "17991091590104221",
     "topic": "Jio Platforms IPO: A record-breaking global endorsement set to resonate across India's markets",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "reel",
     "hour": 20,
     "posted_at": 1795207849,
+    "scored": false
+  },
+  {
+    "media_id": "18136348945776688",
+    "topic": "The Challenges of Enacting a Durable Constitutional Amendment in Bangladesh",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 20,
+    "posted_at": 1795207933,
     "scored": false
   }
 ]
