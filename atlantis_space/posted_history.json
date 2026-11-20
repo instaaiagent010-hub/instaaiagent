@@ -1,6 +1,5 @@
 {
   "titles": [
-    "apod: 2026 october 8 – the saturn system smörgåsbord",
     "solar orbiter tracks origin of mysterious magnetic switchbacks",
     "nasa sets coverage for spacex 35th station resupply launch, arrival",
     "the director’s take: telling galileo’s story through film",
@@ -299,10 +298,10 @@
     "the stormy southwest pacific",
     "nasa epic camera ne space se earth ki tasveer li",
     "nasa’s curiosity mars rover collects samples",
-    "nasa honor awards ceremony recognizes employees at stennis space center"
+    "nasa honor awards ceremony recognizes employees at stennis space center",
+    "new nasa seed funding primes small businesses for innovation"
   ],
   "images": [
-    "https://www.nasa.gov/wp-content/uploads/2026/10/flight-directors.jpg",
     "https://science.nasa.gov/wp-content/uploads/2026/09/20260826-175244.jpg",
     "https://www.nasa.gov/wp-content/uploads/2026/10/nhq20260828-admin-0031large.jpg",
     "https://epic.gsfc.nasa.gov/archive/natural/2026/09/28/png/epic_1b_20260928005515.png",
@@ -601,7 +600,8 @@
     "https://epic.gsfc.nasa.gov/archive/natural/2026/11/16/png/epic_1b_20261116005516.png",
     "https://www.nasa.gov/wp-content/uploads/2026/11/pia26804.jpg",
     "https://www.nasa.gov/wp-content/uploads/2026/11/dsc-6269-stennis-honor-awards-1.jpg",
-    "https://science.nasa.gov/wp-content/themes/nasa-child/assets/images/nasa-logo@2x.png"
+    "https://science.nasa.gov/wp-content/themes/nasa-child/assets/images/nasa-logo@2x.png",
+    "https://www.nasa.gov/wp-content/uploads/2026/11/elementium-illustration.png"
   ],
-  "updated": "2026-11-20T19:31:05.745325"
+  "updated": "2026-11-20T21:44:42.227212"
 }
