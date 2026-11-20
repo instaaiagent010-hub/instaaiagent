@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18106490900255269",
-    "topic": "Aamir Khan meets Raj Thackeray in Mumbai amid nephew Imran Khan's controversy",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 18,
-    "posted_at": 1792347693,
-    "scored": false
-  },
-  {
     "media_id": "18411106162083672",
     "topic": "India clamps price caps on 137 more cancer drugs, aiming for cuts up to 70%",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 10,
     "posted_at": 1795170873,
+    "scored": false
+  },
+  {
+    "media_id": "18198228217404285",
+    "topic": "Breaking Ground: Politics Over Siraj's Exclusion From Team India, Rahul's Dig At Modi & More",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 16,
+    "posted_at": 1795192326,
     "scored": false
   }
 ]
