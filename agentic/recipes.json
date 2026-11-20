@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18181205503430546",
-    "topic": "India vs New Zealand Full Series Schedule: Match Dates, Timings, Live Streaming & More",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 8,
-    "posted_at": 1792397423,
-    "scored": false
-  },
-  {
     "media_id": "18227288071328108",
     "topic": "Protests against Modi government’s purge of voter rolls continue despite mass repression",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 20,
     "posted_at": 1795207743,
+    "scored": false
+  },
+  {
+    "media_id": "18116655965620427",
+    "topic": "Wall Street's Last Line Of Defense Is Breaking",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 20,
+    "posted_at": 1795207849,
     "scored": false
   }
 ]
