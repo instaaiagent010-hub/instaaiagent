@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18653874766061087",
-    "topic": "John J. Kennedy |With Another Bill On Anvil, Should Education Return To The State List?",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 16,
-    "posted_at": 1792339956,
-    "scored": false
-  },
-  {
     "media_id": "17998526957826617",
     "topic": "AISA accuses Karnataka government of breaking promises on protest rights in Bengaluru",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 10,
     "posted_at": 1795170670,
+    "scored": false
+  },
+  {
+    "media_id": "18349649464255414",
+    "topic": "Supreme Court flags health risks of marriages between close relatives, seeks Centre's response",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 10,
+    "posted_at": 1795170784,
     "scored": false
   }
 ]
