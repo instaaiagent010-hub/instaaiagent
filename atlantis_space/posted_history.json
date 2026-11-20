@@ -1,6 +1,5 @@
 {
   "titles": [
-    "nasa’s curiosity captures dawn breaking on wind",
     "apod: 2026 october 8 – the saturn system smörgåsbord",
     "solar orbiter tracks origin of mysterious magnetic switchbacks",
     "nasa sets coverage for spacex 35th station resupply launch, arrival",
@@ -299,10 +298,10 @@
     "danish soldiers are sneaking starlink terminals into greenland",
     "the stormy southwest pacific",
     "nasa epic camera ne space se earth ki tasveer li",
-    "nasa’s curiosity mars rover collects samples"
+    "nasa’s curiosity mars rover collects samples",
+    "nasa honor awards ceremony recognizes employees at stennis space center"
   ],
   "images": [
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/torrential-rains-swamp-the-gandaki-r",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/videos/2026/10/beyond_the_airlock_-_sophie_adenot_s_three_spac",
     "https://www.nasa.gov/wp-content/uploads/2026/10/flight-directors.jpg",
     "https://science.nasa.gov/wp-content/uploads/2026/09/20260826-175244.jpg",
@@ -601,7 +600,8 @@
     "https://europeanspaceflight.com/wp-content/uploads/2026/11/Danish-Soldiers-Are-Sneaking-Starlink-Terminals-into-Greenlan",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/the-stormy-southwest-pacific--/cyclo",
     "https://epic.gsfc.nasa.gov/archive/natural/2026/11/16/png/epic_1b_20261116005516.png",
-    "https://www.nasa.gov/wp-content/uploads/2026/11/pia26804.jpg"
+    "https://www.nasa.gov/wp-content/uploads/2026/11/pia26804.jpg",
+    "https://www.nasa.gov/wp-content/uploads/2026/11/dsc-6269-stennis-honor-awards-1.jpg"
   ],
-  "updated": "2026-11-20T16:03:50.817994"
+  "updated": "2026-11-20T17:16:42.935503"
 }
