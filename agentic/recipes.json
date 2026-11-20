@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "17991091590104221",
-    "topic": "Jio Platforms IPO: A record-breaking global endorsement set to resonate across India's markets",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 15,
-    "posted_at": 1792422100,
-    "scored": false
-  },
-  {
     "media_id": "18106392689346953",
     "topic": "DT Next News Recap: What are the top headlines of today, October 19, 2026?",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 20,
     "posted_at": 1795207933,
+    "scored": false
+  },
+  {
+    "media_id": "18457780867125956",
+    "topic": "Safeguards against abuse of power essential to preserve critical institutions like ECI: S.Y. Quraishi",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 20,
+    "posted_at": 1795208019,
     "scored": false
   }
 ]
