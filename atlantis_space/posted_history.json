@@ -1,6 +1,5 @@
 {
   "titles": [
-    "mars’s oddest cloud may be even odder than we thought",
     "nasa’s curiosity looks back after reaching elevation milestone",
     "nasa’s curiosity captures dawn breaking on wind",
     "apod: 2026 october 8 – the saturn system smörgåsbord",
@@ -299,10 +298,10 @@
     "google turns to blue origin for a rocket, but its long-term problem remains",
     "relativity tests terran r second stage, completes structural qualifications ahead of inaugural launch",
     "danish soldiers are sneaking starlink terminals into greenland",
-    "the stormy southwest pacific"
+    "the stormy southwest pacific",
+    "nasa epic camera ne space se earth ki tasveer li"
   ],
   "images": [
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/october/sharpless_catalog.png",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/09/esa_team_at_jammertest_2026/27542153-1-eng-GB/E",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/torrential-rains-swamp-the-gandaki-r",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/videos/2026/10/beyond_the_airlock_-_sophie_adenot_s_three_spac",
@@ -601,7 +600,8 @@
     "https://cdn.arstechnica.net/wp-content/uploads/2025/11/NG2-Launch-Rollout-3.jpg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/11/IMG_2841.jpeg",
     "https://europeanspaceflight.com/wp-content/uploads/2026/11/Danish-Soldiers-Are-Sneaking-Starlink-Terminals-into-Greenlan",
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/the-stormy-southwest-pacific--/cyclo"
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/the-stormy-southwest-pacific--/cyclo",
+    "https://epic.gsfc.nasa.gov/archive/natural/2026/11/16/png/epic_1b_20261116005516.png"
   ],
-  "updated": "2026-11-20T10:19:33.245581"
+  "updated": "2026-11-20T12:26:24.455374"
 }
