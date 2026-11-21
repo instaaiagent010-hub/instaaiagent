@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18132409237742180",
-    "topic": "Breaking News Live updates: US Secretary of State Marco Rubio reaffirms strategic partnership after meeting Jaishankar, ",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "reel",
-    "hour": 13,
-    "posted_at": 1792501411,
-    "scored": false
-  },
-  {
     "media_id": "18096754196445754",
     "topic": "Why has Shafali Verma been reprimanded by the ICC after India's win over Zimbabwe?",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 15,
     "posted_at": 1795275814,
+    "scored": false
+  },
+  {
+    "media_id": "18117007001622777",
+    "topic": "The age of accountability",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 19,
+    "posted_at": 1795290636,
     "scored": false
   }
 ]
