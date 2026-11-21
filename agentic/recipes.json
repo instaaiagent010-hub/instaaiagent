@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18075690770758153",
-    "topic": "'Fair to say' Kushner-Ivanka Trump resort in Albania is dead: reporter",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 7,
-    "posted_at": 1792483151,
-    "scored": false
-  },
-  {
     "media_id": "17962414743247330",
     "topic": "Women are earning, but who controls their money? India's financial literacy divide",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 15,
     "posted_at": 1795275623,
+    "scored": false
+  },
+  {
+    "media_id": "18140537155643795",
+    "topic": "SC seeks government response on marriages between blood relatives",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 15,
+    "posted_at": 1795275730,
     "scored": false
   }
 ]
