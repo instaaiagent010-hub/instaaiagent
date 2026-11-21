@@ -1,6 +1,5 @@
 {
   "titles": [
-    "nasa sets coverage for spacex 35th station resupply launch, arrival",
     "the director’s take: telling galileo’s story through film",
     "what will it take to build a moon base?",
     "the exploration company to test lunar hopper demonstrator in 2027",
@@ -299,10 +298,10 @@
     "nasa’s curiosity mars rover collects samples",
     "nasa honor awards ceremony recognizes employees at stennis space center",
     "new nasa seed funding primes small businesses for innovation",
-    "denmark’s gomspace secures €8m contract for blue origin moon mission"
+    "denmark’s gomspace secures €8m contract for blue origin moon mission",
+    "curiosity spots drifting twilight clouds"
   ],
   "images": [
-    "https://www.nasa.gov/wp-content/uploads/2026/10/nhq20260828-admin-0031large.jpg",
     "https://epic.gsfc.nasa.gov/archive/natural/2026/09/28/png/epic_1b_20260928005515.png",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/10/Artist_s_impression_of_a_potential_European-led_orbital_stati",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/ng-112520cygnus2520release2520and2520reentry_image_20",
@@ -601,7 +600,8 @@
     "https://www.nasa.gov/wp-content/uploads/2026/11/dsc-6269-stennis-honor-awards-1.jpg",
     "https://science.nasa.gov/wp-content/themes/nasa-child/assets/images/nasa-logo@2x.png",
     "https://www.nasa.gov/wp-content/uploads/2026/11/elementium-illustration.png",
-    "https://europeanspaceflight.com/wp-content/uploads/2026/11/Denmarks-GomSpace-Secures-8-Million-Euro-Contract-for-Blue-Or"
+    "https://europeanspaceflight.com/wp-content/uploads/2026/11/Denmarks-GomSpace-Secures-8-Million-Euro-Contract-for-Blue-Or",
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia26805/PIA26805.jpg"
   ],
-  "updated": "2026-11-21T07:55:27.718057"
+  "updated": "2026-11-21T10:06:42.143472"
 }
