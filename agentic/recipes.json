@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18106392689346953",
-    "topic": "DT Next News Recap: What are the top headlines of today, October 19, 2026?",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 15,
-    "posted_at": 1792422190,
-    "scored": false
-  },
-  {
     "media_id": "17912594856492784",
     "topic": "Pakistan vs. England prediction, team news, pitch report and betting tips for 2nd ODI in tri-nations series",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 20,
     "posted_at": 1795208019,
+    "scored": false
+  },
+  {
+    "media_id": "18102397664416032",
+    "topic": "PM says India has shown it can break limits, unlock possibilities",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 10,
+    "posted_at": 1795255992,
     "scored": false
   }
 ]
