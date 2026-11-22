@@ -41,12 +41,20 @@ APP_SECRET           = os.getenv("SPACE_APP_SECRET")
 NASA_API_KEY         = os.getenv("NASA_API_KEY")
 
 # --- Groq model auto-select: best available model khud pick karo (future-proof) ---
-GROQ_MODEL_PREFERENCES = [
-    "llama-3.3-70b-versatile",  # proven — reliable content output
-    "llama-3.1-8b-instant",     # fallback
-    # gpt-oss-120b HATAYA: reasoning model chhote max_tokens pe EMPTY content deta hai
-    # (narration 0 words → silent reels). Wapas mat daalo bina empty-output guard ke.
+# VERIFIED 2026-10-04 + RE-VERIFIED 2026-11-22 live /models API ke against (teeno active).
+# llama-3.3-70b-versatile 2026-08-16 ko DECOMMISSION ho gaya aur llama-3.1-8b-instant
+# ab Enterprise-only hai — dono 404 dete hain. Unhe wapas mat daalo.
+# gpt-oss reasoning models ko `reasoning_effort="low"` CHAHIYE: bina uske chhote
+# max_tokens pe poora budget reasoning mein chala jata hai aur content EMPTY aata hai
+# (= narration 0 words = silent reel — ye purani regression thi). qwen ko ulta
+# reasoning_effort DENA nahi hai, warna wo empty deta hai. Isliye per-model kwargs.
+GROQ_MODEL_OPTIONS = [
+    ("openai/gpt-oss-120b", {"reasoning_effort": "low"}),   # sabse capable
+    ("qwen/qwen3.8-27b",    {}),                            # alag family — rate-limit backup
+    ("openai/gpt-oss-20b",  {"reasoning_effort": "low"}),   # chhota + fast
 ]
+GROQ_MODEL_PREFERENCES = [_m for _m, _kw in GROQ_MODEL_OPTIONS]
+GROQ_MODEL_KWARGS      = dict(GROQ_MODEL_OPTIONS)
 
 def _pick_groq_model() -> str:
     try:
@@ -58,31 +66,41 @@ def _pick_groq_model() -> str:
                 return _m
     except Exception:
         pass
-    return "llama-3.3-70b-versatile"
+    return GROQ_MODEL_PREFERENCES[0]   # kabhi dead model hardcode mat karo
 
 GROQ_MODEL = _pick_groq_model()
 print(f"🧠 Groq model: {GROQ_MODEL}")
 
 
 def _groq_complete(messages, max_tokens=500, **kwargs):
-    """Groq call — rate limit (429) pe agle model pe switch karo.
-    Groq ke daily token limits PER MODEL hote hain (saare agents ek hi key share
-    karte hain, isliye 70b ka limit din mein khatam ho jata hai)."""
+    """Groq call — rate limit (429), dead model (404) YA empty content pe agle model pe switch.
+    Groq ke daily token limits PER MODEL hote hain (saare agents ek hi key share karte hain).
+    Per-model kwargs (gpt-oss ko reasoning_effort="low") yahin lagte hain, aur empty-output
+    guard zaroori hai: warna narration 0 words → silent reel."""
     client = Groq(api_key=GROQ_API_KEY)
     models = [GROQ_MODEL] + [m for m in GROQ_MODEL_PREFERENCES if m != GROQ_MODEL]
     last_err = None
     for m in models:
+        call_kwargs = {**GROQ_MODEL_KWARGS.get(m, {}), **kwargs}
         try:
-            return client.chat.completions.create(
-                model=m, max_tokens=max_tokens, messages=messages, **kwargs
+            resp = client.chat.completions.create(
+                model=m, max_tokens=max_tokens, messages=messages, **call_kwargs
             )
+            if not (resp.choices[0].message.content or "").strip():
+                print(f"      {m} ne EMPTY content diya — agla model try kar raha hoon")
+                continue
+            return resp
         except Exception as e:
             last_err = e
-            if "rate_limit" in str(e) or "429" in str(e):
-                print(f"      {m} rate-limited — agla model try kar raha hoon")
+            err = str(e)
+            if any(s in err for s in ("rate_limit", "429", "404", "decommission",
+                                      "does not exist", "model_not_found")):
+                print(f"      {m} unavailable/rate-limited — agla model try kar raha hoon")
                 continue
             raise
-    raise last_err
+    if last_err:
+        raise last_err
+    raise RuntimeError("Groq: saare models ne empty content diya")
 
 CHANNEL_HANDLE  = "@atlantis_space"
 POST_DELAY      = 45   # seconds between posts in same run
@@ -796,6 +814,17 @@ def upload_youtube_short(video_path: str, title: str, description: str) -> str |
 
 # --- Additional Free Space Sources (JWST, Hubble, ESA, ISRO, RSS feeds) ------
 
+def _xfind(item, *tags):
+    """Pehla matching child element. `a.find(x) or a.find(y)` MAT likho: bina children
+    wala Element (jaise <title>text</title>) falsy hota hai, to `or` use skip kar deta tha
+    → har RSS item ka title khali → saare feeds '0 items' dete the."""
+    for t in tags:
+        el = item.find(t)
+        if el is not None:
+            return el
+    return None
+
+
 def _parse_rss(url: str, source_name: str, max_results: int = 3) -> list[dict]:
     """Generic RSS/Atom feed parser — returns news items with image"""
     import xml.etree.ElementTree as ET
@@ -809,14 +838,14 @@ def _parse_rss(url: str, source_name: str, max_results: int = 3) -> list[dict]:
         items = root.findall(".//item") or root.findall(".//{http://www.w3.org/2005/Atom}entry")
         news = []
         for item in items:
-            t_el = item.find("title") or item.find("{http://www.w3.org/2005/Atom}title")
+            t_el = _xfind(item, "title", "{http://www.w3.org/2005/Atom}title")
             title = (t_el.text or "").strip() if t_el is not None else ""
             if not title:
                 continue
             title = clean_title(title)
-            d_el = (item.find("description") or
-                    item.find("{http://www.w3.org/2005/Atom}summary") or
-                    item.find("{http://www.w3.org/2005/Atom}content"))
+            d_el = _xfind(item, "description",
+                          "{http://www.w3.org/2005/Atom}summary",
+                          "{http://www.w3.org/2005/Atom}content")
             raw = (d_el.text or "") if d_el is not None else ""
             desc = _re.sub(r'<[^>]+>', '', raw).strip()[:500]
             img = ""
@@ -831,7 +860,7 @@ def _parse_rss(url: str, source_name: str, max_results: int = 3) -> list[dict]:
                 m = _re.search(r'<img[^>]+src=["\']([^"\']+)["\']', raw)
                 if m:
                     img = m.group(1)
-            date_el = item.find("pubDate") or item.find("{http://www.w3.org/2005/Atom}published")
+            date_el = _xfind(item, "pubDate", "{http://www.w3.org/2005/Atom}published")
             date = (date_el.text or "")[:10] if date_el is not None else ""
             news.append({"title": title, "body": desc, "image": img,
                          "source": source_name, "date": date})
