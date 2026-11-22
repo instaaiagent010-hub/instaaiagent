@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18082289324354049",
-    "topic": "Festive gold Investment: Digital Gold vs Gold ETFs — Which is the better choice for Diwali and Dhanteras investors?",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 7,
-    "posted_at": 1792569550,
-    "scored": false
-  },
-  {
     "media_id": "18097721717438387",
     "topic": "Albania Protests Escalate As Fire Hits Supreme Court, Students Demand PM Edi Rama's Resignation",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 15,
     "posted_at": 1795362510,
+    "scored": false
+  },
+  {
+    "media_id": "18083717054545528",
+    "topic": "India Rewrite History In Wellington, Surpass New Zealand's 715 In Record",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 20,
+    "posted_at": 1795377848,
     "scored": false
   }
 ]
