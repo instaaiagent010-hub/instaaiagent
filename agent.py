@@ -71,12 +71,20 @@ APP_ID              = os.getenv("APP_ID")
 APP_SECRET          = os.getenv("APP_SECRET")
 
 # --- Groq model auto-select: best available model khud pick karo (future-proof) ---
-GROQ_MODEL_PREFERENCES = [
-    "llama-3.3-70b-versatile",  # proven — reliable content output
-    "llama-3.1-8b-instant",     # fallback
-    # gpt-oss-120b HATAYA: reasoning model chhote max_tokens pe EMPTY content deta hai
-    # (narration 0 words → silent reels). Wapas mat daalo bina empty-output guard ke.
+# VERIFIED 2026-10-04 + RE-VERIFIED 2026-11-22 live /models API ke against (teeno active).
+# llama-3.3-70b-versatile 2026-08-16 ko DECOMMISSION ho gaya aur llama-3.1-8b-instant
+# ab Enterprise-only hai — dono 404 dete hain. Unhe wapas mat daalo.
+# gpt-oss reasoning models ko `reasoning_effort="low"` CHAHIYE: bina uske chhote
+# max_tokens pe poora budget reasoning mein chala jata hai aur content EMPTY aata hai
+# (= narration 0 words = silent reel — ye purani regression thi). qwen ko ulta
+# reasoning_effort DENA nahi hai, warna wo empty deta hai. Isliye per-model kwargs.
+GROQ_MODEL_OPTIONS = [
+    ("openai/gpt-oss-120b", {"reasoning_effort": "low"}),   # sabse capable
+    ("qwen/qwen3.8-27b",    {}),                            # alag family — rate-limit backup
+    ("openai/gpt-oss-20b",  {"reasoning_effort": "low"}),   # chhota + fast
 ]
+GROQ_MODEL_PREFERENCES = [_m for _m, _kw in GROQ_MODEL_OPTIONS]
+GROQ_MODEL_KWARGS      = dict(GROQ_MODEL_OPTIONS)
 
 def _pick_groq_model() -> str:
     try:
@@ -88,30 +96,41 @@ def _pick_groq_model() -> str:
                 return _m
     except Exception:
         pass
-    return "llama-3.3-70b-versatile"
+    return GROQ_MODEL_PREFERENCES[0]   # kabhi dead model hardcode mat karo
 
 GROQ_MODEL = _pick_groq_model()
 print(f"🧠 Groq model: {GROQ_MODEL}")
 
 
 def _groq_complete(messages, max_tokens=500, **kwargs):
-    """Groq call — rate limit (429) pe agle model pe switch karo.
-    Groq ke daily token limits PER MODEL hote hain, isliye dusra model abhi bhi chalega."""
+    """Groq call — rate limit (429), dead model (404) YA empty content pe agle model pe switch.
+    Groq ke daily token limits PER MODEL hote hain (saare agents ek hi key share karte hain).
+    Empty-output guard zaroori hai: reasoning models kabhi blank content dete hain, jisse
+    narration 0 words ho jati thi aur reel silent ban jati thi."""
     client = Groq(api_key=GROQ_API_KEY)
     models = [GROQ_MODEL] + [m for m in GROQ_MODEL_PREFERENCES if m != GROQ_MODEL]
     last_err = None
     for m in models:
+        call_kwargs = {**GROQ_MODEL_KWARGS.get(m, {}), **kwargs}
         try:
-            return client.chat.completions.create(
-                model=m, max_tokens=max_tokens, messages=messages, **kwargs
+            resp = client.chat.completions.create(
+                model=m, max_tokens=max_tokens, messages=messages, **call_kwargs
             )
+            if not (resp.choices[0].message.content or "").strip():
+                print(f"      {m} ne EMPTY content diya — agla model try kar raha hoon")
+                continue
+            return resp
         except Exception as e:
             last_err = e
-            if "rate_limit" in str(e) or "429" in str(e):
-                print(f"      {m} rate-limited — agla model try kar raha hoon")
+            err = str(e)
+            if any(s in err for s in ("rate_limit", "429", "404", "decommission",
+                                      "does not exist", "model_not_found")):
+                print(f"      {m} unavailable/rate-limited — agla model try kar raha hoon")
                 continue
             raise
-    raise last_err
+    if last_err:
+        raise last_err
+    raise RuntimeError("Groq: saare models ne empty content diya")
 
 POST_DELAY     = 60   # seconds between posts
 CAROUSEL_SLIDES = 4   # carousel mein kitni images
@@ -179,6 +198,17 @@ def fetch_news(topic: str, max_results: int = 5) -> list[dict]:
 
 
 # ── Copyright-Free News Sources ────────────────────────────────────────────────
+def _xfind(item, *tags):
+    """Pehla matching child element. `a.find(x) or a.find(y)` MAT likho: bina children
+    wala Element (jaise <title>text</title>) falsy hota hai, to `or` use skip kar deta tha
+    → har RSS item ka title khali → saare feeds '0 items' dete the."""
+    for t in tags:
+        el = item.find(t)
+        if el is not None:
+            return el
+    return None
+
+
 def _parse_rss(url: str, source_name: str, max_results: int = 4) -> list[dict]:
     """Generic RSS/Atom parser — public domain / CC sources ke liye"""
     import xml.etree.ElementTree as ET
@@ -193,13 +223,13 @@ def _parse_rss(url: str, source_name: str, max_results: int = 4) -> list[dict]:
                  root.findall(".//{http://www.w3.org/2005/Atom}entry"))
         news = []
         for item in items:
-            t_el  = item.find("title") or item.find("{http://www.w3.org/2005/Atom}title")
+            t_el  = _xfind(item, "title", "{http://www.w3.org/2005/Atom}title")
             title = (t_el.text or "").strip() if t_el is not None else ""
             if not title: continue
             title = clean_title(title)
-            d_el  = (item.find("description") or
-                     item.find("{http://www.w3.org/2005/Atom}summary") or
-                     item.find("{http://www.w3.org/2005/Atom}content"))
+            d_el  = _xfind(item, "description",
+                           "{http://www.w3.org/2005/Atom}summary",
+                           "{http://www.w3.org/2005/Atom}content")
             raw  = (d_el.text or "") if d_el is not None else ""
             desc = _re.sub(r'<[^>]+>', '', raw).strip()[:600]
             img  = ""
@@ -211,9 +241,9 @@ def _parse_rss(url: str, source_name: str, max_results: int = 4) -> list[dict]:
             if not img:
                 m = _re.search(r'<img[^>]+src=["\']([^"\']+)["\']', raw)
                 if m: img = m.group(1)
-            link_el = item.find("link") or item.find("{http://www.w3.org/2005/Atom}link")
+            link_el = _xfind(item, "link", "{http://www.w3.org/2005/Atom}link")
             url_out = (link_el.text or link_el.get("href", "")) if link_el is not None else ""
-            date_el = (item.find("pubDate") or item.find("{http://www.w3.org/2005/Atom}published"))
+            date_el = _xfind(item, "pubDate", "{http://www.w3.org/2005/Atom}published")
             date    = (date_el.text or "")[:10] if date_el is not None else ""
             news.append({"title": title, "body": desc, "image": img,
                          "source": source_name, "date": date, "url": url_out})
@@ -293,7 +323,9 @@ def update_github_secret(secret_name: str, secret_value: str) -> bool:
 
         # Repo ka public key lo
         key_resp = requests.get(
-            f"https://api.github.com/repos/{github_repo}/actions/public-key",
+            # sahi endpoint: /actions/SECRETS/public-key (pehle /actions/public-key tha → 404,
+            # isliye refreshed token kabhi secret mein save nahi hota tha)
+            f"https://api.github.com/repos/{github_repo}/actions/secrets/public-key",
             headers={
                 "Authorization": f"Bearer {github_token}",
                 "Accept": "application/vnd.github+json",
@@ -549,9 +581,8 @@ Sirf JSON respond karo:
 
     try:
         client = Groq(api_key=GROQ_API_KEY)
-        resp = client.chat.completions.create(
-            model=GROQ_MODEL,
-            max_tokens=500,
+        resp = _groq_complete(
+                        max_tokens=500,
             messages=[{"role": "user", "content": prompt}],
             response_format={"type": "json_object"}
         )
@@ -578,9 +609,8 @@ def is_worth_posting(caption: str, news_title: str) -> bool:
     """Strict quality gate — low-value ya clickbait news reject karo"""
     try:
         client = Groq(api_key=GROQ_API_KEY)
-        resp = client.chat.completions.create(
-            model=GROQ_MODEL,
-            max_tokens=150,
+        resp = _groq_complete(
+                        max_tokens=150,
             messages=[{"role": "user", "content": f"""
 Tu ek strict Indian news quality editor hai.
 
@@ -655,9 +685,8 @@ Sirf JSON format mein respond karo:
 """
 
     try:
-        message = client.chat.completions.create(
-            model=GROQ_MODEL,
-            max_tokens=900,
+        message = _groq_complete(
+                        max_tokens=900,
             messages=[{"role": "user", "content": prompt}],
             response_format={"type": "json_object"}
         )
@@ -679,9 +708,8 @@ Sirf JSON format mein respond karo:
         summary  = result.get("image_summary", "")
         if headline or summary:
             try:
-                fix_resp = client.chat.completions.create(
-                    model=GROQ_MODEL,
-                    max_tokens=200,
+                fix_resp = _groq_complete(
+                                        max_tokens=200,
                     messages=[{"role": "user", "content": f"""Fix spelling mistakes only. Do NOT change meaning, words, or language. Return corrected versions only.
 
 Headline: {headline}
@@ -1420,36 +1448,42 @@ def generate_tts_audio(text: str, out_path: str) -> bool:
 
 
 def fetch_websearch_topics(max_topics: int = 6) -> list[str]:
-    """Groq compound-mini (FREE web search, existing key) se aaj ke asli trending India topics.
-    Ye DuckDuckGo/RSS ke ALAWA hai — unhe replace nahi karta, sirf fresh topics add karta hai."""
-    if not GROQ_API_KEY:
-        return []
+    """Aaj ke asli trending India topics — DuckDuckGo news headlines se.
+    Ye RSS/base topics ke ALAWA hai — unhe replace nahi karta, sirf fresh topics add karta hai.
+
+    NOTE: pehle ye `groq/compound-mini` (built-in web search) use karta tha, lekin wo
+    2026-09-21 ko DECOMMISSION ho gaya aur Groq ne koi replacement nahi diya — calls
+    404 deti thin. Ab DDGS se, jo agent pehle se use karta hai: koi naya API/key nahi."""
     try:
         import re as _re
-        client = Groq(api_key=GROQ_API_KEY)
-        # ye phrasing reliably web-search trigger karti hai (compound decide karta hai)
-        resp = client.chat.completions.create(
-            model="groq/compound-mini",   # built-in web search, free
-            max_tokens=350,
-            messages=[{"role": "user",
-                       "content": f"Top {max_topics} India news headlines today"}],
-        )
-        raw = resp.choices[0].message.content or ""
-        if _re.search(r"sorry|don'?t have|cannot|can'?t browse", raw, _re.I):
-            return []
-        topics = []
-        for line in raw.splitlines():
-            m = _re.match(r'^\s*\d+[\.\)]\s*(.+)', line)   # numbered headline lines
-            if not m:
-                continue
-            txt = _re.sub(r'\*+', '', m.group(1))                 # bold hatao
+        headlines = []
+        for params in ({"timelimit": "d"}, {}):     # aaj ki news → phir koi bhi
+            try:
+                with DDGS() as ddgs:
+                    headlines = [r.get("title", "") for r in
+                                 ddgs.news("India news today", max_results=max_topics * 4,
+                                           **params)]
+            except Exception:
+                headlines = []
+            if headlines:
+                break
+
+        topics, seen = [], set()
+        for raw in headlines:
+            txt = clean_title(raw)                                # source suffix hatao
             txt = _re.split(r'[–\-:|]', txt)[0]                   # dash/colon se pehle
             txt = _re.sub(r'\[.*?\]|\(.*?\)', '', txt).strip().strip('."')
             words = txt.split()
-            if len(words) >= 3:
-                topics.append(" ".join(words[:8]))               # short search topic
+            if len(words) < 3:
+                continue
+            topic = " ".join(words[:8])                           # short search topic
+            key = topic.lower()
+            if key in seen:
+                continue
+            seen.add(key)
+            topics.append(topic)
         if topics:
-            print(f"      [WebSearch] {len(topics)} trending topics mile (compound-mini, free)")
+            print(f"      [WebSearch] {len(topics)} trending topics mile (DuckDuckGo news)")
         return topics[:max_topics]
     except Exception as e:
         print(f"      [WebSearch] error: {str(e)[:80]}")
@@ -2025,10 +2059,17 @@ def create_news_card(title: str, source: str, emoji_title: str = "Breaking News"
     return upload_image(path)
 
 
+def _pixels(img: Image.Image) -> list:
+    """Pixel list — Pillow 14 (2027-10) mein getdata() hat raha hai; naya API pehle try karo."""
+    if hasattr(img, "get_flattened_data"):
+        return list(img.get_flattened_data())
+    return list(img.getdata())
+
+
 def image_palette(img: Image.Image):
     """Image ke dominant hue se accent aur bar colors nikalo"""
     sample = img.resize((80, 80), Image.LANCZOS).convert("RGB")
-    pixels = list(sample.getdata())
+    pixels = _pixels(sample)
     n = len(pixels)
     avg_r = sum(p[0] for p in pixels) // n
     avg_g = sum(p[1] for p in pixels) // n
@@ -2134,7 +2175,7 @@ def add_logo_watermark(image_url: str, title: str = "", source: str = "", summar
 
             # White/light background transparent karo
             r, g, b, a = logo.split()
-            pixels = list(logo.getdata())
+            pixels = _pixels(logo)
             new_pixels = [
                 (pr, pg, pb, 0) if pr > 220 and pg > 220 and pb > 220 else (pr, pg, pb, pa)
                 for pr, pg, pb, pa in pixels
@@ -2167,9 +2208,8 @@ def generate_story_question(news_title: str) -> str:
     """News ke baare mein ek engaging poll-style question banao"""
     try:
         client = Groq(api_key=GROQ_API_KEY)
-        resp = client.chat.completions.create(
-            model=GROQ_MODEL,
-            max_tokens=60,
+        resp = _groq_complete(
+                        max_tokens=60,
             messages=[{"role": "user", "content": f"""
 News: {news_title[:150]}
 
@@ -2477,9 +2517,8 @@ def generate_reply(comment_text: str, post_caption: str) -> str:
     """Groq se comment ka friendly Hinglish reply banao"""
     try:
         client = Groq(api_key=GROQ_API_KEY)
-        resp = client.chat.completions.create(
-            model=GROQ_MODEL,
-            max_tokens=80,
+        resp = _groq_complete(
+                        max_tokens=80,
             messages=[{"role": "user", "content": f"""
 Tu ek Indian Instagram news page ka community manager hai.
 
@@ -2791,9 +2830,8 @@ def check_breaking_news() -> None:
     ])
     try:
         client = Groq(api_key=GROQ_API_KEY)
-        resp = client.chat.completions.create(
-            model=GROQ_MODEL,
-            max_tokens=200,
+        resp = _groq_complete(
+                        max_tokens=200,
             messages=[{"role": "user", "content": f"""
 Ye Indian news headlines hain. Kaunsa sabse breaking/critical hai?
 Sirf wahi select karo jiska importance 9 ya 10 ho (national crisis level).
