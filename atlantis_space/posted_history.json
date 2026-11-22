@@ -1,6 +1,5 @@
 {
   "titles": [
-    "amazon builds 1,000th satellite, is weeks away from space internet rollout",
     "nasa’s spacex crew‑12 splashes down, sets briefing to discuss mission",
     "nasa’s sspicy mission to demonstrate in",
     "nasa briefing to highlight contributions to martian moons mission",
@@ -299,10 +298,10 @@
     "curiosity spots drifting twilight clouds",
     "asteroid (2017 wr28) aaj earth ke paas se guzrega — 92-206m",
     "live coverage: spacex to launch intelligence-gathering satellites for the national reconnaissance office",
-    "nasa shares artemis acceleration plans for moon missions"
+    "nasa shares artemis acceleration plans for moon missions",
+    "press event: ng-25 prelaunch media teleconference"
   ],
   "images": [
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/moon-like-madagascar/ISS075-E-85249.",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/10/smileuvi1-scaled.jpg",
     "https://i0.wp.com/spacenews.com/wp-content/uploads/2026/07/agile-space-industries-square-logo-scaled.png?fit=1024%2C1024",
     "https://www.nasa.gov/wp-content/uploads/2023/02/center-aerial-photo-2021.jpg",
@@ -601,7 +600,8 @@
     "https://epic.gsfc.nasa.gov/archive/natural/2026/11/18/png/epic_1b_20261118001751.png",
     "https://spaceflightnow.com/wp-content/uploads/2026/04/20260414-Falcon-9-File.jpg",
     "https://www.youtube.com/embed/pAKqJxuxDgk",
-    "https://epic.gsfc.nasa.gov/archive/natural/2026/11/19/png/epic_1b_20261119000831.png"
+    "https://epic.gsfc.nasa.gov/archive/natural/2026/11/19/png/epic_1b_20261119000831.png",
+    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/ng-20_science_m_image_20240125082159.jpeg"
   ],
-  "updated": "2026-11-22T10:08:48.743597"
+  "updated": "2026-11-22T12:13:47.023536"
 }
