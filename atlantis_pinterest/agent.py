@@ -42,12 +42,20 @@ INDIA_BOARD_ID    = os.getenv("PINTEREST_INDIA_BOARD_ID", "")
 SCIENCE_BOARD_ID  = os.getenv("PINTEREST_SCIENCE_BOARD_ID", "")
 
 # --- Groq model auto-select: best available model khud pick karo (future-proof) ---
-GROQ_MODEL_PREFERENCES = [
-    "llama-3.3-70b-versatile",  # proven — reliable content output
-    "llama-3.1-8b-instant",     # fallback
-    # gpt-oss-120b HATAYA: reasoning model chhote max_tokens pe EMPTY content deta hai
-    # (narration 0 words → silent reels). Wapas mat daalo bina empty-output guard ke.
+# VERIFIED 2026-10-04 + RE-VERIFIED 2026-11-22 live /models API ke against (teeno active).
+# llama-3.3-70b-versatile 2026-08-16 ko DECOMMISSION ho gaya aur llama-3.1-8b-instant
+# ab Enterprise-only hai — dono 404 dete hain. Unhe wapas mat daalo.
+# gpt-oss reasoning models ko `reasoning_effort="low"` CHAHIYE: bina uske chhote
+# max_tokens pe poora budget reasoning mein chala jata hai aur content EMPTY aata hai
+# (= narration 0 words = silent reel — ye purani regression thi). qwen ko ulta
+# reasoning_effort DENA nahi hai, warna wo empty deta hai. Isliye per-model kwargs.
+GROQ_MODEL_OPTIONS = [
+    ("openai/gpt-oss-120b", {"reasoning_effort": "low"}),   # sabse capable
+    ("qwen/qwen3.8-27b",    {}),                            # alag family — rate-limit backup
+    ("openai/gpt-oss-20b",  {"reasoning_effort": "low"}),   # chhota + fast
 ]
+GROQ_MODEL_PREFERENCES = [_m for _m, _kw in GROQ_MODEL_OPTIONS]
+GROQ_MODEL_KWARGS      = dict(GROQ_MODEL_OPTIONS)
 
 def _pick_groq_model() -> str:
     try:
@@ -59,10 +67,41 @@ def _pick_groq_model() -> str:
                 return _m
     except Exception:
         pass
-    return "llama-3.3-70b-versatile"
+    return GROQ_MODEL_PREFERENCES[0]   # kabhi dead model hardcode mat karo
 
 GROQ_MODEL = _pick_groq_model()
 print(f"🧠 Groq model: {GROQ_MODEL}")
+
+
+def _groq_complete(messages, max_tokens=500, **kwargs):
+    """Groq call — rate limit (429), dead model (404) YA empty content pe agle model pe switch.
+    Groq ke daily token limits PER MODEL hote hain (saare agents ek hi key share karte hain).
+    Empty-output guard zaroori hai: reasoning models kabhi blank content dete hain, jisse
+    narration 0 words ho jati thi aur reel silent ban jati thi."""
+    client = Groq(api_key=GROQ_API_KEY)
+    models = [GROQ_MODEL] + [m for m in GROQ_MODEL_PREFERENCES if m != GROQ_MODEL]
+    last_err = None
+    for m in models:
+        call_kwargs = {**GROQ_MODEL_KWARGS.get(m, {}), **kwargs}
+        try:
+            resp = client.chat.completions.create(
+                model=m, max_tokens=max_tokens, messages=messages, **call_kwargs
+            )
+            if not (resp.choices[0].message.content or "").strip():
+                print(f"      {m} ne EMPTY content diya — agla model try kar raha hoon")
+                continue
+            return resp
+        except Exception as e:
+            last_err = e
+            err = str(e)
+            if any(s in err for s in ("rate_limit", "429", "404", "decommission",
+                                      "does not exist", "model_not_found")):
+                print(f"      {m} unavailable/rate-limited — agla model try kar raha hoon")
+                continue
+            raise
+    if last_err:
+        raise last_err
+    raise RuntimeError("Groq: saare models ne empty content diya")
 
 CHANNEL_HANDLE  = "@atlantis_pinterest"
 HISTORY_FILE    = os.path.join(os.path.dirname(os.path.abspath(__file__)), "posted_history.json")
@@ -354,9 +393,8 @@ def generate_pin_description(title: str, fact: str, category: str) -> str:
         return f"{title}. {fact}"
     try:
         client = Groq(api_key=GROQ_API_KEY)
-        resp = client.chat.completions.create(
-            model=GROQ_MODEL,
-            max_tokens=200,
+        resp = _groq_complete(
+                        max_tokens=200,
             messages=[{"role": "user", "content": f"""
 Pinterest pin ke liye SEO description likho — English mein.
 Topic: {title}
