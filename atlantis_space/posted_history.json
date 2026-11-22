@@ -1,6 +1,5 @@
 {
   "titles": [
-    "the exploration company to test lunar hopper demonstrator in 2027",
     "amazon builds 1,000th satellite, is weeks away from space internet rollout",
     "nasa’s spacex crew‑12 splashes down, sets briefing to discuss mission",
     "nasa’s sspicy mission to demonstrate in",
@@ -299,10 +298,10 @@
     "denmark’s gomspace secures €8m contract for blue origin moon mission",
     "curiosity spots drifting twilight clouds",
     "asteroid (2017 wr28) aaj earth ke paas se guzrega — 92-206m",
-    "live coverage: spacex to launch intelligence-gathering satellites for the national reconnaissance office"
+    "live coverage: spacex to launch intelligence-gathering satellites for the national reconnaissance office",
+    "nasa shares artemis acceleration plans for moon missions"
   ],
   "images": [
-    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/ng-112520cygnus2520release2520and2520reentry_image_20",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/october/M104_Vollmer_4222.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/moon-like-madagascar/ISS075-E-85249.",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/10/smileuvi1-scaled.jpg",
@@ -601,7 +600,8 @@
     "https://europeanspaceflight.com/wp-content/uploads/2026/11/Denmarks-GomSpace-Secures-8-Million-Euro-Contract-for-Blue-Or",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia26805/PIA26805.jpg",
     "https://epic.gsfc.nasa.gov/archive/natural/2026/11/18/png/epic_1b_20261118001751.png",
-    "https://spaceflightnow.com/wp-content/uploads/2026/04/20260414-Falcon-9-File.jpg"
+    "https://spaceflightnow.com/wp-content/uploads/2026/04/20260414-Falcon-9-File.jpg",
+    "https://www.youtube.com/embed/pAKqJxuxDgk"
   ],
-  "updated": "2026-11-21T21:26:41.339607"
+  "updated": "2026-11-22T07:42:15.341999"
 }
