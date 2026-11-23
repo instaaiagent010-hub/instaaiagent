@@ -1,6 +1,5 @@
 {
   "titles": [
-    "nasa briefing to highlight contributions to martian moons mission",
     "floodwaters overwhelm thailand",
     "earth from space: namibia’s biggest salt pan",
     "crew-12 back on earth as iss keeps busy",
@@ -299,10 +298,10 @@
     "nasa shares artemis acceleration plans for moon missions",
     "press event: ng-25 prelaunch media teleconference",
     "asteroid (2010 hg20) aaj earth ke paas se guzrega — 139-312m",
-    "press event: nasa roman first images reveal"
+    "press event: nasa roman first images reveal",
+    "laser focus at the top of the world"
   ],
   "images": [
-    "https://www.nasa.gov/wp-content/uploads/2023/02/center-aerial-photo-2021.jpg",
     "https://images-assets.nasa.gov/image/GRC-2026-C-02774/GRC-2026-C-02774~large.jpg",
     "https://www.nasa.gov/wp-content/uploads/2026/10/nhq202610040010orig.jpg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2023/04/julia-streak-scaled.jpg",
@@ -601,7 +600,8 @@
     "https://epic.gsfc.nasa.gov/archive/natural/2026/11/19/png/epic_1b_20261119000831.png",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/ng-20_science_m_image_20240125082159.jpeg",
     "https://epic.gsfc.nasa.gov/archive/natural/2026/11/20/png/epic_1b_20261120002712.png",
-    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/roman_space_tel_image_20260329084947.jpg"
+    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/roman_space_tel_image_20260329084947.jpg",
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/laser-focus-at-the-top-of-the-world/"
   ],
-  "updated": "2026-11-22T21:30:18.760604"
+  "updated": "2026-11-23T08:28:30.799159"
 }
