@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "17907620709657967",
-    "topic": "Asian Para Games 2026: Simran's sprint double, record-breaking golds propel India to 62 medals",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 19,
-    "posted_at": 1792610953,
-    "scored": false
-  },
-  {
     "media_id": "18220552105359259",
     "topic": "India-US Trade Pact Nears Final Stage; Key Tariff Relief Details and Timelines Awaited",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 11,
     "posted_at": 1795432623,
+    "scored": false
+  },
+  {
+    "media_id": "17914551432480434",
+    "topic": "Homes abandoned, harvests failing: Haiti’s farmers rebuild amid violence, hunger and El Niño",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 11,
+    "posted_at": 1795432711,
     "scored": false
   }
 ]
