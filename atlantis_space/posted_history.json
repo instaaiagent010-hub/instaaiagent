@@ -1,6 +1,5 @@
 {
   "titles": [
-    "crew-12 back on earth as iss keeps busy",
     "rocket report: a rare falcon 9 scrub; is it just about vulcan's time to shine?",
     "italy explores building an artificial gravity research platform in orbit",
     "ship 40 returns home as ship 42 gets more cryo proof testing",
@@ -299,10 +298,10 @@
     "press event: nasa roman first images reveal",
     "laser focus at the top of the world",
     "china details its path to a crewed moon landing before 2030",
-    "asteroid (2019 sb6) aaj earth ke paas se guzrega — 12-26m"
+    "asteroid (2019 sb6) aaj earth ke paas se guzrega — 12-26m",
+    "nasa’s webb shows how supernova dust chronicles star evolution"
   ],
   "images": [
-    "https://www.nasa.gov/wp-content/uploads/2026/10/nhq202610040010orig.jpg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2023/04/julia-streak-scaled.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/the-beaver-brown-waters-of-rupert-ba",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/msl/2026/curiosity-rover-updates/september/https___",
@@ -601,7 +600,8 @@
     "https://epic.gsfc.nasa.gov/archive/natural/2026/11/20/png/epic_1b_20261120002712.png",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/roman_space_tel_image_20260329084947.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/laser-focus-at-the-top-of-the-world/",
-    "https://www.nasaspaceflight.com/wp-content/uploads/2026/11/Mengzhou-and-Lanyue-docking-in-orbit-render-3-Hero-CCTV.png"
+    "https://www.nasaspaceflight.com/wp-content/uploads/2026/11/Mengzhou-and-Lanyue-docking-in-orbit-render-3-Hero-CCTV.png",
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/webb/science/2026/11/STScI-01M6PRXJ9A7S81CH1C9SJP1M"
   ],
-  "updated": "2026-11-23T14:34:53.927879"
+  "updated": "2026-11-23T16:24:19.917302"
 }
