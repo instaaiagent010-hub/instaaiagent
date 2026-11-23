@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18220552105359259",
-    "topic": "India-US Trade Pact Nears Final Stage; Key Tariff Relief Details and Timelines Awaited",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 19,
-    "posted_at": 1792611043,
-    "scored": false
-  },
-  {
     "media_id": "18026881955864625",
     "topic": "India news Live Updates, 22 October 2026: BJP supporter shot dead in West Bengal's Malda, six injured",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 11,
     "posted_at": 1795432711,
+    "scored": false
+  },
+  {
+    "media_id": "18102681647661520",
+    "topic": "Breaking news live updates: Yogi Adityanath hails Ayodhya-Janakpur rail link as new chapter in India",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 19,
+    "posted_at": 1795462912,
     "scored": false
   }
 ]
