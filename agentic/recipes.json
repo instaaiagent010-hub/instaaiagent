@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18228524683326970",
-    "topic": "Rupee to rise on Jio IPO inflows, RBI while oil risks cloud outlook",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "reel",
-    "hour": 13,
-    "posted_at": 1792588549,
-    "scored": false
-  },
-  {
     "media_id": "18116849657022067",
     "topic": "BREAKING: Multiple India star bowlers suffer massive drop in ICC T20I Rankings after IND vs WI 2026 series",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 11,
     "posted_at": 1795432447,
+    "scored": false
+  },
+  {
+    "media_id": "18014179178771863",
+    "topic": "COP31 ends without climate pact as UN chief warns there is ‘no ambiguity in the science’",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 11,
+    "posted_at": 1795432536,
     "scored": false
   }
 ]
