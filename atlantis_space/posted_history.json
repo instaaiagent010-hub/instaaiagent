@@ -1,6 +1,5 @@
 {
   "titles": [
-    "rocket report: a rare falcon 9 scrub; is it just about vulcan's time to shine?",
     "italy explores building an artificial gravity research platform in orbit",
     "ship 40 returns home as ship 42 gets more cryo proof testing",
     "press event: iss crew-12 return & spacex crs-35 briefing",
@@ -299,10 +298,10 @@
     "laser focus at the top of the world",
     "china details its path to a crewed moon landing before 2030",
     "asteroid (2019 sb6) aaj earth ke paas se guzrega — 12-26m",
-    "nasa’s webb shows how supernova dust chronicles star evolution"
+    "nasa’s webb shows how supernova dust chronicles star evolution",
+    "as it happened: ng-25 preview news teleconference"
   ],
   "images": [
-    "https://www.nasaspaceflight.com/wp-content/uploads/2023/04/julia-streak-scaled.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/the-beaver-brown-waters-of-rupert-ba",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/msl/2026/curiosity-rover-updates/september/https___",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/mars_rover_meets_desert/27555911-1-eng-GB/Mars_",
@@ -601,7 +600,8 @@
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/roman_space_tel_image_20260329084947.jpg",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/esd/eo/images/iotd/2026/laser-focus-at-the-top-of-the-world/",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/11/Mengzhou-and-Lanyue-docking-in-orbit-render-3-Hero-CCTV.png",
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/webb/science/2026/11/STScI-01M6PRXJ9A7S81CH1C9SJP1M"
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/webb/science/2026/11/STScI-01M6PRXJ9A7S81CH1C9SJP1M",
+    "https://pbs.twimg.com/profile_images/1374417148483829765/nNF5rshy_400x400.jpg"
   ],
-  "updated": "2026-11-23T16:24:19.917302"
+  "updated": "2026-11-23T19:00:05.788435"
 }
