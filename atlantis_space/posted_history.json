@@ -1,6 +1,5 @@
 {
   "titles": [
-    "asteroid (2013 rx80) aaj earth ke paas se guzrega — 668-1493m",
     "docking: spacex crs-35 dragon docking",
     "asteroid (2021 je4) aaj earth ke paas se guzrega — 237-530m",
     "blue origin advances lc-36 rebuild for year",
@@ -299,10 +298,10 @@
     "spacecraft capture: ng-25 cygnus capture",
     "docking: progress ms-36 docking",
     "bepicolombo enters orbit around mercury despite “software glitch”",
-    "nasa hubble’s new view of ngc 4394 raises the bar"
+    "nasa hubble’s new view of ngc 4394 raises the bar",
+    "webb reveals new details in supernova remnant"
   ],
   "images": [
-    "https://cdn.arstechnica.net/wp-content/uploads/2026/10/google-deepmind.jpg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/10/55490081853_fc3faab619_5k-scaled.jpg",
     "https://europeanspaceflight.com/wp-content/uploads/2026/10/ArianeGroup-Completes-Second-Themis-Wet-Dress-Rehearsal.webp",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/hera_braking/27560778-2-eng-GB/Hera_braking_car",
@@ -601,7 +600,8 @@
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/progress2520ms-112520docking_image_20190318202147.jpe",
     "https://europeanspaceflight.com/wp-content/uploads/2026/11/BepiColombo-Enters-Orbit-Around-Mercury-Despite-Software-Glit",
     "https://epic.gsfc.nasa.gov/archive/natural/2026/11/22/png/epic_1b_20261122010436.png",
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/galaxies/spiral/Hubble_NGC4394_potm2611a.jpg"
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/galaxies/spiral/Hubble_NGC4394_potm2611a.jpg",
+    "https://www.nasa.gov/wp-content/uploads/2026/11/cas-a-webb-miri.png"
   ],
-  "updated": "2026-11-24T16:13:34.632964"
+  "updated": "2026-11-24T18:36:32.132499"
 }
