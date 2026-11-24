@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18026881955864625",
-    "topic": "India news Live Updates, 22 October 2026: BJP supporter shot dead in West Bengal's Malda, six injured",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 7,
-    "posted_at": 1792655861,
-    "scored": false
-  },
-  {
     "media_id": "17903710278669293",
     "topic": "Ministry clarifies Indian religious leader's Sri Lanka visit was in February",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 19,
     "posted_at": 1795462912,
+    "scored": false
+  },
+  {
+    "media_id": "18108634394569678",
+    "topic": "Gaza war has undone 77 years of human development, UN warns",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 0,
+    "posted_at": 1795479726,
     "scored": false
   }
 ]
