@@ -1,6 +1,5 @@
 {
   "titles": [
-    "nasa to conduct flyover, engage nfl fans at metlife stadium",
     "asteroid (2013 rx80) aaj earth ke paas se guzrega — 668-1493m",
     "docking: spacex crs-35 dragon docking",
     "asteroid (2021 je4) aaj earth ke paas se guzrega — 237-530m",
@@ -299,10 +298,10 @@
     "live coverage: arianespace to launch amazon leo sats amid rocket crunch",
     "spacecraft capture: ng-25 cygnus capture",
     "docking: progress ms-36 docking",
-    "bepicolombo enters orbit around mercury despite “software glitch”"
+    "bepicolombo enters orbit around mercury despite “software glitch”",
+    "nasa hubble’s new view of ngc 4394 raises the bar"
   ],
   "images": [
-    "https://www.nasa.gov/wp-content/uploads/2026/06/feature-moonbase-img-2f4057.png",
     "https://cdn.arstechnica.net/wp-content/uploads/2026/10/google-deepmind.jpg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/10/55490081853_fc3faab619_5k-scaled.jpg",
     "https://europeanspaceflight.com/wp-content/uploads/2026/10/ArianeGroup-Completes-Second-Themis-Wet-Dress-Rehearsal.webp",
@@ -601,7 +600,8 @@
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/ng-112520cygnus2520release2520and2520reentry_image_20",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/progress2520ms-112520docking_image_20190318202147.jpe",
     "https://europeanspaceflight.com/wp-content/uploads/2026/11/BepiColombo-Enters-Orbit-Around-Mercury-Despite-Software-Glit",
-    "https://epic.gsfc.nasa.gov/archive/natural/2026/11/22/png/epic_1b_20261122010436.png"
+    "https://epic.gsfc.nasa.gov/archive/natural/2026/11/22/png/epic_1b_20261122010436.png",
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/galaxies/spiral/Hubble_NGC4394_potm2611a.jpg"
   ],
-  "updated": "2026-11-24T14:32:26.856514"
+  "updated": "2026-11-24T16:13:34.632964"
 }
