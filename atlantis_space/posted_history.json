@@ -1,6 +1,5 @@
 {
   "titles": [
-    "esa astronaut sophie adenot returns from her first mission to the international space station",
     "nasa to conduct flyover, engage nfl fans at metlife stadium",
     "asteroid (2013 rx80) aaj earth ke paas se guzrega — 668-1493m",
     "docking: spacex crs-35 dragon docking",
@@ -299,10 +298,10 @@
     "live coverage: spacex to launch classified payload for the u.s. space force",
     "live coverage: arianespace to launch amazon leo sats amid rocket crunch",
     "spacecraft capture: ng-25 cygnus capture",
-    "docking: progress ms-36 docking"
+    "docking: progress ms-36 docking",
+    "bepicolombo enters orbit around mercury despite “software glitch”"
   ],
   "images": [
-    "https://www.nasa.gov/wp-content/uploads/2026/10/stsci-01m3cbk3t6srkp4q7wv9cgfgw9.jpg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/iaf_global_space_leaders_summit_2026/27559712-1",
     "https://www.nasa.gov/wp-content/uploads/2026/06/feature-moonbase-img-2f4057.png",
     "https://cdn.arstechnica.net/wp-content/uploads/2026/10/google-deepmind.jpg",
@@ -601,7 +600,8 @@
     "https://spaceflightnow.com/wp-content/uploads/2026/06/20260618_Falcon-9_NROL-179.jpeg",
     "https://spaceflightnow.com/wp-content/uploads/2026/11/20261122_LE-04_fairing.jpeg",
     "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/ng-112520cygnus2520release2520and2520reentry_image_20",
-    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/progress2520ms-112520docking_image_20190318202147.jpe"
+    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/progress2520ms-112520docking_image_20190318202147.jpe",
+    "https://europeanspaceflight.com/wp-content/uploads/2026/11/BepiColombo-Enters-Orbit-Around-Mercury-Despite-Software-Glit"
   ],
-  "updated": "2026-11-24T10:44:23.396512"
+  "updated": "2026-11-24T12:59:42.113354"
 }
