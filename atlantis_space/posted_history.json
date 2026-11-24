@@ -1,6 +1,5 @@
 {
   "titles": [
-    "nasa demonstrates next",
     "spacex to make another attempt to launch 21 data satellites for space development agency",
     "nasa issues long-awaited call to industry for private space stations",
     "esa astronaut sophie adenot returns from her first mission to the international space station",
@@ -299,10 +298,10 @@
     "as it happened: ng-25 preview news teleconference",
     "russia will launch a routine iss supply mission tomorrow—apparently, it's a big secret",
     "progress ms-36 set to launch to iss from baikonur",
-    "live coverage: spacex to launch classified payload for the u.s. space force"
+    "live coverage: spacex to launch classified payload for the u.s. space force",
+    "live coverage: arianespace to launch amazon leo sats amid rocket crunch"
   ],
   "images": [
-    "https://thespacedevs-prod.nyc3.digitaloceanspaces.com/media/images/crew-10_crew_in_image_20250306075802.jpg",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/webb_captures_commotion_from_nebula_s_stellar_j",
     "https://europeanspaceflight.com/wp-content/uploads/2026/10/The-EU-Extends-SALTO-Deadline-Again-as-Themis-Hop-Test-Slips.",
     "https://www.nasa.gov/wp-content/uploads/2026/10/stsci-01m3cbk3t6srkp4q7wv9cgfgw9.jpg",
@@ -601,7 +600,8 @@
     "https://pbs.twimg.com/profile_images/1374417148483829765/nNF5rshy_400x400.jpg",
     "https://cdn.arstechnica.net/wp-content/uploads/2023/02/52674646862_dbe4378754_k.jpg",
     "https://www.nasaspaceflight.com/wp-content/uploads/2026/04/IMG_9490.png",
-    "https://spaceflightnow.com/wp-content/uploads/2026/06/20260618_Falcon-9_NROL-179.jpeg"
+    "https://spaceflightnow.com/wp-content/uploads/2026/06/20260618_Falcon-9_NROL-179.jpeg",
+    "https://spaceflightnow.com/wp-content/uploads/2026/11/20261122_LE-04_fairing.jpeg"
   ],
-  "updated": "2026-11-23T23:09:52.127358"
+  "updated": "2026-11-24T01:27:05.803055"
 }
