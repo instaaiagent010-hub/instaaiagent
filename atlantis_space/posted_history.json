@@ -1,6 +1,5 @@
 {
   "titles": [
-    "what’s happening in space policy october 11-17, 2026",
     "antarctic sea ice grows to its 2026 maximum",
     "webb and hubble observe stellar nurseries, galaxies, and gravitational lensing in new images",
     "exomars rover twin rehearses first drive",
@@ -299,10 +298,10 @@
     "webb reveals new details in supernova remnant",
     "nasa’s titan",
     "nasa’s northrop grumman crs-25 mission overview",
-    "bepicolombo successfully enters orbit of mercury, suffers orbit-altering software glitch"
+    "bepicolombo successfully enters orbit of mercury, suffers orbit-altering software glitch",
+    "teams lock in mission architecture for nasa’s sr-1 freedom"
   ],
   "images": [
-    "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/the_arsia_mons_elongated_cloud_as_seen_by_mars_",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia26/pia26781/PIA26781.png",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia25/pia25629/PIA25629.png",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/cds/apod/apod/2026/october/2026-09-21-2349_3-TW-RGB-Sat2_1.5",
@@ -601,7 +600,8 @@
     "https://www.nasa.gov/wp-content/uploads/2026/11/cas-a-webb-miri.png",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/dragonfly/DragonCamInstall.jpg",
     "https://www.nasa.gov/wp-content/uploads/2026/11/ntv-ng-crs-25-falcon9-cygnus-overview-2160-dark.png",
-    "https://www.nasaspaceflight.com/wp-content/uploads/2026/11/HXkRNVOXsAAjwYz-scaled.jpeg"
+    "https://www.nasaspaceflight.com/wp-content/uploads/2026/11/HXkRNVOXsAAjwYz-scaled.jpeg",
+    "https://www.nasa.gov/wp-content/uploads/2026/06/sr-1-freedom-11-6-2026.png"
   ],
-  "updated": "2026-11-24T21:47:00.366833"
+  "updated": "2026-11-24T23:28:19.792097"
 }
