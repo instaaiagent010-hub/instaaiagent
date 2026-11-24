@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18098135270555904",
-    "topic": "India News Highlights, 22 October 2026: Neha Bora tells Delhi High Court she needs no permission to hoist flag",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 14,
-    "posted_at": 1792679568,
-    "scored": false
-  },
-  {
     "media_id": "18095125196672260",
     "topic": "Dhir, Samson power India to record-breaking T20I chase against New Zealand",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 0,
     "posted_at": 1795479813,
+    "scored": false
+  },
+  {
+    "media_id": "17968887297217157",
+    "topic": "Security Council LIVE: Winter attacks on Ukraine's power grid and Black Sea shipping threaten lives and global food supp",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 0,
+    "posted_at": 1795479905,
     "scored": false
   }
 ]
