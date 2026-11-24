@@ -1,6 +1,5 @@
 {
   "titles": [
-    "asteroid (2021 je4) aaj earth ke paas se guzrega — 237-530m",
     "blue origin advances lc-36 rebuild for year",
     "what’s happening in space policy october 11-17, 2026",
     "antarctic sea ice grows to its 2026 maximum",
@@ -299,10 +298,10 @@
     "bepicolombo enters orbit around mercury despite “software glitch”",
     "nasa hubble’s new view of ngc 4394 raises the bar",
     "webb reveals new details in supernova remnant",
-    "nasa’s titan"
+    "nasa’s titan",
+    "nasa’s northrop grumman crs-25 mission overview"
   ],
   "images": [
-    "https://europeanspaceflight.com/wp-content/uploads/2026/10/ArianeGroup-Completes-Second-Themis-Wet-Dress-Rehearsal.webp",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/hera_braking/27560778-2-eng-GB/Hera_braking_car",
     "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2026/10/the_arsia_mons_elongated_cloud_as_seen_by_mars_",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia26/pia26781/PIA26781.png",
@@ -601,7 +600,8 @@
     "https://epic.gsfc.nasa.gov/archive/natural/2026/11/22/png/epic_1b_20261122010436.png",
     "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/hubble/galaxies/spiral/Hubble_NGC4394_potm2611a.jpg",
     "https://www.nasa.gov/wp-content/uploads/2026/11/cas-a-webb-miri.png",
-    "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/dragonfly/DragonCamInstall.jpg"
+    "https://assets.science.nasa.gov/dynamicimage/assets/science/missions/dragonfly/DragonCamInstall.jpg",
+    "https://www.nasa.gov/wp-content/uploads/2026/11/ntv-ng-crs-25-falcon9-cygnus-overview-2160-dark.png"
   ],
-  "updated": "2026-11-24T19:48:01.171158"
+  "updated": "2026-11-24T20:36:36.452228"
 }
