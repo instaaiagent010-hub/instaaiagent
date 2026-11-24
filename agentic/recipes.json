@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "17903710278669293",
-    "topic": "Ministry clarifies Indian religious leader's Sri Lanka visit was in February",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "reel",
-    "hour": 7,
-    "posted_at": 1792655971,
-    "scored": false
-  },
-  {
     "media_id": "18098135270555904",
     "topic": "India News Highlights, 22 October 2026: Neha Bora tells Delhi High Court she needs no permission to hoist flag",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 0,
     "posted_at": 1795479726,
+    "scored": false
+  },
+  {
+    "media_id": "17911405176331464",
+    "topic": "UN chief urges talks on global AI safety framework, warns of historic shift in power",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 0,
+    "posted_at": 1795479813,
     "scored": false
   }
 ]
