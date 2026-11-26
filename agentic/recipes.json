@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "17895615456680845",
-    "topic": "India sets historic medal record at the 2026 Asian Para Games in Japan",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 17,
-    "posted_at": 1792776397,
-    "scored": false
-  },
-  {
     "media_id": "17952186177050302",
     "topic": "Pendency and punishment: Why India needs a Sentencing Council",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 23,
     "posted_at": 1795650902,
+    "scored": false
+  },
+  {
+    "media_id": "17973037313964354",
+    "topic": "SC overturns Bihar government's premature release of gangster-turned-politician Anand Mohan",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 11,
+    "posted_at": 1795692838,
     "scored": false
   }
 ]
