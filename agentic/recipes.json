@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18384192151237782",
-    "topic": "The Rise And Fall Of The Cockroach Janta Party",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 19,
-    "posted_at": 1792783882,
-    "scored": false
-  },
-  {
     "media_id": "18101146604672224",
     "topic": "ECI’s course correction is welcome, need for accountability remains",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 18,
     "posted_at": 1795716702,
+    "scored": false
+  },
+  {
+    "media_id": "18025333970955103",
+    "topic": "SC suggests Parliament to bring amendment to section 26E of SARFAESI Act",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 22,
+    "posted_at": 1795730974,
     "scored": false
   }
 ]
