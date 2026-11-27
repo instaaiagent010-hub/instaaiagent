@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18093912326196430",
-    "topic": "Breaking news live updates: India open to global trade, resilient supply chains, says Piyush Goyal",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 7,
-    "posted_at": 1792827262,
-    "scored": false
-  },
-  {
     "media_id": "18492127273108643",
     "topic": "IND vs NZ 2nd T20I: Shreyas Iyer just 25 runs away from breaking Rohit Sharma's big record",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 0,
     "posted_at": 1795738186,
+    "scored": false
+  },
+  {
+    "media_id": "18111310901344709",
+    "topic": "India Now Stores 84% of Its Gold Reserves Domestically: RBI Brings Back 60 Tonnes From Overseas Vaults, What Is The Tota",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "reel",
+    "hour": 11,
+    "posted_at": 1795778611,
     "scored": false
   }
 ]
