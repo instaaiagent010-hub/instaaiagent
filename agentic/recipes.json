@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18182058955429457",
-    "topic": "The Fight Over Who Counts in India",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 16,
-    "posted_at": 1792858452,
-    "scored": false
-  },
-  {
     "media_id": "18075431708760384",
     "topic": "Breaking news: 7.1-magnitude earthquake strikes Vanuatu Islands region",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 16,
     "posted_at": 1795883444,
+    "scored": false
+  },
+  {
+    "media_id": "18125085409732208",
+    "topic": "Rahul Gandhi alleges delimitation bill threatens Gen Z's future, calls it BJP's new escape route",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 16,
+    "posted_at": 1795883531,
     "scored": false
   }
 ]
