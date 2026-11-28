@@ -1,15 +1,5 @@
 [
   {
-    "media_id": "18075431708760384",
-    "topic": "Breaking news: 7.1-magnitude earthquake strikes Vanuatu Islands region",
-    "hook_idx": -1,
-    "voice": "",
-    "type": "photo",
-    "hour": 18,
-    "posted_at": 1792866040,
-    "scored": false
-  },
-  {
     "media_id": "18111207941229445",
     "topic": "Lucknow News: मृत को जिंदा बताकर पांच दिन वेंटिलेटर पर रखा",
     "hook_idx": -1,
@@ -2997,6 +2987,16 @@
     "type": "photo",
     "hour": 16,
     "posted_at": 1795883531,
+    "scored": false
+  },
+  {
+    "media_id": "18380642785300690",
+    "topic": "India News Highlights, 28 November 2026: Rahul Gandhi calls delimitation bill BJP's 'escape plan'",
+    "hook_idx": -1,
+    "voice": "",
+    "type": "photo",
+    "hour": 20,
+    "posted_at": 1795898304,
     "scored": false
   }
 ]
